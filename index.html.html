@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saewel Energia Solar — Economia com a luz solar é a nossa maior essência!</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ouro: #C8922A;
+  --ouro-claro: #E8B84B;
+  --ouro-palido: #F5E6C8;
+  --noite: #0A0C0F;
+  --noite2: #111418;
+  --noite3: #181C22;
+  --cinza-escuro: #252A32;
+  --cinza: #8A9099;
+  --branco: #F8F5F0;
+  --branco-puro: #FFFFFF;
+  --verde-eco: #2A6B3C;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--noite);
+  color: var(--branco);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ═══════════════════════════════════════
+   NOISE TEXTURE OVERLAY
+═══════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 72px;
+  background: rgba(10,12,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(200,146,42,0.12);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 0 20px rgba(200,146,42,0.4);
+}
+
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--branco);
+  letter-spacing: 0.02em;
+}
+
+.logo-text span { color: var(--ouro-claro); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--branco); }
+
+.nav-btn {
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  color: var(--noite) !important;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  transition: all 0.3s !important;
+  box-shadow: 0 4px 20px rgba(200,146,42,0.35);
+}
+
+.nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(200,146,42,0.5) !important;
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 120px 5% 80px;
+  gap: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow background */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 10%; right: -5%;
+  width: 55vw; height: 55vw;
+  background: radial-gradient(ellipse, rgba(200,146,42,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+  margin-bottom: 28px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--ouro-claro);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 6vw, 82px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--branco);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-desc {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--cinza);
+  max-width: 440px;
+  margin-bottom: 44px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  color: var(--noite);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 15px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 24px rgba(200,146,42,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gold:hover::before { left: 100%; }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(200,146,42,0.55); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cinza);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
+  padding: 15px 8px;
+}
+
+.btn-ghost:hover { color: var(--branco); }
+
+.hero-kpis {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  gap: 0;
+  margin-top: 60px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.kpi {
+  flex: 1;
+  padding-right: 32px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.kpi:last-child { border-right: none; padding-right: 0; padding-left: 32px; }
+.kpi:nth-child(2) { padding-left: 32px; }
+
+.kpi-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--ouro-claro);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.kpi-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--cinza);
+  letter-spacing: 0.04em;
+}
+
+/* Hero visual */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-principal {
+  background: var(--noite2);
+  border: 1px solid rgba(200,146,42,0.2);
+  border-radius: 20px;
+  padding: 36px;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,146,42,0.1);
+}
+
+.card-principal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ouro), var(--ouro-claro), transparent);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.card-title-sm {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cinza);
+}
+
+.card-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #4ADE80;
+  font-weight: 600;
+}
+
+.live-dot {
+  width: 6px; height: 6px;
+  background: #4ADE80;
+  border-radius: 50%;
+  animation: pulse-live 1.5s infinite;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.card-economia {
+  margin-bottom: 28px;
+}
+
+.economia-label { font-size: 12px; color: var(--cinza); margin-bottom: 4px; }
+.economia-valor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 54px;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.economia-sub { font-size: 12px; color: var(--cinza); margin-top: 4px; }
+
+.card-rows { display: flex; flex-direction: column; gap: 10px; }
+
+.card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--noite3);
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.row-left { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--cinza); }
+.row-icon { font-size: 16px; }
+.row-val { font-size: 13px; font-weight: 600; color: var(--branco); }
+
+/* Floating cards */
+.float-card {
+  position: absolute;
+  background: var(--noite2);
+  border: 1px solid rgba(200,146,42,0.2);
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  white-space: nowrap;
+}
+
+.float-card.f1 {
+  top: -24px; right: -40px;
+  animation: float1 4s ease-in-out infinite;
+}
+
+.float-card.f2 {
+  bottom: 24px; left: -40px;
+  animation: float1 4s ease-in-out infinite reverse;
+  animation-delay: 2s;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.fc-icon { font-size: 22px; }
+.fc-text .fc-t { font-size: 12px; font-weight: 700; color: var(--branco); }
+.fc-text .fc-s { font-size: 11px; color: var(--cinza); }
+
+/* ═══════════════════════════════════════
+   SOBRE
+═══════════════════════════════════════ */
+.sobre {
+  padding: 120px 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  background: var(--noite2);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.sobre-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sobre-label::after { content: ''; flex: 1; height: 1px; background: rgba(200,146,42,0.3); }
+
+.sobre h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 28px;
+  color: var(--branco);
+}
+
+.sobre h2 em { font-style: italic; color: var(--ouro-claro); }
+
+.sobre-texto {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--cinza);
+  margin-bottom: 20px;
+}
+
+.sobre-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 14px;
+  color: rgba(248,245,240,0.8);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.check-mark {
+  width: 22px; height: 22px;
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--noite);
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-weight: 700;
+}
+
+/* Perfil card */
+.perfil-card {
+  background: var(--noite3);
+  border: 1px solid rgba(200,146,42,0.15);
+  border-radius: 24px;
+  padding: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.perfil-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+}
+
+.perfil-glow {
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(200,146,42,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.perfil-avatar {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 30px rgba(200,146,42,0.3);
+}
+
+.perfil-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--branco);
+  margin-bottom: 4px;
+}
+
+.perfil-cargo {
+  font-size: 13px;
+  color: var(--ouro-claro);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.perfil-crea {
+  background: rgba(200,146,42,0.08);
+  border: 1px solid rgba(200,146,42,0.2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+}
+
+.crea-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cinza); margin-bottom: 4px; }
+.crea-valor { font-size: 14px; font-weight: 600; color: var(--ouro-claro); }
+
+.perfil-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pbadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(248,245,240,0.7);
+}
+
+.pbadge-dot {
+  width: 6px; height: 6px;
+  background: var(--ouro);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════
+   SERVIÇOS
+═══════════════════════════════════════ */
+.servicos {
+  padding: 120px 5%;
+  background: var(--noite);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  gap: 40px;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--ouro-claro); }
+
+.section-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--branco);
+}
+
+.section-h2 em { font-style: italic; color: var(--ouro-claro); }
+
+.section-desc {
+  font-size: 15px;
+  color: var(--cinza);
+  line-height: 1.7;
+  max-width: 340px;
+  flex-shrink: 0;
+}
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.serv-card {
+  background: var(--noite2);
+  padding: 44px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+  cursor: default;
+}
+
+.serv-card:hover { background: var(--noite3); }
+
+.serv-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 36px; right: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,146,42,0.4), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.serv-card:hover::after { transform: scaleX(1); }
+
+.serv-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(200,146,42,0.4);
+  margin-bottom: 24px;
+}
+
+.serv-icon-wrap {
+  width: 60px; height: 60px;
+  border: 1px solid rgba(200,146,42,0.2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+  background: rgba(200,146,42,0.05);
+  transition: all 0.4s;
+}
+
+.serv-card:hover .serv-icon-wrap {
+  background: rgba(200,146,42,0.12);
+  border-color: rgba(200,146,42,0.4);
+  transform: scale(1.05);
+}
+
+.serv-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--branco);
+  margin-bottom: 12px;
+}
+
+.serv-desc {
+  font-size: 13px;
+  color: var(--cinza);
+  line-height: 1.75;
+}
+
+.serv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s;
+}
+
+.serv-card:hover .serv-link { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════
+   CALCULADORA
+═══════════════════════════════════════ */
+.calculadora {
+  padding: 120px 5%;
+  background: var(--noite2);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.calc-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 64px;
+}
+
+.calc-form-wrap {
+  background: var(--noite3);
+  border: 1px solid rgba(200,146,42,0.12);
+  border-radius: 20px;
+  padding: 44px;
+}
+
+.calc-form-wrap h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--branco);
+  margin-bottom: 6px;
+}
+
+.calc-form-wrap p { font-size: 13px; color: var(--cinza); margin-bottom: 36px; }
+
+.fgroup { margin-bottom: 20px; }
+
+.fgroup label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  margin-bottom: 8px;
+}
+
+.fgroup input, .fgroup select {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--noite2);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: var(--branco);
+  outline: none;
+  transition: border-color 0.3s;
+  appearance: none;
+}
+
+.fgroup input:focus, .fgroup select:focus {
+  border-color: rgba(200,146,42,0.5);
+}
+
+.fgroup select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9099' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+
+.calc-submit {
+  width: 100%;
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  color: var(--noite);
+  border: none;
+  padding: 16px;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(200,146,42,0.35);
+  margin-top: 8px;
+}
+
+.calc-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(200,146,42,0.5);
+}
+
+.calc-resultado-wrap {
+  position: sticky;
+  top: 100px;
+}
+
+.calc-resultado-wrap h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--branco);
+  margin-bottom: 36px;
+}
+
+.res-items { display: flex; flex-direction: column; gap: 2px; }
+
+.res-item {
+  background: var(--noite3);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 24px 28px;
+  transition: border-color 0.3s;
+}
+
+.res-item.has-value { border-color: rgba(200,146,42,0.2); }
+
+.res-item-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  margin-bottom: 8px;
+}
+
+.res-item-valor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--cinza);
+  line-height: 1;
+  transition: color 0.4s;
+}
+
+.res-item-valor.active {
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.res-item-sub { font-size: 12px; color: var(--cinza); margin-top: 6px; opacity: 0.7; }
+
+.calc-cta-btn {
+  display: block;
+  margin-top: 24px;
+  background: #25D366;
+  color: white;
+  text-align: center;
+  padding: 16px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+}
+
+.calc-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.45); }
+
+/* ═══════════════════════════════════════
+   POR QUE SAEWEL
+═══════════════════════════════════════ */
+.por-que {
+  padding: 120px 5%;
+  background: var(--noite);
+}
+
+.pq-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+  margin-bottom: 48px;
+}
+
+.pq-card {
+  background: var(--noite2);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 36px 28px;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.pq-card:hover {
+  border-color: rgba(200,146,42,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+
+.pq-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ouro), var(--ouro-claro));
+  transform: scaleX(0);
+  transition: transform 0.4s;
+  transform-origin: left;
+}
+
+.pq-card:hover::before { transform: scaleX(1); }
+
+.pq-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+
+.pq-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--branco);
+  margin-bottom: 10px;
+}
+
+.pq-desc { font-size: 13px; color: var(--cinza); line-height: 1.7; }
+
+.garantias-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 36px 44px;
+  background: var(--noite2);
+  border: 1px solid rgba(200,146,42,0.12);
+  border-radius: 16px;
+}
+
+.garantia-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,146,42,0.08);
+  border: 1px solid rgba(200,146,42,0.2);
+  border-radius: 50px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(248,245,240,0.8);
+  transition: all 0.3s;
+}
+
+.garantia-pill:hover {
+  background: rgba(200,146,42,0.15);
+  border-color: rgba(200,146,42,0.4);
+  color: var(--branco);
+}
+
+/* ═══════════════════════════════════════
+   CONTATO
+═══════════════════════════════════════ */
+.contato {
+  padding: 120px 5%;
+  background: var(--noite2);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 80vw; height: 80vw;
+  background: radial-gradient(ellipse, rgba(200,146,42,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.contato-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+  margin-bottom: 20px;
+}
+
+.contato h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--branco);
+  margin-bottom: 20px;
+}
+
+.contato h2 em { font-style: italic; color: var(--ouro-claro); }
+
+.contato-desc {
+  font-size: 16px;
+  color: var(--cinza);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 48px;
+}
+
+.contato-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+}
+
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(37,211,102,0.55); }
+
+.contato-info {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 60px;
+}
+
+.info-col {
+  flex: 1;
+  max-width: 200px;
+  padding: 0 32px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.info-col:last-child { border-right: none; }
+
+.info-col-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+.info-col-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cinza); margin-bottom: 6px; }
+.info-col-val { font-size: 14px; font-weight: 500; color: var(--branco); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: var(--noite);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 36px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(248,245,240,0.4);
+}
+
+.footer-logo span { color: var(--ouro-claro); }
+
+.footer-copy { font-size: 12px; color: rgba(248,245,240,0.25); }
+
+/* ═══════════════════════════════════════
+   WHATSAPP FLOAT
+═══════════════════════════════════════ */
+.wa-float {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  width: 58px; height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  z-index: 400;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.5);
+  transition: all 0.3s;
+  animation: wa-pulse 3s infinite;
+}
+
+.wa-float:hover { transform: scale(1.1); }
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.5); }
+  50% { box-shadow: 0 4px 40px rgba(37,211,102,0.8), 0 0 0 8px rgba(37,211,102,0.1); }
+}
+
+/* ═══════════════════════════════════════
+   PAGE LOAD ANIMATION
+═══════════════════════════════════════ */
+.fade-in { opacity: 0; transform: translateY(24px); animation: fadeUp 0.8s forwards; }
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.25s; }
+.fade-in:nth-child(3) { animation-delay: 0.4s; }
+.fade-in:nth-child(4) { animation-delay: 0.55s; }
+.fade-in:nth-child(5) { animation-delay: 0.7s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .pq-grid { grid-template-columns: repeat(2, 1fr); }
+  .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0 4%; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 4% 60px; gap: 40px; }
+  .hero-visual { display: none; }
+  .sobre { grid-template-columns: 1fr; padding: 80px 4%; gap: 48px; }
+  .servicos-grid { grid-template-columns: 1fr; }
+  .calc-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pq-grid { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; }
+  .hero-kpis {
+  justify-content: center;
+  text-align: center; gap: 0; }
+  .kpi:nth-child(2) { padding-left: 20px; }
+  .kpi:last-child { padding-left: 20px; }
+  .kpi { padding-right: 20px; }
+  .contato-info { flex-wrap: wrap; gap: 32px; justify-content: center; }
+  .info-col { border-right: none; max-width: 150px; }
+  .garantias-strip { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">☀</div>
+    <span class="logo-text">Saewel <span>Energia</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#calculadora">Calculadora</a></li>
+    <li><a href="#por-que">Diferenciais</a></li>
+    <li><a href="#contato" class="nav-btn">Falar com engenheiro</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="fade-in">
+      <div class="hero-eyebrow">Engenharia Fotovoltaica · Todo o Brasil</div>
+    </div>
+    <div class="fade-in">
+      <h1>Economia com<br>a luz solar é a nossa<br>maior <em>essência!</em></h1>
+    </div>
+    <div class="fade-in">
+      <p class="hero-desc">Projetos fotovoltaicos residenciais e comerciais com responsabilidade técnica real. Do dimensionamento à homologação — você fala direto com o engenheiro.</p>
+    </div>
+    <div class="fade-in">
+      <div class="hero-actions">
+        <a href="https://wa.me/5517982093739?text=Olá!%20Tenho%20interesse%20em%20energia%20solar" class="btn-gold" target="_blank">
+          Simular economia grátis →
+        </a>
+        <a href="#calculadora" class="btn-ghost">Ver calculadora ↓</a>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="hero-kpis">
+        <div class="kpi">
+          <div class="kpi-num">95%</div>
+          <div class="kpi-label">Redução na conta</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num">25+</div>
+          <div class="kpi-label">Anos de garantia</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num">3–5</div>
+          <div class="kpi-label">Anos de payback</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="card-principal">
+      <div class="card-header">
+        <span class="card-title-sm">Simulação de economia</span>
+        <span class="card-live"><span class="live-dot"></span> Ao vivo</span>
+      </div>
+      <div class="card-economia">
+        <div class="economia-label">Economia estimada em 25 anos</div>
+        <div class="economia-valor">R$ 72.400</div>
+        <div class="economia-sub">Sistema 5 kWp · São Paulo interior</div>
+      </div>
+      <div class="card-rows">
+        <div class="card-row">
+          <div class="row-left"><span class="row-icon">⚡</span> Geração mensal</div>
+          <div class="row-val">600 kWh</div>
+        </div>
+        <div class="card-row">
+          <div class="row-left"><span class="row-icon">💰</span> Economia mensal</div>
+          <div class="row-val">R$ 450</div>
+        </div>
+        <div class="card-row">
+          <div class="row-left"><span class="row-icon">📅</span> Payback</div>
+          <div class="row-val">4,2 anos</div>
+        </div>
+        <div class="card-row">
+          <div class="row-left"><span class="row-icon">🌿</span> CO₂ evitado/ano</div>
+          <div class="row-val">3,2 ton</div>
+        </div>
+      </div>
+    </div>
+    <div class="float-card f1">
+      <span class="fc-icon">🏆</span>
+      <div class="fc-text">
+        <div class="fc-t">Projeto EPC Completo</div>
+        <div class="fc-s">Do projeto à homologação</div>
+      </div>
+    </div>
+    <div class="float-card f2">
+      <span class="fc-icon">📋</span>
+      <div class="fc-text">
+        <div class="fc-t">ART Inclusa</div>
+        <div class="fc-s">Engenheiro responsável</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div>
+    <div class="sobre-label">Sobre a Saewel</div>
+    <h2>A energia do sol<br>com <em>engenharia</em><br>de verdade</h2>
+    <p class="sobre-texto">Saewel vem do proto-indo-europeu e significa <em>"brilhar, iluminar"</em> — a mesma raiz da palavra Sol em várias línguas. Não é coincidência: nossa missão é trazer luz e economia para residências e empresas em todo o Brasil.</p>
+    <p class="sobre-texto">Diferente de revendedores, aqui você fala diretamente com o engenheiro que assina seu projeto. Isso garante dimensionamento correto, documentação completa e um sistema que entrega o que promete.</p>
+    <div class="sobre-checks">
+      <div class="check-item"><div class="check-mark">✓</div><span>Projeto assinado por engenheiro registrado no CREA</span></div>
+      <div class="check-item"><div class="check-mark">✓</div><span>Modalidade EPC — do projeto à homologação na distribuidora</span></div>
+      <div class="check-item"><div class="check-mark">✓</div><span>Atendimento direto com o especialista, sem intermediários</span></div>
+      <div class="check-item"><div class="check-mark">✓</div><span>Viabilidade técnica real antes de qualquer proposta comercial</span></div>
+      <div class="check-item"><div class="check-mark">✓</div><span>Cobertura em todo o território nacional</span></div>
+    </div>
+  </div>
+
+  <div class="perfil-card">
+    <div class="perfil-glow"></div>
+    <div class="perfil-avatar">👷</div>
+    <div class="perfil-nome">Haroldo M. Silva</div>
+    <div class="perfil-cargo">Engenheiro de Energias Renováveis · Fundador</div>
+    <div class="perfil-crea">
+      <div class="crea-label">Registro Profissional</div>
+      <div class="crea-valor">CREA · Engenheiro de Energias Renováveis</div>
+    </div>
+    <div class="perfil-badges">
+      <div class="pbadge"><div class="pbadge-dot"></div> Especialista em sistemas fotovoltaicos on-grid e off-grid</div>
+      <div class="pbadge"><div class="pbadge-dot"></div> Dimensionamento técnico com análise de irradiação real</div>
+      <div class="pbadge"><div class="pbadge-dot"></div> Projeto elétrico e estrutural com ART</div>
+      <div class="pbadge"><div class="pbadge-dot"></div> Homologação junto a todas as distribuidoras do Brasil</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="servicos" id="servicos">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">O que fazemos</div>
+      <h2 class="section-h2">Soluções <em>completas</em><br>em energia solar</h2>
+    </div>
+    <p class="section-desc">Do estudo de viabilidade até a conexão na rede — cuidamos de cada etapa para você só aproveitar a economia.</p>
+  </div>
+
+  <div class="servicos-grid">
+    <div class="serv-card">
+      <div class="serv-num">01</div>
+      <div class="serv-icon-wrap">🏡</div>
+      <div class="serv-title">Solar Residencial</div>
+      <p class="serv-desc">Sistemas para casas com medição bidirecional. Reduza até 95% da sua conta com dimensionamento preciso e equipamentos de alta eficiência.</p>
+      <a href="https://wa.me/5517982093739?text=Quero%20saber%20sobre%20solar%20residencial" class="serv-link" target="_blank">Solicitar orçamento →</a>
+    </div>
+    <div class="serv-card">
+      <div class="serv-num">02</div>
+      <div class="serv-icon-wrap">🏭</div>
+      <div class="serv-title">Solar Comercial</div>
+      <p class="serv-desc">Para empresas e indústrias. Maior consumo significa economia expressiva e payback acelerado. Ideal para contas acima de R$800/mês.</p>
+      <a href="https://wa.me/5517982093739?text=Quero%20saber%20sobre%20solar%20comercial" class="serv-link" target="_blank">Solicitar orçamento →</a>
+    </div>
+    <div class="serv-card">
+      <div class="serv-num">03</div>
+      <div class="serv-icon-wrap">📐</div>
+      <div class="serv-title">Projeto de Engenharia</div>
+      <p class="serv-desc">Projeto elétrico e estrutural completo com ART assinada. Documentação técnica obrigatória para homologação junto à distribuidora.</p>
+      <a href="https://wa.me/5517982093739?text=Quero%20saber%20sobre%20projeto%20de%20engenharia" class="serv-link" target="_blank">Saiba mais →</a>
+    </div>
+    <div class="serv-card">
+      <div class="serv-num">04</div>
+      <div class="serv-icon-wrap">📜</div>
+      <div class="serv-title">Homologação</div>
+      <p class="serv-desc">Cuidamos de todo o processo junto à distribuidora (CPFL, Elektro, Cemig, Energisa e outras) até o sistema entrar em operação.</p>
+      <a href="https://wa.me/5517982093739?text=Quero%20saber%20sobre%20homologacao" class="serv-link" target="_blank">Saiba mais →</a>
+    </div>
+    <div class="serv-card">
+      <div class="serv-num">05</div>
+      <div class="serv-icon-wrap">📲</div>
+      <div class="serv-title">Monitoramento</div>
+      <p class="serv-desc">App de monitoramento em tempo real. Acompanhe geração, economia e performance do sistema pelo celular, 24 horas por dia.</p>
+      <a href="https://wa.me/5517982093739?text=Quero%20saber%20sobre%20monitoramento" class="serv-link" target="_blank">Saiba mais →</a>
+    </div>
+    <div class="serv-card">
+      <div class="serv-num">06</div>
+      <div class="serv-icon-wrap">🔧</div>
+      <div class="serv-title">Manutenção</div>
+      <p class="serv-desc">Suporte técnico e manutenção preventiva para máxima eficiência ao longo dos anos. Seu investimento protegido a longo prazo.</p>
+      <a href="https://wa.me/5517982093739?text=Quero%20saber%20sobre%20manutencao" class="serv-link" target="_blank">Saiba mais →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section class="calculadora" id="calculadora">
+  <div class="section-eyebrow">Simulação gratuita</div>
+  <h2 class="section-h2">Quanto você pode <em>economizar?</em></h2>
+
+  <div class="calc-inner">
+    <div class="calc-form-wrap">
+      <h3>Dados para simulação</h3>
+      <p>Preencha os campos e veja o resultado em segundos</p>
+
+      <div class="fgroup">
+        <label>Conta de luz média (R$/mês)</label>
+        <input type="number" id="conta" placeholder="Ex: 400" min="0">
+      </div>
+      <div class="fgroup">
+        <label>Região / Estado</label>
+        <select id="cidade">
+          <option value="4.5">São Paulo (interior)</option>
+          <option value="4.3">São Paulo (capital)</option>
+          <option value="4.8">Minas Gerais / Triângulo</option>
+          <option value="5.2">Nordeste (BA, CE, PE...)</option>
+          <option value="4.9">Centro-Oeste (GO, MT, MS)</option>
+          <option value="4.6">Sul (PR, SC, RS)</option>
+          <option value="4.7">Rio de Janeiro / ES</option>
+          <option value="4.4">Norte (AM, PA...)</option>
+        </select>
+      </div>
+      <div class="fgroup">
+        <label>Tarifa de energia (R$/kWh)</label>
+        <input type="number" id="tarifa" placeholder="0.75" step="0.01" value="0.75">
+      </div>
+      <div class="fgroup">
+        <label>Tipo de instalação</label>
+        <select id="tipo">
+          <option>Residencial</option>
+          <option>Comercial / Empresa</option>
+        </select>
+      </div>
+      <button class="calc-submit" onclick="calcular()">☀ Calcular minha economia</button>
+    </div>
+
+    <div class="calc-resultado-wrap">
+      <h3>Resultado da simulação</h3>
+      <div class="res-items">
+        <div class="res-item" id="ri-potencia">
+          <div class="res-item-label">Potência necessária</div>
+          <div class="res-item-valor" id="res-potencia">— kWp</div>
+          <div class="res-item-sub">Tamanho ideal do sistema</div>
+        </div>
+        <div class="res-item" id="ri-mensal">
+          <div class="res-item-label">Economia mensal</div>
+          <div class="res-item-valor" id="res-mensal">— R$</div>
+          <div class="res-item-sub">Redução imediata na conta</div>
+        </div>
+        <div class="res-item" id="ri-total">
+          <div class="res-item-label">Economia em 25 anos</div>
+          <div class="res-item-valor" id="res-total">— R$</div>
+          <div class="res-item-sub">Com reajuste tarifário de 8%/ano</div>
+        </div>
+        <div class="res-item" id="ri-payback">
+          <div class="res-item-label">Payback estimado</div>
+          <div class="res-item-valor" id="res-payback">— anos</div>
+          <div class="res-item-sub">Retorno do investimento</div>
+        </div>
+      </div>
+      <a href="https://wa.me/5517982093739?text=Olá!%20Fiz%20a%20simulação%20no%20site%20e%20quero%20uma%20proposta%20personalizada!" class="calc-cta-btn" target="_blank">
+        💬 Quero proposta personalizada
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE SAEWEL -->
+<section class="por-que" id="por-que">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Nossos diferenciais</div>
+      <h2 class="section-h2">Por que escolher<br>a <em>Saewel?</em></h2>
+    </div>
+    <p class="section-desc">Não somos revendedores. Somos engenheiros que se responsabilizam tecnicamente por cada projeto entregue.</p>
+  </div>
+
+  <div class="pq-grid">
+    <div class="pq-card">
+      <span class="pq-icon">👷</span>
+      <div class="pq-title">Engenheiro Responsável</div>
+      <p class="pq-desc">Cada projeto tem ART assinada por engenheiro registrado no CREA. Sua segurança jurídica e técnica garantida em todo o Brasil.</p>
+    </div>
+    <div class="pq-card">
+      <span class="pq-icon">🎯</span>
+      <div class="pq-title">Dimensionamento Preciso</div>
+      <p class="pq-desc">Análise técnica real da sua conta de luz, estrutura e irradiação local. Nenhuma proposta sem estudo de viabilidade.</p>
+    </div>
+    <div class="pq-card">
+      <span class="pq-icon">🤝</span>
+      <div class="pq-title">Atendimento Direto</div>
+      <p class="pq-desc">Você fala com o engenheiro. Sem intermediários, sem call center. Respostas técnicas de quem entende do assunto.</p>
+    </div>
+    <div class="pq-card">
+      <span class="pq-icon">🌍</span>
+      <div class="pq-title">Cobertura Nacional</div>
+      <p class="pq-desc">Atendemos todo o território brasileiro. Projeto remoto com visita técnica quando necessário.</p>
+    </div>
+  </div>
+
+  <div class="garantias-strip">
+    <div style="width:100%; font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--ouro-claro); letter-spacing:0.04em; margin-bottom:8px;">Garantias</div>
+    <div class="garantia-pill">🛡️ 25 anos — módulos fotovoltaicos</div>
+    <div class="garantia-pill">⚡ 10 anos — inversor</div>
+    <div class="garantia-pill">🔩 5 anos — instalação</div>
+  </div>
+  <div class="garantias-strip" style="margin-top:20px;">
+    <div style="width:100%; font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--ouro-claro); letter-spacing:0.04em; margin-bottom:8px;">Serviços</div>
+    <div class="garantia-pill">📋 ART inclusa em todos os projetos</div>
+    <div class="garantia-pill">💳 Financiamento disponível</div>
+    <div class="garantia-pill">📲 Monitoramento pelo app</div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="contato-eyebrow">Fale conosco</div>
+  <h2>Pronto para começar<br>a <em>economizar?</em></h2>
+  <p class="contato-desc">Entre em contato agora e receba uma simulação gratuita personalizada. Sem compromisso — só resultados reais.</p>
+
+  <div class="contato-btns">
+    <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Quero%20saber%20sobre%20energia%20solar" class="btn-whatsapp" target="_blank">
+      💬 Falar no WhatsApp agora
+    </a>
+    <a href="#calculadora" class="btn-gold">🧮 Usar calculadora</a>
+  </div>
+
+  <div class="contato-info">
+    <div class="info-col">
+      <span class="info-col-icon">📱</span>
+      <div class="info-col-label">WhatsApp</div>
+      <div class="info-col-val">(17) 98209-3739</div>
+    </div>
+    <div class="info-col">
+      <span class="info-col-icon">📍</span>
+      <div class="info-col-label">Cobertura</div>
+      <div class="info-col-val">Todo o Brasil</div>
+    </div>
+    <div class="info-col">
+      <span class="info-col-icon">⏰</span>
+      <div class="info-col-label">Horário</div>
+      <div class="info-col-val">Seg–Sex 8h–18h</div>
+    </div>
+    <div class="info-col">
+      <span class="info-col-icon">📸</span>
+      <div class="info-col-label">Instagram</div>
+      <div class="info-col-val">@saewelenergia</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Saewel <span>Energia Solar</span></div>
+  <div class="footer-copy">© 2024 Saewel Energia Solar</div>
+  <div class="footer-copy">Economia com a luz solar é a nossa maior essência! ☀</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="wa-float" target="_blank">💬</a>
+
+<script>
+function fmt(n) {
+  return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
+}
+
+function calcular() {
+  const conta = parseFloat(document.getElementById('conta').value);
+  const irr = parseFloat(document.getElementById('cidade').value);
+  const tarifa = parseFloat(document.getElementById('tarifa').value) || 0.75;
+
+  if (!conta || conta <= 0) {
+    alert('Informe o valor da sua conta de luz para calcular.');
+    return;
+  }
+
+  const consumo = conta / tarifa;
+  const potencia = consumo / (irr * 30 * 0.8);
+  const geracao = potencia * irr * 30 * 0.8;
+  const economiaMs = geracao * tarifa;
+  const investimento = potencia * 3800;
+  const payback = investimento / (economiaMs * 12);
+  const economia25 = economiaMs * 12 * ((Math.pow(1.08, 25) - 1) / 0.08);
+
+  const ids = ['res-potencia','res-mensal','res-total','res-payback'];
+  const ri = ['ri-potencia','ri-mensal','ri-total','ri-payback'];
+  const vals = [
+    potencia.toFixed(1) + ' kWp',
+    fmt(economiaMs),
+    fmt(economia25),
+    payback.toFixed(1) + ' anos'
+  ];
+
+  ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.textContent = vals[i];
+    el.classList.add('active');
+    document.getElementById(ri[i]).classList.add('has-value');
+  });
+}
+</script>
+</body>
+</html>

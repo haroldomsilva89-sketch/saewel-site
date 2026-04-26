@@ -1,0 +1,9 @@
+# robots.txt — Saewel Energia Solar
+# https://saewelenergiasolar.com.br
+
+# Permite todos os robôs de busca (Google, Bing, etc.)
+User-agent: *
+Allow: /
+
+# Sitemap para indexação
+Sitemap: https://saewelenergiasolar.com.br/sitemap.xml

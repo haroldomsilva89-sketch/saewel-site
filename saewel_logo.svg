@@ -1,0 +1,35 @@
+<svg width="500" viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Saewel Energia Solar — Logo</title>
+  <desc>Logo da Saewel Energia Solar com sol estilizado</desc>
+
+  <style>
+    .logo-main { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 62px; fill: #E87820; letter-spacing: 2px; }
+    .logo-sub  { font-family: Arial, sans-serif; font-weight: 700; font-size: 18px; fill: #F0A030; letter-spacing: 3px; }
+  </style>
+
+  <defs>
+    <clipPath id="halfclip">
+      <rect x="240" y="0" width="200" height="108"/>
+    </clipPath>
+  </defs>
+
+  <!-- Raios saindo da borda do sol -->
+  <line x1="340" y1="43"  x2="340" y2="12"  stroke="#F0A030" stroke-width="5"   stroke-linecap="round"/>
+  <line x1="396" y1="75"  x2="413" y2="66"  stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="373" y1="52"  x2="388" y2="36"  stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4"   stroke-linecap="round"/>
+  <line x1="307" y1="52"  x2="292" y2="36"  stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="284" y1="75"  x2="267" y2="66"  stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4"   stroke-linecap="round"/>
+
+  <!-- Sol — apenas metade superior -->
+  <circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#halfclip)"/>
+  <circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#halfclip)"/>
+  <circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#halfclip)"/>
+
+  <!-- Texto principal -->
+  <text x="340" y="192" text-anchor="middle" class="logo-main">SAEWEL ENERGIA</text>
+  <!-- Subtítulo -->
+  <text x="340" y="228" text-anchor="middle" class="logo-sub">A ENERGIA DO SOL AO SEU ALCANCE!</text>
+
+</svg>

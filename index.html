@@ -1132,9 +1132,26 @@ nav {
   padding: 120px 5%;
   background: var(--noite2);
   border-top: 1px solid rgba(255,255,255,0.04);
-  text-align: center;
+  text-align: left;
   position: relative;
   overflow: hidden;
+}
+
+.contato-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.contato-left {}
+
+.contato-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .contato::before {
@@ -1154,7 +1171,12 @@ nav {
   text-transform: uppercase;
   color: var(--ouro-claro);
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
 }
+.contato-eyebrow::after { content: ''; flex: 1; height: 1px; background: rgba(200,146,42,0.3); }
 
 .contato h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -1172,30 +1194,39 @@ nav {
   color: var(--cinza);
   line-height: 1.7;
   max-width: 480px;
-  margin: 0 auto 48px;
+  margin: 0 0 0 0;
 }
 
 .contato-btns {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
+  width: 100%;
+  margin-bottom: 0;
 }
 
 .btn-whatsapp {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   background: #25D366;
   color: white;
   font-size: 15px;
   font-weight: 700;
-  padding: 16px 36px;
+  padding: 18px 36px;
   border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s;
   box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+  width: 100%;
+}
+
+.contato-right .btn-gold {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 18px 36px;
 }
 
 .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(37,211,102,0.55); }
@@ -1627,15 +1658,23 @@ footer {
 <!-- CONTATO -->
 <section class="contato" id="contato">
   <div class="contato-eyebrow">Fale conosco</div>
-  <h2>Pronto para começar<br>a <em>economizar?</em></h2>
-  <p class="contato-desc">Entre em contato agora e receba uma simulação gratuita personalizada. Sem compromisso — só resultados reais.</p>
 
-  <div class="contato-btns">
-    <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Quero%20saber%20sobre%20energia%20solar" class="btn-whatsapp" target="_blank">
-      💬 Falar no WhatsApp agora
-    </a>
-    <a href="#calculadora" class="btn-gold">🧮 Usar calculadora</a>
+  <div class="contato-top">
+    <div class="contato-left">
+      <h2>Pronto para começar<br>a <em>economizar?</em></h2>
+      <p class="contato-desc">Entre em contato agora e receba uma simulação gratuita personalizada. Sem compromisso — só resultados reais.</p>
+    </div>
+    <div class="contato-right">
+      <div class="contato-btns">
+        <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Quero%20saber%20sobre%20energia%20solar" class="btn-whatsapp" target="_blank">
+          💬 Falar no WhatsApp agora
+        </a>
+        <a href="#calculadora" class="btn-gold">🧮 Usar calculadora</a>
+      </div>
+    </div>
   </div>
+
+  </div><!-- /contato-top -->
 
   <div class="contato-info">
     <div class="info-col">

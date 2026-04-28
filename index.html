@@ -876,9 +876,11 @@ nav {
   filter: drop-shadow(0 2px 8px rgba(200,146,42,0.45));
 }
 
-.calc-form-wrap p { font-size: 13px; color: var(--cinza); margin-bottom: 36px; text-align: center; }
+.calc-form-wrap p { font-size: 13px; color: var(--cinza); margin-bottom: 0; text-align: center; }
+.calc-form-fields { display: flex; flex-direction: column; flex: 1; justify-content: space-between; padding-top: 24px; gap: 0; }
 
-.fgroup { margin-bottom: 20px; }
+.fgroup { display: flex; flex-direction: column; flex: 1; justify-content: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.fgroup:last-of-type { border-bottom: none; }
 
 .fgroup label {
   display: block;
@@ -924,7 +926,7 @@ nav {
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 20px rgba(200,146,42,0.35);
-  margin-top: auto;
+  margin-top: 24px;
 }
 
 .calc-submit:hover {
@@ -1512,6 +1514,7 @@ footer {
       <h3>Dados para Simulação</h3>
       <p>Preencha os campos e veja o resultado em segundos</p>
 
+      <div class="calc-form-fields">
       <div class="fgroup">
         <label>Conta de luz média (R$/mês)</label>
         <input type="number" id="conta" placeholder="Ex: 400" min="0">
@@ -1539,6 +1542,7 @@ footer {
           <option>Residencial</option>
           <option>Comercial / Empresa</option>
         </select>
+      </div>
       </div>
       <button class="calc-submit" onclick="calcular()">☀ Calcular minha economia</button>
     </div>

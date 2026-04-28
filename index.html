@@ -697,7 +697,7 @@ nav {
   max-width: 100%;
   width: 100%;
   margin: 0 0 64px 0;
-  text-align: left;
+  text-align: center;
 }
 
 .section-header {
@@ -937,10 +937,21 @@ nav {
   flex-direction: column;
 }
 
+.calc-resultado-inner {
+  background: var(--noite3);
+  border: 1px solid rgba(200,146,42,0.12);
+  border-radius: 20px;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .calc-resultado-wrap h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 26px;
   font-weight: 600;
+  margin-top: 0;
   margin-bottom: 16px;
   text-align: center;
   background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
@@ -1533,6 +1544,7 @@ footer {
     </div>
 
     <div class="calc-resultado-wrap">
+      <div class="calc-resultado-inner">
       <h3>Resultado da Simulação</h3>
       <div class="res-items">
         <div class="res-item" id="ri-potencia">
@@ -1559,8 +1571,9 @@ footer {
       <a href="https://wa.me/5517982093739?text=Olá!%20Fiz%20a%20simulação%20no%20site%20e%20quero%20uma%20proposta%20personalizada!" class="calc-cta-btn" target="_blank">
         💬 Quero proposta personalizada
       </a>
-    </div>
-  </div>
+      </div><!-- /calc-resultado-inner -->
+    </div><!-- /calc-resultado-wrap -->
+  </div><!-- /calc-inner -->
 </section>
 
 <!-- POR QUE SAEWEL -->

@@ -76,7 +76,8 @@
 <!-- PERFORMANCE -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -176,6 +177,75 @@ nav {
 .nav-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 30px rgba(200,146,42,0.5) !important;
+}
+
+/* Hamburguer */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 600;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--branco);
+  border-radius: 2px;
+  transition: all 0.35s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0; bottom: 0;
+  background: rgba(10,12,15,0.97);
+  backdrop-filter: blur(20px);
+  z-index: 499;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-menu a {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--cinza);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  width: 80%;
+  text-align: center;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--branco); }
+.mobile-menu .mob-btn {
+  background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+  color: var(--noite) !important;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  margin-top: 12px;
+  border-bottom: none !important;
+  font-size: 15px !important;
 }
 
 /* ═══════════════════════════════════════
@@ -1227,6 +1297,10 @@ nav {
   max-width: none;
   padding: 0 24px;
   border-right: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .info-col:last-child { border-right: none; }
@@ -1312,6 +1386,8 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 0 4%; }
   .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu { display: flex; }
   .hero { grid-template-columns: 1fr; padding: 100px 4% 60px; gap: 40px; }
   .hero-visual { display: none; }
   .sobre { grid-template-columns: 1fr; padding: 80px 4%; gap: 48px; }
@@ -1375,7 +1451,19 @@ footer {
     <li><a href="#por-que">Diferenciais</a></li>
     <li><a href="#contato" class="nav-btn">Falar com engenheiro</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
+  <a href="#sobre" class="mob-link">Sobre</a>
+  <a href="#servicos" class="mob-link">Serviços</a>
+  <a href="#calculadora" class="mob-link">Calculadora</a>
+  <a href="#por-que" class="mob-link">Diferenciais</a>
+  <a href="#contato" class="mob-btn mob-link">Falar com engenheiro</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1793,7 +1881,42 @@ footer {
       <div class="info-col-val">(17) 98209-3739</div>
     </div>
     <div class="info-col">
-      <span class="info-col-icon">></span>
+      <span class="info-col-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 540" width="36" height="38" style="display:inline-block;">
+  <defs>
+    <linearGradient id="goldBR2" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%"   stop-color="#F8D060"/>
+      <stop offset="30%"  stop-color="#E8A820"/>
+      <stop offset="65%"  stop-color="#C87010"/>
+      <stop offset="100%" stop-color="#E8B030"/>
+    </linearGradient>
+    <filter id="shadow2" x="-15%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#A06000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow2)">
+    <path fill="url(#goldBR2)" stroke="#FFE070" stroke-width="2" stroke-linejoin="round" opacity="0.95"
+      d="M 258,12 L 270,14 L 285,18 L 300,16 L 316,20 L 328,28 L 334,38 L 330,50
+         L 336,60 L 345,68 L 355,80 L 360,94 L 356,108 L 362,120 L 370,130 L 372,144
+         L 366,156 L 360,166 L 362,178 L 368,190 L 366,204 L 358,214 L 350,224
+         L 346,238 L 340,250 L 330,260 L 322,270 L 316,282 L 308,292 L 302,304
+         L 294,314 L 286,322 L 278,332 L 268,340 L 258,348 L 246,354 L 234,358
+         L 222,356 L 210,350 L 200,342 L 192,332 L 184,320 L 178,308 L 172,296
+         L 166,282 L 162,268 L 158,254 L 154,240 L 148,226 L 142,214 L 138,200
+         L 136,186 L 138,172 L 136,158 L 130,146 L 126,132 L 124,118 L 128,104
+         L 130,90 L 126,78 L 128,64 L 136,54 L 144,44 L 154,36 L 166,28 L 180,22
+         L 194,16 L 210,13 L 230,12 L 244,10 L 258,12 Z"/>
+  </g>
+  <g stroke="#B86800" stroke-width="1.2" fill="none" opacity="0.55">
+    <path d="M 175,50 C 178,90 182,130 195,155"/>
+    <path d="M 145,120 C 170,130 200,135 230,130 C 260,125 290,118 315,125"/>
+    <path d="M 280,50 C 285,80 282,110 275,138 C 268,165 255,185 248,210"/>
+    <path d="M 195,155 C 210,175 220,200 222,225 C 224,250 218,275 215,300"/>
+    <path d="M 185,285 C 198,310 210,330 220,350"/>
+    <path d="M 175,175 C 195,185 220,188 245,182 C 265,176 285,165 305,170"/>
+    <path d="M 315,125 C 335,150 348,180 350,210 C 352,238 340,260 326,280"/>
+  </g>
+  <ellipse cx="220" cy="140" rx="55" ry="40" fill="#FFEE88" opacity="0.12" transform="rotate(-20 220 140)"/>
+</svg></span>
       <div class="info-col-label">Cobertura</div>
       <div class="info-col-val">Todo o Brasil</div>
     </div>
@@ -1813,15 +1936,47 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Saewel <span>Energia Solar</span></div>
-  <div class="footer-copy">© 2024 Saewel Energia Solar</div>
+  <div class="footer-copy">© 2025 Saewel Energia Solar</div>
   <div class="footer-copy">Economia com a luz solar é a nossa maior essência! ☀</div>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20Energia%20e%20quero%20saber%20sobre%20Energia%20Solar!" class="wa-float" target="_blank">💬</a>
+<a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20Energia%20e%20quero%20saber%20sobre%20Energia%20Solar!" class="wa-float" target="_blank" aria-label="Falar no WhatsApp com a Saewel Energia Solar">💬</a>
 
 <script>
-function fmt(n) {
+// ── Hamburguer menu ──────────────────────
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+function toggleMenu(open) {
+  hamburger.classList.toggle('open', open);
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.contains('open');
+  toggleMenu(!isOpen);
+});
+
+mobileMenu.querySelectorAll('.mob-link').forEach(link => {
+  link.addEventListener('click', () => toggleMenu(false));
+});
+
+// ── Smooth scroll polyfill (Safari < 15.4) ─
+if (!('scrollBehavior' in document.documentElement.style)) {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+}
+
   return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
 }
 
@@ -1831,7 +1986,23 @@ function calcular() {
   const tarifa = parseFloat(document.getElementById('tarifa').value) || 0.75;
 
   if (!conta || conta <= 0) {
-    alert('Informe o valor da sua conta de luz para calcular.');
+    const el = document.getElementById('conta');
+    el.style.borderColor = 'rgba(239,68,68,0.7)';
+    el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.15)';
+    let err = document.getElementById('calc-erro');
+    if (!err) {
+      err = document.createElement('p');
+      err.id = 'calc-erro';
+      err.style.cssText = 'color:#f87171;font-size:12px;margin-top:6px;font-weight:500;';
+      el.parentNode.appendChild(err);
+    }
+    err.textContent = 'Informe o valor da sua conta de luz para calcular.';
+    el.focus();
+    setTimeout(() => {
+      el.style.borderColor = '';
+      el.style.boxShadow = '';
+      if (err) err.textContent = '';
+    }, 4000);
     return;
   }
 

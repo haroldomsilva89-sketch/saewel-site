@@ -149,7 +149,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 56px;
+  gap: 36px;
   list-style: none;
 }
 
@@ -897,6 +897,118 @@ nav {
 .serv-card:hover .serv-link { opacity: 1; transform: translateY(0); }
 
 /* ═══════════════════════════════════════
+   CIDADES ATENDIDAS
+═══════════════════════════════════════ */
+.cidades {
+  padding: 120px 64px;
+  background: var(--noite);
+  text-align: center;
+}
+
+.cidades-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  margin-bottom: 20px;
+}
+
+.cidades-intro {
+  font-size: 16px;
+  color: var(--cinza);
+  max-width: 600px;
+  margin: 0 auto 64px;
+  line-height: 1.7;
+}
+
+.cidades-regiao {
+  margin-bottom: 56px;
+}
+
+.cidades-regiao-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cidades-regiao-titulo::before,
+.cidades-regiao-titulo::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: rgba(200,146,42,0.3);
+}
+
+.cidades-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cidade-pill {
+  background: var(--noite2);
+  border: 1px solid rgba(200,146,42,0.12);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  color: var(--branco);
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.cidade-pill:hover {
+  border-color: rgba(200,146,42,0.5);
+  color: var(--ouro-claro);
+  background: rgba(200,146,42,0.06);
+}
+
+.cidade-pill.destaque {
+  background: rgba(200,146,42,0.10);
+  border-color: rgba(200,146,42,0.35);
+  color: var(--ouro-claro);
+  font-weight: 500;
+}
+
+.cidades-cta {
+  margin-top: 56px;
+  padding: 48px;
+  background: var(--noite2);
+  border: 1px solid rgba(200,146,42,0.15);
+  border-radius: 20px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cidades-cta p {
+  font-size: 15px;
+  color: var(--cinza);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.cidades-cta strong {
+  color: var(--branco);
+}
+
+@media (max-width: 768px) {
+  .cidades { padding: 80px 24px; }
+  .cidades-cta { padding: 32px 24px; margin-top: 40px; }
+  .cidade-pill { font-size: 12px; padding: 6px 14px; }
+}
+
+/* ═══════════════════════════════════════
    CALCULADORA
 ═══════════════════════════════════════ */
 .calculadora {
@@ -1399,7 +1511,11 @@ footer {
   .mobile-menu { display: flex; }
   .hero { grid-template-columns: 1fr; padding: 100px 4% 60px; gap: 40px; }
   .hero-visual { display: none; }
+
+  /* BUG 1 — .sobre-grid nao empilhava no mobile */
   .sobre { grid-template-columns: 1fr; padding: 80px 4%; gap: 48px; }
+  .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
+
   .servicos-grid { grid-template-columns: 1fr; }
   .calc-inner { grid-template-columns: 1fr; gap: 40px; }
   .pq-grid { grid-template-columns: 1fr; }
@@ -1409,8 +1525,18 @@ footer {
   .contato-info { flex-wrap: wrap; gap: 32px; justify-content: center; }
   .info-col { border-right: none; max-width: 150px; }
   .garantias-strip { padding: 24px; }
+
+  /* BUG 2 — .contato-top ficava em 2 colunas espremidas no mobile */
+  .contato-top { grid-template-columns: 1fr; gap: 48px; }
+
+  /* BUG 3 — .serv-link invisivel em touch (so aparecia no hover) */
+  .serv-link { opacity: 1; transform: translateY(0); }
 }
-</style>
+
+/* Dispositivos touch de qualquer tamanho (tablets landscape, etc.) */
+@media (hover: none) {
+  .serv-link { opacity: 1; transform: translateY(0); }
+}
 </head>
 <body>
 
@@ -1420,11 +1546,6 @@ footer {
     <svg width="160" height="66" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
   <title>Saewel Energia Solar — Logo</title>
   <desc>Logo da Saewel Energia Solar com sol estilizado</desc>
-
-  <style>
-    .logo-main { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 62px; fill: #E87820; letter-spacing: 2px; }
-    .logo-sub  { font-family: Arial, sans-serif; font-weight: 700; font-size: 18px; fill: #F0A030; letter-spacing: 3px; }
-  </style>
 
   <defs>
     <clipPath id="halfclip">
@@ -1447,9 +1568,9 @@ footer {
   <circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#halfclip)"/>
 
   <!-- Texto principal -->
-  <text x="340" y="192" text-anchor="middle" class="logo-main">SAEWEL ENERGIA</text>
+  <text x="340" y="192" text-anchor="middle" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text>
   <!-- Subtítulo -->
-  <text x="340" y="228" text-anchor="middle" class="logo-sub">A ENERGIA DO SOL AO SEU ALCANCE!</text>
+  <text x="340" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text>
 
 </svg>
   </a>
@@ -1458,6 +1579,7 @@ footer {
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#calculadora">Calculadora</a></li>
     <li><a href="#por-que">Diferenciais</a></li>
+    <li><a href="#cidades">Cidades</a></li>
   </ul>
   <a href="#contato" class="nav-btn nav-cta">Falar com engenheiro</a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
@@ -1471,6 +1593,7 @@ footer {
   <a href="#servicos" class="mob-link">Serviços</a>
   <a href="#calculadora" class="mob-link">Calculadora</a>
   <a href="#por-que" class="mob-link">Diferenciais</a>
+  <a href="#cidades" class="mob-link">Cidades</a>
   <a href="#contato" class="mob-btn mob-link">Falar com engenheiro</a>
 </div>
 
@@ -2575,6 +2698,99 @@ m40 -10 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m40 -10 c-3 -3
     <div class="garantia-pill">📲 Monitoramento pelo app</div>
   </div>
 </section>
+
+<!-- CIDADES ATENDIDAS -->
+<section class="cidades" id="cidades" aria-label="Cidades atendidas pela Saewel Energia Solar">
+
+  <div class="cidades-eyebrow">Cobertura regional</div>
+  <h2 class="section-h2">Energia solar em <em>São José do Rio Preto</em><br>e toda a região</h2>
+  <p class="cidades-intro">
+    A Saewel atende São José do Rio Preto e os municípios da região noroeste paulista.
+    Projeto, instalação, ART e homologação — tudo com engenheiro responsável, sem intermediários.
+  </p>
+
+  <div class="cidades-regiao">
+    <div class="cidades-regiao-titulo">Sede e grande SJRP</div>
+    <div class="cidades-pills">
+      <span class="cidade-pill destaque">São José do Rio Preto</span>
+      <span class="cidade-pill destaque">Mirassol</span>
+      <span class="cidade-pill destaque">Bady Bassitt</span>
+      <span class="cidade-pill destaque">Ipiguá</span>
+      <span class="cidade-pill destaque">Cedral</span>
+      <span class="cidade-pill destaque">Onda Verde</span>
+    </div>
+  </div>
+
+  <div class="cidades-regiao">
+    <div class="cidades-regiao-titulo">Região noroeste paulista</div>
+    <div class="cidades-pills">
+      <span class="cidade-pill">Votuporanga</span>
+      <span class="cidade-pill">Catanduva</span>
+      <span class="cidade-pill">Nhandeara</span>
+      <span class="cidade-pill">Tanabi</span>
+      <span class="cidade-pill">Olímpia</span>
+      <span class="cidade-pill">Icém</span>
+      <span class="cidade-pill">Guapiaçu</span>
+      <span class="cidade-pill">Potirendaba</span>
+      <span class="cidade-pill">Mendonça</span>
+      <span class="cidade-pill">Nova Granada</span>
+      <span class="cidade-pill">Sebastianópolis do Sul</span>
+      <span class="cidade-pill">Poloni</span>
+    </div>
+  </div>
+
+  <div class="cidades-regiao">
+    <div class="cidades-regiao-titulo">Interior paulista e nacional</div>
+    <div class="cidades-pills">
+      <span class="cidade-pill">Ribeirão Preto</span>
+      <span class="cidade-pill">São Paulo</span>
+      <span class="cidade-pill">Campinas</span>
+      <span class="cidade-pill">Barretos</span>
+      <span class="cidade-pill">Presidente Prudente</span>
+      <span class="cidade-pill">Araçatuba</span>
+      <span class="cidade-pill">Demais estados — projeto remoto</span>
+    </div>
+  </div>
+
+  <div class="cidades-cta">
+    <p>
+      Não encontrou sua cidade? <strong>A Saewel atende todo o Brasil.</strong>
+      Projetos remotos com visita técnica quando necessário —
+      fale com o engenheiro e descubra como funciona na sua região.
+    </p>
+    <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Quero%20saber%20se%20a%20Saewel%20atende%20minha%20cidade" class="btn-gold" target="_blank" rel="noopener noreferrer">
+      Verificar atendimento na minha cidade
+    </a>
+  </div>
+
+</section>
+
+<!-- Schema: areaServed expandido com cidades da região -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Saewel Energia Solar",
+  "url": "https://www.saewelenergiasolar.com.br",
+  "areaServed": [
+    { "@type": "City", "name": "São José do Rio Preto", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Mirassol", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Bady Bassitt", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Votuporanga", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Catanduva", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Nhandeara", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Tanabi", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Olímpia", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Guapiaçu", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Potirendaba", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Nova Granada", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Ribeirão Preto", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Barretos", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "City", "name": "Araçatuba", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
+    { "@type": "Country", "name": "Brasil" }
+  ]
+}
+</script>
 
 <!-- CONTATO -->
 <section class="contato" id="contato">

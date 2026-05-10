@@ -1907,6 +1907,17 @@ footer {
   .garantias-strip { padding: 20px 5%; gap: 16px; flex-wrap: wrap; justify-content: center; }
   .nav-btn.nav-cta { display: none; }
 }
+/* Respeita preferência do usuário por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .float-card, .float-card-2 { animation: none; }
+  .live-dot { animation: none; opacity: 1; }
+}
 </style>
 </head>
 <body>

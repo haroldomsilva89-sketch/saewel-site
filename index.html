@@ -78,6 +78,72 @@
 }
 </script>
 
+<!-- SCHEMA FAQ — Rich Snippets no Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto custa um sistema de energia solar em São José do Rio Preto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O investimento depende do consumo mensal. Para uma residência com conta de R$ 400/mês, um sistema típico de 3 a 4 kWp custa entre R$ 15.000 e R$ 22.000 em São José do Rio Preto. A Saewel realiza simulação gratuita e personalizada — sem compromisso. Financiamento disponível com parcelas que cabem no bolso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Em quanto tempo o sistema solar se paga (payback)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No interior de São Paulo, com alta irradiação solar, o payback médio fica entre 3,5 e 5 anos. Depois disso, você gera energia praticamente de graça por mais 20 anos, já que os painéis têm garantia de 25 anos de geração."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O sistema solar funciona em dias nublados ou chuvosos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Os painéis fotovoltaicos geram energia mesmo em dias nublados, com eficiência reduzida. São José do Rio Preto tem uma das melhores irradiações solares do Brasil — mais de 4,5 kWh/m²/dia em média anual — o que garante excelente geração mesmo nos meses menos ensolarados."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Precisa de bateria para ter energia solar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Na maioria dos casos, não. O modelo mais comum no Brasil é o sistema on-grid (conectado à rede). Durante o dia, o excedente de energia vai para a rede da concessionária e vira créditos que você usa à noite. Os créditos têm validade de até 60 meses. Baterias só são necessárias para quem quer independência total da rede."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é ART e por que é importante no projeto solar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ART é a Anotação de Responsabilidade Técnica emitida pelo CREA, que atesta que o projeto foi elaborado por um engenheiro habilitado. É obrigatória para homologação junto à concessionária e garante que o sistema foi dimensionado com segurança técnica. Na Saewel, a ART já está inclusa em todos os projetos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso financiar a energia solar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Existem linhas de crédito específicas para energia solar com juros reduzidos e prazos de até 8 anos. Em muitos casos, a parcela do financiamento é menor do que o valor atual da sua conta de luz — ou seja, você começa a economizar desde o primeiro mês. A Saewel orienta sobre as melhores opções disponíveis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Saewel atende fora de São José do Rio Preto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Saewel tem cobertura em todo o Brasil. Atendemos toda a região noroeste paulista — Mirassol, Votuporanga, Catanduva, Tanabi, Olímpia e mais — além de todo o interior de São Paulo e demais estados via projeto remoto com visita técnica quando necessário."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- PERFORMANCE -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,7 +219,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 36px;
+  gap: 28px;
   list-style: none;
 }
 
@@ -1013,6 +1079,94 @@ nav {
 }
 
 /* ═══════════════════════════════════════
+   FAQ
+═══════════════════════════════════════ */
+.faq {
+  padding: 120px 64px;
+  background: var(--noite2);
+  text-align: center;
+}
+
+.faq-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  margin-bottom: 20px;
+}
+
+.faq-intro {
+  font-size: 16px;
+  color: var(--cinza);
+  margin: 0 auto 56px;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+.faq-lista {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(200,146,42,0.12);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(200,146,42,0.12);
+}
+
+.faq-pergunta {
+  list-style: none;
+  padding: 22px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--branco);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: color 0.25s;
+}
+
+.faq-pergunta::-webkit-details-marker { display: none; }
+
+.faq-pergunta::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--ouro);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  line-height: 1;
+}
+
+details[open] .faq-pergunta {
+  color: var(--ouro-claro);
+}
+
+details[open] .faq-pergunta::after {
+  transform: rotate(45deg);
+}
+
+.faq-resposta {
+  font-size: 15px;
+  color: var(--cinza);
+  line-height: 1.8;
+  padding-bottom: 24px;
+  max-width: 680px;
+}
+
+@media (max-width: 768px) {
+  .faq { padding: 80px 24px; }
+  .faq-pergunta { font-size: 15px; }
+  .faq-resposta { font-size: 14px; }
+}
+
+/* ═══════════════════════════════════════
    CALCULADORA
 ═══════════════════════════════════════ */
 .calculadora {
@@ -1585,6 +1739,7 @@ footer {
     <li><a href="#calculadora">Calculadora</a></li>
     <li><a href="#por-que">Diferenciais</a></li>
     <li><a href="#cidades">Cidades</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#contato" class="nav-btn nav-cta">Falar com engenheiro</a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
@@ -1599,6 +1754,7 @@ footer {
   <a href="#calculadora" class="mob-link">Calculadora</a>
   <a href="#por-que" class="mob-link">Diferenciais</a>
   <a href="#cidades" class="mob-link">Cidades</a>
+  <a href="#faq" class="mob-link">FAQ</a>
   <a href="#contato" class="mob-btn mob-link">Falar com engenheiro</a>
 </div>
 
@@ -2797,6 +2953,52 @@ m40 -10 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m40 -10 c-3 -3
   ]
 }
 </script>
+
+<!-- FAQ -->
+<section class="faq" id="faq" aria-label="Perguntas frequentes sobre energia solar">
+  <div class="faq-eyebrow">Tire suas dúvidas</div>
+  <h2 class="section-h2">Perguntas <em>frequentes</em></h2>
+  <p class="faq-intro">As dúvidas mais comuns respondidas pelo engenheiro.</p>
+
+  <div class="faq-lista">
+
+    <details class="faq-item">
+      <summary class="faq-pergunta">Quanto custa um sistema de energia solar em São José do Rio Preto?</summary>
+      <div class="faq-resposta">Para uma residência com conta de R$ 400/mês, um sistema típico de 3 a 4 kWp custa entre R$ 15.000 e R$ 22.000. O valor varia de acordo com o consumo, tipo de telhado e equipamentos escolhidos. A Saewel realiza simulação gratuita e personalizada — sem compromisso. Financiamento disponível.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-pergunta">Em quanto tempo o sistema solar se paga?</summary>
+      <div class="faq-resposta">No interior de São Paulo, com alta irradiação solar, o payback médio fica entre 3,5 e 5 anos. Depois disso, você gera energia praticamente de graça por mais 20 anos — os painéis têm garantia de geração por 25 anos.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-pergunta">O sistema funciona em dias nublados ou chuvosos?</summary>
+      <div class="faq-resposta">Sim. Os painéis geram energia mesmo em dias nublados, com eficiência reduzida. São José do Rio Preto tem uma das melhores irradiações do Brasil — mais de 4,5 kWh/m²/dia em média anual — o que garante excelente geração mesmo nos meses menos ensolarados.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-pergunta">Preciso de bateria para ter energia solar?</summary>
+      <div class="faq-resposta">Na maioria dos casos, não. O modelo mais comum é o sistema on-grid (conectado à rede). O excedente gerado durante o dia vira créditos de energia com validade de até 60 meses — usados à noite ou em dias nublados. Baterias são necessárias apenas para quem deseja independência total da rede.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-pergunta">O que é ART e por que é obrigatória no projeto solar?</summary>
+      <div class="faq-resposta">ART é a Anotação de Responsabilidade Técnica emitida pelo CREA. Atesta que o projeto foi elaborado por engenheiro habilitado e é obrigatória para homologação junto à concessionária. Na Saewel, a ART já está inclusa em todos os projetos — sem custo adicional.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-pergunta">Posso financiar a instalação de energia solar?</summary>
+      <div class="faq-resposta">Sim. Existem linhas de crédito específicas com juros reduzidos e prazos de até 8 anos. Em muitos casos, a parcela do financiamento é menor do que o valor atual da sua conta de luz — você começa a economizar desde o primeiro mês. A Saewel orienta sobre as melhores opções disponíveis.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-pergunta">A Saewel atende fora de São José do Rio Preto?</summary>
+      <div class="faq-resposta">Sim. Atendemos toda a região noroeste paulista — Mirassol, Votuporanga, Catanduva, Tanabi, Olímpia e mais — além de todo o interior de São Paulo e demais estados via projeto remoto com visita técnica quando necessário.</div>
+    </details>
+
+  </div>
+</section>
 
 <!-- CONTATO -->
 <section class="contato" id="contato">

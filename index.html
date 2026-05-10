@@ -483,7 +483,7 @@ nav {
 
 .kpi-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 58px;
+  font-size: clamp(36px, 10vw, 58px);
   font-weight: 600;
   color: var(--ouro-claro);
   line-height: 1;
@@ -1881,6 +1881,31 @@ footer {
 /* Dispositivos touch de qualquer tamanho (tablets landscape, etc.) */
 @media (hover: none) {
   .serv-link { opacity: 1; transform: translateY(0); }
+}
+
+/* Telas muito pequenas — 320px a 480px (iPhone SE, Android compact) */
+@media (max-width: 480px) {
+  .hero { padding: 90px 5% 50px; }
+  .hero h1 { font-size: clamp(32px, 9vw, 48px); }
+  .hero-kpis { gap: 0; flex-wrap: nowrap; }
+  .kpi { padding: 0 12px; }
+  .kpi-label { font-size: 11px; }
+  .section-h2 { font-size: clamp(28px, 8vw, 40px); }
+  .sobre { padding: 60px 5%; }
+  .servicos { padding: 60px 5%; }
+  .servicos-grid { gap: 12px; }
+  .serv-card { padding: 28px 20px; }
+  .calculadora { padding: 60px 5%; }
+  .por-que { padding: 60px 5%; }
+  .cidades { padding: 60px 5%; }
+  .cidade-pill { font-size: 11px; padding: 5px 12px; }
+  .depoimentos { padding: 60px 5%; }
+  .dep-card { padding: 24px 18px; }
+  .faq { padding: 60px 5%; }
+  .faq-pergunta { font-size: 14px; }
+  .contato { padding: 60px 5%; }
+  .garantias-strip { padding: 20px 5%; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .nav-btn.nav-cta { display: none; }
 }
 </style>
 </head>

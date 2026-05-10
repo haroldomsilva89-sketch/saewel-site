@@ -1,0 +1,20 @@
+{
+  "name": "saewel-site",
+  "version": "1.0.0",
+  "description": "Saewel Energia Solar - Static website with Vercel Speed Insights",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Static HTML site - no build step required'",
+    "lint": "echo 'No linter configured for static HTML site'"
+  },
+  "keywords": [
+    "energia-solar",
+    "solar-energy",
+    "static-website"
+  ],
+  "author": "Haroldo M. Silva",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}

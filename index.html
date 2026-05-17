@@ -1906,7 +1906,7 @@ details[open] .faq-pergunta::after {
 footer {
   background: var(--noite);
   border-top: 1px solid rgba(255,255,255,0.04);
-  padding: 36px 5%;
+  padding: 24px 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1924,6 +1924,31 @@ footer {
 .footer-logo span { color: var(--ouro-claro); }
 
 .footer-copy { font-size: 12px; color: rgba(248,245,240,0.25); }
+
+.footer-qr-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.footer-qr-inline:hover { opacity: 1; }
+
+.footer-qr-inline img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: #fff;
+  padding: 2px;
+  display: block;
+}
+
+.footer-qr-inline span {
+  font-size: 11px;
+  color: rgba(248,245,240,0.5);
+  line-height: 1.4;
+}
 
 /* ═══════════════════════════════════════
    WHATSAPP FLOAT
@@ -4280,7 +4305,10 @@ m40 -10 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m40 -10 c-3 -3
 <footer>
   <div class="footer-logo">Saewel <span>Energia Solar</span></div>
   <div class="footer-copy">© 2025 Saewel Energia Solar — CNPJ 36.866.433/0001-71</div>
-  <div class="footer-copy">Economia com a luz solar é a nossa maior essência! ☀</div>
+  <a class="footer-qr-inline" href="https://g.page/r/review" target="_blank" rel="noopener noreferrer" aria-label="Avaliar a Saewel no Google">
+    <img src="qr-google.png" alt="QR Code para avaliação no Google" width="40" height="40" loading="lazy">
+    <span>Avalie-nos<br>no Google ★</span>
+  </a>
 </footer>
 
 <!-- WHATSAPP FLOAT -->

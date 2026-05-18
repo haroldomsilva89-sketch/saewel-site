@@ -1175,6 +1175,56 @@ nav {
   aspect-ratio: 9/16;
 }
 
+/* Facade lazy do YouTube */
+.yt-facade {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.yt-facade img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+
+.yt-facade:hover img { opacity: 0.75; }
+
+.yt-play {
+  position: relative;
+  z-index: 2;
+  width: 68px;
+  height: 48px;
+  background: #ff0000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.yt-facade:hover .yt-play {
+  transform: scale(1.1);
+  background: #cc0000;
+}
+
+.yt-play::after {
+  content: '';
+  border-style: solid;
+  border-width: 10px 0 10px 20px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 4px;
+}
+
+.yt-facade.loaded { display: none; }
+
 .video-pw-player {
   display: block;
   width: 100%;
@@ -2558,17 +2608,36 @@ footer {
       Geração, armazenamento e gestão de energia em um só lugar, com autonomia total mesmo durante quedas de energia.
     </p>
     <div class="video-pw-wrapper">
+      <!-- Facade lazy — iframe carrega só ao clicar -->
+      <div class="yt-facade" id="yt-facade" role="button" tabindex="0" aria-label="Reproduzir vídeo: Powerwall Fox ESS — Solução All-in-One inversor e bateria">
+        <img src="https://i.ytimg.com/vi/AatNEbiW0eo/hqdefault.jpg" alt="Thumbnail do vídeo Powerwall Fox ESS" loading="lazy" decoding="async">
+        <div class="yt-play" aria-hidden="true"></div>
+      </div>
       <iframe
-        src="https://www.youtube.com/embed/AatNEbiW0eo"
+        id="yt-iframe"
+        data-src="https://www.youtube.com/embed/AatNEbiW0eo?autoplay=1"
         title="Powerwall Fox ESS — Solução All-in-One inversor e bateria"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
         class="video-pw-player"
-        loading="lazy"
         aria-label="Vídeo explicativo sobre o Powerwall Fox ESS — solução all-in-one inversor e bateria"
+        style="display:none;"
       ></iframe>
     </div>
+    <script>
+    (function(){
+      var facade = document.getElementById('yt-facade');
+      var iframe = document.getElementById('yt-iframe');
+      function loadVideo(){
+        iframe.src = iframe.dataset.src;
+        iframe.style.display = 'block';
+        facade.classList.add('loaded');
+      }
+      facade.addEventListener('click', loadVideo);
+      facade.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') loadVideo(); });
+    })();
+    </script>
     <div class="video-pw-pills">
       <span class="pw-pill">⚡ Inversor integrado</span>
       <span class="pw-pill">🔋 Banco de baterias</span>

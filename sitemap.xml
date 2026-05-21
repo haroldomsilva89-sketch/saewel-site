@@ -103,4 +103,20 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Vídeo -->
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/</loc>
+    <video:video xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+      <video:thumbnail_loc>https://img.youtube.com/vi/AatNEbiW0eo/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Powerwall All-in-One — Fox ESS | Saewel Energia Solar</video:title>
+      <video:description>Conheça o Powerwall da Fox ESS — a solução mais completa do mercado: inversor solar e banco de baterias integrados em um único equipamento compacto. Geração, armazenamento e gestão de energia em um só lugar, com autonomia total mesmo durante quedas de energia.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/AatNEbiW0eo</video:player_loc>
+      <video:content_loc>https://www.youtube.com/watch?v=AatNEbiW0eo</video:content_loc>
+      <video:duration>66</video:duration>
+      <video:publication_date>2026-05-20</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+
 </urlset>

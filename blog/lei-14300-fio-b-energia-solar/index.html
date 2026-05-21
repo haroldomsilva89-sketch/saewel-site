@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lei 14.300 e o Fio B: o que muda para quem tem ou quer energia solar | Saewel</title>
+  <meta name="description" content="Entenda como a Lei 14.300 e a cobrança progressiva do Fio B afetam quem já tem energia solar e o que considerar antes de instalar. Análise técnica por engenheiro especialista.">
+  <meta name="author" content="Haroldo M. Silva — Engenheiro de Energias Renováveis, Saewel Energia Solar">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/lei-14300-fio-b-energia-solar">
+  <meta property="og:title" content="Lei 14.300 e o Fio B: o que muda para quem tem ou quer energia solar">
+  <meta property="og:description" content="A cobrança progressiva do Fio B já está em vigor. Entenda como a Lei 14.300 impacta o retorno do seu sistema solar — e como se proteger.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/lei-14300-fio-b-energia-solar">
+  <meta property="og:site_name" content="Saewel Energia Solar">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Lei 14.300 e o Fio B: o que muda para quem tem ou quer energia solar",
+    "description": "Entenda como a Lei 14.300 e a cobrança progressiva do Fio B afetam quem já tem energia solar e o que considerar antes de instalar.",
+    "author": {
+      "@type": "Person",
+      "name": "Haroldo M. Silva",
+      "jobTitle": "Engenheiro de Energias Renováveis",
+      "worksFor": { "@type": "Organization", "name": "Saewel Energia Solar" }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Saewel Energia Solar",
+      "url": "https://www.saewelenergiasolar.com.br"
+    },
+    "datePublished": "2026-05-20",
+    "dateModified": "2026-05-20",
+    "mainEntityOfPage": "https://www.saewelenergiasolar.com.br/blog/lei-14300-fio-b-energia-solar",
+    "keywords": ["Lei 14300", "Fio B", "TUSD", "energia solar", "geração distribuída", "marco legal", "payback solar", "créditos de energia", "São José do Rio Preto"]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noite: #0A0C0F;
+      --noite2: #111418;
+      --ouro: #C8922A;
+      --ouro-claro: #E8B84B;
+      --branco: #F8F5F0;
+      --cinza: #8A9099;
+      --texto: #D4CFC8;
+      --verde: #2D7A4F;
+      --verde-claro: #3DAA6A;
+      --azul: #1A4A7A;
+      --azul-claro: #2E72C2;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--noite);
+      color: var(--texto);
+      line-height: 1.85;
+      font-size: 17px;
+    }
+
+    a { color: var(--ouro-claro); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--noite2);
+      border-bottom: 1px solid rgba(200,146,42,0.12);
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: var(--branco); }
+    .logo span { color: var(--ouro-claro); }
+    .site-header nav a {
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--cinza);
+      margin-left: 24px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .site-header nav a:hover { color: var(--branco); }
+
+    /* ── Hero ── */
+    .article-hero {
+      background: linear-gradient(160deg, #0D1420 0%, var(--noite) 60%);
+      border-bottom: 1px solid rgba(200,146,42,0.08);
+      padding: 80px 5% 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(200,146,42,0.06) 0%, transparent 70%);
+    }
+
+    .breadcrumb {
+      font-family: sans-serif;
+      font-size: 12px;
+      color: var(--cinza);
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+    .breadcrumb a { color: var(--ouro); }
+
+    .article-eyebrow {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .article-title {
+      font-size: clamp(28px, 5vw, 54px);
+      font-weight: 700;
+      color: var(--branco);
+      line-height: 1.15;
+      max-width: 860px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+    .article-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .article-subtitle {
+      font-size: clamp(15px, 2.5vw, 19px);
+      color: var(--cinza);
+      max-width: 640px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .article-meta {
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--cinza);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .tag-list {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      position: relative;
+    }
+
+    .tag {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,146,42,0.25);
+      color: var(--ouro);
+      background: rgba(200,146,42,0.06);
+    }
+
+    /* ── Conteúdo ── */
+    .article-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 5%;
+    }
+
+    .article-wrap p { margin-bottom: 1.6rem; color: var(--texto); }
+    strong { color: var(--branco); }
+    em { color: var(--ouro-claro); }
+
+    h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      color: var(--branco);
+      margin: 3.5rem 0 1.2rem;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(200,146,42,0.15);
+      line-height: 1.25;
+    }
+
+    h3 {
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--ouro-claro);
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h4 {
+      font-size: 16px;
+      color: var(--branco);
+      font-family: sans-serif;
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.6rem; }
+    li { margin-bottom: 0.6rem; }
+
+    /* ── Callouts ── */
+    .callout {
+      border-radius: 16px;
+      padding: 26px 30px;
+      margin: 2.2rem 0;
+    }
+    .callout-title {
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .callout p { margin-bottom: 0; font-size: 15px; }
+
+    .callout-gold {
+      background: rgba(200,146,42,0.07);
+      border: 1px solid rgba(200,146,42,0.22);
+    }
+    .callout-gold .callout-title { color: var(--ouro); }
+
+    .callout-blue {
+      background: rgba(46,114,194,0.07);
+      border: 1px solid rgba(46,114,194,0.22);
+    }
+    .callout-blue .callout-title { color: var(--azul-claro); }
+    .callout-blue p { color: var(--texto); }
+
+    .callout-green {
+      background: rgba(61,170,106,0.07);
+      border: 1px solid rgba(61,170,106,0.22);
+    }
+    .callout-green .callout-title { color: var(--verde-claro); }
+    .callout-green p { color: var(--texto); }
+
+    .callout-warn {
+      background: rgba(200,80,50,0.07);
+      border: 1px solid rgba(200,80,50,0.22);
+    }
+    .callout-warn .callout-title { color: #E87060; }
+    .callout-warn p { color: var(--texto); }
+
+    /* ── Timeline ── */
+    .timeline {
+      margin: 2rem 0;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--ouro), rgba(200,146,42,0.1));
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ouro);
+      border: 2px solid var(--noite);
+    }
+
+    .tl-item.tl-hoje::before {
+      background: var(--ouro-claro);
+      box-shadow: 0 0 0 4px rgba(232,184,75,0.2);
+    }
+
+    .tl-year {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .tl-hoje .tl-year { color: var(--ouro-claro); }
+
+    .tl-text { font-size: 14px; color: var(--texto); }
+    .tl-text strong { color: var(--branco); }
+
+    /* ── Tabela ── */
+    .tech-table-wrap {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border-radius: 16px;
+      border: 1px solid rgba(200,146,42,0.15);
+    }
+
+    table { width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 14px; }
+    thead tr { background: rgba(200,146,42,0.08); }
+    thead th {
+      padding: 13px 16px;
+      text-align: left;
+      color: var(--ouro-claro);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(200,146,42,0.12);
+    }
+    tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(200,146,42,0.03); }
+    tbody td { padding: 12px 16px; color: var(--texto); vertical-align: top; }
+    tbody td:first-child { color: var(--branco); font-weight: 500; }
+    .td-green { color: var(--verde-claro) !important; }
+    .td-gold { color: var(--ouro-claro) !important; font-weight: 500; }
+    .td-red { color: #E87060 !important; }
+
+    /* ── Comparativo antes/depois ── */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 2rem 0;
+    }
+
+    .compare-card {
+      border-radius: 14px;
+      padding: 22px 20px;
+    }
+
+    .compare-card.old {
+      background: rgba(200,80,50,0.06);
+      border: 1px solid rgba(200,80,50,0.18);
+    }
+
+    .compare-card.new {
+      background: rgba(61,170,106,0.06);
+      border: 1px solid rgba(61,170,106,0.18);
+    }
+
+    .compare-title {
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .old .compare-title { color: #E87060; }
+    .new .compare-title { color: var(--verde-claro); }
+
+    .compare-card ul { padding-left: 1.2rem; margin-bottom: 0; }
+    .compare-card li { font-size: 14px; margin-bottom: 6px; color: var(--texto); }
+
+    /* ── CTA ── */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(200,146,42,0.10), rgba(232,184,75,0.05));
+      border: 1px solid rgba(200,146,42,0.25);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      margin: 3.5rem 0;
+    }
+    .cta-box h3 { color: var(--branco); margin: 0 0 14px; font-size: clamp(20px, 3vw, 28px); }
+    .cta-box p { color: var(--cinza); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; font-family: sans-serif; font-size: 15px; }
+    .btn-gold {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+      color: var(--noite);
+      font-family: sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 15px 36px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-gold:hover { opacity: 0.85; text-decoration: none; }
+
+    /* ── Autor ── */
+    .author-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px 30px;
+      background: var(--noite2);
+      border: 1px solid rgba(200,146,42,0.12);
+      border-radius: 16px;
+      margin-top: 3rem;
+    }
+
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--noite);
+      flex-shrink: 0;
+    }
+
+    .author-name { font-family: sans-serif; font-weight: 700; color: var(--branco); font-size: 15px; }
+    .author-role { font-family: sans-serif; font-size: 12px; color: var(--ouro); margin-bottom: 8px; }
+    .author-bio { font-size: 14px; color: var(--cinza); line-height: 1.6; margin-bottom: 0; }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid rgba(200,146,42,0.08);
+      padding: 28px 5%;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--cinza);
+    }
+
+    @media (max-width: 640px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .author-card { flex-direction: column; }
+      .cta-box { padding: 32px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://www.saewelenergiasolar.com.br" class="logo">Saewel <span>Energia Solar</span></a>
+  <nav>
+    <a href="https://www.saewelenergiasolar.com.br/#sobre">Sobre</a>
+    <a href="https://www.saewelenergiasolar.com.br/#servicos">Serviços</a>
+    <a href="https://www.saewelenergiasolar.com.br/blog/">Blog</a>
+    <a href="https://wa.me/5517982093739" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="breadcrumb">
+    <a href="https://www.saewelenergiasolar.com.br">Saewel</a> › <a href="https://www.saewelenergiasolar.com.br/blog/">Blog</a> › Legislação
+  </div>
+  <div class="article-eyebrow">Legislação · Mercado Solar</div>
+  <h1 class="article-title">Lei 14.300 e o <em>Fio B</em>:<br>o que muda para quem tem ou quer energia solar</h1>
+  <p class="article-subtitle">A cobrança progressiva do Fio B já está em vigor. Entenda o impacto real no retorno do seu sistema — e as estratégias para se proteger.</p>
+  <div class="article-meta">
+    <span>📅 20 de maio de 2026</span>
+    <span>⏱ 10 min de leitura</span>
+    <span>✍️ Haroldo M. Silva · Eng. Renováveis</span>
+  </div>
+  <div class="tag-list">
+    <span class="tag">Lei 14.300</span>
+    <span class="tag">Fio B</span>
+    <span class="tag">Geração Distribuída</span>
+    <span class="tag">Marco Legal Solar</span>
+    <span class="tag">Payback</span>
+  </div>
+</section>
+
+<!-- ARTIGO -->
+<article class="article-wrap">
+
+  <p>
+    Durante quase uma década, quem instalou energia solar no Brasil desfrutou de uma das regras mais generosas do mundo: a energia excedente injetada na rede era compensada integralmente na conta de luz, sem nenhuma cobrança pela infraestrutura usada para transportá-la. Esse período — conhecido como o "golden age" da geração distribuída — está chegando ao fim.
+  </p>
+
+  <p>
+    A <strong>Lei 14.300, sancionada em janeiro de 2022</strong>, estabeleceu o Marco Legal da Geração Distribuída e introduziu mudanças estruturais que todo consumidor com energia solar — ou que está pensando em instalar — precisa entender. A principal delas é a cobrança progressiva da <strong>TUSD Fio B</strong>: a tarifa que remunera o uso da rede elétrica para quem injeta excedente.
+  </p>
+
+  <p>
+    Esse artigo explica, sem juridiquês e com números concretos, o que a lei muda, quem é afetado, qual o impacto no payback e quais estratégias fazem sentido para cada perfil — tanto para quem já tem solar quanto para quem está decidindo se instala agora.
+  </p>
+
+  <h2>O sistema antigo: como funcionava antes da Lei 14.300</h2>
+
+  <p>
+    Para entender o que mudou, é preciso entender o que existia antes. O sistema de compensação de energia solar no Brasil foi regulamentado pela <strong>Resolução Normativa ANEEL 482/2012</strong>, e funcionava assim:
+  </p>
+
+  <ul>
+    <li>Os painéis solares geravam mais energia do que a casa consumia durante o dia</li>
+    <li>O excedente era injetado na rede da distribuidora de energia elétrica</li>
+    <li>Esse excedente gerava <strong>créditos de energia</strong> na conta de luz</li>
+    <li>Os créditos podiam ser usados à noite ou em dias nublados, com validade de 60 meses</li>
+    <li>A compensação era feita pelo valor integral da tarifa — ou seja, cada kWh injetado valia exatamente 1 kWh consumido, sem desconto</li>
+  </ul>
+
+  <p>
+    Esse modelo — chamado de <strong>net metering puro</strong> — era extremamente favorável ao consumidor. O excedente solar era tratado como se tivesse o mesmo valor que a energia da distribuidora, incluindo a parcela do "Fio B" (o custo da infraestrutura de rede). Na prática, quem injetava excedente recebia um subsídio implícito: usava a rede gratuitamente para transportar sua energia.
+  </p>
+
+  <div class="callout callout-blue">
+    <div class="callout-title">📚 O que é o Fio B?</div>
+    <p>O Fio B (ou TUSD Fio B — Tarifa de Uso do Sistema de Distribuição, componente B) é a parcela da conta de luz que remunera a distribuidora de energia elétrica pelo uso da sua infraestrutura: postes, cabos, transformadores e toda a rede que leva a energia até sua casa. Representa, em média, 30% a 40% do valor total da tarifa residencial. Na lógica da Lei 14.300, quem injeta excedente na rede usa essa infraestrutura para "exportar" energia — e, portanto, deve contribuir para o seu custeio.</p>
+  </div>
+
+  <h2>O que a Lei 14.300 mudou</h2>
+
+  <p>
+    A Lei 14.300 não acabou com o sistema de compensação. Ele continua existindo. O que mudou foi a <strong>forma como o excedente injetado é valorado</strong>: a partir de 2023, a compensação passou a ser feita pelo valor da energia sem o Fio B — e essa diferença é cobrada progressivamente do consumidor.
+  </p>
+
+  <p>
+    Em outras palavras: se antes cada kWh injetado valia R$ 1,00 de crédito (valor cheio), agora ele vale menos — porque o Fio B é descontado. E esse desconto cresce ano a ano até 2029.
+  </p>
+
+  <h3>A tabela do Fio B: o calendário que todo consumidor solar precisa conhecer</h3>
+
+  <div class="tech-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Ano</th>
+          <th>% do Fio B cobrado</th>
+          <th>Impacto no crédito</th>
+          <th>Quem é afetado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Até jan/2023</td>
+          <td class="td-green">0%</td>
+          <td>Compensação integral — crédito cheio</td>
+          <td>Todos com sistema ativo</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>15%</td>
+          <td>Crédito reduzido em ~4,5% a 6%</td>
+          <td>Conexões após jan/2023</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>30%</td>
+          <td>Crédito reduzido em ~9% a 12%</td>
+          <td>Conexões após jan/2023</td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>45%</td>
+          <td>Crédito reduzido em ~13% a 18%</td>
+          <td>Conexões após jan/2023</td>
+        </tr>
+        <tr>
+          <td class="td-gold">2026 (hoje)</td>
+          <td class="td-gold">60%</td>
+          <td class="td-gold">Crédito reduzido em ~18% a 24%</td>
+          <td class="td-gold">Conexões após jan/2023</td>
+        </tr>
+        <tr>
+          <td>2027</td>
+          <td>75%</td>
+          <td>Crédito reduzido em ~22% a 30%</td>
+          <td>Conexões após jan/2023</td>
+        </tr>
+        <tr>
+          <td>2028</td>
+          <td>90%</td>
+          <td>Crédito reduzido em ~27% a 36%</td>
+          <td>Conexões após jan/2023</td>
+        </tr>
+        <tr>
+          <td>2029 em diante</td>
+          <td class="td-red">100%</td>
+          <td class="td-red">Cobrança integral do Fio B</td>
+          <td>Conexões após jan/2023</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-warn">
+    <div class="callout-title">⚠️ Atenção: os percentuais acima incidem sobre o Fio B — não sobre a tarifa total</div>
+    <p>O Fio B representa cerca de 30% a 40% da tarifa total. Então, 60% de cobrança do Fio B em 2026 significa aproximadamente 18% a 24% de redução no valor do crédito por kWh injetado — não 60% de redução no crédito total. O impacto real varia conforme a distribuidora de energia elétrica e a subclasse tarifária.</p>
+  </div>
+
+  <h2>Quem está protegido — e por quanto tempo</h2>
+
+  <p>
+    Esse é o ponto mais importante para quem já tem energia solar: a lei criou um <strong>regime de direito adquirido</strong> para quem instalou antes do prazo de corte.
+  </p>
+
+  <div class="callout callout-green">
+    <div class="callout-title">✅ Direito adquirido: regras do sistema antigo garantidas até 2045</div>
+    <p>Quem solicitou conexão à distribuidora de energia elétrica <strong>até 6 de janeiro de 2023</strong> — ou tinha projeto protocolado até essa data — está garantido nas regras antigas até <strong>31 de dezembro de 2045</strong>. Isso significa compensação integral, sem cobrança do Fio B, por mais de 20 anos. Se você instalou antes dessa data, está protegido.</p>
+  </div>
+
+  <p>
+    Para verificar se você tem direito adquirido, basta checar a data de protocolo do pedido de conexão junto à sua distribuidora de energia elétrica — não a data de instalação dos painéis, mas a data do protocolo junto à distribuidora. Em caso de dúvida, consulte o engenheiro responsável pelo projeto.
+  </p>
+
+  <h2>E quem instalou depois de janeiro de 2023?</h2>
+
+  <p>
+    Para sistemas conectados após 6 de janeiro de 2023, a cobrança progressiva do Fio B se aplica integralmente. Isso não significa que o sistema solar deixou de fazer sentido financeiro — significa que o cálculo de payback precisa ser feito com os números corretos.
+  </p>
+
+  <div class="compare-grid">
+    <div class="compare-card old">
+      <div class="compare-title">❌ Antes da Lei 14.300</div>
+      <ul>
+        <li>Crédito = valor cheio da tarifa por kWh injetado</li>
+        <li>Payback médio: 4 a 6 anos</li>
+        <li>Sistema on-grid puro era sempre a melhor opção</li>
+        <li>Injetar excedente = estratégia ótima</li>
+      </ul>
+    </div>
+    <div class="compare-card new">
+      <div class="compare-title">✅ Com a Lei 14.300</div>
+      <ul>
+        <li>Crédito = tarifa sem o Fio B (menor por kWh injetado)</li>
+        <li>Payback médio: 5 a 8 anos (varia por perfil)</li>
+        <li>Sistema híbrido com BESS passa a competir melhor</li>
+        <li>Maximizar autoconsumo é a nova estratégia ótima</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    A lógica financeira muda: se injetar excedente na rede vale menos, o mais inteligente é <strong>consumir a própria energia gerada</strong> — seja no momento da geração, seja com armazenamento em baterias. O sistema que maximiza o autoconsumo e minimiza a injeção na rede passa a ter vantagem crescente.
+  </p>
+
+  <h2>O impacto real no payback — com números</h2>
+
+  <p>
+    Para ilustrar o impacto, considere um sistema residencial típico de 6 kWp instalado em São José do Rio Preto, com consumo mensal de 500 kWh e tarifa média de R$ 0,85/kWh:
+  </p>
+
+  <div class="tech-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Cenário</th>
+          <th>Economia mensal estimada</th>
+          <th>Payback estimado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sistema on-grid — regras antigas (pré-2023)</td>
+          <td class="td-green">R$ 380 – R$ 420/mês</td>
+          <td class="td-green">4 – 5 anos</td>
+        </tr>
+        <tr>
+          <td>Sistema on-grid — 2026 (60% Fio B)</td>
+          <td class="td-gold">R$ 310 – R$ 360/mês</td>
+          <td class="td-gold">5 – 7 anos</td>
+        </tr>
+        <tr>
+          <td>Sistema on-grid — 2029 (100% Fio B)</td>
+          <td class="td-red">R$ 260 – R$ 310/mês</td>
+          <td class="td-red">6 – 8 anos</td>
+        </tr>
+        <tr>
+          <td>Sistema híbrido (solar + BESS) — alto autoconsumo</td>
+          <td class="td-green">R$ 380 – R$ 440/mês</td>
+          <td>6 – 9 anos*</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:13px; color: var(--cinza);">*O payback do sistema híbrido é maior pelo custo adicional das baterias, mas a economia mensal é superior porque o Fio B tem impacto mínimo. A lógica se torna progressivamente mais favorável a partir de 2027–2028.</p>
+
+  <div class="callout callout-gold">
+    <div class="callout-title">📊 Esses são valores estimados para fins didáticos</div>
+    <p>O cálculo real depende do seu consumo específico, perfil de uso (horários de maior consumo), tarifa da sua distribuidora de energia elétrica, irradiação local e dimensionamento do sistema. A única forma de ter o número correto é com uma simulação técnica individual — o que a Saewel faz gratuitamente.</p>
+  </div>
+
+  <h2>A linha do tempo completa da Lei 14.300</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">Janeiro 2012</div>
+      <div class="tl-text"><strong>RN ANEEL 482/2012</strong> — Primeiro regulamento de geração distribuída no Brasil. Cria o sistema de compensação de energia (net metering) sem cobrança de Fio B.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Janeiro 2022</div>
+      <div class="tl-text"><strong>Lei 14.300 sancionada</strong> — Marco Legal da Geração Distribuída. Define as novas regras e o calendário progressivo do Fio B.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">6 de Janeiro 2023</div>
+      <div class="tl-text"><strong>Prazo de corte do direito adquirido.</strong> Quem protocola conexão até essa data mantém as regras antigas até 2045. Quem protocola depois entra no novo regime.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2023 – 2028</div>
+      <div class="tl-text"><strong>Fase de transição progressiva.</strong> Cobrança do Fio B sobe de 15% a 90% para novos sistemas, em incrementos anuais de 15 pontos percentuais.</div>
+    </div>
+    <div class="tl-item tl-hoje">
+      <div class="tl-year">2026 — Hoje</div>
+      <div class="tl-text"><strong>60% do Fio B em vigor</strong> para sistemas conectados após janeiro de 2023. Equivale a uma redução de aproximadamente 18% a 24% no valor do crédito por kWh injetado.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2029 em diante</div>
+      <div class="tl-text"><strong>100% do Fio B cobrado</strong> para todos os novos sistemas. Regime permanente estabelecido. Autoconsumo e armazenamento tornam-se a estratégia financeiramente dominante.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">31 Dezembro 2045</div>
+      <div class="tl-text"><strong>Fim do direito adquirido.</strong> Todos os sistemas — inclusive os instalados antes de 2023 — passarão ao regime com cobrança integral do Fio B.</div>
+    </div>
+  </div>
+
+  <!-- CTA 1 -->
+  <div class="cta-box">
+    <h3>Qual é o impacto real no seu sistema?</h3>
+    <p>Cada caso é diferente. O engenheiro analisa seu consumo, sua distribuidora e a data do seu sistema para calcular o impacto exato do Fio B — e as estratégias para minimizá-lo.</p>
+    <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Li%20o%20artigo%20sobre%20a%20Lei%2014.300%20e%20quero%20entender%20o%20impacto%20no%20meu%20sistema" class="btn-gold" target="_blank" rel="noopener noreferrer">
+      Falar com o engenheiro no WhatsApp
+    </a>
+  </div>
+
+  <h2>O que fazer se você já tem energia solar</h2>
+
+  <h3>Se você instalou antes de janeiro de 2023</h3>
+
+  <p>
+    Você está protegido até 2045 e não precisa fazer nada imediatamente. Seu sistema continua com as regras antigas — compensação integral, sem Fio B. Aproveite o período para avaliar se faz sentido adicionar baterias para maximizar ainda mais o autoconsumo, especialmente considerando que em 2045 o regime muda para todos.
+  </p>
+
+  <h3>Se você instalou depois de janeiro de 2023</h3>
+
+  <p>
+    Você já está no novo regime. O impacto de 2026 é moderado (60% do Fio B), mas tende a crescer. Algumas estratégias para minimizar o impacto:
+  </p>
+
+  <ul>
+    <li><strong>Revise os horários de consumo:</strong> use eletrodomésticos de maior consumo durante o dia, quando os painéis estão gerando. Cada kWh consumido diretamente da geração solar é um kWh que não vai para a rede — e que não sofre desconto do Fio B.</li>
+    <li><strong>Avalie a adição de baterias:</strong> se o seu inversor for compatível, adicionar um sistema BESS permite armazenar o excedente em vez de injetá-lo na rede — eliminando o problema do Fio B para esse excedente.</li>
+    <li><strong>Verifique o dimensionamento:</strong> sistemas superdimensionados geram muito mais excedente do que o necessário, maximizando a injeção na rede e, portanto, o impacto do Fio B. Um redimensionamento pode melhorar o retorno.</li>
+  </ul>
+
+  <h2>O que considerar antes de instalar energia solar hoje</h2>
+
+  <p>
+    Para quem está decidindo instalar em 2026, a lei mudou o cálculo — mas não tornou a energia solar inviável. O que mudou é a <strong>estratégia ótima</strong>.
+  </p>
+
+  <h4>Priorize o autoconsumo desde o dimensionamento</h4>
+  <p>Um sistema bem dimensionado para o seu consumo real — sem gerar excedente excessivo — é mais eficiente financeiramente no novo regime do que um sistema superdimensionado que injeta muito na rede.</p>
+
+  <h4>Considere o inversor híbrido desde o início</h4>
+  <p>A diferença de custo entre um inversor string convencional e um inversor híbrido (compatível com baterias) é relativamente pequena no momento da instalação. Mas trocar o inversor no futuro é caro. Optar pelo híbrido desde o início dá a flexibilidade de adicionar baterias conforme o preço cair — sem refazer a instalação.</p>
+
+  <h4>Calcule o payback com os números de 2026 — não de 2020</h4>
+  <p>Muito conteúdo sobre payback solar na internet usa projeções desatualizadas, anteriores à Lei 14.300. Certifique-se de que a simulação considera o Fio B progressivo e o valor real da tarifa da sua distribuidora de energia elétrica em 2026.</p>
+
+  <div class="callout callout-warn">
+    <div class="callout-title">⚠️ Cuidado com simulações otimistas demais</div>
+    <p>Desconfie de qualquer empresa que apresente simulação de payback sem mencionar a Lei 14.300 e o Fio B. Isso indica que o cálculo pode estar desatualizado — ou que estão omitindo informações relevantes para fechar a venda. Um engenheiro responsável apresenta os cenários reais, inclusive os menos favoráveis.</p>
+  </div>
+
+  <h2>O cenário a partir de 2029: por que o BESS se torna cada vez mais relevante</h2>
+
+  <p>
+    Quando o Fio B chegar a 100% em 2029, a lógica financeira será clara: cada kWh injetado na rede valerá significativamente menos do que cada kWh consumido diretamente. Nesse cenário, o <strong>sistema com armazenamento BESS</strong> passa a ter vantagem financeira crescente sobre o on-grid puro.
+  </p>
+
+  <p>
+    Ao mesmo tempo, o preço das baterias continua caindo. Em 2020, o custo médio de uma bateria LFP residencial era de aproximadamente US$ 350 por kWh. Em 2026, esse custo está na faixa de US$ 120 a US$ 180 por kWh e a tendência é continuar caindo. A janela em que o BESS passa de "opcional interessante" para "melhor investimento disponível" está se aproximando.
+  </p>
+
+  <div class="callout callout-green">
+    <div class="callout-title">🎯 A conclusão do engenheiro</div>
+    <p>A Lei 14.300 não inviabilizou a energia solar — ela mudou a estratégia ótima. Quem instalou antes de 2023 tem um ativo valiosíssimo protegido por 20 anos. Quem instala agora precisa de um projeto bem dimensionado para o autoconsumo e deve considerar seriamente o inversor híbrido. E quem ainda está avaliando: 2026, com 60% do Fio B, ainda é um momento favorável — muito melhor do que esperar 2029 com 100%. O melhor momento para instalar energia solar foi antes de janeiro de 2023. O segundo melhor momento é agora.</p>
+  </div>
+
+  <!-- CTA 2 -->
+  <div class="cta-box">
+    <h3>Quer uma simulação com os números reais de 2026?</h3>
+    <p>O engenheiro faz a análise completa: consumo, perfil de uso, impacto do Fio B e payback real — com e sem BESS. Sem compromisso e sem enrolação.</p>
+    <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Li%20o%20artigo%20sobre%20a%20Lei%2014.300%20e%20quero%20uma%20simulação%20com%20os%20números%20reais" class="btn-gold" target="_blank" rel="noopener noreferrer">
+      Solicitar simulação gratuita
+    </a>
+  </div>
+
+  <!-- AUTOR -->
+  <div class="author-card">
+    <div class="author-avatar" aria-hidden="true">HS</div>
+    <div>
+      <div class="author-name">Haroldo M. Silva</div>
+      <div class="author-role">Engenheiro de Energias Renováveis — CREA/SP · Saewel Energia Solar</div>
+      <p class="author-bio">Especialista em projetos fotovoltaicos residenciais, comerciais e sistemas híbridos com armazenamento em São José do Rio Preto e região. Responsável técnico pela especificação, ART e homologação de sistemas solares na área de concessão da CPFL.</p>
+    </div>
+  </div>
+
+</article>
+
+<footer class="site-footer">
+  <p>© 2026 <a href="https://www.saewelenergiasolar.com.br">Saewel Energia Solar</a> — CNPJ 36.866.433/0001-71 · São José do Rio Preto, SP</p>
+</footer>
+
+</body>
+</html>

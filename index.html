@@ -180,7 +180,7 @@
 .nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);padding-left:24px;}
 .nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
 
-.footer-novo{background:var(--noite);border-top:1px solid rgba(200,146,42,0.1);padding:60px 5% 0;}
+
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.04);}
 .foot-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--branco);margin-bottom:12px;}
 .foot-logo span{color:var(--ouro-claro);}
@@ -196,6 +196,24 @@
 .footer-legal a:hover{color:var(--ouro);}
 @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+
+.footer-novo{background:var(--noite);border-top:1px solid rgba(200,146,42,0.1);padding:60px 5% 0;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--branco);margin-bottom:12px;}
+.foot-logo span{color:var(--ouro-claro);}
+.foot-desc{font-size:13px;color:var(--cinza);line-height:1.7;margin-bottom:16px;max-width:240px;}
+.foot-col h4{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;}
+.foot-col a{display:block;font-size:13px;color:var(--cinza);text-decoration:none;margin-bottom:8px;transition:color 0.3s;}
+.foot-col a:hover{color:var(--branco);}
+.footer-bottom{display:flex;align-items:center;justify-content:center;padding:20px 0;}
+.footer-copy{font-size:12px;color:rgba(248,245,240,0.25);}
+.footer-qr-inline{display:flex;align-items:center;gap:8px;opacity:0.6;transition:opacity 0.3s;text-decoration:none;}
+.footer-qr-inline:hover{opacity:1;}
+.footer-qr-inline img{width:40px;height:40px;border-radius:4px;background:#fff;padding:2px;display:block;}
+.footer-qr-inline span{font-size:11px;color:rgba(248,245,240,0.5);line-height:1.4;}
+@media(max-width:1100px){.footer-grid{grid-template-columns:1fr 1fr 1fr;}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-bottom{flex-direction:column;gap:8px;text-align:center;}}
+@media(max-width:400px){.footer-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -936,7 +954,7 @@
 
     <div class="foot-brand">
       <div class="foot-logo">Saewel <span>Energia Solar</span></div>
-      <p class="foot-desc">Engenharia fotovoltaica residencial, comercial e industrial em São José do Rio Preto e região. ART, EPC completo e homologação CPFL.</p>
+      <p class="foot-desc">Engenharia fotovoltaica em São José do Rio Preto e região. Projetos, instalação e homologação com responsabilidade técnica.</p>
       <a class="footer-qr-inline" href="https://g.page/r/Cc14z3x8phLCEBM/review" target="_blank" rel="noopener noreferrer" aria-label="Avaliar a Saewel no Google">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://g.page/r/Cc14z3x8phLCEBM/review" width="40" height="40" alt="QR Code Google">
         <span>Avalie-nos<br>no Google ★</span>
@@ -945,51 +963,39 @@
 
     <div class="foot-col">
       <h4>Serviços</h4>
-      <a href="/energia-solar-residencial/">Energia Solar Residencial</a>
-      <a href="/energia-solar-comercial/">Energia Solar Comercial</a>
-      <a href="/energia-solar-agronegocio/">Energia Solar Agronegócio</a>
-      <a href="/armazenamento-de-energia/">Armazenamento de Energia</a>
-      <a href="/calculadora/">Calculadora Solar</a>
+      <a href="/energia-solar-residencial/">Projetos Fotovoltaicos</a>
+      <a href="/energia-solar-residencial/">Instalação</a>
+      <a href="#servicos">Manutenção</a>
+      <a href="#servicos">Monitoramento</a>
+      <a href="#contato">Consultoria</a>
+    </div>
+
+    <div class="foot-col">
+      <h4>Institucional</h4>
+      <a href="#sobre">Sobre</a>
+      <a href="#depoimentos">Avaliações</a>
       <a href="/blog/">Blog</a>
+      <a href="/calculadora/">Calculadora Solar</a>
+      <a href="#contato">Contato</a>
     </div>
 
     <div class="foot-col">
-      <h4>Sede e Grande SJRP</h4>
+      <h4>Cidades</h4>
       <a href="#">São José do Rio Preto</a>
-      <a href="#">Mirassol</a>
-      <a href="#">Bady Bassit</a>
-      <a href="#">Ipiguá</a>
-      <a href="#">Cedral</a>
-      <a href="#">Onda Verde</a>
+      <a href="#">Região Noroeste Paulista</a>
     </div>
 
     <div class="foot-col">
-      <h4>Região Noroeste Paulista</h4>
-      <a href="#">Catanduva</a>
-      <a href="#">Votuporanga</a>
-      <a href="#">Olímpia</a>
-      <a href="#">Tanabi</a>
-      <a href="#">Nhandeara</a>
-      <a href="#">Icém</a>
-      <a href="#">Guapiaçu</a>
-      <a href="#">Potirendaba</a>
-      <a href="#">Nova Aliança</a>
-      <a href="#">Mendonça</a>
-      <a href="#">Nova Granada</a>
-      <a href="#">Sebastianópolis do Sul</a>
-      <a href="#">Poloni</a>
-      <span class="foot-nacional">+ Nacional — Projeto Remoto</span>
+      <h4>Legal</h4>
+      <a href="/politica-de-privacidade/">Política de Privacidade</a>
+      <a href="/termos-de-uso/">Termos de Uso</a>
+      <a href="/politica-de-cookies/">Política de Cookies</a>
     </div>
 
   </div>
 
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 Saewel Energia Solar — CNPJ 36.866.433/0001-71 · São José do Rio Preto, SP</span>
-    <div class="footer-legal">
-      <a href="/politica-de-privacidade/">Política de Privacidade</a>
-      <a href="/termos-de-uso/">Termos de Uso</a>
-      <a href="/politica-de-cookies/">Política de Cookies</a>
-    </div>
   </div>
 
 </footer>

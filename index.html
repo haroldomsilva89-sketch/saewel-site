@@ -180,6 +180,7 @@
 .nav-dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(212,207,200,0.85);text-decoration:none;letter-spacing:0.03em;text-transform:none !important;transition:all 0.2s;}
 .nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);padding-left:24px;}
 .nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
+.nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
 
 
 .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.04);}
@@ -265,16 +266,18 @@
     <li class="nav-dropdown">
       <a href="#servicos" class="nav-dropdown-toggle">Serviços ▾</a>
       <ul class="nav-dropdown-menu">
-        <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
-        <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
-        <li><a href="/energia-solar-agronegocio/">🌾 Solar Agronegócio</a></li>
-        <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
-        <li class="nav-dropdown-divider"></li>
+        <li><span class="nav-dropdown-label">Serviços</span></li>
         <li><a href="/projetos-fotovoltaicos/">📋 Projetos Fotovoltaicos</a></li>
         <li><a href="/instalacao/">⚡ Instalação</a></li>
         <li><a href="/manutencao/">🔧 Manutenção</a></li>
         <li><a href="/monitoramento/">📊 Monitoramento</a></li>
         <li><a href="/consultoria/">🎓 Consultoria</a></li>
+        <li class="nav-dropdown-divider"></li>
+        <li><span class="nav-dropdown-label">Soluções</span></li>
+        <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
+        <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
+        <li><a href="/energia-solar-agronegocio/">🌾 Solar Agronegócio</a></li>
+        <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
       </ul>
     </li>
     <li><a href="/calculadora/">Calculadora</a></li>

@@ -169,7 +169,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 .mobile-menu .mob-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite) !important;padding:16px 36px;border-radius:50px;font-weight:700;margin-top:12px;border-bottom:none !important;font-size:15px !important;}
 .nav-dropdown{position:relative;}
 .nav-dropdown-toggle{cursor:pointer;}
-.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:rgba(17,20,24,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,146,42,0.18);border-radius:14px;padding:10px 0;min-width:220px;z-index:600;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(17,20,24,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,146,42,0.18);border-radius:14px;min-width:230px;z-index:600;box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:10px 0 10px;margin-top:0;}
+.nav-dropdown-menu::before{content:'';display:block;height:12px;margin-top:-12px;}
 .nav-dropdown:hover .nav-dropdown-menu{display:block;}
 .nav-dropdown-menu li{list-style:none;}
 .nav-dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(212,207,200,0.85);text-decoration:none;letter-spacing:0.03em;text-transform:none !important;transition:all 0.2s;}
@@ -373,6 +374,7 @@ details[open] .faq-pergunta::after{transform:rotate(45deg);}
     </svg>
   </a>
   <ul class="nav-links">
+    <li><a href="/">Home</a></li>
     <li><a href="/#sobre">Sobre</a></li>
     <li class="nav-dropdown">
       <a href="/#servicos" class="nav-dropdown-toggle active">Serviços ▾</a>
@@ -402,13 +404,18 @@ details[open] .faq-pergunta::after{transform:rotate(45deg);}
 
 <!-- MENU MOBILE -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
-  <a href="/" class="mob-link">Início</a>
+  <a href="/" class="mob-link">Home</a>
   <a href="/#sobre" class="mob-link">Sobre</a>
   <a href="/#servicos" class="mob-link">Serviços</a>
-  <a href="/#cidades" class="mob-link">Cidades</a>
+  <a href="/projetos-fotovoltaicos/" class="mob-link" style="font-size:16px;color:rgba(138,144,153,0.7);padding:8px 0;">↳ Projetos Fotovoltaicos</a>
+  <a href="/instalacao/" class="mob-link" style="font-size:16px;color:rgba(138,144,153,0.7);padding:8px 0;">↳ Instalação</a>
+  <a href="/manutencao/" class="mob-link" style="font-size:16px;color:rgba(138,144,153,0.7);padding:8px 0;">↳ Manutenção</a>
+  <a href="/monitoramento/" class="mob-link" style="font-size:16px;color:rgba(138,144,153,0.7);padding:8px 0;">↳ Monitoramento</a>
+  <a href="/consultoria/" class="mob-link" style="font-size:16px;color:rgba(138,144,153,0.7);padding:8px 0;">↳ Consultoria</a>
+  <a href="/calculadora/" class="mob-link">Calculadora Solar</a>
+  <a href="/#cidades" class="mob-link">São José do Rio Preto</a>
   <a href="/#depoimentos" class="mob-link">Avaliações</a>
   <a href="/blog/" class="mob-link">Blog</a>
-  <a href="/calculadora/" class="mob-link">Calculadora</a>
   <a href="/#contato" class="mob-btn mob-link">Falar com engenheiro</a>
 </div>
 

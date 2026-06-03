@@ -139,9 +139,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
 /* Gráfico de barras mensais */
 .graf-meses{margin-top:12px;}
-.graf-bars{display:flex;align-items:flex-end;gap:4px;height:60px;}
-.graf-bar{flex:1;border-radius:3px 3px 0 0;position:relative;min-width:0;}
-.graf-bar-inner{width:100%;background:linear-gradient(180deg,var(--ouro-claro),var(--ouro));border-radius:3px 3px 0 0;transition:height 0.8s ease-out;}
+.graf-bars{display:flex;align-items:flex-end;gap:4px;height:64px;}
+.graf-bar{flex:1;height:100%;display:flex;align-items:flex-end;min-width:0;}
+.graf-bar-inner{width:100%;background:linear-gradient(180deg,var(--ouro-claro),var(--ouro));border-radius:3px 3px 0 0;transition:height 0.8s ease-out;min-height:4px;}
 .graf-bar-label{text-align:center;font-size:9px;color:var(--cinza);margin-top:4px;white-space:nowrap;overflow:hidden;}
 
 /* Aviso de irradiação */
@@ -715,10 +715,18 @@ function gerarProposta({nome,tel,cidadeNome,irr,consumo,tarifa,perfil,estrutura}
   const geracoesMes=varMensal.map(f=>Math.round(geracaoMensal*f));
   const maxG=Math.max(...geracoesMes);
   const barsCont=document.getElementById('grafBars');
-  barsCont.innerHTML=geracoesMes.map((g,i)=>`
-    <div class="graf-bar" title="${mesesNome[i]}: ${g} kWh">
-      <div class="graf-bar-inner" style="height:${Math.round(g/maxG*100)}%;"></div>
-    </div>`).join('');
+  barsCont.innerHTML=geracoesMes.map((g,i)=>{
+    const pct=Math.round(g/maxG*100);
+    return `<div class="graf-bar" title="${mesesNome[i]}: ${g} kWh">
+      <div class="graf-bar-inner" style="height:0%" data-h="${pct}"></div>
+    </div>`;
+  }).join('');
+  // Animar após render
+  setTimeout(()=>{
+    barsCont.querySelectorAll('.graf-bar-inner').forEach(el=>{
+      el.style.height = el.dataset.h + '%';
+    });
+  }, 100);
 
   // Link WhatsApp
   const msg=encodeURIComponent(`Olá Haroldo! Fiz a simulação no site da Saewel.

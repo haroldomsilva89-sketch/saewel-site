@@ -259,7 +259,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
   /* Capa — área principal */
   .capa-header{
-    padding:70px 64px 48px!important;
+    padding:48px 64px 32px!important;
     background:#0A0C0F!important;
     flex:1;
     position:relative;
@@ -308,7 +308,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     letter-spacing:0.18em!important;
     text-transform:uppercase!important;
     color:rgba(200,146,42,0.6)!important;
-    margin-bottom:64px!important;
+    margin-bottom:32px!important;
     display:block!important;
     position:relative;z-index:1;
   }
@@ -316,12 +316,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   /* Título gigante */
   .capa-title{
     font-family:'Cormorant Garamond',serif!important;
-    font-size:86px!important;
+    font-size:80px!important;
     font-weight:300!important;
     line-height:0.95!important;
     letter-spacing:-0.02em!important;
     color:#F8F5F0!important;
-    margin-bottom:48px!important;
+    margin-bottom:32px!important;
     position:relative;z-index:1;
     -webkit-text-fill-color:#F8F5F0!important;
   }
@@ -359,8 +359,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .prop-page:nth-child(1) > div:last-child{
     background:rgba(200,146,42,0.08)!important;
     border-top:1px solid rgba(200,146,42,0.2)!important;
-    padding:24px 64px!important;
+    padding:20px 64px!important;
     margin-top:0!important;
+    page-break-inside:avoid!important;
   }
   .empresa-grid{
     display:grid!important;
@@ -381,7 +382,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   ══════════════════════════════ */
   .prop-page:nth-child(n+2){
     background:#fff!important;
-    padding:52px 56px!important;
+    padding:36px 48px!important;
   }
 
   /* Cabeçalho em cada página interna */
@@ -1252,7 +1253,7 @@ Gostaria de avançar com o projeto!`);
 
   // ── SALVAR LEAD NO GOOGLE SHEETS ──
   salvarLead({
-    nome, telefone: tel, cidade:
+    nome, telefone: tel, cidade,
     perfil: PERFIS[perfil],
     consumo: consumoMedio,
     kwp: kWp.toFixed(2),

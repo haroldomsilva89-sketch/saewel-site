@@ -161,7 +161,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <a href="/" class="nav-logo">
     <svg width="160" height="66" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
       <title>Saewel Energia Solar</title>
@@ -180,11 +180,12 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text>
     </svg>
   </a>
+
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/#sobre">Sobre</a></li>
+    <li><a href="/sobre/">Sobre</a></li>
     <li class="nav-dropdown">
-      <a href="/#servicos" style="cursor:pointer;">Serviços ▾</a>
+      <a href="#" style="cursor:pointer;">Serviços ▾</a>
       <ul class="nav-dropdown-menu">
         <li><span class="nav-dropdown-label">Serviços</span></li>
         <li><a href="/projetos-fotovoltaicos/">📋 Projetos Fotovoltaicos</a></li>
@@ -196,21 +197,26 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
         <li><span class="nav-dropdown-label">Soluções</span></li>
         <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
         <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
-        <li><a href="/energia-solar-agronegocio/">🌾 Solar Agronegócio</a></li>
+        <li><a href="/energia-solar-agronegocio/">🚜 Solar Agronegócio</a></li>
+        <li class="nav-dropdown-divider"></li>
+        <li><span class="nav-dropdown-label">Tecnologia</span></li>
         <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
       </ul>
     </li>
     <li><a href="/calculadora/">Calculadora</a></li>
-    <li><a href="/cidades/" class="ativo">Cidades</a></li>
+    <li><a href="/cidades/">Cidades</a></li>
     <li><a href="/avaliacoes/">Avaliações</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
-  <a href="https://wa.me/5517982093739?text=Quero%20saber%20sobre%20energia%20solar%20na%20minha%20cidade" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+
+  <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/#sobre">Sobre</a>
+  <a href="/sobre/">Sobre</a>
   <a href="/#servicos">Serviços</a>
   <a href="/calculadora/">Calculadora Solar</a>
   <a href="/cidades/">Cidades</a>
@@ -360,7 +366,8 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="/armazenamento-de-energia/">Armazenamento BESS</a>
     </div>
     <div class="foot-col">
-      <h4>Cidades</h4>
+      <h4>Área de Atuação</h4>
+      <a href="/cidades/">Cidades Atendidas</a>
       <a href="/cidades/sao-jose-do-rio-preto/">São José do Rio Preto</a>
       <a href="/cidades/bady-bassit/">Bady Bassit</a>
       <a href="/cidades/mirassol/">Mirassol</a>
@@ -370,11 +377,11 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
     </div>
     <div class="foot-col">
       <h4>Institucional</h4>
-      <a href="/#sobre">Sobre</a>
+      <a href="/sobre/">Sobre</a>
       <a href="/avaliacoes/">Avaliações</a>
       <a href="/blog/">Blog</a>
       <a href="/calculadora/">Calculadora Solar</a>
-      <a href="/#contato">Contato</a>
+      <a href="#contato">Contato</a>
     </div>
     <div class="foot-col">
       <h4>Legal</h4>

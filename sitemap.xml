@@ -9,7 +9,7 @@
   ══════════════════════════════ -->
   <url>
     <loc>https://www.saewelenergiasolar.com.br/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -20,7 +20,11 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.saewelenergiasolar.com.br/avaliacoes/</loc>
+    <loc>https://www.saewelenergiasolar.com.br/sobre/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

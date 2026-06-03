@@ -215,20 +215,333 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
 /* PRINT */
 @media print{
-  nav,.btn-calcular,.prop-ctas,.btn-nova,.footer-mini,#formulario,.loading,body::before{display:none!important;}
-  body{background:white;color:#111;}
-  .wrapper{padding:0;max-width:100%;}
+  /* ── OCULTAR INTERFACE ── */
+  nav,.btn-calcular,.prop-ctas,.btn-nova,.footer-mini,
+  #formulario,.loading,body::before{display:none!important;}
+
+  /* ── RESET GERAL ── */
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  html,body{background:#fff!important;margin:0;padding:0;}
+  .wrapper{padding:0!important;max-width:100%!important;margin:0!important;}
   #proposta{display:block!important;}
-  .prop-page{background:white;border:1px solid #e5e7eb;border-radius:0;page-break-after:always;margin-bottom:0;}
-  .prop-page::before{display:none;}
-  .capa-logo span,.prop-sec-title em,.kpi-num{-webkit-text-fill-color:initial;color:#C8922A;}
-  .kpi-box,.capa-info-item,.termos-box,.amb-box{background:#f9f9f9;border-color:#e5e7eb;}
-  .prop-table th{background:#fff8f0;}
-  h1,h2,.capa-title,.prop-sec-title{color:#111 !important;}
-  .prop-table td,.termos-box,.empresa-info p,.ass-info,.kpi-lbl,.capa-info-label,.capa-slogan{color:#555 !important;}
-  .capa-info-val,.ass-nome,.empresa-info strong,.prop-table td.verde,.prop-table td.azul{color:#111 !important;}
-  .graf-bar-c{background:#3B82F6 !important;}
-  .graf-bar-g{background:#22C55E !important;}
+
+  /* ── CADA PÁGINA ── */
+  .prop-page{
+    border:none!important;border-radius:0!important;
+    margin:0!important;padding:0!important;
+    page-break-after:always;page-break-inside:avoid;
+    position:relative;overflow:hidden;
+    min-height:100vh;
+  }
+  .prop-page::before{display:none!important;}
+
+  /* ══════════════════════════════
+     PÁGINA 1 — CAPA IMPACTANTE
+  ══════════════════════════════ */
+  .prop-page:nth-child(1){
+    background:#0A0C0F!important;
+    display:flex!important;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:0!important;
+    min-height:100vh;
+  }
+
+  /* Faixa dourada no topo */
+  .prop-page:nth-child(1)::after{
+    content:'';
+    display:block;
+    position:absolute;
+    top:0;left:0;right:0;
+    height:6px;
+    background:linear-gradient(90deg,#C8922A,#E8B84B,#C8922A)!important;
+  }
+
+  /* Capa — área principal */
+  .capa-header{
+    padding:70px 64px 48px!important;
+    background:#0A0C0F!important;
+    flex:1;
+    position:relative;
+  }
+
+  /* Ornamento decorativo de fundo */
+  .capa-header::before{
+    content:'';
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:500px;height:500px;
+    border-radius:50%;
+    border:1px solid rgba(200,146,42,0.06)!important;
+    background:transparent;
+    pointer-events:none;
+  }
+  .capa-header::after{
+    content:'';
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:340px;height:340px;
+    border-radius:50%;
+    border:1px solid rgba(200,146,42,0.1)!important;
+    background:transparent;
+    pointer-events:none;
+  }
+
+  /* Logo na capa */
+  .capa-logo{
+    font-family:'Cormorant Garamond',serif!important;
+    font-size:18px!important;
+    font-weight:600!important;
+    color:#F8F5F0!important;
+    letter-spacing:0.04em;
+    margin-bottom:6px!important;
+    display:block!important;
+    position:relative;z-index:1;
+  }
+  .capa-logo span{color:#E8B84B!important;}
+
+  .capa-slogan{
+    font-size:9px!important;
+    font-weight:700!important;
+    letter-spacing:0.18em!important;
+    text-transform:uppercase!important;
+    color:rgba(200,146,42,0.6)!important;
+    margin-bottom:64px!important;
+    display:block!important;
+    position:relative;z-index:1;
+  }
+
+  /* Título gigante */
+  .capa-title{
+    font-family:'Cormorant Garamond',serif!important;
+    font-size:86px!important;
+    font-weight:300!important;
+    line-height:0.95!important;
+    letter-spacing:-0.02em!important;
+    color:#F8F5F0!important;
+    margin-bottom:48px!important;
+    position:relative;z-index:1;
+    -webkit-text-fill-color:#F8F5F0!important;
+  }
+  .capa-title em{
+    font-style:italic!important;
+    color:#E8B84B!important;
+    -webkit-text-fill-color:#E8B84B!important;
+    display:block;
+  }
+
+  /* Grid de info da capa */
+  .capa-info-grid{
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:10px!important;
+    position:relative;z-index:1;
+  }
+  .capa-info-item{
+    background:rgba(255,255,255,0.04)!important;
+    border:1px solid rgba(200,146,42,0.2)!important;
+    border-radius:8px!important;
+    padding:14px 16px!important;
+  }
+  .capa-info-label{
+    font-size:9px!important;font-weight:700!important;
+    letter-spacing:0.12em!important;text-transform:uppercase!important;
+    color:rgba(200,146,42,0.6)!important;margin-bottom:5px!important;
+  }
+  .capa-info-val{
+    font-size:13px!important;font-weight:600!important;
+    color:#F8F5F0!important;
+  }
+
+  /* Rodapé da capa — dados da empresa */
+  .prop-page:nth-child(1) > div:last-child{
+    background:rgba(200,146,42,0.08)!important;
+    border-top:1px solid rgba(200,146,42,0.2)!important;
+    padding:24px 64px!important;
+    margin-top:0!important;
+  }
+  .empresa-grid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:0!important;
+  }
+  .empresa-info p{
+    font-size:11px!important;
+    color:rgba(248,245,240,0.6)!important;
+    line-height:1.6!important;
+    margin-bottom:2px!important;
+  }
+  .empresa-info strong{color:#F8F5F0!important;}
+  .empresa-info a{color:#E8B84B!important;text-decoration:none!important;}
+
+  /* ══════════════════════════════
+     PÁGINAS INTERNAS (2 em diante)
+  ══════════════════════════════ */
+  .prop-page:nth-child(n+2){
+    background:#fff!important;
+    padding:52px 56px!important;
+  }
+
+  /* Cabeçalho em cada página interna */
+  .prop-page:nth-child(n+2)::after{
+    content:'Saewel Energia Solar · saewelenergiasolar.com.br · (17) 98209-3739';
+    display:block;
+    position:fixed;
+    bottom:20px;left:56px;right:56px;
+    font-size:9px;
+    color:#aaa!important;
+    text-align:center;
+    border-top:1px solid #e5e7eb;
+    padding-top:8px;
+    font-family:'Outfit',sans-serif;
+  }
+
+  /* Títulos internos */
+  .prop-sec-title{
+    font-family:'Cormorant Garamond',serif!important;
+    font-size:36px!important;
+    font-weight:300!important;
+    color:#0A0C0F!important;
+    margin-bottom:6px!important;
+    -webkit-text-fill-color:#0A0C0F!important;
+    border-bottom:2px solid #E8B84B!important;
+    padding-bottom:12px!important;
+    display:block!important;
+  }
+  .prop-sec-title em{
+    font-style:italic!important;
+    color:#C8922A!important;
+    -webkit-text-fill-color:#C8922A!important;
+  }
+  .prop-sec-sub{
+    font-size:12px!important;
+    color:#666!important;
+    margin-bottom:24px!important;
+  }
+
+  /* KPIs internos */
+  .kpis-grid{
+    display:grid!important;
+    grid-template-columns:repeat(4,1fr)!important;
+    gap:10px!important;
+    margin-bottom:20px!important;
+  }
+  .kpi-box{
+    background:#fff!important;
+    border:1px solid #e5e7eb!important;
+    border-top:3px solid #C8922A!important;
+    border-radius:8px!important;
+    padding:16px 12px!important;
+    text-align:center!important;
+  }
+  .kpi-icon{font-size:20px!important;margin-bottom:6px!important;}
+  .kpi-num{
+    font-family:'Cormorant Garamond',serif!important;
+    font-size:24px!important;font-weight:600!important;
+    color:#C8922A!important;
+    -webkit-text-fill-color:#C8922A!important;
+    display:block!important;margin-bottom:4px!important;
+  }
+  .kpi-lbl{font-size:10px!important;color:#666!important;line-height:1.3!important;}
+
+  /* Tabelas */
+  .prop-table{width:100%!important;border-collapse:collapse!important;font-size:11px!important;}
+  .prop-table th{
+    background:#0A0C0F!important;
+    color:#E8B84B!important;
+    font-size:9px!important;font-weight:700!important;
+    letter-spacing:0.08em!important;text-transform:uppercase!important;
+    padding:9px 12px!important;text-align:left!important;
+  }
+  .prop-table td{
+    padding:8px 12px!important;
+    border-bottom:1px solid #f0f0f0!important;
+    color:#333!important;
+  }
+  .prop-table tr:nth-child(even) td{background:#fafafa!important;}
+  .prop-table tr.total-row td{
+    background:#fff8f0!important;
+    font-weight:700!important;
+    color:#C8922A!important;
+    border-top:2px solid #E8B84B!important;
+  }
+  .prop-table td.verde{color:#16a34a!important;font-weight:600!important;}
+  .prop-table td.azul{color:#2563eb!important;font-weight:600!important;}
+  .prop-table td.ouro{color:#C8922A!important;font-weight:700!important;}
+  .prop-table td.neg{color:#dc2626!important;}
+  .prop-table td.pos{color:#16a34a!important;font-weight:600!important;}
+  .status-inv{background:#dbeafe!important;color:#1d4ed8!important;padding:2px 6px!important;border-radius:4px!important;font-size:9px!important;}
+  .status-luc{background:#dcfce7!important;color:#15803d!important;padding:2px 6px!important;border-radius:4px!important;font-size:9px!important;}
+
+  /* Seção de dimensionamento — 2 colunas */
+  .prop-page:nth-child(2) > div:last-child{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:20px!important;
+  }
+  .form-section-title{
+    font-size:10px!important;font-weight:700!important;
+    letter-spacing:0.12em!important;text-transform:uppercase!important;
+    color:#C8922A!important;margin-bottom:10px!important;
+    border-bottom:1px solid #f0e0c8!important;padding-bottom:6px!important;
+  }
+  .form-section-title::after{display:none!important;}
+
+  /* Gráfico barras */
+  .graf-bars-cv{
+    height:100px!important;
+    display:flex!important;align-items:flex-end!important;gap:4px!important;
+  }
+  .graf-bar-group{
+    flex:1!important;display:flex!important;align-items:flex-end!important;gap:2px!important;height:100%!important;
+  }
+  .graf-bar-c{background:#2563eb!important;border-radius:2px 2px 0 0!important;min-height:3px!important;}
+  .graf-bar-g{background:#16a34a!important;border-radius:2px 2px 0 0!important;min-height:3px!important;}
+  .graf-leg-dot{width:10px!important;height:10px!important;border-radius:2px!important;}
+  .graf-legenda{margin-bottom:8px!important;}
+  .graf-leg-item{font-size:11px!important;color:#333!important;}
+
+  /* Payback bar */
+  .payback-track{background:#f0f0f0!important;height:6px!important;border-radius:3px!important;}
+  .payback-fill{background:linear-gradient(90deg,#C8922A,#E8B84B)!important;height:6px!important;border-radius:3px!important;}
+  .payback-marks{font-size:9px!important;color:#999!important;}
+
+  /* Ambiental */
+  .ambiental-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:12px!important;}
+  .amb-box{
+    background:#f0fdf4!important;
+    border:1px solid #bbf7d0!important;
+    border-radius:8px!important;padding:18px!important;text-align:center!important;
+  }
+  .amb-icon{font-size:28px!important;margin-bottom:8px!important;}
+  .amb-num{font-size:22px!important;font-weight:700!important;color:#15803d!important;margin-bottom:4px!important;}
+  .amb-lbl{font-size:11px!important;color:#555!important;line-height:1.4!important;}
+
+  /* Termos */
+  .termos-box{
+    background:#fafafa!important;border:1px solid #e5e7eb!important;
+    border-radius:8px!important;padding:20px!important;
+    font-size:11px!important;color:#444!important;line-height:1.7!important;
+  }
+  .termos-item{
+    display:flex!important;align-items:flex-start!important;
+    gap:10px!important;padding:8px 0!important;
+    border-bottom:1px solid #f0f0f0!important;
+  }
+  .termos-item:last-child{border-bottom:none!important;}
+  .termos-icon{font-size:14px!important;}
+  .termos-box strong{color:#C8922A!important;}
+
+  /* Assinaturas */
+  .assinaturas{display:grid!important;grid-template-columns:1fr 1fr!important;gap:48px!important;margin-top:32px!important;}
+  .ass-box{border-top:2px solid #0A0C0F!important;padding-top:10px!important;}
+  .ass-nome{font-size:14px!important;font-weight:700!important;color:#0A0C0F!important;}
+  .ass-info{font-size:11px!important;color:#666!important;}
+
+  /* Nota técnica */
+  p[style*="11px"]{font-size:10px!important;color:#999!important;}
 }
 
 /* RESPONSIVE */

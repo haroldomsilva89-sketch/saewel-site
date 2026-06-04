@@ -968,7 +968,7 @@ document.getElementById('cidadeInput').addEventListener('input', function(){
   list.innerHTML = res.map(c => {
     const uf = c.split(' - ')[1]||'';
     const nm = c.replace(' - '+uf,'');
-    return `<div class="ac-item" onclick="selCidade('${c.replace(/'/g,"\'")}',${SOLAR_DB[c]})">📍 ${nm} <span class="ac-uf">${uf}</span><span class="ac-irr">${SOLAR_DB[c].toFixed(2)}</span></div>`;
+    return `<div class="ac-item" onpointerdown="event.preventDefault();selCidade('${c.replace(/'/g,"\'")}',${SOLAR_DB[c]})">📍 ${nm} <span class="ac-uf">${uf}</span><span class="ac-irr">${SOLAR_DB[c].toFixed(2)}</span></div>`;
   }).join('');
   list.classList.add('show');
 });
@@ -980,7 +980,13 @@ document.getElementById('cidadeInput').addEventListener('keydown',function(e){
   if(e.key==='Escape'){document.getElementById('acList').classList.remove('show');}
 });
 document.addEventListener('click',e=>{if(!e.target.closest('.ac-wrap'))document.getElementById('acList').classList.remove('show');});
-function selCidade(c,irr){document.getElementById('cidadeInput').value=c;document.getElementById('cidadeValor').value=c;document.getElementById('cidadeIrr').value=irr;document.getElementById('acList').classList.remove('show');}
+function selCidade(c,irr){
+  document.getElementById('cidadeInput').value=c;
+  document.getElementById('cidadeValor').value=c;
+  document.getElementById('cidadeIrr').value=irr;
+  document.getElementById('acList').classList.remove('show');
+  document.getElementById('cidadeInput').blur(); // fecha teclado no mobile
+}
 
 // ── SLIDER ──
 const slider=document.getElementById('consumo');
@@ -1252,7 +1258,7 @@ Gostaria de avançar com o projeto!`);
 
   // ── SALVAR LEAD NO GOOGLE SHEETS ──
   salvarLead({
-    nome, telefone: tel, cidade:
+    nome, telefone: tel, cidade,
     perfil: PERFIS[perfil],
     consumo: consumoMedio,
     kwp: kWp.toFixed(2),

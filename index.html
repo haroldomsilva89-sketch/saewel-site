@@ -74,8 +74,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;height:72px;background:rgba(10,12,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12);transition:background 0.3s;}
 nav.scrolled{background:rgba(10,12,15,0.97);}
 .nav-logo{display:flex;align-items:center;text-decoration:none;}
-.nav-links{display:flex;align-items:center;justify-content:center;gap:28px;list-style:none;}
-.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
 .nav-links a:hover{color:var(--branco);}
 .nav-links a.ativo{color:var(--ouro-claro);}
 .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;}
@@ -359,7 +359,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 ════════════════════════════════ -->
 <nav id="mainNav">
   <a href="/" class="nav-logo">
-    <svg width="160" height="66" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+    <svg width="130" height="54" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
       <title>Saewel Energia Solar</title>
       <defs><clipPath id="hc"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
       <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
@@ -378,7 +378,6 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
   </a>
 
   <ul class="nav-links">
-    <li><a href="/" class="ativo">Home</a></li>
     <li><a href="/sobre/">Sobre</a></li>
     <li class="nav-dropdown">
       <a href="#servicos" style="cursor:pointer;">Serviços ▾</a>
@@ -403,6 +402,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
     <li><a href="/cidades/">Cidades</a></li>
     <li><a href="/avaliacoes/">Avaliações</a></li>
     <li><a href="/blog/">Blog</a></li>
+    <li><a href="/contato/">Contato</a></li>
   </ul>
 
   <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
@@ -419,6 +419,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
   <a href="/cidades/">Cidades</a>
   <a href="/avaliacoes/">Avaliações</a>
   <a href="/blog/">Blog</a>
+  <a href="/contato/">Contato</a>
   <a href="https://wa.me/5517982093739" class="mob-btn" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
 </div>
 
@@ -599,7 +600,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
     </div>
 
     <!-- serviços secundários em linha compacta -->
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;justify-content:center;">
       <a href="/monitoramento/" style="display:inline-flex;align-items:center;gap:8px;background:var(--noite3);border:1px solid rgba(200,146,42,0.1);border-radius:999px;padding:10px 18px;font-size:13px;color:var(--cinza);text-decoration:none;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(200,146,42,0.35)';this.style.color='var(--branco)'" onmouseout="this.style.borderColor='rgba(200,146,42,0.1)';this.style.color='var(--cinza)'">📊 Monitoramento →</a>
       <a href="/consultoria/" style="display:inline-flex;align-items:center;gap:8px;background:var(--noite3);border:1px solid rgba(200,146,42,0.1);border-radius:999px;padding:10px 18px;font-size:13px;color:var(--cinza);text-decoration:none;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(200,146,42,0.35)';this.style.color='var(--branco)'" onmouseout="this.style.borderColor='rgba(200,146,42,0.1)';this.style.color='var(--cinza)'">🎓 Consultoria Técnica →</a>
       <a href="/armazenamento-de-energia/" style="display:inline-flex;align-items:center;gap:8px;background:var(--noite3);border:1px solid rgba(200,146,42,0.1);border-radius:999px;padding:10px 18px;font-size:13px;color:var(--cinza);text-decoration:none;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(200,146,42,0.35)';this.style.color='var(--branco)'" onmouseout="this.style.borderColor='rgba(200,146,42,0.1)';this.style.color='var(--cinza)'">🔋 Armazenamento BESS →</a>
@@ -835,7 +836,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
       <a href="/avaliacoes/">Avaliações</a>
       <a href="/blog/">Blog</a>
       <a href="/calculadora/">Calculadora Solar</a>
-      <a href="#contato">Contato</a>
+      <a href="/contato/">Contato</a>
     </div>
     <div class="foot-col">
       <h4>Legal</h4>

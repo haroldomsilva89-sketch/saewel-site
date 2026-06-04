@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Saewel Energia Solar | Artigos sobre energia fotovoltaica</title>
-  <meta name="description" content="Artigos técnicos sobre energia solar, BESS, armazenamento, projetos fotovoltaicos e o mercado de energia renovável no Brasil. Por Haroldo M. Silva, engenheiro de energias renováveis.">
+  <title>Blog de Energia Solar | Saewel — Artigos Técnicos por Engenheiro</title>
+  <meta name="description" content="Artigos técnicos sobre energia solar fotovoltaica, armazenamento BESS e mercado de energia renovável no Brasil. Conteúdo escrito por Haroldo M. Silva, engenheiro de energias renováveis.">
   <meta name="author" content="Haroldo M. Silva — Saewel Energia Solar">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/">
-  <meta property="og:title" content="Blog — Saewel Energia Solar">
-  <meta property="og:description" content="Artigos técnicos sobre energia solar, BESS e o mercado fotovoltaico no Brasil.">
+  <meta property="og:title" content="Blog de Energia Solar | Saewel — Artigos Técnicos por Engenheiro">
+  <meta property="og:description" content="Artigos técnicos sobre energia solar fotovoltaica, armazenamento BESS e mercado de energia renovável no Brasil. Conteúdo escrito por Haroldo M. Silva, engenheiro de energias renováveis.">
   <meta property="og:site_name" content="Saewel Energia Solar">
 
   <script type="application/ld+json">
@@ -34,7 +34,7 @@
   </script>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <meta name="keywords" content="energia solar, painel solar, blog solar, artigos energia solar, fotovoltaico, BESS, Lei 14300, Fio B, São José do Rio Preto">
+  <meta name="keywords" content="blog energia solar, artigos fotovoltaico, energia solar Brasil, BESS armazenamento solar">
   <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,56 +76,35 @@
       opacity: 0.4;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 500;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      padding: 0 5%;
-      height: 72px;
-      background: rgba(10,12,15,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(200,146,42,0.12);
-    }
-
-    .nav-logo { display:flex;align-items:center;text-decoration:none; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--cinza);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--branco); }
-    .nav-links a.ativo { color: var(--ouro-claro); }
-
-    .nav-btn {
-      background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
-      color: var(--noite) !important;
-      padding: 11px 36px;
-      border-radius: 50px;
-      font-weight: 700 !important;
-      letter-spacing: 0.04em !important;
-      transition: all 0.3s !important;
-      box-shadow: 0 4px 20px rgba(200,146,42,0.35);
-      text-decoration: none;
-    }
-    .nav-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(200,146,42,0.5) !important;
-    }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;height:72px;background:rgba(10,12,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--branco);}
+.nav-links a.ativo{color:var(--ouro-claro);}
+.nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;}
+.nav-cta{justify-self:end;}
+.nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,146,42,0.5)!important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--branco);border-radius:2px;transition:all 0.35s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(10,12,15,0.97);backdrop-filter:blur(20px);z-index:499;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;pointer-events:none;transition:opacity 0.35s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{font-size:22px;font-weight:500;color:var(--cinza);text-decoration:none;letter-spacing:0.06em;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);width:80%;text-align:center;transition:color 0.3s;}
+.mobile-menu a:hover{color:var(--branco);}
+.mobile-menu .mob-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:16px 36px;border-radius:50px;font-weight:700;margin-top:12px;border-bottom:none!important;font-size:15px!important;}
+.nav-dropdown{position:relative;}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(17,20,24,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,146,42,0.18);border-radius:14px;min-width:230px;z-index:600;box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:10px 0;}
+.nav-dropdown-menu::before{content:'';display:block;height:12px;margin-top:-12px;}
+.nav-dropdown:hover .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu li{list-style:none;}
+.nav-dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(212,207,200,0.85);text-decoration:none;text-transform:none!important;transition:all 0.2s;}
+.nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);padding-left:24px;}
+.nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
+.nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
 
     /* ── HERO ── */
     .blog-hero {
@@ -477,27 +456,6 @@
       }
     }
 
-    /* ── NAV extras (dropdown, hamburger, mobile) ── */
-    .nav-cta { justify-self: end; }
-    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 600; }
-    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--branco); border-radius: 2px; transition: all 0.35s; transform-origin: center; }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: rgba(10,12,15,0.97); backdrop-filter: blur(20px); z-index: 499; flex-direction: column; align-items: center; justify-content: center; gap: 12px; opacity: 0; pointer-events: none; transition: opacity 0.35s; }
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
-    .mobile-menu a { font-size: 22px; font-weight: 500; color: var(--cinza); text-decoration: none; letter-spacing: 0.06em; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; transition: color 0.3s; }
-    .mobile-menu a:hover { color: var(--branco); }
-    .mobile-menu .mob-btn { background: linear-gradient(135deg, var(--ouro), var(--ouro-claro)); color: var(--noite) !important; padding: 16px 36px; border-radius: 50px; font-weight: 700; margin-top: 12px; border-bottom: none !important; font-size: 15px !important; }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: rgba(17,20,24,0.98); backdrop-filter: blur(20px); border: 1px solid rgba(200,146,42,0.18); border-radius: 14px; min-width: 230px; z-index: 600; box-shadow: 0 20px 60px rgba(0,0,0,0.5); padding: 10px 0; }
-    .nav-dropdown-menu::before { content: ''; display: block; height: 12px; margin-top: -12px; }
-    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
-    .nav-dropdown-menu li { list-style: none; }
-    .nav-dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; font-weight: 500; color: rgba(212,207,200,0.85); text-decoration: none; text-transform: none !important; transition: all 0.2s; }
-    .nav-dropdown-menu a:hover { color: #E8B84B; background: rgba(200,146,42,0.07); padding-left: 24px; }
-    .nav-dropdown-divider { height: 1px; background: rgba(200,146,42,0.12); margin: 6px 0; }
-    .nav-dropdown-label { display: block; padding: 8px 20px 4px; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,146,42,0.6); cursor: default; }
     /* ── FOOTER padrão ── */
     .footer-novo { background: var(--noite); border-top: 1px solid rgba(200,146,42,0.1); padding: 60px 5% 0; }
     .footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.04); }
@@ -523,9 +481,8 @@
     .wa-float:hover { transform: scale(1.1); }
     @keyframes wa-pulse { 0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.05);opacity:0.85;} }
     @media(max-width:1200px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; } }
-    @media(max-width:768px) { .nav-links, .nav-cta { display: none; } .nav-hamburger { display: flex; grid-column: 3; } .mobile-menu { display: flex; } }
-    @media(max-width:640px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-bottom { flex-direction: column; gap: 8px; } }
-    @media(max-width:400px) { .footer-grid { grid-template-columns: 1fr; } }
+    @media(max-width:768px){.footer-novo{padding:40px 5% 0;}.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}.foot-desc{max-width:100%;}.footer-qr-inline{margin-top:8px;}.footer-bottom{flex-direction:column;gap:6px;text-align:center;padding:16px 0;}.footer-copy{font-size:11px;}}
+    @media(max-width:480px){.footer-grid{grid-template-columns:1fr 1fr;gap:20px 16px;}.foot-col h4{margin-bottom:10px;}.foot-col a{font-size:12px;margin-bottom:6px;}.foot-logo{font-size:18px;}.foot-desc{font-size:12px;}.foot-socials{flex-direction:row;flex-wrap:wrap;gap:12px;}.social-icon{font-size:12px;}.wa-float{bottom:20px;right:20px;width:50px;height:50px;font-size:22px;}}
   </style>
 </head>
 <body>
@@ -534,7 +491,7 @@
 <nav id="mainNav">
   <a href="/" class="nav-logo">
     <svg width="160" height="66" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
-      <title>Saewel Energia Solar</title>
+      <title>Blog de Energia Solar | Saewel — Artigos Técnicos por Engenheiro</title>
       <defs><clipPath id="hc"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
       <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
       <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>

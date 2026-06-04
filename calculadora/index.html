@@ -289,6 +289,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     pointer-events:none;
   }
 
+  /* Logo SVG na capa */
+  .capa-logo-svg{
+    display:block!important;
+    margin-bottom:12px!important;
+    position:relative;z-index:1;
+  }
+  .capa-logo-svg svg{
+    filter:brightness(1.1)!important;
+  }
+  .capa-logo{display:none!important;}
+
   /* Logo na capa */
   .capa-logo{
     font-family:'Cormorant Garamond',serif!important;
@@ -303,25 +314,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .capa-logo span{color:#E8B84B!important;}
 
   .capa-slogan{
-    font-size:9px!important;
-    font-weight:700!important;
-    letter-spacing:0.18em!important;
-    text-transform:uppercase!important;
-    color:rgba(200,146,42,0.6)!important;
-    margin-bottom:64px!important;
-    display:block!important;
-    position:relative;z-index:1;
+    display:none!important;
   }
 
   /* Título gigante */
   .capa-title{
     font-family:'Cormorant Garamond',serif!important;
-    font-size:86px!important;
+    font-size:82px!important;
     font-weight:300!important;
     line-height:0.95!important;
     letter-spacing:-0.02em!important;
     color:#F8F5F0!important;
-    margin-bottom:48px!important;
+    margin-bottom:44px!important;
+    margin-top:20px!important;
     position:relative;z-index:1;
     -webkit-text-fill-color:#F8F5F0!important;
   }
@@ -384,7 +389,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     padding:52px 56px!important;
   }
 
-  /* Cabeçalho em cada página interna */
+  /* Cabeçalho com logo em cada página interna */
+  .prop-page:nth-child(n+2)::before{
+    content:'';
+    display:block;
+    height:4px;
+    background:linear-gradient(90deg,#C8922A,#E8B84B,#C8922A)!important;
+    position:absolute;
+    top:0;left:0;right:0;
+  }
+  .prop-page-logo{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    margin-bottom:28px!important;
+    padding-bottom:16px!important;
+    border-bottom:1px solid #f0e0c8!important;
+  }
+  .prop-page-logo svg{display:block!important;}
+  .prop-page-logo-info{
+    text-align:right!important;
+    font-size:9px!important;
+    color:#999!important;
+    line-height:1.6!important;
+    font-family:'Outfit',sans-serif!important;
+  }
+
+  /* Cabeçalho rodapé em cada página interna */
   .prop-page:nth-child(n+2)::after{
     content:'Saewel Energia Solar · saewelenergiasolar.com.br · (17) 98209-3739';
     display:block;
@@ -728,7 +759,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     <!-- PÁGINA 1: CAPA -->
     <div class="prop-page">
       <div class="capa-header">
-        <div class="capa-logo">Saewel <span>Energia Solar</span></div>
+        <!-- Logo SVG real -->
+        <div class="capa-logo-svg" style="margin-bottom:8px;">
+          <svg width="220" height="91" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+            <title>Saewel Energia Solar</title>
+            <defs><clipPath id="hcpdf"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
+            <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
+            <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+            <line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+            <line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+            <line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+            <line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+            <line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hcpdf)"/>
+            <circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hcpdf)"/>
+            <circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hcpdf)"/>
+            <text x="340" y="192" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text>
+            <text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text>
+          </svg>
+        </div>
+        <div class="capa-logo" style="display:none;">Saewel <span>Energia Solar</span></div>
         <div class="capa-slogan">A ENERGIA DO SOL AO SEU ALCANCE</div>
         <div class="capa-title">Proposta<br><em>Comercial</em></div>
         <div class="capa-info-grid">
@@ -761,6 +811,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
     <!-- PÁGINA 2: DIMENSIONAMENTO + KPIs -->
     <div class="prop-page">
+      <div class="prop-page-logo">
+        <svg width="110" height="45" viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="hcint"><rect x="240" y="0" width="200" height="108"/></clipPath></defs><line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/><line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hcint)"/><circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hcint)"/><circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hcint)"/><text x="340" y="192" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text><text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text></svg>
+        <div class="prop-page-logo-info">saewelenergiasolar.com.br<br>(17) 98209-3739</div>
+      </div>
       <div class="prop-sec-title">Detalhes da <em>Proposta</em></div>
       <div class="prop-sec-sub">Dimensionamento técnico e análise financeira personalizada</div>
 
@@ -814,6 +868,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
     <!-- PÁGINA 3: GERAÇÃO MÊS A MÊS -->
     <div class="prop-page">
+      <div class="prop-page-logo">
+        <svg width="110" height="45" viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="hcint4"><rect x="240" y="0" width="200" height="108"/></clipPath></defs><line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/><line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hcint4)"/><circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hcint4)"/><circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hcint4)"/><text x="340" y="192" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text><text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text></svg>
+        <div class="prop-page-logo-info">saewelenergiasolar.com.br<br>(17) 98209-3739</div>
+      </div>
       <div class="prop-sec-title">Geração de <em>Energia</em></div>
       <div class="prop-sec-sub">Estimativa de geração mês a mês — Consumo × Geração</div>
 
@@ -848,6 +906,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
     <!-- PÁGINA 4: RETORNO DO INVESTIMENTO -->
     <div class="prop-page">
+      <div class="prop-page-logo">
+        <svg width="110" height="45" viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="hcint5"><rect x="240" y="0" width="200" height="108"/></clipPath></defs><line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/><line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hcint5)"/><circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hcint6)"/><circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hcint6)"/><text x="340" y="192" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text><text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text></svg>
+        <div class="prop-page-logo-info">saewelenergiasolar.com.br<br>(17) 98209-3739</div>
+      </div>
       <div class="prop-sec-title">Retorno do <em>Investimento</em></div>
       <div class="prop-sec-sub">Projeção de 25 anos com inflação tarifária de 4% ao ano</div>
       <table class="prop-table">
@@ -864,6 +926,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
     <!-- PÁGINA 5: ANÁLISE + AMBIENTAL -->
     <div class="prop-page">
+      <div class="prop-page-logo">
+        <svg width="110" height="45" viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="hcint6"><rect x="240" y="0" width="200" height="108"/></clipPath></defs><line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/><line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hcint6)"/><circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hcint6)"/><circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hcint6)"/><text x="340" y="192" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text><text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text></svg>
+        <div class="prop-page-logo-info">saewelenergiasolar.com.br<br>(17) 98209-3739</div>
+      </div>
       <div class="prop-sec-title">Análise do <em>Investimento</em></div>
       <div class="prop-sec-sub">Indicadores financeiros e retorno ambiental em 25 anos</div>
       <div class="kpis-grid" style="margin-bottom:32px;">
@@ -882,6 +948,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
     <!-- PÁGINA 6: TERMOS + ASSINATURAS -->
     <div class="prop-page">
+      <div class="prop-page-logo">
+        <svg width="110" height="45" viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="hcint3"><rect x="240" y="0" width="200" height="108"/></clipPath></defs><line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/><line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/><line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/><line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/><circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hcint3)"/><circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hcint3)"/><circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hcint3)"/><text x="340" y="192" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text><text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text></svg>
+        <div class="prop-page-logo-info">saewelenergiasolar.com.br<br>(17) 98209-3739</div>
+      </div>
       <div class="prop-sec-title">Termos e <em>Condições</em></div>
       <div class="prop-sec-sub">Condições para fornecimento dos produtos e serviços descritos nesta proposta</div>
       <div class="termos-box">
@@ -985,7 +1055,7 @@ function selCidade(c,irr){
   document.getElementById('cidadeValor').value=c;
   document.getElementById('cidadeIrr').value=irr;
   document.getElementById('acList').classList.remove('show');
-  document.getElementById('cidadeInput').blur(); // fecha teclado no mobile
+  document.getElementById('cidadeInput').blur();
 }
 
 // ── SLIDER ──

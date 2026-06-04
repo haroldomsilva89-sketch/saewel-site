@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulador Solar | Saewel Energia Solar</title>
-<meta name="description" content="Simule seu sistema de energia solar e receba uma proposta técnica completa na hora. Saewel Energia Solar — São José do Rio Preto.">
+<title>Simulador Solar Gratuito | Calcule sua Economia — Saewel Energia Solar</title>
+<meta name="description" content="Simule gratuitamente seu sistema fotovoltaico. Receba dimensionamento real, análise financeira de 25 anos e comparativo de geração. Projeto personalizado para São José do Rio Preto e região.">
+<meta name="keywords" content="calculadora energia solar, simulador solar gratuito, quanto economiza painel solar, dimensionamento fotovoltaico">
+<meta property="og:title" content="Simulador Solar Gratuito | Calcule sua Economia — Saewel Energia Solar">
+<meta property="og:description" content="Simule gratuitamente seu sistema fotovoltaico. Receba dimensionamento real, análise financeira de 25 anos e comparativo de geração. Projeto personalizado para São José do Rio Preto e região.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simulador Solar Gratuito | Calcule sua Economia — Saewel Energia Solar">
+<meta name="twitter:description" content="Simule gratuitamente seu sistema fotovoltaico. Receba dimensionamento real, análise financeira de 25 anos e comparativo de geração. Projeto personalizado para São José do Rio Preto e região.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="calculadora energia solar, simulador solar gratuito, quanto economiza painel solar, dimensionamento fotovoltaico">
 <link rel="canonical" href="https://www.saewelenergiasolar.com.br/calculadora/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0C0F'/%3E%3Ccircle cx='32' cy='34' r='16' fill='%23F5C040'/%3E%3Ccircle cx='32' cy='34' r='12' fill='%23E8A020'/%3E%3Ccircle cx='32' cy='34' r='8' fill='%23F5C040'/%3E%3Crect x='0' y='34' width='64' height='30' fill='%230A0C0F'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#C8922A">
@@ -217,13 +227,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 @media print{
   /* ── OCULTAR INTERFACE ── */
   nav,.btn-calcular,.prop-ctas,.btn-nova,.footer-mini,
-  #formulario,.loading,body::before{display:none!important;}
+  #formulario,.loading,body::before,.page-header{display:none!important;}
 
   /* ── RESET GERAL ── */
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
-  html,body{background:#fff!important;margin:0;padding:0;}
-  .wrapper{padding:0!important;max-width:100%!important;margin:0!important;}
-  #proposta{display:block!important;}
+  html,body{background:#fff!important;margin:0;padding:0;width:100%!important;}
+  .wrapper{padding:0!important;max-width:100%!important;margin:0!important;width:100%!important;}
+  #proposta{display:block!important;width:100%!important;}
 
   /* ── CADA PÁGINA ── */
   .prop-page{
@@ -232,6 +242,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     page-break-after:always;page-break-inside:avoid;
     position:relative;overflow:hidden;
     min-height:100vh;
+  }
+  .prop-page:last-of-type{
+    page-break-after:avoid!important;
+  }
+  #propRodape{
+    display:block!important;
+    font-size:10px!important;
+    color:#aaa!important;
+    text-align:center!important;
+    margin-top:24px!important;
+    padding-top:12px!important;
+    border-top:1px solid #e5e7eb!important;
   }
   .prop-page::before{display:none!important;}
 
@@ -585,6 +607,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
   /* Nota técnica */
   p[style*="11px"]{font-size:10px!important;color:#999!important;}
+
+  /* Mobile print overrides — força largura total */
+  .prop-page-logo{flex-direction:row!important;align-items:center!important;}
+  .prop-page-logo svg{width:110px!important;height:45px!important;}
+  #tabelaRetorno, #tabelaMensal{overflow:visible!important;display:table!important;}
+  .prop-page > div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr!important;}
 }
 
 /* RESPONSIVE */
@@ -599,11 +627,45 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .consumo-meses{grid-template-columns:repeat(4,1fr);}
   .form-card{padding:24px 18px;}
   .prop-page{padding:28px 18px;}
+
+  /* Logo header no mobile */
+  .prop-page-logo{flex-direction:column;align-items:flex-start;gap:8px;}
+  .prop-page-logo svg{width:90px;height:37px;}
+  .prop-page-logo-info{text-align:left!important;}
+
+  /* Capa no mobile */
+  .capa-header{padding:32px 20px 24px!important;}
+  .capa-logo-svg svg{width:160px!important;height:66px!important;}
+  .capa-title{font-size:clamp(42px,10vw,72px)!important;}
+
+  /* Tabelas no mobile — scroll horizontal */
+  .prop-table{font-size:11px!important;}
+  .prop-table th{font-size:9px!important;padding:7px 8px!important;}
+  .prop-table td{padding:7px 8px!important;}
+
+  /* Grid 2 colunas do dimensionamento vira 1 coluna */
+  .prop-page > div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;
+  }
+
+  /* Tabela de retorno — wrapper com scroll */
+  #tabelaRetorno, #tabelaMensal{
+    display:block;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* KPIs capa mobile */
+  .kpi-num{font-size:22px!important;}
+  .kpi-box{padding:14px 8px!important;}
 }
 @media(max-width:480px){
   .wrapper{padding:90px 4% 60px;}
   .kpis-grid{grid-template-columns:1fr 1fr;}
   .consumo-meses{grid-template-columns:repeat(3,1fr);}
+  .prop-page{padding:20px 14px;}
+  .capa-info-grid{grid-template-columns:1fr!important;}
+  .graf-bars-cv{height:80px;}
 }
 </style>
 </head>
@@ -612,7 +674,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 <nav>
   <a href="/" class="nav-logo">
     <svg width="140" height="58" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
-      <title>Saewel Energia Solar</title>
+      <title>Simulador Solar Gratuito | Calcule sua Economia — Saewel Energia Solar</title>
       <defs><clipPath id="hc"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
       <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
       <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
@@ -762,7 +824,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         <!-- Logo SVG real -->
         <div class="capa-logo-svg" style="margin-bottom:8px;">
           <svg width="220" height="91" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
-            <title>Saewel Energia Solar</title>
+            <title>Simulador Solar Gratuito | Calcule sua Economia — Saewel Energia Solar</title>
             <defs><clipPath id="hcpdf"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
             <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
             <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>

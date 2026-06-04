@@ -225,6 +225,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
 /* PRINT */
 @media print{
+  @page{
+    size:A4;
+    margin:0;
+  }
+  @page:first{ margin:0; }
+
+  /* Contador de páginas */
+  #proposta{ counter-reset: pagina; }
+  .prop-page:nth-child(n+2){ counter-increment: pagina; }
+
   /* ── OCULTAR INTERFACE ── */
   nav,.btn-calcular,.prop-ctas,.btn-nova,.footer-mini,
   #formulario,.loading,body::before,.page-header{display:none!important;}
@@ -239,9 +249,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .prop-page{
     border:none!important;border-radius:0!important;
     margin:0!important;padding:0!important;
-    page-break-after:always;page-break-inside:avoid;
-    position:relative;overflow:hidden;
-    min-height:100vh;
+    page-break-after:always;
+    page-break-inside:avoid;
+    position:relative;overflow:visible;
   }
   .prop-page:last-of-type{
     page-break-after:avoid!important;
@@ -266,7 +276,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     flex-direction:column;
     justify-content:space-between;
     padding:0!important;
-    min-height:100vh;
   }
 
   /* Faixa dourada no topo */
@@ -408,7 +417,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   ══════════════════════════════ */
   .prop-page:nth-child(n+2){
     background:#fff!important;
-    padding:52px 56px!important;
+    padding:48px 52px 36px!important;
   }
 
   /* Cabeçalho com logo em cada página interna */
@@ -437,17 +446,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     font-family:'Outfit',sans-serif!important;
   }
 
-  /* Cabeçalho rodapé em cada página interna */
+  /* Rodapé em cada página interna */
   .prop-page:nth-child(n+2)::after{
-    content:'Saewel Energia Solar · saewelenergiasolar.com.br · (17) 98209-3739';
+    content:'Saewel Energia Solar · saewelenergiasolar.com.br · (17) 98209-3739 · ' counter(pagina) '/' var(--total-pages, '6');
     display:block;
-    position:fixed;
-    bottom:20px;left:56px;right:56px;
     font-size:9px;
     color:#aaa!important;
     text-align:center;
     border-top:1px solid #e5e7eb;
     padding-top:8px;
+    margin-top:32px;
     font-family:'Outfit',sans-serif;
   }
 
@@ -502,11 +510,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   /* Tabelas */
   .prop-table{width:100%!important;border-collapse:collapse!important;font-size:10px!important;}
   /* Tabela de retorno 25 anos — compactar para caber em 1 página */
-  #tabelaRetorno tr td, #tabelaRetorno tr th{padding:5px 8px!important;}
-  .prop-table th{padding:7px 8px!important;font-size:8.5px!important;}
-  .prop-page:nth-child(4) .prop-sec-title{font-size:26px!important;margin-bottom:4px!important;}
-  .prop-page:nth-child(4) .prop-sec-sub{margin-bottom:12px!important;}
-  .prop-page:nth-child(4) p[style*="11px"]{margin-top:4px!important;}
+  #tabelaRetorno tr td, #tabelaRetorno tr th{padding:3px 5px!important;font-size:8.5px!important;}
+  .prop-table th{padding:5px 6px!important;font-size:8px!important;}
+  .prop-page:nth-child(4) .prop-sec-title{font-size:22px!important;margin-bottom:2px!important;}
+  .prop-page:nth-child(4) .prop-sec-sub{margin-bottom:6px!important;}
+  .prop-page:nth-child(4) p[style*="11px"]{margin-top:2px!important;}
+  .prop-page:nth-child(4){page-break-inside:auto!important;}
   .prop-table th{
     background:#0A0C0F!important;
     color:#E8B84B!important;
@@ -1410,6 +1419,12 @@ Gostaria de avançar com o projeto!`);
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
 function formatMoeda(n){return parseFloat(n).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function novaSimulacao(){document.getElementById('proposta').classList.remove('show');document.getElementById('formulario').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+
+// Numeração de páginas no print
+window.addEventListener('beforeprint',()=>{
+  const total=document.querySelectorAll('#proposta .prop-page').length-1;
+  document.getElementById('proposta').style.setProperty('--total-pages',`"${total}"`);
+});
 </script>
 </body>
 </html>

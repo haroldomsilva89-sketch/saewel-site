@@ -667,6 +667,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   /* Mobile print overrides — força largura total */
   .prop-page-logo{flex-direction:row!important;align-items:center!important;}
   .prop-page-logo svg{width:110px!important;height:45px!important;}
+  img{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   #tabelaMensal,#tabelaRetorno{display:table-row-group!important;}
   #tabelaMensal tr,#tabelaRetorno tr{display:table-row!important;}
   #tabelaMensal td,#tabelaMensal th,#tabelaRetorno td,#tabelaRetorno th{display:table-cell!important;}
@@ -1107,6 +1108,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           <div class="ass-nome" id="assCliente">—</div>
           <div class="ass-info" id="assTel">—</div>
           <div class="ass-info" id="assLocal">—</div>
+        </div>
+      </div>
+
+      <!-- QR CODES -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;padding:20px 0;border-top:1px solid rgba(200,146,42,0.12);border-bottom:1px solid rgba(200,146,42,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=96x96&data=https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pela%20proposta%20da%20Saewel%20e%20quero%20mais%20informa%C3%A7%C3%B5es&color=C8922A&bgcolor=0A0C0F" width="88" height="88" alt="QR WhatsApp" style="border-radius:8px;">
+          <div style="font-size:11px;font-weight:700;color:var(--ouro-claro);letter-spacing:0.06em;text-transform:uppercase;">Fale pelo WhatsApp</div>
+          <div style="font-size:10px;color:var(--cinza);">(17) 98209-3739</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=96x96&data=https://www.saewelenergiasolar.com.br&color=C8922A&bgcolor=0A0C0F" width="88" height="88" alt="QR Site" style="border-radius:8px;">
+          <div style="font-size:11px;font-weight:700;color:var(--ouro-claro);letter-spacing:0.06em;text-transform:uppercase;">Conheça nosso site</div>
+          <div style="font-size:10px;color:var(--cinza);">saewelenergiasolar.com.br</div>
         </div>
       </div>
 

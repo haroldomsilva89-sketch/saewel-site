@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 .nav-logo{display:flex;align-items:center;text-decoration:none;}
 .nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;}
 .nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
-.nav-links a:hover{color:var(--branco);}
+.nav-links a:hover{color:var(--branco);}.nav-links a.ativo{color:var(--ouro-claro);}
 .nav-links a.ativo{color:var(--ouro-claro);}
 .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;}
 .nav-cta{justify-self:end;}
@@ -296,13 +296,14 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
         <li class="nav-dropdown-divider"></li>
         <li><span class="nav-dropdown-label">Tecnologia</span></li>
         <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
+        <li><a href="/dados-solares-brasil/">📊 Dados Solares</a></li>
       </ul>
     </li>
     <li><a href="/calculadora/">Calculadora</a></li>
     <li><a href="/cidades/">Cidades</a></li>
-    <li><a href="/avaliacoes/">Avaliações</a></li>
+    <li><a href="/avaliacoes/" class="ativo">Avaliações</a></li>
     <li><a href="/blog/">Blog</a></li>
-    <li><a href="/contato/" class="ativo">Contato</a></li>
+    <li><a href="/contato/">Contato</a></li>
   </ul>
 
   <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
@@ -318,6 +319,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
   <a href="/calculadora/">Calculadora Solar</a>
   <a href="/cidades/">Cidades</a>
   <a href="/avaliacoes/">Avaliações</a>
+  <a href="/dados-solares-brasil/">Dados Solares</a>
   <a href="/blog/">Blog</a>
   <a href="https://wa.me/5517982093739" class="mob-btn" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
 </div>
@@ -753,6 +755,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="/avaliacoes/">Avaliações</a>
       <a href="/blog/">Blog</a>
       <a href="/calculadora/">Calculadora Solar</a>
+      <a href="/dados-solares-brasil/">Dados Solares</a>
       <a href="/contato/">Contato</a>
     </div>
     <div class="foot-col">

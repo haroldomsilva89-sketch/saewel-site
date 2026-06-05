@@ -1485,6 +1485,24 @@ function novaSimulacao(){document.getElementById('proposta').classList.remove('s
 window.addEventListener('beforeprint',()=>{
   const total=document.querySelectorAll('#proposta .prop-page').length-1;
   document.getElementById('proposta').style.setProperty('--total-pages',`"${total}"`);
+  // Garantir que tabela mensal está visível para o print
+  const tbody = document.getElementById('tabelaMensal');
+  const tfoot = document.getElementById('tabelaTotal');
+  if(tbody && tbody.innerHTML){
+    // Forçar display:table em todos os elementos da tabela
+    const table = tbody.closest('table');
+    if(table){
+      table.style.cssText += ';display:table!important;table-layout:fixed!important;width:100%!important;';
+      tbody.style.cssText += ';display:table-row-group!important;';
+      if(tfoot) tfoot.style.cssText += ';display:table-footer-group!important;';
+      Array.from(tbody.rows).forEach(tr=>{
+        tr.style.cssText += ';display:table-row!important;';
+        Array.from(tr.cells).forEach(td=>{
+          td.style.cssText += ';display:table-cell!important;';
+        });
+      });
+    }
+  }
 });
 
 function imprimirProposta(){
@@ -1493,9 +1511,12 @@ function imprimirProposta(){
     alert('Gere a proposta primeiro antes de imprimir.');
     return;
   }
-  // Forçar reflow para garantir que o DOM está pronto
-  document.body.offsetHeight;
-  setTimeout(()=>{ window.print(); }, 300);
+  // Forçar dois frames de render antes de imprimir
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      setTimeout(()=>{ window.print(); }, 800);
+    });
+  });
 }
 </script>
 </body>

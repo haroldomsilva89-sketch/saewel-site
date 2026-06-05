@@ -224,15 +224,16 @@
         <li class="nav-dropdown-divider"></li>
         <li><span class="nav-dropdown-label">Tecnologia</span></li>
         <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
+        <li><a href="/dados-solares-brasil/">📊 Dados Solares</a></li>
       </ul>
     </li>
-    <li><a href="/calculadora/">Calculadora</a></li>
+    <li><a href="/calculadora/" >Calculadora</a></li>
     <li><a href="/cidades/">Cidades</a></li>
     <li><a href="/avaliacoes/">Avaliações</a></li>
     <li><a href="/blog/" class="ativo">Blog</a></li>
     <li><a href="/contato/">Contato</a></li>
   </ul>
-  <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+  <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -243,11 +244,12 @@
   <a href="/sobre/">Sobre</a>
   <a href="/#servicos">Serviços</a>
   <a href="/calculadora/">Calculadora Solar</a>
+  <a href="/dados-solares-brasil/">Dados Solares</a>
   <a href="/cidades/">Cidades</a>
   <a href="/avaliacoes/">Avaliações</a>
   <a href="/blog/">Blog</a>
   <a href="/contato/">Contato</a>
-  <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20blog%20da%20Saewel%20e%20quero%20saber%20mais%20sobre%20energia%20solar" class="mob-btn" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+  <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20mais%20sobre%20energia%20solar" class="mob-btn" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
 </div>
 
 <section class="article-hero">
@@ -516,10 +518,10 @@
 
 </article>
 
-<nav style="max-width:800px;margin:0 auto 0;padding:0 5% 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(200,146,42,0.1);padding-top:32px;">
+<div style="max-width:800px;margin:0 auto 0;padding:0 5% 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(200,146,42,0.1);padding-top:32px;">
   <a href="/blog/" style="font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8A9099;text-decoration:none;">← Todos os artigos</a>
   <a href="/blog/economia-energia-solar/" style="font-family:'Outfit',sans-serif;font-size:13px;color:#C8922A;text-decoration:none;">Quanto posso economizar? →</a>
-</nav>
+</div>
 
 <footer class="footer-novo">
   <div class="footer-grid">
@@ -562,6 +564,7 @@
       <a href="/avaliacoes/">Avaliações</a>
       <a href="/blog/">Blog</a>
       <a href="/calculadora/">Calculadora Solar</a>
+      <a href="/dados-solares-brasil/">Dados Solares</a>
       <a href="/contato/">Contato</a>
     </div>
     <div class="foot-col">
@@ -590,19 +593,14 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20blog%20da%20Saewel%20e%20quero%20saber%20mais%20sobre%20energia%20solar!" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Saewel">💬</a>
+<a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20mais%20sobre%20energia%20solar!" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Saewel">💬</a>
 
 <script>
 const hamburger = document.getElementById('navHamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-function toggleMenu(o) {
-  hamburger.classList.toggle('open', o);
-  mobileMenu.classList.toggle('open', o);
-  hamburger.setAttribute('aria-expanded', o);
-  document.body.style.overflow = o ? 'hidden' : '';
-}
-hamburger.addEventListener('click', () => { const o = mobileMenu.classList.contains('open'); toggleMenu(!o); });
-mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggleMenu(false)));
+function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
+mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
 </script>
 </body>
 </html>

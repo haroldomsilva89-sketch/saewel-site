@@ -681,6 +681,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   #tabelaMensalPrint tfoot td{background:#fff8f0!important;font-weight:700!important;color:#C8922A!important;border-top:2px solid #E8B84B!important;}
   #tabelaMensalPrint .azul{color:#2563EB!important;font-weight:600!important;}
   #tabelaMensalPrint .verde{color:#16a34a!important;font-weight:600!important;}
+  /* Idem para tabela de retorno */
+  #tabelaRetornoTabela{display:none!important;}
+  #tabelaRetornoPrint{display:block!important;}
+  #tabelaRetornoPrint table{width:100%!important;border-collapse:collapse!important;}
+  #tabelaRetornoPrint th,#tabelaRetornoPrint td{padding:3px 5px!important;font-size:8.5px!important;border-bottom:1px solid #f0f0f0!important;}
+  #tabelaRetornoPrint thead tr{background:#0A0C0F!important;}
+  #tabelaRetornoPrint thead th{color:#E8B84B!important;font-size:8px!important;font-weight:700!important;text-transform:uppercase!important;text-align:left!important;}
+  #tabelaRetornoPrint tbody tr:nth-child(even) td{background:#fafafa!important;}
+  #tabelaRetornoPrint .status-luc{color:#16a34a!important;font-weight:700!important;}
+  #tabelaRetornoPrint .status-inv{color:#C8922A!important;font-weight:700!important;}
+  #tabelaRetornoPrint .pos{color:#16a34a!important;font-weight:600!important;}
+  #tabelaRetornoPrint .neg{color:#dc2626!important;font-weight:600!important;}
   .prop-page > div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr!important;}
 }
 
@@ -1053,7 +1065,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       </div>
       <div class="prop-sec-title">Retorno do <em>Investimento</em></div>
       <div class="prop-sec-sub">Projeção de 25 anos com inflação tarifária de 4% ao ano</div>
-      <table class="prop-table">
+      <div id="tabelaRetornoPrint" style="display:none;"></div>
+      <table class="prop-table" id="tabelaRetornoTabela">
         <thead>
           <tr>
             <th>Status</th><th>Ano</th><th>Tarifa R$/kWh</th>
@@ -1462,7 +1475,7 @@ function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estru
   }
 
   // ── TABELA RETORNO ──
-  document.getElementById('tabelaRetorno').innerHTML=tabRet.map(r=>`<tr>
+  const retRowsHtml=tabRet.map(r=>`<tr>
     <td>${r.status==='Lucro'?`<span class="status-luc">Lucro</span>`:`<span class="status-inv">Investimento</span>`}</td>
     <td>${r.ano}</td>
     <td>R$ ${r.tar}</td>
@@ -1470,6 +1483,18 @@ function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estru
     <td>R$ ${formatMoeda(parseFloat(r.eco))}</td>
     <td class="${parseFloat(r.res)>=0?'pos':'neg'}">R$ ${formatMoeda(Math.abs(parseFloat(r.res)))}</td>
   </tr>`).join('');
+  document.getElementById('tabelaRetorno').innerHTML=retRowsHtml;
+  // Versão estática para print
+  const retPrintDiv=document.getElementById('tabelaRetornoPrint');
+  if(retPrintDiv){
+    retPrintDiv.innerHTML=`<table class="prop-table" style="width:100%;border-collapse:collapse;">
+      <thead><tr>
+        <th>Status</th><th>Ano</th><th>Tarifa R$/kWh</th>
+        <th>Produção (kWh/ano)</th><th>Economia acumulada</th><th>Resultado financeiro</th>
+      </tr></thead>
+      <tbody>${retRowsHtml}</tbody>
+    </table>`;
+  }
 
   // ── WHATSAPP ──
   const msg=encodeURIComponent(`Olá Haroldo! Gerei minha proposta no site da Saewel.

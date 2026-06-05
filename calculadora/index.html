@@ -667,7 +667,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   /* Mobile print overrides — força largura total */
   .prop-page-logo{flex-direction:row!important;align-items:center!important;}
   .prop-page-logo svg{width:110px!important;height:45px!important;}
-  #tabelaRetorno, #tabelaMensal{overflow:visible!important;display:table!important;}
+  #tabelaRetorno, #tabelaMensal{overflow:visible!important;display:table!important;width:100%!important;table-layout:fixed!important;}
+  #tabelaMensal colgroup,#tabelaMensal col{display:table-column!important;}
+  .prop-page:nth-child(3) table,.prop-page:nth-child(3) table tbody,.prop-page:nth-child(3) table tfoot{display:table!important;width:100%!important;}
   .prop-page > div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr!important;}
 }
 
@@ -1411,13 +1413,13 @@ function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estru
   // ── TABELA MENSAL ──
   const tbody=document.getElementById('tabelaMensal');
   tbody.innerHTML=tabMes.map(r=>`<tr>
-    <td>${r.mes}</td>
-    <td class="azul">${r.cons.toLocaleString('pt-BR')}</td>
-    <td class="verde">${r.ger.toLocaleString('pt-BR')}</td>
-    <td>${r.credMes.toLocaleString('pt-BR')}</td>
-    <td>${r.credAcum.toLocaleString('pt-BR')}</td>
-    <td>R$ ${formatMoeda(r.fatSem)}</td>
-    <td class="verde">R$ ${formatMoeda(r.fatCom)}</td>
+    <td style="text-align:left">${r.mes}</td>
+    <td class="azul" style="text-align:center">${r.cons.toLocaleString('pt-BR')}</td>
+    <td class="verde" style="text-align:center">${r.ger.toLocaleString('pt-BR')}</td>
+    <td style="text-align:center">${r.credMes.toLocaleString('pt-BR')}</td>
+    <td style="text-align:center">${r.credAcum.toLocaleString('pt-BR')}</td>
+    <td style="text-align:right">R$ ${formatMoeda(r.fatSem)}</td>
+    <td class="verde" style="text-align:right">R$ ${formatMoeda(r.fatCom)}</td>
   </tr>`).join('');
   document.getElementById('tabelaTotal').innerHTML=`<tr class="total-row">
     <td><strong>Total anual</strong></td>

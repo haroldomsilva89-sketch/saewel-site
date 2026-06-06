@@ -21,7 +21,7 @@
     .nav-logo-link{display:flex;align-items:center;text-decoration:none;}
     .nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;}
     .nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:#8A9099;text-decoration:none;transition:color 0.3s;}
-    .nav-links a:hover,.nav-links a.ativo{color:#F8F5F0;}
+    .nav-links a:hover{color:#F8F5F0;}.nav-links a.ativo{color:var(--ouro-claro);}
     .nav-btn{background:linear-gradient(135deg,#C8922A,#E8B84B);color:#0A0C0F!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;}
     .nav-cta{justify-self:end;}
     .nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,146,42,0.5)!important;}
@@ -44,7 +44,7 @@
     .nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);padding-left:24px;}
     .nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
     .nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
-    @media(max-width:768px){nav{padding:0 4%;grid-template-columns:auto 1fr auto;}.nav-links,.nav-cta{display:none;}.nav-hamburger{display:flex;grid-column:3;}.mobile-menu{display:flex;}}
+    @media(max-width:768px){nav{padding:0 4%;grid-template-columns:auto 1fr auto;}.nav-links,.nav-cta{display:none;}.nav-hamburger{display:flex;grid-column:3;justify-self:end;}.mobile-menu{display:flex;}}
     .hero{padding:120px 5% 60px;background:linear-gradient(160deg,#0D1420 0%,var(--noite) 60%);border-bottom:1px solid rgba(200,146,42,0.08);}
     .breadcrumb{font-size:12px;color:var(--cinza);margin-bottom:20px;}
     .breadcrumb a{color:var(--ouro);}
@@ -106,6 +106,7 @@
         <li class="nav-dropdown-divider"></li>
         <li><span class="nav-dropdown-label">Tecnologia</span></li>
         <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
+        <li><a href="/dados-solares-brasil/">📊 Dados Solares</a></li>
       </ul>
     </li>
     <li><a href="/calculadora/">Calculadora</a></li>
@@ -131,6 +132,7 @@
   <a href="/energia-solar-comercial/">Solar Comercial</a>
   <a href="/energia-solar-agronegocio/">Solar Agronegócio</a>
   <a href="/calculadora/">Calculadora</a>
+  <a href="/dados-solares-brasil/">Dados Solares</a>
   <a href="/cidades/">Cidades</a>
   <a href="/avaliacoes/">Avaliações</a>
   <a href="/blog/">Blog</a>

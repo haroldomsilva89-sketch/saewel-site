@@ -1334,9 +1334,9 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const hsp=irr;
   const margem=perfil==='comercial'?1.30:perfil==='agronegocio'?1.35:1.20;
   const kwpBruto=consumoMedio/(hsp*30*ef);
-  const nMod=Math.max(2,Math.ceil(kwpBruto*margem*1000/555));
-  const kWp=parseFloat((nMod*555/1000).toFixed(2));
-  const area=(nMod*2.05).toFixed(1);
+  const nMod=Math.max(2,Math.ceil(kwpBruto*margem*1000/620));
+  const kWp=parseFloat((nMod*620/1000).toFixed(2));
+  const area=(nMod*2.25).toFixed(1);
   // ── SELEÇÃO DE INVERSOR (modelos reais Saewel) ──
   const INVERSORES_DB=[
     {kwAC:2.0,  marca:'WEG',     fator:1.36, modelo:'WEG 2kW — SIW300H M020 — Mono — 2mppt — 220V'},
@@ -1466,10 +1466,10 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
 
   // Dimensionamento
   set('dLocal',cidade);set('dIrr',irr.toFixed(2)+' kWh/m²/dia');set('dEstr',ESTRUTURAS[estrutura]);
-  set('dPot',kWp.toFixed(2)+' kWp');set('dMod',nMod+'× módulos 555Wp bifaciais');
+  set('dPot',kWp.toFixed(2)+' kWp');set('dMod',nMod+'× módulos 620Wp bifaciais');
   set('dArea','~'+area+' m²');set('dInv',inv);set('dGer',geracaoMedia.toLocaleString('pt-BR')+' kWh/mês (média anual)');
   // Preenche tabela de equipamentos
-  set('eqModelo','Painel 555Wp Bifacial — Jinko/Trina/AstroEnergy');
+  set('eqModelo','Painel 620Wp Bifacial — Jinko/Trina/AstroEnergy');
   set('eqQtd',nMod+'×');
   set('eqInversor',inv);
   set('eqEstrutura',ESTRUTURAS[estrutura]||'Telhado cerâmico / fibrocimento / metálico');
@@ -1570,7 +1570,7 @@ Gostaria de avançar com o projeto!`);
     perfil: PERFIS[perfil],
     consumo: consumoMedio,
     kwp: kWp.toFixed(2),
-    modulos: nMod + 'x 555Wp',
+    modulos: nMod + 'x 620Wp',
     investimento: inv_faixa,
     economiaMes: 'R$ ' + formatMoeda(ecoMensal),
     payback: payback_min.toFixed(1) + ' a ' + payback_max.toFixed(1) + ' anos',

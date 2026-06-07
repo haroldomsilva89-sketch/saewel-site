@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O que é PR (Performance Ratio) e por que ele importa? | Saewel Energia Solar</title>
+  <meta name="description" content="O índice que revela se o seu sistema solar está funcionando corretamente — como calcular, interpretar e melhorar o desempenho real do seu sistema fotovoltaico">
+  <meta name="author" content="Haroldo M. Silva — Engenheiro de Energias Renováveis, Saewel Energia Solar">
+  <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/o-que-e-pr-performance-ratio-energia-solar/">
+  <meta property="og:title" content="O que é PR (Performance Ratio) e por que ele importa?">
+  <meta property="og:description" content="O índice que revela se o seu sistema solar está funcionando corretamente — como calcular, interpretar e melhorar o desempenho real do seu sistema fotovoltaico">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/o-que-e-pr-performance-ratio-energia-solar/">
+  <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--noite:#0A0C0F;--noite2:#111418;--ouro:#C8922A;--ouro-claro:#E8B84B;--branco:#F8F5F0;--cinza:#8A9099;--texto:#D4CFC8;--verde:#3DAA6A;}
+    html{scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--texto);line-height:1.85;font-size:17px;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.4}
+    a{color:var(--ouro-claro);text-decoration:none} a:hover{text-decoration:underline} strong{color:var(--branco)} em{color:var(--ouro-claro);font-style:italic}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;height:72px;background:rgba(10,12,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12);transition:background 0.3s;}
+    nav.scrolled{background:rgba(10,12,15,0.97);}
+    .nav-logo{display:flex;align-items:center;text-decoration:none;align-self:center;}
+    .nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;align-self:center;}
+    .nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
+    .nav-links a:hover{color:var(--branco);} .nav-links a.ativo{color:var(--ouro-claro);}
+    .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;}
+    .nav-cta{justify-self:end;} .nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,146,42,0.5)!important;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600;grid-column:3;justify-self:end;}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--branco);border-radius:2px;transition:all 0.35s;transform-origin:center;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(10,12,15,0.97);backdrop-filter:blur(20px);z-index:499;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;pointer-events:none;transition:opacity 0.35s;}
+    .mobile-menu.open{opacity:1;pointer-events:all;}
+    .mobile-menu a{font-size:22px;font-weight:500;color:var(--cinza);text-decoration:none;letter-spacing:0.06em;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);width:80%;text-align:center;transition:color 0.3s;}
+    .mobile-menu a:hover{color:var(--branco);} .mobile-menu .mob-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:16px 36px;border-radius:50px;font-weight:700;margin-top:12px;border-bottom:none!important;font-size:15px!important;}
+    .nav-dropdown{position:relative;} .nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(17,20,24,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,146,42,0.18);border-radius:14px;min-width:230px;z-index:600;box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:10px 0;}
+    .nav-dropdown-menu::before{content:'';display:block;height:12px;margin-top:-12px;}
+    .nav-dropdown:hover .nav-dropdown-menu{display:block;} .nav-dropdown-menu li{list-style:none;}
+    .nav-dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(212,207,200,0.85);text-decoration:none;text-transform:none!important;transition:all 0.2s;}
+    .nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);padding-left:24px;}
+    .nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
+    .nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
+    .article-hero{background:linear-gradient(160deg,#0D1420 0%,var(--noite) 60%);border-bottom:1px solid rgba(200,146,42,0.08);padding:120px 5% 72px;text-align:center;position:relative;overflow:hidden;}
+    .article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(200,146,42,0.06) 0%,transparent 70%);}
+    .breadcrumb{font-size:12px;color:var(--cinza);margin-bottom:24px;letter-spacing:0.04em;position:relative;}
+    .breadcrumb a{color:var(--ouro);}
+    .article-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ouro);margin-bottom:20px;position:relative;}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,58px);font-weight:600;color:var(--branco);line-height:1.12;max-width:860px;margin:0 auto 16px;position:relative;}
+    .article-title em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .article-subtitle{font-size:clamp(15px,2.5vw,18px);color:var(--cinza);max-width:640px;margin:0 auto 28px;line-height:1.65;position:relative;}
+    .article-meta{font-size:13px;color:var(--cinza);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;position:relative;}
+    .tag-list{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:24px;position:relative;}
+    .tag{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(200,146,42,0.25);color:var(--ouro);background:rgba(200,146,42,0.06);}
+    .article-wrap{max-width:800px;margin:0 auto;padding:64px 5%;}
+    .article-wrap p{margin-bottom:1.6rem;color:var(--texto);}
+    h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);color:var(--branco);margin:3.5rem 0 1.2rem;padding-bottom:12px;border-bottom:1px solid rgba(200,146,42,0.15);line-height:1.25;}
+    h3{font-size:clamp(17px,2.5vw,22px);color:var(--ouro-claro);margin:2.2rem 0 0.8rem;font-weight:600;}
+    ul,ol{padding-left:1.5rem;margin-bottom:1.6rem;} li{margin-bottom:0.6rem;color:var(--texto);}
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:2rem 0;}
+    .kpi-card{background:var(--noite2);border:1px solid rgba(200,146,42,0.12);border-radius:16px;padding:24px 20px;text-align:center;}
+    .kpi-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cinza);margin-bottom:8px;}
+    .kpi-value{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--ouro-claro);line-height:1.1;}
+    .kpi-sub{font-size:11px;color:var(--cinza);margin-top:4px;}
+    .callout{border-radius:16px;padding:26px 30px;margin:2.2rem 0;}
+    .callout-title{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+    .callout p{margin-bottom:0;font-size:15px;}
+    .callout-gold{background:rgba(200,146,42,0.07);border:1px solid rgba(200,146,42,0.22);}
+    .callout-gold .callout-title{color:var(--ouro);}
+    .callout-green{background:rgba(61,170,106,0.07);border:1px solid rgba(61,170,106,0.22);}
+    .callout-green .callout-title{color:var(--verde);}
+    .tech-table-wrap{overflow-x:auto;margin:2rem 0;border-radius:16px;border:1px solid rgba(200,146,42,0.15);}
+    table{width:100%;border-collapse:collapse;font-size:14px;}
+    thead tr{background:rgba(200,146,42,0.08);}
+    thead th{padding:13px 16px;text-align:left;color:var(--ouro-claro);font-weight:600;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid rgba(200,146,42,0.12);}
+    tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);}
+    tbody tr:last-child{border-bottom:none;} tbody tr:hover{background:rgba(200,146,42,0.03);}
+    tbody td{padding:12px 16px;color:var(--texto);} tbody td:first-child{color:var(--branco);font-weight:500;}
+    .cta-box{background:linear-gradient(135deg,rgba(200,146,42,0.08),rgba(200,146,42,0.04));border:1px solid rgba(200,146,42,0.2);border-radius:20px;padding:48px 40px;text-align:center;margin:4rem 0;}
+    .cta-box h2{border:none;margin:0 0 12px;padding:0;}
+    .cta-box p{color:var(--cinza);font-size:16px;max-width:500px;margin:0 auto 32px;line-height:1.7;}
+    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+    .btn-wpp{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;padding:14px 32px;border-radius:999px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(37,211,102,0.35);}
+    .btn-wpp:hover{background:#1DA851;transform:translateY(-2px);}
+    .btn-calc{display:inline-flex;align-items:center;gap:8px;background:rgba(200,146,42,0.1);color:var(--ouro-claro);font-weight:600;padding:14px 32px;border-radius:999px;text-decoration:none;border:1px solid rgba(200,146,42,0.3);transition:all 0.3s;}
+    .btn-calc:hover{background:rgba(200,146,42,0.2);}
+    .footer-novo{background:var(--noite2);padding:60px 5% 0;border-top:1px solid rgba(200,146,42,0.08);}
+    .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.04);}
+    .foot-brand{display:flex;flex-direction:column;gap:16px;}
+    .foot-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--branco);}
+    .foot-logo span{color:var(--ouro-claro);}
+    .foot-desc{font-size:13px;color:var(--cinza);line-height:1.7;max-width:260px;}
+    .footer-qr-inline{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cinza);font-size:12px;line-height:1.4;margin-top:4px;}
+    .foot-col{display:flex;flex-direction:column;gap:10px;}
+    .foot-col h4{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ouro);margin-bottom:4px;}
+    .foot-col a{font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.2s;}
+    .foot-col a:hover{color:var(--branco);}
+    .foot-socials{display:flex;flex-direction:column;gap:10px;}
+    .social-icon{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.2s;}
+    .social-icon:hover{color:var(--ouro-claro);}
+    .footer-bottom{display:flex;align-items:center;justify-content:center;padding:20px 0;}
+    .footer-copy{font-size:12px;color:rgba(138,144,153,0.6);}
+    .wa-float{position:fixed;bottom:32px;right:32px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;z-index:400;box-shadow:0 4px 24px rgba(37,211,102,0.5);}
+    details summary::-webkit-details-marker{display:none}
+    details summary{cursor:pointer;user-select:none}
+    @media(max-width:768px){nav{padding:0 4%;grid-template-columns:auto 1fr auto;}.nav-links,.nav-cta{display:none;}.nav-hamburger{display:flex;}.mobile-menu{display:flex;}.kpi-grid{grid-template-columns:repeat(2,1fr);}.cta-btns{flex-direction:column;align-items:center;}.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}}
+  </style>
+</head>
+<body>
+
+<section class="article-hero">
+  <div class="breadcrumb"><a href="/">Saewel</a> › <a href="/blog/">Blog</a> › Dados e Inteligência</div>
+  <div class="article-eyebrow">Dados & Inteligência · Monitoramento · Técnico</div>
+  <h1 class="article-title">O que é <em>PR (Performance Ratio)</em> e por que ele importa?</h1>
+  <p class="article-subtitle">O índice que revela se o seu sistema solar está funcionando corretamente — como calcular, interpretar e melhorar o desempenho real do seu sistema fotovoltaico</p>
+  <div class="article-meta">
+    <span>✍ Haroldo M. Silva — Eng. de Energias Renováveis</span>
+    <span>📅 Junho de 2026</span>
+    <span>⏱ 10 min de leitura</span>
+  </div>
+  <div class="tag-list"><span class="tag">Performance Ratio</span><span class="tag">PR</span><span class="tag">Monitoramento</span><span class="tag">Eficiência Solar</span><span class="tag">Técnico</span></div>
+</section>
+
+<article class="article-wrap">
+  <div class="kpi-grid"><div class="kpi-card"><div class="kpi-label">PR excelente</div><div class="kpi-value" style="font-size:18px;">> 80%</div><div class="kpi-sub">sistema bem instalado</div></div><div class="kpi-card"><div class="kpi-label">PR bom</div><div class="kpi-value" style="font-size:18px;">75 – 80%</div><div class="kpi-sub">padrão de mercado</div></div><div class="kpi-card"><div class="kpi-label">PR ruim</div><div class="kpi-value" style="font-size:18px;">< 70%</div><div class="kpi-sub">indica problemas</div></div><div class="kpi-card"><div class="kpi-label">Maior causa de queda</div><div class="kpi-value" style="font-size:18px;">Temperatura</div><div class="kpi-sub">e sombreamento</div></div></div>
+
+  <p>O PR (Performance Ratio) é o indicador mais importante para avaliar se um sistema solar está funcionando corretamente. Ele responde a uma pergunta fundamental: <strong>de toda a energia que o sistema poderia gerar, quanto ele está gerando de fato?</strong></p>
+
+  <p>Um PR de 80% significa que o sistema está gerando 80% da energia teórica — os outros 20% são perdidos em calor, fiação, inversão e outros fatores. Saber calcular e interpretar o PR é essencial para proprietários, instaladores e investidores em energia solar.</p>
+
+  <h2>Como calcular o PR?</h2>
+
+  <div style="background:var(--noite2);border:1px solid rgba(200,146,42,0.2);border-radius:16px;padding:28px;margin:2rem 0;text-align:center;">
+    <div style="font-size:13px;color:var(--cinza);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.1em;">Fórmula do Performance Ratio</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,28px);color:var(--ouro-claro);font-weight:600;">PR = Energia gerada (kWh) ÷ (Potência instalada (kWp) × HSP × 30 dias)</div>
+  </div>
+
+  <h3>Exemplo prático</h3>
+  <p>Sistema de <strong>5 kWp</strong> em São José do Rio Preto (HSP = 5,36) que gerou <strong>625 kWh em um mês</strong>:</p>
+
+  <div class="tech-table-wrap">
+    <table>
+      <thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Energia gerada no mês</td><td>625 kWh</td></tr>
+        <tr><td>Potência instalada</td><td>5 kWp</td></tr>
+        <tr><td>HSP local</td><td>5,36 h/dia</td></tr>
+        <tr><td>Energia teórica (5 × 5,36 × 30)</td><td>804 kWh</td></tr>
+        <tr><td><strong>PR calculado</strong></td><td><strong>625 ÷ 804 = 0,777 (77,7%)</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Um PR de 77,7% está dentro do padrão para sistemas residenciais bem instalados no interior paulista.</p>
+
+  <h2>O que é considerado um bom PR?</h2>
+
+  <div class="tech-table-wrap">
+    <table>
+      <thead><tr><th>Classificação</th><th>Faixa de PR</th><th>O que significa</th></tr></thead>
+      <tbody>
+        <tr><td>⭐ Excelente</td><td>> 82%</td><td>Sistema otimizado, perdas mínimas, instalação exemplar</td></tr>
+        <tr><td>✅ Bom</td><td>78 – 82%</td><td>Padrão de qualidade, dentro do esperado</td></tr>
+        <tr><td>🟡 Aceitável</td><td>72 – 78%</td><td>Dentro do normal para clima quente</td></tr>
+        <tr><td>⚠️ Abaixo do esperado</td><td>65 – 72%</td><td>Possível sombreamento, sujeira ou subdimensionamento</td></tr>
+        <tr><td>🔴 Ruim</td><td>< 65%</td><td>Problema técnico — investigação necessária</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>O que reduz o PR do sistema?</h2>
+
+  <h3>1. Temperatura dos painéis</h3>
+  <p>É o maior fator de perda em regiões quentes como o interior de São Paulo. Painéis de silício cristalino perdem aproximadamente <strong>0,35 a 0,45% de eficiência para cada grau Celsius acima de 25°C</strong>. Em dias de verão com temperatura de 45°C, a perda pode chegar a 9%.</p>
+
+  <h3>2. Sombreamento parcial</h3>
+  <p>Mesmo uma pequena sombra em um painel pode impactar todo o string (série de painéis). Uma folha, antena ou sombra de uma árvore pode reduzir a geração em 20 a 40%. Por isso, o projeto correto evita qualquer sombra no horário de pico (9h às 15h).</p>
+
+  <h3>3. Sujeira e acúmulo de poeira</h3>
+  <p>Painéis sujos perdem entre 2 e 8% de geração dependendo do grau de contaminação. Em regiões de estrada de terra ou próximas a lavouras, a perda pode ser maior. Limpeza semestral é recomendada para manter o PR elevado.</p>
+
+  <h3>4. Eficiência do inversor</h3>
+  <p>Inversores de qualidade têm eficiência de 96 a 98%. Inversores de baixa qualidade ou mal dimensionados podem operar com eficiência abaixo de 93%, reduzindo o PR do sistema inteiro.</p>
+
+  <h3>5. Perdas na fiação</h3>
+  <p>Cabos subdimensionados geram calor e desperdiçam energia. Um projeto correto dimensiona os cabos para perdas ôhmicas de no máximo 1 a 2%.</p>
+
+  <h2>Como monitorar o PR do seu sistema?</h2>
+
+  <p>A maioria dos inversores modernos — como os da Growatt, Sungrow, Fox ESS e Fronius — tem aplicativo de monitoramento que mostra a geração diária, mensal e acumulada. Com esses dados e o HSP local, você pode calcular o PR mensalmente.</p>
+
+  <p>Se o PR cair repentinamente ou estiver consistentemente abaixo de 70%, é sinal de que algo está errado e vale chamar um técnico para inspeção.</p>
+
+  <div class="callout callout-gold">
+    <div class="callout-title">📊 Consulte o HSP da sua cidade</div>
+    <p>Para calcular o PR do seu sistema, você precisa do HSP local. Consulte gratuitamente na ferramenta <a href="/dados-solares-brasil/">Dados Solares Brasil</a> — cobertura de 5.562 municípios brasileiros com dados do CRESESB/SunData.</p>
+  </div>
+
+  <h2>PR vs. Fator de Capacidade — qual a diferença?</h2>
+
+  <p>O <strong>Fator de Capacidade (FC)</strong> é outro indicador usado para sistemas de maior porte. Ele mede quantas horas por ano o sistema opera em plena capacidade:</p>
+
+  <p><strong>FC = Energia gerada no ano (kWh) ÷ (Potência instalada (kW) × 8.760 horas)</strong></p>
+
+  <p>Para sistemas solares no interior de São Paulo, o FC típico é de 18 a 22%. Já o PR considera apenas as horas de sol efetivas, sendo mais útil para comparar a eficiência da instalação independentemente do clima.</p>
+
+  <h2>Perguntas frequentes sobre PR</h2>
+
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">O PR muda com as estações do ano?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">Sim. No inverno, as temperaturas mais baixas aumentam a eficiência dos painéis, elevando o PR. No verão, o calor intenso reduz a eficiência. Por isso, o PR médio anual é o indicador mais relevante para avaliar o desempenho do sistema ao longo do tempo.</p>
+  </details>
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">Painéis mais caros têm PR maior?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">Não necessariamente. O PR depende do sistema completo — painéis, inversor, fiação e instalação. Um painel top de linha com inversor ruim ou instalação com sombreamento vai ter PR baixo. O que mais impacta o PR é a qualidade do projeto e da instalação.</p>
+  </details>
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">Meu sistema tem PR de 68% — o que fazer?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">Um PR de 68% está abaixo do esperado e indica algum problema. As causas mais comuns são: sombreamento não identificado, painéis sujos, problema no inversor ou degradação acelerada de algum módulo. Recomendamos uma inspeção técnica com medição de curva I-V dos painéis.</p>
+  </details>
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">Como melhorar o PR do meu sistema atual?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">As ações mais efetivas são: limpeza regular dos painéis (2x ao ano no mínimo), eliminação de fontes de sombreamento (poda de árvores, reposicionamento de antenas), verificação das conexões e, se necessário, substituição do inversor por modelo de maior eficiência.</p>
+  </details>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);"></div>
+
+<div style="margin:48px 0;background:linear-gradient(135deg,rgba(37,211,102,0.07),rgba(200,146,42,0.05));border:1px solid rgba(37,211,102,0.18);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+  <img src="/qr-canal-whatsapp.png" alt="QR Code Canal Saewel" style="width:100px;height:100px;border-radius:10px;background:#F8F5F0;padding:5px;flex-shrink:0;">
+  <div style="flex:1;min-width:180px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#25D366;margin-bottom:8px;">📡 Canal gratuito no WhatsApp</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#F8F5F0;margin-bottom:6px;line-height:1.3;">Gostou? Receba mais conteúdo <em style="color:#E8B84B;font-style:italic;">assim</em></h3>
+    <p style="font-size:13px;color:#8A9099;line-height:1.6;margin-bottom:14px;">Dados solares, legislação e artigos em primeira mão direto no seu WhatsApp.</p>
+    <a href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:13px;font-weight:700;padding:10px 22px;border-radius:999px;text-decoration:none;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Entrar no canal
+    </a>
+  </div>
+</div>
+</article>
+
+<div class="cta-box" style="max-width:800px;margin:0 auto 4rem;">
+  <h2>Quer um projeto solar <em>bem dimensionado</em>?</h2>
+  <p>A Saewel dimensiona com dados reais do CRESESB, emite ART e cuida da homologação completa. Análise gratuita e sem compromisso.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20blog%20da%20Saewel%20e%20quero%20um%20or%C3%A7amento" class="btn-wpp" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Falar pelo WhatsApp
+    </a>
+    <a href="/calculadora/" class="btn-calc">☀ Simular economia</a>
+  </div>
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 5% 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(200,146,42,0.1);">
+  <a href="/dados-solares-brasil/" style="font-size:13px;color:#C8922A;text-decoration:none;">← Dados Solares Brasil</a>
+  <a href="/blog/" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8A9099;text-decoration:none;">↑ Todos os artigos</a>
+  <a href="/calculadora/" style="font-size:13px;color:#C8922A;text-decoration:none;">Calculadora Solar →</a>
+</div>
+
+<footer class="footer-novo">
+  <div class="footer-grid">
+    <div class="foot-brand">
+      <div class="foot-logo">Saewel <span>Energia Solar</span></div>
+      <p class="foot-desc">Projetos fotovoltaicos, instalação, monitoramento e consultoria técnica em energia solar para residências, empresas e agronegócio em São José do Rio Preto e região.</p>
+      <a class="footer-qr-inline" href="https://g.page/r/Cc14z3x8phLCEBM/review" target="_blank" rel="noopener noreferrer">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://g.page/r/Cc14z3x8phLCEBM/review" width="40" height="40" alt="QR Code Google">
+        <span>Avalie-nos<br>no Google ★</span>
+      </a>
+<script>
+const nav = document.getElementById('mainNav');
+if(nav) window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+if(hamburger && mobileMenu){
+  function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+  hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
+  mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+}
+</script>
+</body>
+</html>

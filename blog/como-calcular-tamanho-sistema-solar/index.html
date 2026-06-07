@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como calcular o tamanho ideal do seu sistema solar | Saewel Energia Solar</title>
+  <meta name="description" content="Passo a passo técnico para dimensionar um sistema fotovoltaico corretamente — consumo, irradiação, PR, perdas e número de painéis">
+  <meta name="author" content="Haroldo M. Silva — Engenheiro de Energias Renováveis, Saewel Energia Solar">
+  <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/como-calcular-tamanho-sistema-solar/">
+  <meta property="og:title" content="Como calcular o tamanho ideal do seu sistema solar">
+  <meta property="og:description" content="Passo a passo técnico para dimensionar um sistema fotovoltaico corretamente — consumo, irradiação, PR, perdas e número de painéis">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/como-calcular-tamanho-sistema-solar/">
+  <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--noite:#0A0C0F;--noite2:#111418;--ouro:#C8922A;--ouro-claro:#E8B84B;--branco:#F8F5F0;--cinza:#8A9099;--texto:#D4CFC8;--verde:#3DAA6A;}
+    html{scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--texto);line-height:1.85;font-size:17px;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.4}
+    a{color:var(--ouro-claro);text-decoration:none} a:hover{text-decoration:underline} strong{color:var(--branco)} em{color:var(--ouro-claro);font-style:italic}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;height:72px;background:rgba(10,12,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12);transition:background 0.3s;}
+    nav.scrolled{background:rgba(10,12,15,0.97);}
+    .nav-logo{display:flex;align-items:center;text-decoration:none;align-self:center;}
+    .nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;align-self:center;}
+    .nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
+    .nav-links a:hover{color:var(--branco);} .nav-links a.ativo{color:var(--ouro-claro);}
+    .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;}
+    .nav-cta{justify-self:end;} .nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,146,42,0.5)!important;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600;grid-column:3;justify-self:end;}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--branco);border-radius:2px;transition:all 0.35s;transform-origin:center;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(10,12,15,0.97);backdrop-filter:blur(20px);z-index:499;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;pointer-events:none;transition:opacity 0.35s;}
+    .mobile-menu.open{opacity:1;pointer-events:all;}
+    .mobile-menu a{font-size:22px;font-weight:500;color:var(--cinza);text-decoration:none;letter-spacing:0.06em;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);width:80%;text-align:center;transition:color 0.3s;}
+    .mobile-menu a:hover{color:var(--branco);} .mobile-menu .mob-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:16px 36px;border-radius:50px;font-weight:700;margin-top:12px;border-bottom:none!important;font-size:15px!important;}
+    .nav-dropdown{position:relative;} .nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(17,20,24,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,146,42,0.18);border-radius:14px;min-width:230px;z-index:600;box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:10px 0;}
+    .nav-dropdown-menu::before{content:'';display:block;height:12px;margin-top:-12px;}
+    .nav-dropdown:hover .nav-dropdown-menu{display:block;} .nav-dropdown-menu li{list-style:none;}
+    .nav-dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(212,207,200,0.85);text-decoration:none;text-transform:none!important;transition:all 0.2s;}
+    .nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);padding-left:24px;}
+    .nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
+    .nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
+    .article-hero{background:linear-gradient(160deg,#0D1420 0%,var(--noite) 60%);border-bottom:1px solid rgba(200,146,42,0.08);padding:120px 5% 72px;text-align:center;position:relative;overflow:hidden;}
+    .article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(200,146,42,0.06) 0%,transparent 70%);}
+    .breadcrumb{font-size:12px;color:var(--cinza);margin-bottom:24px;letter-spacing:0.04em;position:relative;}
+    .breadcrumb a{color:var(--ouro);}
+    .article-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ouro);margin-bottom:20px;position:relative;}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,58px);font-weight:600;color:var(--branco);line-height:1.12;max-width:860px;margin:0 auto 16px;position:relative;}
+    .article-title em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .article-subtitle{font-size:clamp(15px,2.5vw,18px);color:var(--cinza);max-width:640px;margin:0 auto 28px;line-height:1.65;position:relative;}
+    .article-meta{font-size:13px;color:var(--cinza);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;position:relative;}
+    .tag-list{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:24px;position:relative;}
+    .tag{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(200,146,42,0.25);color:var(--ouro);background:rgba(200,146,42,0.06);}
+    .article-wrap{max-width:800px;margin:0 auto;padding:64px 5%;}
+    .article-wrap p{margin-bottom:1.6rem;color:var(--texto);}
+    h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);color:var(--branco);margin:3.5rem 0 1.2rem;padding-bottom:12px;border-bottom:1px solid rgba(200,146,42,0.15);line-height:1.25;}
+    h3{font-size:clamp(17px,2.5vw,22px);color:var(--ouro-claro);margin:2.2rem 0 0.8rem;font-weight:600;}
+    ul,ol{padding-left:1.5rem;margin-bottom:1.6rem;} li{margin-bottom:0.6rem;color:var(--texto);}
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:2rem 0;}
+    .kpi-card{background:var(--noite2);border:1px solid rgba(200,146,42,0.12);border-radius:16px;padding:24px 20px;text-align:center;}
+    .kpi-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cinza);margin-bottom:8px;}
+    .kpi-value{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--ouro-claro);line-height:1.1;}
+    .kpi-sub{font-size:11px;color:var(--cinza);margin-top:4px;}
+    .callout{border-radius:16px;padding:26px 30px;margin:2.2rem 0;}
+    .callout-title{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+    .callout p{margin-bottom:0;font-size:15px;}
+    .callout-gold{background:rgba(200,146,42,0.07);border:1px solid rgba(200,146,42,0.22);}
+    .callout-gold .callout-title{color:var(--ouro);}
+    .callout-green{background:rgba(61,170,106,0.07);border:1px solid rgba(61,170,106,0.22);}
+    .callout-green .callout-title{color:var(--verde);}
+    .tech-table-wrap{overflow-x:auto;margin:2rem 0;border-radius:16px;border:1px solid rgba(200,146,42,0.15);}
+    table{width:100%;border-collapse:collapse;font-size:14px;}
+    thead tr{background:rgba(200,146,42,0.08);}
+    thead th{padding:13px 16px;text-align:left;color:var(--ouro-claro);font-weight:600;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid rgba(200,146,42,0.12);}
+    tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);}
+    tbody tr:last-child{border-bottom:none;} tbody tr:hover{background:rgba(200,146,42,0.03);}
+    tbody td{padding:12px 16px;color:var(--texto);} tbody td:first-child{color:var(--branco);font-weight:500;}
+    .cta-box{background:linear-gradient(135deg,rgba(200,146,42,0.08),rgba(200,146,42,0.04));border:1px solid rgba(200,146,42,0.2);border-radius:20px;padding:48px 40px;text-align:center;margin:4rem 0;}
+    .cta-box h2{border:none;margin:0 0 12px;padding:0;}
+    .cta-box p{color:var(--cinza);font-size:16px;max-width:500px;margin:0 auto 32px;line-height:1.7;}
+    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+    .btn-wpp{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;padding:14px 32px;border-radius:999px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(37,211,102,0.35);}
+    .btn-wpp:hover{background:#1DA851;transform:translateY(-2px);}
+    .btn-calc{display:inline-flex;align-items:center;gap:8px;background:rgba(200,146,42,0.1);color:var(--ouro-claro);font-weight:600;padding:14px 32px;border-radius:999px;text-decoration:none;border:1px solid rgba(200,146,42,0.3);transition:all 0.3s;}
+    .btn-calc:hover{background:rgba(200,146,42,0.2);}
+    .footer-novo{background:var(--noite2);padding:60px 5% 0;border-top:1px solid rgba(200,146,42,0.08);}
+    .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.04);}
+    .foot-brand{display:flex;flex-direction:column;gap:16px;}
+    .foot-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--branco);}
+    .foot-logo span{color:var(--ouro-claro);}
+    .foot-desc{font-size:13px;color:var(--cinza);line-height:1.7;max-width:260px;}
+    .footer-qr-inline{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cinza);font-size:12px;line-height:1.4;margin-top:4px;}
+    .foot-col{display:flex;flex-direction:column;gap:10px;}
+    .foot-col h4{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ouro);margin-bottom:4px;}
+    .foot-col a{font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.2s;}
+    .foot-col a:hover{color:var(--branco);}
+    .foot-socials{display:flex;flex-direction:column;gap:10px;}
+    .social-icon{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.2s;}
+    .social-icon:hover{color:var(--ouro-claro);}
+    .footer-bottom{display:flex;align-items:center;justify-content:center;padding:20px 0;}
+    .footer-copy{font-size:12px;color:rgba(138,144,153,0.6);}
+    .wa-float{position:fixed;bottom:32px;right:32px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;z-index:400;box-shadow:0 4px 24px rgba(37,211,102,0.5);}
+    details summary::-webkit-details-marker{display:none}
+    details summary{cursor:pointer;user-select:none}
+    @media(max-width:768px){nav{padding:0 4%;grid-template-columns:auto 1fr auto;}.nav-links,.nav-cta{display:none;}.nav-hamburger{display:flex;}.mobile-menu{display:flex;}.kpi-grid{grid-template-columns:repeat(2,1fr);}.cta-btns{flex-direction:column;align-items:center;}.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}}
+  </style>
+</head>
+<body>
+
+<section class="article-hero">
+  <div class="breadcrumb"><a href="/">Saewel</a> › <a href="/blog/">Blog</a> › Dados e Inteligência</div>
+  <div class="article-eyebrow">Dados & Inteligência · Dimensionamento · Técnico</div>
+  <h1 class="article-title">Como calcular o <em>tamanho ideal</em> do seu sistema solar</h1>
+  <p class="article-subtitle">Passo a passo técnico para dimensionar um sistema fotovoltaico corretamente — consumo, irradiação, PR, perdas e número de painéis</p>
+  <div class="article-meta">
+    <span>✍ Haroldo M. Silva — Eng. de Energias Renováveis</span>
+    <span>📅 Junho de 2026</span>
+    <span>⏱ 10 min de leitura</span>
+  </div>
+  <div class="tag-list"><span class="tag">Dimensionamento</span><span class="tag">kWp</span><span class="tag">HSP</span><span class="tag">PR</span><span class="tag">Painéis Solares</span><span class="tag">Técnico</span></div>
+</section>
+
+<article class="article-wrap">
+  <div class="kpi-grid"><div class="kpi-card"><div class="kpi-label">Fórmula base</div><div class="kpi-value" style="font-size:18px;">kWp = kWh ÷ HSP ÷ PR</div><div class="kpi-sub">dimensionamento</div></div><div class="kpi-card"><div class="kpi-label">PR médio</div><div class="kpi-value" style="font-size:18px;">0,75 – 0,82</div><div class="kpi-sub">sistemas bem instalados</div></div><div class="kpi-card"><div class="kpi-label">Margem de segurança</div><div class="kpi-value" style="font-size:18px;">10 – 15%</div><div class="kpi-sub">recomendada</div></div><div class="kpi-card"><div class="kpi-label">Fator de correção</div><div class="kpi-value" style="font-size:18px;">1,25x</div><div class="kpi-sub">perdas totais típicas</div></div></div>
+
+  <p>Dimensionar um sistema solar corretamente é a etapa mais importante de qualquer projeto fotovoltaico. Um sistema subdimensionado não vai cobrir sua conta de luz. Um superdimensionado vai gerar energia que você não consegue aproveitar. Neste artigo, mostramos o passo a passo técnico exato que engenheiros usam para calcular o tamanho ideal de um sistema solar.</p>
+
+  <h2>Passo 1 — Levante seu consumo mensal</h2>
+
+  <p>O ponto de partida é o consumo médio mensal em kWh, que você encontra na sua conta de energia elétrica. Para um cálculo preciso, use a <strong>média dos últimos 12 meses</strong> — isso elimina variações sazonais como verão (mais ar-condicionado) e inverno (menos uso de ventiladores).</p>
+
+  <div class="callout callout-gold">
+    <div class="callout-title">📋 Onde encontrar seu consumo</div>
+    <p>Na conta de energia da CPFL, Elektro ou outra distribuidora, procure o campo <strong>"Consumo kWh"</strong> ou <strong>"Histórico de consumo"</strong>. A média dos 12 meses é o valor mais confiável para o dimensionamento.</p>
+  </div>
+
+  <h2>Passo 2 — Consulte a irradiação solar local (HSP)</h2>
+
+  <p>O HSP (Horas de Sol Pleno) é o índice que mede a irradiação solar média diária em kWh/m²/dia. Para São José do Rio Preto e região, o HSP médio anual é de <strong>5,36 kWh/m²/dia</strong> segundo o CRESESB/SunData.</p>
+
+  <p>Você pode consultar o HSP da sua cidade gratuitamente na ferramenta <a href="/dados-solares-brasil/">Dados Solares Brasil</a>, desenvolvida pela Saewel, que usa os dados oficiais do Atlas Solarimétrico Brasileiro.</p>
+
+  <h2>Passo 3 — Aplique a fórmula de dimensionamento</h2>
+
+  <p>A fórmula básica para calcular a potência do sistema em kWp é:</p>
+
+  <div style="background:var(--noite2);border:1px solid rgba(200,146,42,0.2);border-radius:16px;padding:28px;margin:2rem 0;text-align:center;">
+    <div style="font-size:13px;color:var(--cinza);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.1em;">Fórmula de dimensionamento</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,32px);color:var(--ouro-claro);font-weight:600;">kWp = Consumo (kWh/mês) ÷ HSP (h/dia) ÷ 30 dias ÷ PR</div>
+    <div style="font-size:13px;color:var(--cinza);margin-top:12px;">Onde PR = Performance Ratio (eficiência real do sistema)</div>
+  </div>
+
+  <h3>Exemplo prático</h3>
+  <p>Residência com consumo médio de <strong>400 kWh/mês</strong> em São José do Rio Preto (HSP = 5,36), com PR estimado de 0,78:</p>
+
+  <div class="tech-table-wrap">
+    <table>
+      <thead><tr><th>Parâmetro</th><th>Valor</th><th>Descrição</th></tr></thead>
+      <tbody>
+        <tr><td>Consumo mensal</td><td>400 kWh</td><td>Média dos últimos 12 meses</td></tr>
+        <tr><td>HSP local</td><td>5,36 h/dia</td><td>CRESESB/SunData — SJRP</td></tr>
+        <tr><td>Dias no mês</td><td>30</td><td>Padrão de referência</td></tr>
+        <tr><td>PR (Performance Ratio)</td><td>0,78</td><td>Eficiência real estimada</td></tr>
+        <tr><td><strong>Potência necessária</strong></td><td><strong>3,18 kWp</strong></td><td>400 ÷ 5,36 ÷ 30 ÷ 0,78</td></tr>
+        <tr><td>Com margem de 10%</td><td><strong>3,50 kWp</strong></td><td>Arredondamento comercial</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Passo 4 — Calcule o número de painéis</h2>
+
+  <p>Com a potência do sistema definida, o número de painéis depende da potência de cada módulo:</p>
+
+  <div style="background:var(--noite2);border:1px solid rgba(200,146,42,0.2);border-radius:16px;padding:28px;margin:2rem 0;text-align:center;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,28px);color:var(--ouro-claro);font-weight:600;">Nº de painéis = kWp do sistema ÷ Potência do painel (kWp)</div>
+  </div>
+
+  <p>Para o exemplo acima com painéis de 550Wp (0,55 kWp):</p>
+  <p><strong>3,50 kWp ÷ 0,55 kWp = 6,36 → 7 painéis</strong></p>
+
+  <p>Arredonda-se sempre para cima para garantir que o sistema vai cobrir o consumo mesmo nos meses de menor irradiação.</p>
+
+  <h2>O que é o PR e como ele impacta o sistema?</h2>
+
+  <p>O <strong>PR (Performance Ratio)</strong> é a relação entre a energia real gerada pelo sistema e a energia teórica que ele deveria gerar. Um PR de 0,78 significa que o sistema opera a 78% da sua eficiência teórica — o restante é perdido em calor, fiação, sujeira, sombreamento e inversão.</p>
+
+  <div class="tech-table-wrap">
+    <table>
+      <thead><tr><th>Fator de perda</th><th>Impacto típico</th><th>Como minimizar</th></tr></thead>
+      <tbody>
+        <tr><td>Temperatura dos painéis</td><td>5 – 8%</td><td>Ventilação adequada na instalação</td></tr>
+        <tr><td>Perdas na fiação</td><td>2 – 3%</td><td>Dimensionamento correto dos cabos</td></tr>
+        <tr><td>Eficiência do inversor</td><td>3 – 5%</td><td>Inversor de boa qualidade</td></tr>
+        <tr><td>Sujeira nos painéis</td><td>2 – 5%</td><td>Limpeza periódica</td></tr>
+        <tr><td>Sombreamento parcial</td><td>0 – 20%</td><td>Projeto sem sombra no horário de pico</td></tr>
+        <tr><td>Degradação anual</td><td>0,5% a.a.</td><td>Uso de painéis de qualidade</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Margem de segurança e superdimensionamento</h2>
+
+  <p>É comum dimensionar o sistema com <strong>10 a 15% acima</strong> do consumo atual por duas razões:</p>
+  <ul>
+    <li>Compensar a <strong>degradação natural dos painéis</strong> ao longo dos anos (0,5% ao ano)</li>
+    <li>Prever <strong>aumento do consumo</strong> futuro — novos equipamentos, veículo elétrico, ar-condicionado</li>
+  </ul>
+
+  <p>Superdimensionar além de 20-25% não é recomendado, pois a distribuidora pode limitar a injeção de energia excedente na rede.</p>
+
+  <div class="callout callout-green">
+    <div class="callout-title">☀️ Use a calculadora da Saewel</div>
+    <p>Não quer fazer as contas manualmente? A <a href="/calculadora/">Calculadora Solar da Saewel</a> faz todo o dimensionamento automaticamente com os dados reais do CRESESB para a sua cidade. Resultado em segundos, sem cadastro.</p>
+  </div>
+
+  <h2>Perguntas frequentes sobre dimensionamento solar</h2>
+
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">Posso dimensionar pelo pico de consumo em vez da média?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">Não é recomendado. Dimensionar pelo pico (geralmente dezembro/janeiro com ar-condicionado) resulta em sistema superdimensionado para os outros 10 meses do ano. A média anual é o parâmetro correto, com margem de 10-15%.</p>
+  </details>
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">O que acontece se o sistema for maior que o necessário?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">A energia excedente é injetada na rede e vira créditos de energia (sistema net metering). Esses créditos têm validade de 60 meses. Porém, créditos gerados além do consumo eventual representam dinheiro "parado" — é melhor dimensionar com precisão.</p>
+  </details>
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">O dimensionamento muda para sistemas com baterias?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">Sim. Em sistemas com BESS, o dimensionamento considera também a capacidade de armazenamento necessária para cobrir o consumo noturno e os dias de menor irradiação. O PR pode ser diferente dependendo da eficiência do ciclo de carga/descarga das baterias.</p>
+  </details>
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">Qual o impacto da inclinação do telhado no dimensionamento?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">A inclinação afeta o HSP efetivo do sistema. Um telhado inclinado a 20-25° voltado para o norte pode ter HSP 5-10% maior que o plano horizontal. O software de dimensionamento (PVSyst, SAM) calcula isso automaticamente para cada projeto.</p>
+  </details>
+  <details style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;">
+    <summary style="font-size:16px;font-weight:600;color:#F8F5F0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">Preciso de ART para instalar sistema solar?<span style="color:#C8922A;font-size:20px;flex-shrink:0;">+</span></summary>
+    <p style="font-size:14px;color:#8A9099;line-height:1.75;margin-top:14px;">Sim. A ART (Anotação de Responsabilidade Técnica) emitida por engenheiro é obrigatória para homologar o sistema junto à distribuidora. A Saewel inclui a ART em todos os projetos — é parte do serviço completo EPC.</p>
+  </details>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);"></div>
+
+<div style="margin:48px 0;background:linear-gradient(135deg,rgba(37,211,102,0.07),rgba(200,146,42,0.05));border:1px solid rgba(37,211,102,0.18);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+  <img src="/qr-canal-whatsapp.png" alt="QR Code Canal Saewel" style="width:100px;height:100px;border-radius:10px;background:#F8F5F0;padding:5px;flex-shrink:0;">
+  <div style="flex:1;min-width:180px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#25D366;margin-bottom:8px;">📡 Canal gratuito no WhatsApp</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#F8F5F0;margin-bottom:6px;line-height:1.3;">Gostou? Receba mais conteúdo <em style="color:#E8B84B;font-style:italic;">assim</em></h3>
+    <p style="font-size:13px;color:#8A9099;line-height:1.6;margin-bottom:14px;">Dados solares, legislação e artigos em primeira mão direto no seu WhatsApp.</p>
+    <a href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:13px;font-weight:700;padding:10px 22px;border-radius:999px;text-decoration:none;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Entrar no canal
+    </a>
+  </div>
+</div>
+</article>
+
+<div class="cta-box" style="max-width:800px;margin:0 auto 4rem;">
+  <h2>Quer um projeto solar <em>bem dimensionado</em>?</h2>
+  <p>A Saewel dimensiona com dados reais do CRESESB, emite ART e cuida da homologação completa. Análise gratuita e sem compromisso.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20blog%20da%20Saewel%20e%20quero%20um%20or%C3%A7amento" class="btn-wpp" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Falar pelo WhatsApp
+    </a>
+    <a href="/calculadora/" class="btn-calc">☀ Simular economia</a>
+  </div>
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 5% 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(200,146,42,0.1);">
+  <a href="/dados-solares-brasil/" style="font-size:13px;color:#C8922A;text-decoration:none;">← Dados Solares Brasil</a>
+  <a href="/blog/" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8A9099;text-decoration:none;">↑ Todos os artigos</a>
+  <a href="/calculadora/" style="font-size:13px;color:#C8922A;text-decoration:none;">Calculadora Solar →</a>
+</div>
+
+<footer class="footer-novo">
+  <div class="footer-grid">
+    <div class="foot-brand">
+      <div class="foot-logo">Saewel <span>Energia Solar</span></div>
+      <p class="foot-desc">Projetos fotovoltaicos, instalação, monitoramento e consultoria técnica em energia solar para residências, empresas e agronegócio em São José do Rio Preto e região.</p>
+      <a class="footer-qr-inline" href="https://g.page/r/Cc14z3x8phLCEBM/review" target="_blank" rel="noopener noreferrer">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://g.page/r/Cc14z3x8phLCEBM/review" width="40" height="40" alt="QR Code Google">
+        <span>Avalie-nos<br>no Google ★</span>
+      </a>
+<script>
+const nav = document.getElementById('mainNav');
+if(nav) window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+if(hamburger && mobileMenu){
+  function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+  hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
+  mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+}
+</script>
+</body>
+</html>

@@ -1,1 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como preencher sua simulação solar — Guia Saewel Energia Solar</title>
+<meta name="description" content="Aprenda a preencher a simulação solar gratuita da Saewel Energia Solar e receba uma proposta técnica completa em segundos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;600;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ouro:#C8922A;--ouro-claro:#E8B84B;--noite:#0A0C0F;--noite2:#111418;--noite3:#181C22;
+  --cinza:#8A9099;--branco:#F8F5F0;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:#fff;color:#1a1a1a;line-height:1.7;}
 
+/* HEADER */
+.site-header{background:var(--noite);padding:18px 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(200,146,42,0.2);}
+.header-logo{display:flex;align-items:center;text-decoration:none;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-size:13px;font-weight:700;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all 0.3s;}
+.header-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,146,42,0.4);}
+
+/* HERO */
+.hero{background:var(--noite);padding:72px 5% 64px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%, rgba(200,146,42,0.08) 0%, transparent 70%);pointer-events:none;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:20px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:24px;height:1px;background:var(--ouro-claro);opacity:0.6;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;color:var(--branco);line-height:1.1;margin-bottom:20px;}
+.hero h1 em{font-style:italic;color:var(--ouro-claro);}
+.hero-sub{font-size:16px;color:var(--cinza);max-width:560px;margin:0 auto 36px;}
+.hero-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-weight:700;font-size:15px;padding:16px 36px;border-radius:50px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 24px rgba(200,146,42,0.4);}
+.hero-btn:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(200,146,42,0.55);}
+
+/* ARTICLE */
+.article-wrap{max-width:760px;margin:0 auto;padding:64px 5% 80px;}
+
+/* INTRO */
+.intro-box{background:#fffbf5;border:1px solid #f0e0c8;border-left:4px solid var(--ouro);border-radius:12px;padding:24px 28px;margin-bottom:48px;}
+.intro-box p{font-size:15px;color:#444;line-height:1.75;}
+.intro-box strong{color:#C8922A;}
+
+/* STEP */
+.step{margin-bottom:52px;}
+.step-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.step-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(200,146,42,0.3);}
+.step h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#0A0C0F;}
+.step h2 em{font-style:italic;color:var(--ouro);}
+.step p{font-size:15px;color:#444;margin-bottom:14px;line-height:1.75;}
+.step p:last-child{margin-bottom:0;}
+
+/* TIP BOX */
+.tip{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px 20px;margin:16px 0;display:flex;gap:12px;align-items:flex-start;}
+.tip-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.tip p{font-size:14px;color:#0369a1;margin:0;line-height:1.65;}
+.tip strong{color:#0c4a6e;}
+
+.warn{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;margin:16px 0;display:flex;gap:12px;align-items:flex-start;}
+.warn p{font-size:14px;color:#92400e;margin:0;line-height:1.65;}
+.warn strong{color:#78350f;}
+
+/* LIST */
+.check-list{list-style:none;margin:16px 0 20px;}
+.check-list li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#333;padding:6px 0;border-bottom:1px solid #f0f0f0;line-height:1.6;}
+.check-list li:last-child{border-bottom:none;}
+.check-list li::before{content:'✓';color:var(--ouro);font-weight:700;flex-shrink:0;margin-top:2px;}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid #e5e7eb;margin:52px 0;}
+
+/* CTA FINAL */
+.cta-final{background:var(--noite);border-radius:20px;padding:48px 40px;text-align:center;margin-top:16px;}
+.cta-final h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--branco);margin-bottom:12px;}
+.cta-final h3 em{font-style:italic;color:var(--ouro-claro);}
+.cta-final p{color:var(--cinza);margin-bottom:28px;font-size:15px;}
+.cta-final a{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-weight:700;font-size:15px;padding:16px 40px;border-radius:50px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(200,146,42,0.35);}
+.cta-final a:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(200,146,42,0.5);}
+
+/* FOOTER */
+footer{background:var(--noite2);border-top:1px solid rgba(200,146,42,0.1);padding:28px 5%;text-align:center;}
+footer p{font-size:12px;color:rgba(138,144,153,0.5);}
+footer a{color:var(--ouro-claro);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://www.saewelenergiasolar.com.br" class="header-logo">
+    <svg width="130" height="54" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="hc"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
+      <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
+      <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hc)"/>
+      <text x="340" y="192" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text>
+      <text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text>
+    </svg>
+  </a>
+  <a href="https://www.saewelenergiasolar.com.br/calculadora/" class="header-cta">
+    ☀️ Simular grátis
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Guia de uso</div>
+  <h1>Como preencher sua<br><em>simulação solar</em></h1>
+  <p class="hero-sub">Passo a passo para obter uma proposta técnica completa — dimensionamento real, análise financeira de 25 anos e comparativo de geração.</p>
+  <a href="https://www.saewelenergiasolar.com.br/calculadora/" class="hero-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Abrir simulador agora
+  </a>
+</section>
+
+<!-- ARTICLE -->
+<article class="article-wrap">
+
+  <div class="intro-box">
+    <p>O simulador solar da Saewel é <strong>gratuito e gera uma proposta técnica completa em segundos</strong> — sem precisar esperar um vendedor ligar. Para que os resultados sejam precisos, é importante preencher cada campo corretamente. Este guia explica cada etapa do processo.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <h2>Seus <em>dados</em> de contato</h2>
+    </div>
+    <p>Preencha seu <strong>nome completo</strong> e o número do <strong>WhatsApp</strong> com DDD. Essas informações aparecem na proposta gerada e permitem que o engenheiro entre em contato para tirar dúvidas ou agendar uma visita técnica.</p>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p><strong>Dica:</strong> Use o número do WhatsApp que você acessa com frequência — ao final da simulação é gerado um botão de contato direto com esse número.</p>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <h2>Sua <em>cidade</em></h2>
+    </div>
+    <p>Digite o nome da sua cidade e selecione na lista que aparece. O simulador usa uma base com os <strong>5.562 municípios brasileiros</strong>, cada um com sua irradiação solar real (fonte: Atlas Solarimétrico CRESESB/INPE).</p>
+    <p>A irradiação solar varia de cidade para cidade e impacta diretamente o tamanho do sistema e a geração estimada. Por isso é fundamental selecionar a cidade correta — não a cidade mais próxima ou a capital do estado.</p>
+    <div class="warn">
+      <span>⚠️</span>
+      <p><strong>Atenção:</strong> Se a cidade não aparecer na lista, tente digitar com o estado (ex: "São Paulo - SP"). Cidades com nomes compostos funcionam melhor com a busca completa.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <h2>Perfil de <em>instalação</em></h2>
+    </div>
+    <p>Escolha o tipo de instalação que melhor descreve o seu caso:</p>
+    <ul class="check-list">
+      <li><strong>Residencial</strong> — casas e apartamentos com consumo típico doméstico</li>
+      <li><strong>Comercial</strong> — empresas, lojas, escritórios e estabelecimentos comerciais</li>
+      <li><strong>Agronegócio</strong> — propriedades rurais, fazendas e granjas</li>
+    </ul>
+    <p>Cada perfil usa um fator de dimensionamento diferente, pois o padrão de consumo ao longo do dia varia. Propriedades rurais, por exemplo, costumam ter picos de consumo durante o dia, o que aumenta o aproveitamento da energia gerada.</p>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <h2>Tipo de <em>telhado</em></h2>
+    </div>
+    <p>Selecione o material do telhado onde os painéis serão instalados. Essa informação define o tipo de estrutura de fixação necessária, que aparece nos equipamentos da proposta.</p>
+    <ul class="check-list">
+      <li><strong>Cerâmico</strong> — telha francesa, portuguesa, colonial ou similar</li>
+      <li><strong>Fibrocimento</strong> — telha de amianto, ondulada ou similar</li>
+      <li><strong>Metálico</strong> — telhado de chapa de aço, zinco ou alumínio</li>
+      <li><strong>Laje</strong> — cobertura plana de concreto</li>
+    </ul>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p><strong>Não tem certeza?</strong> Escolha o que parecer mais próximo. A estrutura definitiva só é definida após a vistoria técnica presencial, que é inclusa no projeto.</p>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <h2>Seu <em>consumo</em> de energia</h2>
+    </div>
+    <p>Este é o campo mais importante da simulação. Existem duas formas de informar o consumo:</p>
+
+    <p><strong>Opção A — Consumo médio mensal:</strong> use o slider ou digite diretamente o valor médio em kWh por mês. Esse valor está na sua conta de luz, no campo "consumo do mês" ou "kWh consumidos".</p>
+
+    <p><strong>Opção B — Consumo mês a mês:</strong> informe o consumo dos últimos 12 meses separadamente. Essa opção gera resultados mais precisos, pois considera a sazonalidade do seu consumo (verão vs. inverno, por exemplo).</p>
+
+    <div class="warn">
+      <span>⚠️</span>
+      <p><strong>Onde encontrar?</strong> O consumo em kWh está na sua fatura de energia elétrica. Procure por "Consumo de Energia Ativa" ou "kWh". Não confunda com o valor em reais.</p>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p><strong>Dica:</strong> Se você tem conta no app da sua distribuidora (CPFL, Enel, Elektro, etc.), é possível ver o histórico dos últimos 12 meses facilmente.</p>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <h2>Tarifa de <em>energia</em></h2>
+    </div>
+    <p>Informe o valor que você paga por kWh de energia elétrica. Esse valor é usado para calcular a economia mensal e o retorno do investimento. Você encontra essa informação na sua conta de luz, normalmente descrita como "Tarifa de Energia" ou "TE + TUSD".</p>
+    <p>Se não encontrar, o simulador usa <strong>R$ 0,95/kWh</strong> como valor padrão, que é uma média nacional adequada para a maioria dos casos residenciais.</p>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p><strong>Como calcular:</strong> divida o valor total da sua fatura (em R$) pelo consumo total (em kWh). O resultado é sua tarifa média efetiva.</p>
+    </div>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">7</div>
+      <h2>Tipo de <em>inversor</em></h2>
+    </div>
+    <p>Escolha entre as tecnologias de inversores disponíveis:</p>
+    <ul class="check-list">
+      <li><strong>Inversor String</strong> — um inversor central para todo o sistema. Melhor custo-benefício, ideal para telhados sem sombra.</li>
+      <li><strong>Microinversor</strong> — um inversor por módulo. Máxima eficiência em telhados com sombra parcial, com monitoramento individual de cada painel.</li>
+    </ul>
+    <p>Após escolher a tecnologia, selecione a <strong>marca</strong> disponível. Para inversores string, as opções são Growatt e WEG. Para microinversores, Growatt Micro e Deye.</p>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p><strong>Dica:</strong> Para a maioria das instalações residenciais sem sombramento significativo, o <strong>inversor string</strong> é a opção mais econômica com excelente desempenho.</p>
+    </div>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">8</div>
+      <h2>Gerando a <em>proposta</em></h2>
+    </div>
+    <p>Com todos os campos preenchidos, clique em <strong>"Calcular minha economia"</strong>. Em poucos segundos você recebe uma proposta técnica completa com:</p>
+    <ul class="check-list">
+      <li>Dimensionamento do sistema (kWp, número de módulos, área necessária)</li>
+      <li>Inversor recomendado com especificações técnicas</li>
+      <li>Geração estimada mês a mês e comparativo com o consumo</li>
+      <li>Projeção financeira de 25 anos com inflação tarifária de 4% ao ano</li>
+      <li>TIR (Taxa Interna de Retorno), VPL e payback do investimento</li>
+      <li>Retorno ambiental — toneladas de CO₂ evitadas e equivalência em árvores</li>
+      <li>Termos e condições da proposta com garantias</li>
+    </ul>
+    <p>Ao final, você pode <strong>salvar em PDF</strong> para compartilhar ou guardar, ou entrar em contato diretamente com o engenheiro pelo WhatsApp para avançar para a vistoria técnica.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CTA FINAL -->
+  <div class="cta-final">
+    <h3>Pronto para simular sua <em>economia?</em></h3>
+    <p>É gratuito, leva menos de 2 minutos e você recebe uma proposta técnica completa na hora.</p>
+    <a href="https://www.saewelenergiasolar.com.br/calculadora/">
+      ☀️ Fazer minha simulação grátis
+    </a>
+  </div>
+
+</article>
+
+<footer>
+  <p>
+    <strong style="color:#E8B84B;">Saewel Energia Solar</strong> · CNPJ 36.866.433/0001-71<br>
+    Rua Rio Negro, 395, Jd. Aclimação · São José do Rio Preto, SP<br>
+    <a href="tel:+5517982093739">(17) 98209-3739</a> ·
+    <a href="mailto:atendimento@saewelenergiasolar.com.br">atendimento@saewelenergiasolar.com.br</a> ·
+    <a href="https://www.saewelenergiasolar.com.br">saewelenergiasolar.com.br</a>
+  </p>
+</footer>
+
+</body>
+</html>

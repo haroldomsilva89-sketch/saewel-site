@@ -301,6 +301,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     break-after:avoid!important;
     page-break-after:avoid!important;
     max-height:none!important;
+    overflow:visible!important;
+  }
+  /* Compactar a seção de QR codes na última página para caber */
+  .prop-page:last-of-type .assinaturas{margin-top:20px!important;}
+  .prop-page:last-of-type div[style*="margin-top:32px;padding:20px 0"]{
+    margin-top:16px!important;
+    padding:12px 0!important;
   }
   #propRodape{
     display:block!important;
@@ -527,7 +534,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .prop-sec-sub{
     font-size:12px!important;
     color:#666!important;
-    margin-bottom:24px!important;
+    margin-bottom:16px!important;
   }
 
   /* KPIs internos */
@@ -672,19 +679,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .amb-num{font-size:22px!important;font-weight:700!important;color:#15803d!important;margin-bottom:4px!important;}
   .amb-lbl{font-size:11px!important;color:#555!important;line-height:1.4!important;}
 
-  /* Termos */
+  /* Termos — compactado para caber QR codes na mesma página */
   .termos-box{
     background:#fafafa!important;border:1px solid #e5e7eb!important;
-    border-radius:8px!important;padding:20px!important;
-    font-size:11px!important;color:#444!important;line-height:1.7!important;
+    border-radius:8px!important;padding:14px 18px!important;
+    font-size:10.5px!important;color:#444!important;line-height:1.55!important;
   }
   .termos-item{
     display:flex!important;align-items:flex-start!important;
-    gap:10px!important;padding:8px 0!important;
+    gap:8px!important;padding:5px 0!important;
     border-bottom:1px solid #f0f0f0!important;
   }
   .termos-item:last-child{border-bottom:none!important;}
-  .termos-icon{font-size:14px!important;}
+  .termos-icon{font-size:13px!important;}
   .termos-box strong{color:#C8922A!important;}
   /* Nota estimativa no print */
   .prop-page:last-of-type div[style*="rgba(200,146,42,0.06)"]{
@@ -694,7 +701,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .prop-page:last-of-type div[style*="rgba(200,146,42,0.06)"] strong:last-child{color:#333!important;}
 
   /* Assinaturas */
-  .assinaturas{display:grid!important;grid-template-columns:1fr 1fr!important;gap:48px!important;margin-top:32px!important;}
+  .assinaturas{display:grid!important;grid-template-columns:1fr 1fr!important;gap:32px!important;margin-top:20px!important;}
   .ass-box{border-top:2px solid #0A0C0F!important;padding-top:10px!important;}
   .ass-nome{font-size:14px!important;font-weight:700!important;color:#0A0C0F!important;}
   .ass-info{font-size:11px!important;color:#666!important;}

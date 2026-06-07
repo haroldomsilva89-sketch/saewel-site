@@ -1152,7 +1152,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
               <div style="font-size:10px;color:var(--cinza);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Inversor</div>
               <div id="eqInversor" style="color:var(--ouro-claro);font-weight:700;font-size:11px;line-height:1.4;">—</div>
               <div style="font-size:10px;color:var(--cinza);margin-top:6px;">Monitoramento remoto incluso</div>
-              <div style="font-size:10px;color:var(--cinza);margin-top:2px;">Quantidade: <span style="color:var(--branco);font-weight:600;">1 un.</span></div>
+              <div style="font-size:10px;color:var(--cinza);margin-top:2px;">Quantidade: <span id="eqInvQtd" style="color:var(--branco);font-weight:600;">1 un.</span></div>
             </div>
           </div>
 
@@ -1779,6 +1779,18 @@ function trocarModulo(id) {
       set('dMod', nMod+'× módulos '+mod.wp+'Wp bifaciais');
       set('dPot', kWpReal+' kWp');
       set('dArea', '~'+(nMod*mod.area).toFixed(1)+' m²');
+      // Recalcular qtd microinversores se for tecnologia micro
+      const isMicro = grupoAtual === 'micro_growatt' || grupoAtual === 'micro_deye';
+      const qtdEl = document.getElementById('eqInvQtd');
+      if(qtdEl && isMicro) {
+        const nInv = Math.ceil(nMod / 4);
+        qtdEl.textContent = nInv + ' un.';
+        const eqInvEl = document.getElementById('eqInversor');
+        if(eqInvEl) {
+          const modeloBase = eqInvEl.textContent.replace(/^\d+x\s*/, '');
+          eqInvEl.textContent = nInv + 'x ' + modeloBase;
+        }
+      }
     }
   }
 }
@@ -1799,6 +1811,32 @@ function definirGrupoEquipamentos(invMarca) {
   const imgInv = document.getElementById('eqInvFoto');
   if(imgInv) imgInv.src = fotoInv;
   popularSeletorModulo(grupo);
+
+  // ── Quantidade de microinversores (máx 4 módulos por unidade) ──
+  const isMicro = grupo === 'micro_growatt' || grupo === 'micro_deye';
+  const qtdEl = document.getElementById('eqInvQtd');
+  if(qtdEl) {
+    if(isMicro) {
+      const MAX_MOD_POR_MICRO = 4;
+      const eqQtdEl = document.getElementById('eqQtd');
+      let nMod = 0;
+      if(eqQtdEl) nMod = parseInt(eqQtdEl.textContent) || 0;
+      if(!nMod) {
+        const dModEl = document.getElementById('dMod');
+        if(dModEl) nMod = parseInt(dModEl.textContent) || 0;
+      }
+      const nInv = nMod > 0 ? Math.ceil(nMod / MAX_MOD_POR_MICRO) : 1;
+      qtdEl.textContent = nInv + ' un.';
+      // Também atualiza o label do inversor com a quantidade
+      const eqInvEl = document.getElementById('eqInversor');
+      if(eqInvEl && nInv > 1) {
+        const modeloBase = eqInvEl.textContent.replace(/^\d+x\s*/, '');
+        eqInvEl.textContent = nInv + 'x ' + modeloBase;
+      }
+    } else {
+      qtdEl.textContent = '1 un.';
+    }
+  }
 }
 
 </script>

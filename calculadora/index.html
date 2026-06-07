@@ -249,20 +249,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   /* Ocultar seletor de módulo no PDF */
   #eqModSeletorWrap{display:none!important;}
 
-  /* ── CORES DOS EQUIPAMENTOS NO PDF ── */
-  /* Corrige textos que usam --branco ou --ouro-claro (invisíveis em fundo branco) */
+  /* ── CORES NO PDF: corrige variáveis CSS invisíveis em fundo branco ── */
   #eqQtd, #eqInvQtd{color:#111418!important;font-weight:700!important;}
   #eqModelo, #eqInversor{color:#C8922A!important;-webkit-text-fill-color:#C8922A!important;}
   #eqModDesc{color:#555!important;}
   #eqEstrutura{color:#111418!important;}
-  /* Todos os td com --branco no secaoEquipamentos */
   #secaoEquipamentos td{color:#111418!important;}
   #secaoEquipamentos td[style*="cinza"]{color:#666!important;}
   #secaoEquipamentos .form-section-title{color:#C8922A!important;}
-  /* Cards de módulo e inversor */
   #secaoEquipamentos div[style*="color:var(--cinza)"]{color:#666!important;}
   #secaoEquipamentos div[style*="color:var(--branco)"]{color:#111418!important;}
   #secaoEquipamentos span[style*="color:var(--branco)"]{color:#111418!important;}
+  /* QR Codes — textos invisíveis em fundo branco */
+  .prop-page div[style*="color:var(--ouro-claro)"]{color:#C8922A!important;-webkit-text-fill-color:#C8922A!important;}
+  .prop-page div[style*="color:var(--cinza)"]{color:#666!important;}
+  .prop-page span[style*="color:var(--cinza)"]{color:#666!important;}
+  .prop-page div[style*="color:var(--branco)"]{color:#111418!important;}
+  .prop-page span[style*="color:var(--branco)"]{color:#111418!important;}
   html,body{background:#fff!important;margin:0;padding:0;width:100%!important;}
   .wrapper{padding:0!important;max-width:100%!important;margin:0!important;width:100%!important;}
   #proposta{display:block!important;width:100%!important;}

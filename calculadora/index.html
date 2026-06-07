@@ -1122,6 +1122,53 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         </div>
       </div>
 
+      <!-- EQUIPAMENTOS DO SISTEMA -->
+      <div id="secaoEquipamentos" style="margin-top:20px;">
+        <div class="form-section-title" style="margin-bottom:12px;">⚡ Equipamentos do Sistema</div>
+        <table class="prop-table" style="width:100%;">
+          <thead>
+            <tr>
+              <td style="color:var(--cinza);font-weight:700;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding-bottom:6px;">Componente</td>
+              <td style="color:var(--cinza);font-weight:700;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding-bottom:6px;">Especificação</td>
+              <td style="color:var(--cinza);font-weight:700;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding-bottom:6px;text-align:center;">Qtd.</td>
+              <td style="color:var(--cinza);font-weight:700;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding-bottom:6px;">Observação</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--cinza);">Módulo Solar</td>
+              <td id="eqModelo" class="ouro">—</td>
+              <td id="eqQtd" style="text-align:center;color:var(--branco);font-weight:700;">—</td>
+              <td style="color:var(--cinza);font-size:11px;">Garantia 25 anos de geração</td>
+            </tr>
+            <tr>
+              <td style="color:var(--cinza);">Inversor</td>
+              <td id="eqInversor" class="ouro" style="font-size:11px;">—</td>
+              <td style="text-align:center;color:var(--branco);font-weight:700;">1 un.</td>
+              <td style="color:var(--cinza);font-size:11px;">Monitoramento remoto incluso</td>
+            </tr>
+            <tr>
+              <td style="color:var(--cinza);">Estrutura de Fixação</td>
+              <td id="eqEstrutura" style="color:var(--branco);">—</td>
+              <td style="text-align:center;color:var(--branco);font-weight:700;">1 kit</td>
+              <td style="color:var(--cinza);font-size:11px;">Inclusa no projeto</td>
+            </tr>
+            <tr>
+              <td style="color:var(--cinza);">Cabeamento CC/CA</td>
+              <td style="color:var(--branco);">Cabo Solar Energyflex 4mm — 1,8kV</td>
+              <td style="text-align:center;color:var(--branco);font-weight:700;">1 kit</td>
+              <td style="color:var(--cinza);font-size:11px;">Incluso no projeto</td>
+            </tr>
+            <tr>
+              <td style="color:var(--cinza);">Stringbox / DPS</td>
+              <td style="color:var(--branco);">String Box com Fusível e Proteção DPS</td>
+              <td style="text-align:center;color:var(--branco);font-weight:700;">1 un.</td>
+              <td style="color:var(--cinza);font-size:11px;">Inclusa no projeto</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <!-- NOTA ESTIMATIVA -->
       <div style="margin-top:24px;background:rgba(200,146,42,0.06);border:1px solid rgba(200,146,42,0.2);border-radius:10px;padding:16px 20px;font-size:12px;color:var(--cinza);line-height:1.6;">
         <strong style="color:var(--ouro-claro);">⚠️ Esta é uma estimativa automática.</strong> Para um dimensionamento preciso e proposta comercial personalizada, solicite uma análise técnica gratuita.<br>
@@ -1290,12 +1337,32 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const nMod=Math.max(2,Math.ceil(kwpBruto*margem*1000/555));
   const kWp=parseFloat((nMod*555/1000).toFixed(2));
   const area=(nMod*2.05).toFixed(1);
-  let inv='';
-  if(kWp<=3)inv='Microinversor 1–3 kW';
-  else if(kWp<=6)inv='String Inverter 3–5 kW';
-  else if(kWp<=12)inv='String Inverter 5–10 kW';
-  else if(kWp<=25)inv='String Inverter 10–20 kW';
-  else inv='Inversor ≥25 kW';
+  // ── SELEÇÃO DE INVERSOR (modelos reais Saewel) ──
+  const INVERSORES_DB=[
+    {kwAC:2.0,  marca:'WEG',     fator:1.36, modelo:'WEG 2kW — SIW300H M020 — Mono — 2mppt — 220V'},
+    {kwAC:3.0,  marca:'WEG',     fator:1.36, modelo:'WEG 3kW — SIW300H M030 L1 — Mono — 2mppt — 220V'},
+    {kwAC:4.0,  marca:'WEG',     fator:1.36, modelo:'WEG 4kW — SIW300H M040 L1 — Mono — 2mppt — 220V'},
+    {kwAC:5.0,  marca:'WEG',     fator:1.36, modelo:'WEG 5kW — SIW300H M050 L1 — Mono — 2mppt — 220V'},
+    {kwAC:6.0,  marca:'GROWATT', fator:1.44, modelo:'Growatt 6kW — MIN6000TL-X2 — Mono — 2mppt — 220V — AFCI'},
+    {kwAC:8.5,  marca:'WEG',     fator:1.36, modelo:'WEG 8,5kW — SIW200 M085 — Mono — 3mppt — 220V'},
+    {kwAC:10.0, marca:'WEG',     fator:1.36, modelo:'WEG 10kW — SIW200 M100 — Mono — 3mppt — 220V'},
+    {kwAC:12.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST012 — Trifásico — 2mppt — 380V'},
+    {kwAC:15.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST015 — Trifásico — 3mppt — 380V'},
+    {kwAC:20.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST020 — Trifásico — 3mppt — 380V'},
+    {kwAC:30.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST030 — Trifásico — 4mppt — 380V'},
+    {kwAC:36.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST036 — Trifásico — 4mppt — 380V'},
+    {kwAC:40.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST040 — Trifásico — 4mppt — 380V'},
+    {kwAC:60.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST060 — Trifásico — 6mppt — 380V'},
+    {kwAC:100.0,marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST100 — Trifásico — 6mppt — 800V'},
+  ];
+  function selecionarInversor(kwp){
+    const sorted=INVERSORES_DB.slice().sort((a,b)=>a.kwAC-b.kwAC);
+    const found=sorted.find(i=>(i.kwAC*i.fator)>=kwp);
+    return found||{modelo:'Inversor sob consulta ('+kwp.toFixed(2)+' kWp)',marca:'—'};
+  }
+  const invObj=selecionarInversor(kWp);
+  const inv=invObj.modelo;
+  const invMarca=invObj.marca;
   const geracaoMensal=VAR_MES.map(f=>Math.round(kWp*hsp*30*ef*f));
   const geracaoMedia=Math.round(geracaoMensal.reduce((a,b)=>a+b,0)/12);
 
@@ -1401,6 +1468,11 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   set('dLocal',cidade);set('dIrr',irr.toFixed(2)+' kWh/m²/dia');set('dEstr',ESTRUTURAS[estrutura]);
   set('dPot',kWp.toFixed(2)+' kWp');set('dMod',nMod+'× módulos 555Wp bifaciais');
   set('dArea','~'+area+' m²');set('dInv',inv);set('dGer',geracaoMedia.toLocaleString('pt-BR')+' kWh/mês (média anual)');
+  // Preenche tabela de equipamentos
+  set('eqModelo','Painel 555Wp Bifacial — Jinko/Trina/AstroEnergy');
+  set('eqQtd',nMod+'×');
+  set('eqInversor',inv);
+  set('eqEstrutura',ESTRUTURAS[estrutura]||'Telhado cerâmico / fibrocimento / metálico');
 
   // Financeiro
   set('fCons',consumoMedio.toLocaleString('pt-BR')+' kWh/mês');set('fTar','R$ '+tarifa.toFixed(2)+'/kWh');

@@ -209,6 +209,37 @@
     .footer-qr-inline img{width:40px;height:40px;border-radius:4px;}
     .footer-qr-inline span{font-size:11px;color:#1a1a1a;line-height:1.4;font-weight:600;}.footer-bottom{flex-direction:column;gap:6px;text-align:center;padding:16px 0;}.footer-copy{font-size:11px;}}
     @media(max-width:480px){.footer-grid{grid-template-columns:1fr 1fr;gap:20px 16px;}.foot-col h4{margin-bottom:10px;}.foot-col a{font-size:12px;margin-bottom:6px;}.foot-logo{font-size:18px;}.foot-desc{font-size:12px;}.foot-socials{flex-direction:row;flex-wrap:wrap;gap:12px;}.social-icon{font-size:12px;}}
+
+    /* ── COMPARTILHAMENTO ── */
+    .share-box{max-width:800px;margin:48px auto 0;padding:32px;background:var(--noite2);border-radius:16px;border:1px solid rgba(200,146,42,0.12);text-align:center;}
+    .share-box h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;color:var(--branco);margin-bottom:6px;letter-spacing:0.02em;}
+    .share-box p{font-size:13px;color:var(--cinza);margin-bottom:20px;}
+    .share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+    .share-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;}
+    .share-btn-wpp{background:#25D366;color:#fff;}
+    .share-btn-wpp:hover{background:#1fba59;transform:translateY(-1px);}
+    .share-btn-fb{background:#1877F2;color:#fff;}
+    .share-btn-fb:hover{background:#1464d0;transform:translateY(-1px);}
+    .share-btn-copy{background:var(--noite3);color:var(--cinza);border:1px solid rgba(200,146,42,0.2);}
+    .share-btn-copy:hover{color:var(--ouro-claro);border-color:var(--ouro-claro);transform:translateY(-1px);}
+    /* ── LEIA TAMBÉM ── */
+    .leia-tambem{max-width:800px;margin:48px auto 0;padding:0 5%;}
+    .leia-tambem h3{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ouro);margin-bottom:20px;}
+    .leia-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .leia-card{background:var(--noite2);border:1px solid rgba(200,146,42,0.1);border-radius:14px;padding:20px;text-decoration:none;transition:all 0.3s;display:flex;flex-direction:column;gap:8px;}
+    .leia-card:hover{border-color:rgba(200,146,42,0.4);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.3);}
+    .leia-tag{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ouro);font-family:'Outfit',sans-serif;}
+    .leia-titulo{font-size:14px;font-weight:600;color:var(--branco);line-height:1.4;}
+    .leia-desc{font-size:12px;color:var(--cinza);line-height:1.5;flex:1;}
+    .leia-ler{font-size:12px;color:var(--ouro-claro);font-weight:500;margin-top:4px;}
+    /* ── CTA CANAL WHATSAPP ── */
+    .canal-cta{max-width:800px;margin:48px auto 0;padding:28px 32px;background:linear-gradient(135deg,#0a1f0d,#091209);border:1px solid rgba(37,211,102,0.2);border-radius:16px;display:flex;align-items:center;gap:24px;}
+    .canal-cta-icon{font-size:40px;flex-shrink:0;}
+    .canal-cta-text h4{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--branco);margin-bottom:6px;}
+    .canal-cta-text p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;}
+    .canal-cta-btn{flex-shrink:0;background:#25D366;color:#fff;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;transition:all 0.3s;}
+    .canal-cta-btn:hover{background:#1fba59;transform:translateY(-1px);}
+    @media(max-width:768px){.leia-grid{grid-template-columns:1fr;}.canal-cta{flex-direction:column;text-align:center;}.share-btns{flex-direction:column;align-items:center;}}
   </style>
 </head>
 <body>
@@ -516,6 +547,60 @@
       <div class="author-role">Engenheiro de Energias Renováveis — CREA/SP · Saewel Energia Solar</div>
       <p class="author-bio">Especialista em projetos fotovoltaicos residenciais, comerciais e sistemas híbridos com armazenamento em São José do Rio Preto e região. Responsável técnico por emitir a ART de projeto e execução, e homologação de sistemas solares junto à concessionária de energia local.</p>
     </div>
+  </div>
+
+  <!-- ── COMPARTILHAMENTO ── -->
+  <div class="share-box">
+    <h3>Este artigo foi útil para você?</h3>
+    <p>Compartilhe com quem está pensando em instalar energia solar</p>
+    <div class="share-btns">
+      <a class="share-btn share-btn-wpp" href="https://wa.me/?text=https%3A%2F%2Fwww.saewelenergiasolar.com.br/blog/energia-solar-comercio-sao-jose-do-rio-preto/" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a class="share-btn share-btn-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.saewelenergiasolar.com.br/blog/energia-solar-comercio-sao-jose-do-rio-preto/" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <button class="share-btn share-btn-copy" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='✓ Link copiado!';setTimeout(()=>{this.innerHTML='Copiar link';},2000)})">
+        Copiar link
+      </button>
+    </div>
+  </div>
+
+  <!-- ── LEIA TAMBÉM ── -->
+  <div class="leia-tambem">
+    <h3>Leia também</h3>
+    <div class="leia-grid">
+      <a class="leia-card" href="/blog/quanto-custa-instalar-energia-solar-2026/">
+        <span class="leia-tag">Custos</span>
+        <div class="leia-titulo">Quanto custa instalar energia solar em 2026?</div>
+        <div class="leia-desc">Preços para sistemas comerciais em São José do Rio Preto.</div>
+        <span class="leia-ler">Ler artigo →</span>
+      </a>
+      <a class="leia-card" href="/blog/vale-a-pena-energia-solar-para-empresa-2026/">
+        <span class="leia-tag">Negócios</span>
+        <div class="leia-titulo">Vale a pena energia solar para empresa em 2026?</div>
+        <div class="leia-desc">Análise completa do retorno para comércios e empresas.</div>
+        <span class="leia-ler">Ler artigo →</span>
+      </a>
+      <a class="leia-card" href="/blog/financiamento-energia-solar-2026/">
+        <span class="leia-tag">Custos</span>
+        <div class="leia-titulo">Financiamento de energia solar 2026: taxas, bancos e parcelas</div>
+        <div class="leia-desc">Linhas de crédito para pessoa jurídica.</div>
+        <span class="leia-ler">Ler artigo →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── CTA CANAL WHATSAPP ── -->
+  <div class="canal-cta">
+    <div class="canal-cta-icon">📡</div>
+    <div class="canal-cta-text">
+      <h4>Receba novidades sobre energia solar</h4>
+      <p>Mudanças na legislação, preços de painéis, dados de irradiação — tudo no nosso canal gratuito do WhatsApp.</p>
+    </div>
+    <a class="canal-cta-btn" href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" target="_blank" rel="noopener noreferrer">Entrar no canal ☀️</a>
   </div>
 
 </article>

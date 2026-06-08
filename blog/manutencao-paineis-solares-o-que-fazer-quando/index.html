@@ -57,13 +57,7 @@
       --azul-claro: #2E72C2;
     }
 
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--noite);
-      color: var(--texto);
-      line-height: 1.85;
-      font-size: 17px;
-    }
+    body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--texto);line-height:1.85;overflow-x:hidden}
 
     a { color: var(--ouro-claro); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -369,6 +363,9 @@
     @media(max-width:900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } .foot-brand { grid-column: 1 / -1; } .foot-desc { max-width: 100%; } }
     @media(max-width:768px){.footer-novo{padding:40px 5% 0;}.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}.foot-desc{max-width:100%;}.footer-qr-inline{margin-top:8px;}.footer-bottom{flex-direction:column;gap:6px;text-align:center;padding:16px 0;}.footer-copy{font-size:11px;}}
     @media(max-width:480px){.footer-grid{grid-template-columns:1fr 1fr;gap:20px 16px;}.foot-col h4{margin-bottom:10px;}.foot-col a{font-size:12px;margin-bottom:6px;}.foot-logo{font-size:18px;}.foot-desc{font-size:12px;}.foot-socials{flex-direction:row;flex-wrap:wrap;gap:12px;}.social-icon{font-size:12px;}}
+    .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;font-size:14px!important;font-family:"Outfit",sans-serif!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none}
+    .nav-cta{justify-self:end}
+    .nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,146,42,0.5)!important}
   </style>
 </head>
 <body>

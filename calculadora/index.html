@@ -194,7 +194,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
 /* ASSINATURAS */
 .assinaturas{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px;}
-.ass-box{border-top:1px solid rgba(255,255,255,0.15);padding-top:48px;}
+.ass-box{padding-top:0;}.ass-linha{height:60px;border-bottom:1px solid rgba(255,255,255,0.4);margin-bottom:10px;}
 .ass-nome{font-size:14px;font-weight:600;color:var(--branco);margin-bottom:2px;}
 .ass-info{font-size:12px;color:var(--cinza);}
 
@@ -702,7 +702,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
   /* Assinaturas */
   .assinaturas{display:grid!important;grid-template-columns:1fr 1fr!important;gap:32px!important;margin-top:20px!important;}
-  .ass-box{border-top:2px solid #0A0C0F!important;padding-top:60px!important;}
+  .ass-box{padding-top:0!important;}.ass-linha{height:70px!important;border-bottom:2px solid #0A0C0F!important;margin-bottom:10px!important;}
   .ass-nome{font-size:14px!important;font-weight:700!important;color:#0A0C0F!important;}
   .ass-info{font-size:11px!important;color:#666!important;}
 
@@ -1253,13 +1253,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         <div class="termos-item"><span class="termos-icon">📅</span><div><strong>Prazo de entrega:</strong> 30 dias mediante confirmação de disponibilidade.</div></div>
       </div>
       <div class="assinaturas" style="margin-top:80px;">
-        <div class="ass-box">
+        <div class="ass-box"><div class="ass-linha"></div>
           <div class="ass-nome">Saewel Energia Solar</div>
           <div class="ass-info">CNPJ: 36.866.433/0001-71</div>
           <div class="ass-info">Haroldo M. Silva — Eng. de Energias Renováveis</div>
           <div class="ass-info">haroldo@saewelenergiasolar.com.br</div>
         </div>
-        <div class="ass-box">
+        <div class="ass-box"><div class="ass-linha"></div>
           <div class="ass-nome" id="assCliente">—</div>
           <div class="ass-info" id="assTel">—</div>
           <div class="ass-info" id="assLocal">—</div>

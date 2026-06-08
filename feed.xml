@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog Saewel Energia Solar</title>
+    <link>https://www.saewelenergiasolar.com.br/blog/</link>
+    <description>Artigos técnicos sobre energia solar fotovoltaica, armazenamento BESS e mercado de energia renovável no Brasil.</description>
+    <language>pt-BR</language>
+    <atom:link href="https://www.saewelenergiasolar.com.br/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sun, 08 Jun 2026 16:00:00 -0300</lastBuildDate>
+
+    <item>
+      <title>Solar + BESS: A nova era da independência energética no Brasil</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/energia-solar-bess-armazenamento-gestao-inteligente/</link>
+      <description>Como combinar energia solar, armazenamento BESS e gestão inteligente para alcançar independência real da rede elétrica — mesmo com as mudanças da Lei 14.300.</description>
+      <category>BESS</category>
+      <pubDate>Tue, 20 May 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/energia-solar-bess-armazenamento-gestao-inteligente/</guid>
+    </item>
+
+    <item>
+      <title>Quanto custa instalar energia solar em casa em 2026?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-em-casa-2026/</link>
+      <description>Preços reais por porte, o que está incluído no orçamento e como calcular o payback para sua casa em SJRP.</description>
+      <category>Energia Solar</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-em-casa-2026/</guid>
+    </item>
+
+    <item>
+      <title>Quanto posso economizar com energia solar?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/economia-energia-solar/</link>
+      <description>Exemplos reais por perfil de consumo, como os créditos funcionam e como calcular sua economia em 2 minutos.</description>
+      <category>Energia Solar</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/economia-energia-solar/</guid>
+    </item>
+
+    <item>
+      <title>On-grid, off-grid ou híbrido: qual sistema escolher?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/on-grid-off-grid-hibrido-qual-sistema-escolher/</link>
+      <description>Comparativo completo para ajudar na decisão certa conforme seu perfil de consumo e localização.</description>
+      <category>Energia Solar</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/on-grid-off-grid-hibrido-qual-sistema-escolher/</guid>
+    </item>
+
+    <item>
+      <title>Qual o melhor inversor solar em 2026?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/melhor-inversor-solar-2026/</link>
+      <description>Comparativo completo entre as principais marcas — string, híbrido e microinversor. O que avaliar e como escolher sem errar.</description>
+      <category>Energia Solar</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/melhor-inversor-solar-2026/</guid>
+    </item>
+
+    <item>
+      <title>Manutenção de painéis solares: o que fazer e de quanto em quanto tempo</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/manutencao-paineis-solares-o-que-fazer-quando/</link>
+      <description>Cronograma completo de limpeza, inspeção elétrica e monitoramento para manter seu sistema gerando no máximo.</description>
+      <category>Energia Solar</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/manutencao-paineis-solares-o-que-fazer-quando/</guid>
+    </item>
+
+    <item>
+      <title>Limpeza de painéis solares: faça você mesmo ou contrate?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/limpeza-paineis-solares-faca-voce-mesmo-ou-contrate/</link>
+      <description>Quando vale limpar sozinho, quando chamar um profissional — e o serviço de limpeza técnica da Saewel em SJRP e região.</description>
+      <category>Energia Solar</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/limpeza-paineis-solares-faca-voce-mesmo-ou-contrate/</guid>
+    </item>
+
+    <item>
+      <title>Energia solar rural: sítios, fazendas e agronegócio</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/energia-solar-rural-sitios-fazendas-agronegocio/</link>
+      <description>Irrigação, câmaras frias, galpões e eletrificação isolada — como a energia solar transforma a propriedade rural no interior de SP.</description>
+      <category>Energia Solar</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/energia-solar-rural-sitios-fazendas-agronegocio/</guid>
+    </item>
+
+    <item>
+      <title>Como consultar a irradiação solar da sua cidade gratuitamente</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/irradiacao-solar-cidade-cresesb-sundata/</link>
+      <description>CRESESB SunData, Atlas Solarimétrico, HSP, plano inclinado e horizontal — o guia técnico completo para entender os dados solares do Brasil.</description>
+      <category>Dados e Inteligência</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/irradiacao-solar-cidade-cresesb-sundata/</guid>
+    </item>
+
+    <item>
+      <title>Como calcular o tamanho ideal do seu sistema solar</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/como-calcular-tamanho-sistema-solar/</link>
+      <description>Passo a passo técnico para dimensionar corretamente — consumo, irradiação, PR, perdas e número de painéis. Com exemplos reais.</description>
+      <category>Dados e Inteligência</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/como-calcular-tamanho-sistema-solar/</guid>
+    </item>
+
+    <item>
+      <title>O que é PR (Performance Ratio) e por que ele importa?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/o-que-e-pr-performance-ratio-energia-solar/</link>
+      <description>O índice que revela se o seu sistema solar está funcionando corretamente — como calcular, interpretar e melhorar o desempenho real.</description>
+      <category>Dados e Inteligência</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/o-que-e-pr-performance-ratio-energia-solar/</guid>
+    </item>
+
+    <item>
+      <title>Financiamento de energia solar em 2026</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/financiamento-energia-solar-2026/</link>
+      <description>Linhas de crédito, taxas reais, simulação de parcelas e como instalar sem desembolso inicial.</description>
+      <category>Mercado de Energia</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/financiamento-energia-solar-2026/</guid>
+    </item>
+
+    <item>
+      <title>Vale a pena energia solar para empresa em 2026?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/vale-a-pena-energia-solar-para-empresa-2026/</link>
+      <description>Análise completa com números reais — payback, ROI e quando o solar faz sentido para o seu negócio.</description>
+      <category>Mercado de Energia</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/vale-a-pena-energia-solar-para-empresa-2026/</guid>
+    </item>
+
+    <item>
+      <title>Quanto custa instalar energia solar em 2026?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-2026/</link>
+      <description>Preços atualizados por porte de sistema, o que está incluído no orçamento e como comparar propostas com segurança.</description>
+      <category>Mercado de Energia</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-2026/</guid>
+    </item>
+
+    <item>
+      <title>Preço dos painéis solares em 2026: vale esperar ou instalar agora?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/preco-paineis-solares-2026-vale-esperar-ou-instalar/</link>
+      <description>Análise de mercado com preços reais, tendências de custo e por que esperar pode custar mais caro do que parece.</description>
+      <category>Mercado de Energia</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/preco-paineis-solares-2026-vale-esperar-ou-instalar/</guid>
+    </item>
+
+    <item>
+      <title>Como funciona a homologação do sistema solar junto à distribuidora</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/como-funciona-homologacao-sistema-solar-distribuidora/</link>
+      <description>Passo a passo do processo, documentos necessários, prazos reais e o que pode atrasar a sua conexão à rede.</description>
+      <category>Legislação</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/como-funciona-homologacao-sistema-solar-distribuidora/</guid>
+    </item>
+
+    <item>
+      <title>Lei 14.300 e o Fio B: o que muda para quem tem ou quer solar</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/lei-14300-fio-b-energia-solar/</link>
+      <description>Entenda como a cobrança progressiva do Fio B afeta o retorno do seu sistema e como se proteger — com números reais de 2026.</description>
+      <category>Legislação</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/lei-14300-fio-b-energia-solar/</guid>
+    </item>
+
+    <item>
+      <title>Lei 15.269/2025: o novo marco do armazenamento de energia solar</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/lei-15269-2025-marco-armazenamento-energia-solar/</link>
+      <description>O que muda com a lei que regulamentou as baterias no Brasil — e como ela impacta quem instala solar com BESS agora.</description>
+      <category>Legislação</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/lei-15269-2025-marco-armazenamento-energia-solar/</guid>
+    </item>
+
+    <item>
+      <title>ANEEL e energia solar: o que mudou de 2024 a 2026?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/aneel-energia-solar-o-que-mudou-2024-2026/</link>
+      <description>As principais resoluções e mudanças regulatórias da ANEEL — Fio B, REN 1000, marco do armazenamento e revisões tarifárias.</description>
+      <category>Legislação</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/aneel-energia-solar-o-que-mudou-2024-2026/</guid>
+    </item>
+
+    <item>
+      <title>Quanto custa um sistema de baterias solar em 2026?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/quanto-custa-sistema-baterias-solar-2026/</link>
+      <description>Preços reais de sistemas BESS residenciais e comerciais — marcas, capacidades, tempo de retorno e o que mudou com a Lei 15.269/2025.</description>
+      <category>BESS</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/quanto-custa-sistema-baterias-solar-2026/</guid>
+    </item>
+
+    <item>
+      <title>BESS como backup: como funciona durante queda de energia?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/bess-backup-energia-como-funciona-queda-de-luz/</link>
+      <description>Como o sistema de baterias garante energia mesmo quando a rede cai — modos de operação, autonomia e configuração.</description>
+      <category>BESS</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/bess-backup-energia-como-funciona-queda-de-luz/</guid>
+    </item>
+
+    <item>
+      <title>Quanto custa energia solar em São José do Rio Preto em 2026?</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/quanto-custa-energia-solar-sao-jose-do-rio-preto-2026/</link>
+      <description>Tabela de preços por porte, payback real, financiamento e o que influencia o custo final do sistema em SJRP.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/quanto-custa-energia-solar-sao-jose-do-rio-preto-2026/</guid>
+    </item>
+
+    <item>
+      <title>Energia solar para comércio em São José do Rio Preto</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/energia-solar-comercio-sao-jose-do-rio-preto/</link>
+      <description>Como lojas, clínicas e empresas de SJRP estão reduzindo até 90% da conta de luz com energia solar.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/energia-solar-comercio-sao-jose-do-rio-preto/</guid>
+    </item>
+
+    <item>
+      <title>Raio-X Solar: São José do Rio Preto</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-sao-jose-do-rio-preto/</link>
+      <description>Irradiação 5,36 kWh/m²/dia, produção estimada, payback e análise técnica completa com dados reais do CRESESB/SunData.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-sao-jose-do-rio-preto/</guid>
+    </item>
+
+    <item>
+      <title>Raio-X Solar: Mirassol</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-mirassol/</link>
+      <description>Irradiação 5,37 kWh/m²/dia — potencial solar de Mirassol com dados reais, geração estimada e viabilidade fotovoltaica.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-mirassol/</guid>
+    </item>
+
+    <item>
+      <title>Raio-X Solar: Olímpia</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-olimpia/</link>
+      <description>Irradiação 5,39 kWh/m²/dia — análise técnica do potencial solar de Olímpia, com foco em hotelaria e agronegócio.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-olimpia/</guid>
+    </item>
+
+    <item>
+      <title>Raio-X Solar: Catanduva</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-catanduva/</link>
+      <description>Irradiação 5,34 kWh/m²/dia — potencial solar de Catanduva com análise para indústria citrícola e setor comercial.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-catanduva/</guid>
+    </item>
+
+    <item>
+      <title>Raio-X Solar: Votuporanga</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-votuporanga/</link>
+      <description>Irradiação 5,41 kWh/m²/dia — a maior da região. Análise do potencial solar de Votuporanga e polo moveleiro.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-votuporanga/</guid>
+    </item>
+
+    <item>
+      <title>Raio-X Solar: Bady Bassitt</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-bady-bassitt/</link>
+      <description>Irradiação 5,35 kWh/m²/dia — potencial solar de Bady Bassitt com foco em energia solar rural e agropecuária.</description>
+      <category>Cidades</category>
+      <pubDate>Mon, 01 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-bady-bassitt/</guid>
+    </item>
+
+  </channel>
+</rss>

@@ -129,16 +129,17 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
 .foot-logo span{color:var(--ouro-claro);}
 .foot-desc{font-size:13px;color:var(--cinza);line-height:1.7;margin-bottom:16px;max-width:240px;}
 .foot-col h4{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;}
-.foot-col a{display:block;font-size:13px;color:var(--cinza);text-decoration:none;margin-bottom:8px;transition:color 0.3s;}
+    .foot-col h3{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;}
+.foot-col a{display:block;font-size:13px;color:var(--cinza);text-decoration:none;margin-bottom:4px;padding:6px 0;transition:color 0.3s;}
 .foot-col a:hover{color:var(--branco);}
 .footer-bottom{display:flex;align-items:center;justify-content:center;padding:20px 0;}
 .footer-copy{font-size:12px;color:rgba(248,245,240,0.25);}
-.footer-qr-inline{display:flex;align-items:center;gap:8px;opacity:0.6;transition:opacity 0.3s;text-decoration:none;}
+.footer-qr-inline{display:flex;align-items:center;gap:8px;background:#fff;border-radius:8px;padding:8px 10px;opacity:0.9;transition:opacity 0.3s;text-decoration:none;}
 .footer-qr-inline:hover{opacity:1;}
-.footer-qr-inline img{width:40px;height:40px;border-radius:4px;background:#fff;padding:2px;}
-.footer-qr-inline span{font-size:11px;color:rgba(248,245,240,0.5);line-height:1.4;}
+.footer-qr-inline img{width:40px;height:40px;border-radius:4px;}
+.footer-qr-inline span{font-size:11px;color:#1a1a1a;line-height:1.4;font-weight:600;}
 .foot-socials{display:flex;flex-direction:column;gap:10px;}
-.social-icon{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
+.social-icon{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.3s;padding:8px 0;}
 .social-icon:hover{color:var(--ouro-claro);}
 .social-icon svg{flex-shrink:0;opacity:0.7;}
 .social-icon:hover svg{opacity:1;}
@@ -230,6 +231,8 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
   <a href="/blog/">Blog</a>
   <a href="https://wa.me/5517982093739" class="mob-btn" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
 </div>
+
+<main id="conteudo-principal">
 
 <!-- HERO -->
 <section class="hero">
@@ -346,6 +349,8 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer class="footer-novo">
   <div class="footer-grid">
     <div class="foot-brand">
@@ -357,7 +362,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       </a>
     </div>
     <div class="foot-col">
-      <h4>Serviços</h4>
+      <h3>Serviços</h3>
       <a href="/projetos-fotovoltaicos/">Projetos Fotovoltaicos</a>
       <a href="/instalacao/">Instalação</a>
       <a href="/manutencao/">Manutenção</a>
@@ -365,20 +370,20 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="/consultoria/">Consultoria</a>
     </div>
     <div class="foot-col">
-      <h4>Soluções</h4>
+      <h3>Soluções</h3>
       <a href="/energia-solar-residencial/">Residencial</a>
       <a href="/energia-solar-comercial/">Comercial</a>
       <a href="/energia-solar-agronegocio/">Agronegócio</a>
       <a href="/armazenamento-de-energia/">Armazenamento BESS</a>
     </div>
     <div class="foot-col">
-      <h4>Área de Atuação</h4>
+      <h3>Área de Atuação</h3>
       <a href="/cidades/sao-jose-do-rio-preto/">São José do Rio Preto</a>
       <a href="/cidades/">Região Noroeste Paulista</a>
       <a href="/cidades/" style="font-size:12px;opacity:0.7;">Ver todas as cidades →</a>
     </div>
     <div class="foot-col">
-      <h4>Institucional</h4>
+      <h3>Institucional</h3>
       <a href="/sobre/">Sobre</a>
       <a href="/avaliacoes/">Avaliações</a>
       <a href="/blog/">Blog</a>
@@ -388,13 +393,13 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="/contato/">Contato</a>
     </div>
     <div class="foot-col">
-      <h4>Legal</h4>
+      <h3>Legal</h3>
       <a href="/politica-de-privacidade/">Política de Privacidade</a>
       <a href="/termos-de-uso/">Termos de Uso</a>
       <a href="/politica-de-cookies/">Política de Cookies</a>
     </div>
     <div class="foot-col">
-      <h4>Redes Sociais</h4>
+      <h3>Redes Sociais</h3>
       <div class="foot-socials">
         <a href="https://www.instagram.com/saewelenergia" target="_blank" rel="noopener noreferrer" class="social-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram
@@ -405,7 +410,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
         <a href="https://wa.me/5517982093739" target="_blank" rel="noopener noreferrer" class="social-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp
         </a>
-        <a href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" target="_blank" rel="noopener noreferrer" class="social-icon" style="color:#25D366;">
+        <a href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" target="_blank" rel="noopener noreferrer" class="social-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Canal Solar ☀️
         </a>
       </div>

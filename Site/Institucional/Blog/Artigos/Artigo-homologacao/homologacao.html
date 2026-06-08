@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homologação solar junto à distribuidora: passo a passo</title>
+  <meta name="description" content="Como funciona a homologação do sistema solar — documentos, prazos reais e o que pode atrasar sua conexão à rede elétrica.">
+  <meta name="author" content="Haroldo M. Silva — Engenheiro de Energias Renováveis, Saewel Energia Solar">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="homologação energia solar, homologação distribuidora, ART projeto solar, conexão rede solar, CPFL solar, prazo homologação solar, geração distribuída homologação, São José do Rio Preto">
+  <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/como-funciona-homologacao-sistema-solar-distribuidora/">
+  <meta property="og:title" content="Como funciona a homologação do sistema solar junto à distribuidora">
+  <meta property="og:description" content="Passo a passo da homologação do sistema solar fotovoltaico — prazos reais, documentos necessários e o que pode atrasar o processo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/como-funciona-homologacao-sistema-solar-distribuidora/">
+  <meta property="og:site_name" content="Saewel Energia Solar">
+  <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Como funciona a homologação do sistema solar junto à distribuidora",
+    "description": "Entenda o passo a passo da homologação do sistema solar fotovoltaico junto à distribuidora de energia elétrica — prazos reais, documentos necessários e o que pode atrasar o processo.",
+    "author": {
+      "@type": "Person",
+      "name": "Haroldo M. Silva",
+      "jobTitle": "Engenheiro de Energias Renováveis",
+      "worksFor": { "@type": "Organization", "name": "Saewel Energia Solar" }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Saewel Energia Solar",
+      "url": "https://www.saewelenergiasolar.com.br"
+    },
+    "datePublished": "2026-05-22",
+    "dateModified": "2026-05-22",
+    "mainEntityOfPage": "https://www.saewelenergiasolar.com.br/blog/como-funciona-homologacao-sistema-solar-distribuidora/",
+    "keywords": ["homologação solar", "distribuidora energia solar", "ART solar", "conexão rede fotovoltaica", "ANEEL geração distribuída", "São José do Rio Preto"]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noite: #0A0C0F;
+      --noite2: #111418;
+      --ouro: #C8922A;
+      --ouro-claro: #E8B84B;
+      --branco: #F8F5F0;
+      --cinza: #8A9099;
+      --texto: #D4CFC8;
+      --verde-claro: #3DAA6A;
+      --azul-claro: #2E72C2;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--noite);
+      color: var(--texto);
+      line-height: 1.85;
+      font-size: 17px;
+    }
+
+    a { color: var(--ouro-claro); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: var(--noite2);
+      border-bottom: 1px solid rgba(200,146,42,0.12);
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: var(--branco); }
+    .logo span { color: var(--ouro-claro); }
+    .site-header nav a {
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--cinza);
+      margin-left: 24px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .site-header nav a:hover { color: var(--branco); }
+
+    .article-hero {
+      background: linear-gradient(160deg, #0D1420 0%, var(--noite) 60%);
+      border-bottom: 1px solid rgba(200,146,42,0.08);
+      padding: 80px 5% 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(200,146,42,0.06) 0%, transparent 70%);
+    }
+
+    .breadcrumb {
+      font-family: sans-serif;
+      font-size: 12px;
+      color: var(--cinza);
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+    .breadcrumb a { color: var(--ouro); }
+
+    .article-eyebrow {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .article-title {
+      font-size: clamp(28px, 5vw, 54px);
+      font-weight: 700;
+      color: var(--branco);
+      line-height: 1.15;
+      max-width: 860px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+    .article-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .article-subtitle {
+      font-size: clamp(15px, 2.5vw, 19px);
+      color: var(--cinza);
+      max-width: 640px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .article-meta {
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--cinza);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .tag-list {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      position: relative;
+    }
+
+    .tag {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,146,42,0.25);
+      color: var(--ouro);
+      background: rgba(200,146,42,0.06);
+    }
+
+    .article-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 5%;
+    }
+
+    .article-wrap p { margin-bottom: 1.6rem; color: var(--texto); }
+    strong { color: var(--branco); }
+
+    h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      color: var(--branco);
+      margin: 3.5rem 0 1.2rem;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(200,146,42,0.15);
+      line-height: 1.25;
+    }
+
+    h3 {
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--ouro-claro);
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h4 {
+      font-size: 16px;
+      color: var(--branco);
+      font-family: sans-serif;
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.6rem; }
+    li { margin-bottom: 0.6rem; }
+
+    /* Callouts */
+    .callout {
+      border-radius: 16px;
+      padding: 26px 30px;
+      margin: 2.2rem 0;
+    }
+    .callout-title {
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .callout p { margin-bottom: 0; font-size: 15px; }
+    .callout-gold { background: rgba(200,146,42,0.07); border: 1px solid rgba(200,146,42,0.22); }
+    .callout-gold .callout-title { color: var(--ouro); }
+    .callout-blue { background: rgba(46,114,194,0.07); border: 1px solid rgba(46,114,194,0.22); }
+    .callout-blue .callout-title { color: var(--azul-claro); }
+    .callout-blue p { color: var(--texto); }
+    .callout-green { background: rgba(61,170,106,0.07); border: 1px solid rgba(61,170,106,0.22); }
+    .callout-green .callout-title { color: var(--verde-claro); }
+    .callout-green p { color: var(--texto); }
+    .callout-warn { background: rgba(200,80,50,0.07); border: 1px solid rgba(200,80,50,0.22); }
+    .callout-warn .callout-title { color: #E87060; }
+    .callout-warn p { color: var(--texto); }
+
+    /* Timeline de etapas */
+    .steps {
+      margin: 2.5rem 0;
+      position: relative;
+      padding-left: 32px;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 12px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--ouro), rgba(200,146,42,0.1));
+    }
+
+    .step {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .step-number {
+      position: absolute;
+      left: -32px;
+      top: 2px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--ouro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--noite);
+    }
+
+    .step-title {
+      font-family: sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--branco);
+      margin-bottom: 6px;
+    }
+
+    .step-prazo {
+      display: inline-block;
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      background: rgba(200,146,42,0.08);
+      border: 1px solid rgba(200,146,42,0.2);
+      padding: 2px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--texto);
+      line-height: 1.65;
+    }
+
+    /* Tabela */
+    .tech-table-wrap {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border-radius: 16px;
+      border: 1px solid rgba(200,146,42,0.15);
+    }
+    table { width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 14px; }
+    thead tr { background: rgba(200,146,42,0.08); }
+    thead th {
+      padding: 13px 16px;
+      text-align: left;
+      color: var(--ouro-claro);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(200,146,42,0.12);
+    }
+    tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(200,146,42,0.03); }
+    tbody td { padding: 12px 16px; color: var(--texto); vertical-align: top; }
+    tbody td:first-child { color: var(--branco); font-weight: 500; }
+    .td-green { color: var(--verde-claro) !important; font-weight: 600; }
+    .td-gold { color: var(--ouro-claro) !important; font-weight: 600; }
+    .td-red { color: #E87060 !important; }
+
+    /* Documentos checklist */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 1.5rem 0;
+    }
+
+    .doc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--noite2);
+      border: 1px solid rgba(200,146,42,0.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--texto);
+    }
+
+    .doc-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(200,146,42,0.10), rgba(232,184,75,0.05));
+      border: 1px solid rgba(200,146,42,0.25);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      margin: 3.5rem 0;
+    }
+    .cta-box h3 { color: var(--branco); margin: 0 0 14px; font-size: clamp(20px, 3vw, 28px); }
+    .cta-box p { color: var(--cinza); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; font-family: sans-serif; font-size: 15px; }
+    .btn-gold {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
+      color: var(--noite);
+      font-family: sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 15px 36px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-gold:hover { opacity: 0.85; text-decoration: none; }
+
+    /* Autor */
+    .author-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px 30px;
+      background: var(--noite2);
+      border: 1px solid rgba(200,146,42,0.12);
+      border-radius: 16px;
+      margin-top: 3rem;
+    }
+    .author-name { font-family: sans-serif; font-weight: 700; color: var(--branco); font-size: 15px; }
+    .author-role { font-family: sans-serif; font-size: 12px; color: var(--ouro); margin-bottom: 8px; }
+    .author-bio { font-size: 14px; color: var(--cinza); line-height: 1.6; margin-bottom: 0; }
+
+    .site-footer {
+      border-top: 1px solid rgba(200,146,42,0.08);
+      padding: 28px 5%;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--cinza);
+    }
+
+    @media (max-width: 640px) {
+      .doc-grid { grid-template-columns: 1fr; }
+      .author-card { flex-direction: column; }
+      .cta-box { padding: 32px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  
+    nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;height:72px;background:rgba(10,12,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12);}
+    .nav-logo{display:flex;align-items:center;text-decoration:none;}
+    .nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;}
+    .nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:#8A9099;text-decoration:none;transition:color 0.3s;}
+    .nav-links a:hover{color:#F8F5F0;}.nav-links a.ativo{color:var(--ouro-claro,#E8B84B);}
+    .nav-btn{background:linear-gradient(135deg,#C8922A,#E8B84B);color:#0A0C0F!important;padding:11px 24px;border-radius:50px;font-weight:700!important;letter-spacing:0.02em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;justify-self:end;white-space:nowrap;font-size:12px!important;}
+    .nav-cta{justify-self:end;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600;justify-self:end;}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:#F8F5F0;border-radius:2px;transition:all 0.35s;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(10,12,15,0.97);backdrop-filter:blur(20px);z-index:499;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;pointer-events:none;transition:opacity 0.35s;}
+    .mobile-menu.open{opacity:1;pointer-events:all;}
+    .mobile-menu a{font-size:22px;font-weight:500;color:#8A9099;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);width:80%;text-align:center;}
+    .mobile-menu a:hover{color:#F8F5F0;}
+    .mobile-menu .mob-btn{background:linear-gradient(135deg,#C8922A,#E8B84B);color:#0A0C0F!important;padding:16px 36px;border-radius:50px;font-weight:700;margin-top:12px;border-bottom:none!important;font-size:15px!important;}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(17,20,24,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,146,42,0.18);border-radius:14px;min-width:260px;z-index:600;box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:10px 0;}
+    .nav-dropdown:hover .nav-dropdown-menu{display:block;}
+    .nav-dropdown-menu li{list-style:none;}
+    .nav-dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(212,207,200,0.85);text-decoration:none;text-transform:none!important;transition:all 0.2s;}
+    .nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);}
+    .nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
+    .nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
+    @media(max-width:1024px){.nav-links{display:none;}.nav-cta{display:none!important;}.nav-hamburger{display:flex;justify-self:end;}.mobile-menu{display:flex;}}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://www.saewelenergiasolar.com.br" class="logo">Saewel <span>Energia Solar</span></a>
+  <nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <svg width="160" height="66" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+      <title>Saewel Energia Solar</title>
+      <defs><clipPath id="hc"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
+      <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
+      <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hc)"/>
+      <text x="340" y="192" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text>
+      <text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/sobre/">Sobre</a></li>
+    <li class="nav-dropdown">
+      <a href="#" style="cursor:pointer;">Serviços ▾</a>
+      <ul class="nav-dropdown-menu">
+        <li><span class="nav-dropdown-label">Serviços</span></li>
+        <li><a href="/projetos-fotovoltaicos/">📋 Projetos Fotovoltaicos</a></li>
+        <li><a href="/instalacao/">⚡ Instalação</a></li>
+        <li><a href="/manutencao/">🔧 Manutenção</a></li>
+        <li><a href="/monitoramento/">📊 Monitoramento</a></li>
+        <li><a href="/consultoria/">🎓 Consultoria</a></li>
+        <li class="nav-dropdown-divider"></li>
+        <li><span class="nav-dropdown-label">Soluções</span></li>
+        <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
+        <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
+        <li><a href="/energia-solar-agronegocio/">🚜 Solar Agronegócio</a></li>
+        <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
+        <li><a href="/dados-solares-brasil/">📊 Dados Solares</a></li>
+      </ul>
+    </li>
+    <li><a href="/calculadora/">Calculadora</a></li>
+    <li><a href="/cidades/">Cidades</a></li>
+    <li><a href="/avaliacoes/">Avaliações</a></li>
+    <li><a href="/blog/" class="ativo">Blog</a></li>
+    <li><a href="/contato/">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/sobre/">Sobre</a>
+  <a href="/#servicos">Serviços</a>
+  <a href="/calculadora/">Calculadora Solar</a>
+  <a href="/dados-solares-brasil/">Dados Solares</a>
+  <a href="/cidades/">Cidades</a>
+  <a href="/avaliacoes/">Avaliações</a>
+  <a href="/blog/">Blog</a>
+  <a href="/contato/">Contato</a>
+  <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20mais%20informa%C3%A7%C3%B5es" class="mob-btn" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+</div>
+</header>
+
+<section class="article-hero">
+  <div class="breadcrumb">
+    <a href="https://www.saewelenergiasolar.com.br">Saewel</a> › <a href="https://www.saewelenergiasolar.com.br/blog/">Blog</a> › Projeto
+  </div>
+  <div class="article-eyebrow">Projeto · Processo · Regulamentação</div>
+  <h1 class="article-title">Como funciona a <em>homologação</em><br>do sistema solar junto à distribuidora</h1>
+  <p class="article-subtitle">Da instalação dos painéis até a geração de créditos na conta de luz — entenda cada etapa, os documentos necessários e os prazos reais do processo.</p>
+  <div class="article-meta">
+    <span>📅 22 de maio de 2026</span>
+    <span>⏱ 10 min de leitura</span>
+    <span>✍️ Haroldo M. Silva · Eng. Renováveis</span>
+  </div>
+  <div class="tag-list">
+    <span class="tag">Homologação</span>
+    <span class="tag">Distribuidora</span>
+    <span class="tag">ART</span>
+    <span class="tag">Geração Distribuída</span>
+    <span class="tag">ANEEL</span>
+  </div>
+</section>
+
+<article class="article-wrap">
+
+  <p>
+    Os painéis foram instalados, o inversor está ligado, o sol está batendo — mas a conta de luz ainda não mudou. Por quê? Porque sem a <strong>homologação junto à distribuidora de energia elétrica</strong>, o sistema simplesmente não pode operar oficialmente. É esse processo que autoriza a conexão do seu sistema à rede e ativa a geração de créditos.
+  </p>
+
+  <p>
+    A homologação é uma das etapas que mais gera dúvidas — e ansiedade — em quem está instalando energia solar. Os prazos variam, a burocracia existe, e quando algo atrasa, o consumidor não sabe o que está acontecendo. Este artigo explica o processo do início ao fim, com prazos reais e o que fazer quando as coisas travam.
+  </p>
+
+  <div class="callout callout-blue">
+    <div class="callout-title">📌 O que é a homologação?</div>
+    <p>Homologação é o processo pelo qual a distribuidora de energia elétrica analisa, aprova e conecta oficialmente o seu sistema solar à rede elétrica. Sem essa aprovação, é ilegal energizar o sistema e injetar energia na rede — mesmo que os painéis estejam instalados e funcionando tecnicamente. A homologação é regulamentada pela ANEEL e segue normas específicas de cada distribuidora.</p>
+  </div>
+
+  <h2>Por que a homologação é obrigatória?</h2>
+
+  <p>
+    A rede elétrica é uma infraestrutura compartilhada. Quando você injeta energia solar excedente nela, essa energia precisa estar dentro dos padrões técnicos de tensão, frequência e qualidade exigidos pela ANEEL — caso contrário, pode causar problemas para outros consumidores conectados à mesma rede.
+  </p>
+
+  <p>
+    Além disso, a distribuidora precisa saber que existe um sistema gerador conectado ao seu ramal para que os técnicos de manutenção estejam cientes do risco elétrico durante intervenções na rede. Por isso o inversor on-grid desliga automaticamente quando há queda de energia — e por isso a homologação existe.
+  </p>
+
+  <p>
+    Do ponto de vista do consumidor, a homologação também é necessária para que a distribuidora configure o <strong>medidor bidirecional</strong> — o equipamento que registra tanto o consumo da rede quanto a energia injetada pelo seu sistema, gerando os créditos na conta de luz.
+  </p>
+
+  <h2>O passo a passo completo da homologação</h2>
+
+  <p>
+    O processo tem etapas bem definidas — e cada uma tem um responsável. Entender quem faz o quê ajuda a saber onde cobrar quando algo atrasa.
+  </p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-title">Elaboração do projeto técnico</div>
+      <div class="step-prazo">Responsável: Empresa integradora / Engenheiro</div>
+      <p class="step-desc">Antes de qualquer solicitação à distribuidora, é necessário um projeto elétrico completo do sistema: diagrama unifilar, memorial de cálculo, especificação dos equipamentos (painéis, inversor, estrutura, proteções) e planta de localização. Esse projeto precisa ser elaborado por um engenheiro habilitado e registrado no CREA.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-title">Emissão da ART — Anotação de Responsabilidade Técnica</div>
+      <div class="step-prazo">Responsável: Engenheiro responsável pelo projeto</div>
+      <p class="step-desc">A ART é o documento que vincula legalmente o engenheiro ao projeto e à execução da obra. É emitida pelo CREA-SP (ou CREA do estado correspondente) e é obrigatória — sem ela, a distribuidora não aceita o protocolo. A ART garante que existe um profissional tecnicamente habilitado responsável por aquele sistema.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-title">Protocolo do pedido de acesso junto à distribuidora</div>
+      <div class="step-prazo">Prazo da distribuidora: até 30 dias para análise</div>
+      <p class="step-desc">Com o projeto e a ART em mãos, a empresa integradora protocola o pedido de acesso no sistema da distribuidora — online, pelo portal de geração distribuída. Nessa etapa são enviados o projeto técnico, a ART, documentos do imóvel e do titular da unidade consumidora. A distribuidora tem até 30 dias para analisar e emitir o parecer de acesso.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-title">Parecer de acesso — aprovação ou exigências</div>
+      <div class="step-prazo">Resultado: aprovado, aprovado com exigências ou reprovado</div>
+      <p class="step-desc">A distribuidora pode aprovar o projeto diretamente, aprovar com exigências de adequação (como reforço da rede no seu ramal, que é custeado pela distribuidora) ou reprovar por inconsistências no projeto. Se houver exigências, o prazo recomeça após o atendimento delas. Projetos bem elaborados raramente são reprovados.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">5</div>
+      <div class="step-title">Instalação do sistema</div>
+      <div class="step-prazo">Responsável: Empresa integradora</div>
+      <p class="step-desc">Com o parecer de acesso em mãos, a instalação física dos painéis, inversor, estrutura e cabeamento é realizada. Em muitos casos a instalação começa antes do parecer — mas o sistema só pode ser energizado e conectado à rede após a aprovação da distribuidora.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">6</div>
+      <div class="step-title">Solicitação de vistoria e troca do medidor</div>
+      <div class="step-prazo">Prazo da distribuidora: até 30 dias para vistoria</div>
+      <p class="step-desc">Após a instalação, a empresa integradora solicita a vistoria técnica da distribuidora. Um técnico vai ao local verificar se a instalação está conforme o projeto aprovado — cabos, proteções, inversores, padrão de entrada. Se tudo estiver correto, a distribuidora agenda a troca do medidor convencional pelo medidor bidirecional.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">7</div>
+      <div class="step-title">Troca do medidor e energização</div>
+      <div class="step-prazo">Prazo: geralmente 7 a 30 dias após vistoria aprovada</div>
+      <p class="step-desc">A troca do medidor é feita pelo técnico da distribuidora — sem custo para o consumidor na maioria dos casos. Com o medidor bidirecional instalado, o sistema é energizado oficialmente e começa a gerar créditos. Esse é o momento em que a conta de luz começa a mudar.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">8</div>
+      <div class="step-title">Primeira fatura com créditos</div>
+      <div class="step-prazo">Aparece na próxima fatura após o medidor instalado</div>
+      <p class="step-desc">Os créditos gerados aparecem na fatura do mês seguinte à instalação do medidor bidirecional. O sistema de compensação funciona automaticamente — a distribuidora registra a energia injetada e desconta do consumo, com validade de 60 meses para os créditos acumulados.</p>
+    </div>
+
+  </div>
+
+  <h2>Documentos necessários para o protocolo</h2>
+
+  <p>Ter todos os documentos prontos desde o início evita atrasos desnecessários. A lista varia um pouco por distribuidora, mas em geral são necessários:</p>
+
+  <div class="doc-grid">
+    <div class="doc-item"><div class="doc-icon">📄</div><span><strong>Projeto elétrico</strong> completo com diagrama unifilar</span></div>
+    <div class="doc-item"><div class="doc-icon">📋</div><span><strong>ART de projeto</strong> emitida pelo engenheiro responsável</span></div>
+    <div class="doc-item"><div class="doc-icon">📋</div><span><strong>ART de execução</strong> após a conclusão da obra</span></div>
+    <div class="doc-item"><div class="doc-icon">🏠</div><span><strong>Planta de localização</strong> ou croqui do imóvel</span></div>
+    <div class="doc-item"><div class="doc-icon">🪪</div><span><strong>RG e CPF</strong> do titular da unidade consumidora</span></div>
+    <div class="doc-item"><div class="doc-icon">📑</div><span><strong>Conta de luz</strong> recente com o número da UC</span></div>
+    <div class="doc-item"><div class="doc-icon">🔧</div><span><strong>Ficha técnica</strong> dos painéis e do inversor</span></div>
+    <div class="doc-item"><div class="doc-icon">✅</div><span><strong>Certificado INMETRO</strong> dos equipamentos (exigido por algumas distribuidoras)</span></div>
+  </div>
+
+  <h2>Quanto tempo demora no total?</h2>
+
+  <div class="tech-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Etapa</th>
+          <th>Prazo regulatório</th>
+          <th>Prazo real (médio)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Elaboração do projeto + ART</td>
+          <td class="td-gold">—</td>
+          <td>3 – 7 dias</td>
+        </tr>
+        <tr>
+          <td>Análise do pedido de acesso</td>
+          <td class="td-gold">Até 30 dias</td>
+          <td>15 – 45 dias</td>
+        </tr>
+        <tr>
+          <td>Instalação do sistema</td>
+          <td class="td-gold">—</td>
+          <td>1 – 3 dias</td>
+        </tr>
+        <tr>
+          <td>Vistoria da distribuidora</td>
+          <td class="td-gold">Até 30 dias</td>
+          <td>10 – 40 dias</td>
+        </tr>
+        <tr>
+          <td>Troca do medidor</td>
+          <td class="td-gold">Até 30 dias</td>
+          <td>7 – 30 dias</td>
+        </tr>
+        <tr>
+          <td><strong>Total estimado</strong></td>
+          <td class="td-gold"><strong>Até 90 dias</strong></td>
+          <td class="td-green"><strong>45 – 90 dias (típico)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-gold">
+    <div class="callout-title">💡 Por que o prazo real pode ser maior que o regulatório?</div>
+    <p>A ANEEL estabelece prazos máximos, mas distribuidoras com alta demanda de solicitações frequentemente ultrapassam esses prazos — especialmente em períodos de alto volume de instalações. Além disso, qualquer exigência de adequação no projeto reinicia o prazo. Um projeto bem elaborado desde o início é a melhor forma de evitar atrasos.</p>
+  </div>
+
+  <!-- CTA 1 -->
+  <div class="cta-box">
+    <h3>Quer que o engenheiro cuide de toda a homologação?</h3>
+    <p>Na Saewel, o processo de homologação junto à distribuidora está incluído — do projeto à ART, do protocolo à vistoria. Você não precisa se preocupar com nenhum detalhe burocrático.</p>
+    <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Li%20o%20artigo%20sobre%20homologação%20e%20quero%20saber%20mais%20sobre%20o%20processo%20completo" class="btn-gold" target="_blank" rel="noopener noreferrer">
+      Falar com o engenheiro no WhatsApp
+    </a>
+  </div>
+
+  <h2>O que pode atrasar a homologação</h2>
+
+  <h3>Problemas no projeto técnico</h3>
+  <p>Projetos com inconsistências — como especificação incorreta do inversor, erro no diagrama unifilar ou ausência de algum componente obrigatório — são devolvidos com exigências. Cada ciclo de correção pode adicionar semanas ao processo. Por isso a qualidade do projeto técnico é determinante para a velocidade da homologação.</p>
+
+  <h3>Padrão de entrada inadequado</h3>
+  <p>Se o padrão de entrada de energia do imóvel (o poste de conexão, o cabo de ramal e o disjuntor geral) não estiver adequado às normas da distribuidora, ela exige a regularização antes de prosseguir. Isso é responsabilidade do consumidor e pode gerar custo adicional não previsto — por isso uma vistoria prévia do padrão de entrada é recomendável antes de iniciar o projeto.</p>
+
+  <h3>Alta demanda na distribuidora</h3>
+  <p>Em períodos de pico de instalações — como no início do ano ou após mudanças regulatórias — as distribuidoras recebem volume muito alto de solicitações e os prazos se esticam. Não há muito a fazer além de acompanhar o protocolo e acionar a ouvidoria da distribuidora caso o prazo regulatório seja ultrapassado.</p>
+
+  <h3>Documentação incompleta ou desatualizada</h3>
+  <p>Conta de luz com titularidade diferente do solicitante, documentos vencidos ou planta desatualizada são causas comuns de devolução do protocolo. Conferir toda a documentação antes do envio evita esse tipo de atraso.</p>
+
+  <div class="callout callout-warn">
+    <div class="callout-title">⚠️ Cuidado com empresas que não incluem a homologação</div>
+    <p>Alguns instaladores entregam o sistema físico instalado mas não incluem o processo de homologação no escopo — deixando o cliente para correr atrás da burocracia sozinho. Sempre confirme no contrato se projeto, ART e homologação completa estão incluídos. Sem homologação, o sistema não gera créditos e tecnicamente não pode operar.</p>
+  </div>
+
+  <h2>Posso usar o sistema antes da homologação?</h2>
+
+  <p>
+    Tecnicamente, o inversor pode operar e fornecer energia para o consumo interno do imóvel antes da homologação — mas <strong>não pode injetar energia na rede</strong>. Isso significa que você pode consumir a energia gerada diretamente, mas o excedente não gera créditos e, em alguns modelos de inversor, o equipamento pode desligar por proteção ao detectar tensão na rede.
+  </p>
+
+  <p>
+    A situação ideal é aguardar a homologação completa para energizar o sistema — isso garante que tudo funcione corretamente desde o primeiro dia e evita qualquer problema com a distribuidora.
+  </p>
+
+  <h2>O que acontece após a homologação?</h2>
+
+  <p>Com o medidor bidirecional instalado e o sistema homologado, a operação é completamente automática:</p>
+
+  <ul>
+    <li>Durante o dia, o sistema gera energia e abastece o consumo do imóvel</li>
+    <li>O excedente é injetado na rede e registrado pelo medidor como créditos</li>
+    <li>À noite ou em dias nublados, o imóvel consome da rede e desconta os créditos acumulados</li>
+    <li>A conta de luz reflete a diferença — e em muitos casos fica próxima de zero, com apenas a taxa mínima de disponibilidade</li>
+  </ul>
+
+  <div class="callout callout-green">
+    <div class="callout-title">🎯 A conclusão do engenheiro</div>
+    <p>A homologação é burocrática, mas é gerenciável quando feita por uma empresa que conhece o processo. O maior erro que vejo é o consumidor contratar pelo menor preço e descobrir depois que o instalador não inclui a homologação — ou que o projeto foi mal feito e travou na distribuidora. Na Saewel, cuidamos de cada etapa: projeto, ART, protocolo, acompanhamento das exigências e solicitação de vistoria. Você só precisa aguardar — e nos cobrar se algo demorar mais do que deveria.</p>
+  </div>
+
+  <!-- CTA 2 -->
+  <div class="cta-box">
+    <h3>Pronto para começar com o processo correto?</h3>
+    <p>Simulação gratuita, projeto técnico completo, ART incluída e homologação acompanhada do início ao fim.</p>
+    <a href="https://wa.me/5517982093739?text=Olá%20Haroldo!%20Quero%20instalar%20energia%20solar%20com%20a%20homologação%20completa%20incluída" class="btn-gold" target="_blank" rel="noopener noreferrer">
+      Solicitar simulação gratuita
+    </a>
+  </div>
+
+  <div class="author-card">
+    <img src="/haroldo-avatar.png" alt="Haroldo M. Silva — Engenheiro de Energias Renováveis" width="52" height="52" style="border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
+    <div>
+      <div class="author-name">Haroldo M. Silva</div>
+      <div class="author-role">Engenheiro de Energias Renováveis — CREA/SP · Saewel Energia Solar</div>
+      <p class="author-bio">Especialista em projetos fotovoltaicos residenciais, comerciais e sistemas híbridos com armazenamento em São José do Rio Preto e região. Responsável técnico por emitir a ART de projeto e execução, e homologação de sistemas solares junto à concessionária de energia local.</p>
+    </div>
+  </div>
+
+</article>
+
+<nav class="article-nav" style="max-width:800px;margin:0 auto 0;padding:0 5% 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(200,146,42,0.1);padding-top:32px;">
+  <a href="/blog/on-grid-off-grid-hibrido-qual-sistema-escolher/" style="font-family:sans-serif;font-size:13px;color:#C8922A;text-decoration:none;">← On-grid, off-grid ou híbrido</a>
+  <a href="/blog/" style="font-family:sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8A9099;text-decoration:none;">↑ Todos os artigos</a>
+  <span></span>
+</nav>
+
+<footer class="site-footer">
+  <p>© 2026 <a href="https://www.saewelenergiasolar.com.br">Saewel Energia Solar</a> — CNPJ 36.866.433/0001-71 · São José do Rio Preto, SP</p>
+  <p style="margin-top:10px;font-size:12px;">
+    <a href="/politica-de-privacidade/" style="text-decoration:none;margin:0 8px;">Política de Privacidade</a> ·
+    <a href="/termos-de-uso/" style="text-decoration:none;margin:0 8px;">Termos de Uso</a> ·
+    <a href="/politica-de-cookies/" style="text-decoration:none;margin:0 8px;">Política de Cookies</a> ·
+    <a href="/comunidade/" style="text-decoration:none;margin:0 8px;">📡 Canal WhatsApp</a>
+  </p>
+</footer>
+
+
+<script>
+const hamburger=document.getElementById('navHamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
+mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+</script>
+</body>
+</html>

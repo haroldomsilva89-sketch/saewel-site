@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como usar o simulador solar da Saewel — passo a passo | Saewel</title>
+<meta name="description" content="Guia completo para preencher a simulação solar gratuita da Saewel e receber uma proposta técnica com dimensionamento real, análise de 25 anos e geração mês a mês.">
+<meta name="author" content="Haroldo M. Silva — Engenheiro de Energias Renováveis, Saewel Energia Solar">
+<meta name="keywords" content="simulador solar gratuito, como simular energia solar, calculadora solar, proposta solar online, como calcular energia solar">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Saewel Energia Solar">
+<meta property="og:title" content="Como usar o simulador solar da Saewel — passo a passo">
+<meta property="og:description" content="Guia completo para preencher a simulação solar gratuita e receber uma proposta técnica completa em segundos.">
+<meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/como-preencher-simulacao-solar/">
+<meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/como-preencher-simulacao-solar/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;500;600;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ouro:#C8922A;--ouro-claro:#E8B84B;
+  --noite:#0A0C0F;--noite2:#111418;--noite3:#181C22;--noite4:#1E2229;
+  --cinza:#8A9099;--branco:#F8F5F0;
+  --borda:rgba(200,146,42,0.15);
+}
+html{scroll-behavior:smooth;}
+body{padding-top:72px;font-family:'Outfit',sans-serif;background:var(--noite);color:var(--branco);line-height:1.7;font-size:16px;}
+
+/* NAV */
+nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;height:72px;background:rgba(10,12,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:#8A9099;text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:#F8F5F0;}.nav-links a.ativo{color:var(--ouro-claro,#E8B84B);}
+.nav-btn{background:linear-gradient(135deg,#C8922A,#E8B84B);color:#0A0C0F!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;justify-self:end;white-space:nowrap;font-size:12px!important;}
+.nav-cta{justify-self:end;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600;justify-self:end;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:#F8F5F0;border-radius:2px;transition:all 0.35s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(10,12,15,0.97);backdrop-filter:blur(20px);z-index:499;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;pointer-events:none;transition:opacity 0.35s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{font-size:22px;font-weight:500;color:var(--cinza);text-decoration:none;letter-spacing:0.06em;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);width:80%;text-align:center;transition:color 0.3s;}
+.mobile-menu a:hover{color:#F8F5F0;}
+.mobile-menu .mob-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:16px 36px;border-radius:50px;font-weight:700;margin-top:12px;border-bottom:none!important;font-size:15px!important;}
+.nav-dropdown{position:relative;}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(17,20,24,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,146,42,0.18);border-radius:14px;min-width:260px;z-index:600;box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:10px 0;}
+.nav-dropdown:hover .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu li{list-style:none;}
+.nav-dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(212,207,200,0.85);text-decoration:none;text-transform:none!important;transition:all 0.2s;}
+.nav-dropdown-menu a:hover{color:#E8B84B;background:rgba(200,146,42,0.07);}
+.nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
+.nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
+@media(max-width:768px){.nav-links,.nav-cta{display:none!important;}.nav-hamburger{display:flex;justify-self:end;}.mobile-menu{display:flex;}}
+
+/* HERO */
+.article-hero{background:var(--noite2);padding:56px 5% 48px;text-align:center;border-bottom:1px solid var(--borda);position:relative;overflow:hidden;}
+.article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,146,42,0.07) 0%,transparent 70%);pointer-events:none;}
+
+/* BREADCRUMB */
+.breadcrumb{font-size:13px;color:var(--cinza);margin-bottom:20px;}
+.breadcrumb a{color:var(--ouro-claro);text-decoration:none;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+
+/* TAGS */
+.cat-tags{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.cat-tags span{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ouro-claro);background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);padding:5px 14px;border-radius:20px;}
+
+.article-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,58px);font-weight:600;color:var(--branco);line-height:1.1;margin-bottom:20px;max-width:760px;margin-left:auto;margin-right:auto;}
+.article-hero h1 em{font-style:italic;color:var(--ouro-claro);}
+.article-hero .deck{font-size:17px;color:var(--cinza);line-height:1.7;max-width:580px;margin:0 auto 28px;font-weight:300;}
+.article-meta{display:flex;align-items:center;justify-content:center;gap:24px;font-size:13px;color:var(--cinza);flex-wrap:wrap;}
+.article-meta strong{color:rgba(248,245,240,0.75);}
+
+/* LAYOUT */
+.article-wrap{max-width:1100px;margin:0 auto;padding:56px 5% 80px;display:grid;grid-template-columns:1fr 280px;gap:64px;align-items:start;}
+@media(max-width:900px){.article-wrap{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+/* CONTENT */
+.article-content p{font-size:16px;color:rgba(248,245,240,0.8);margin-bottom:18px;line-height:1.8;}
+.article-content h2{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--branco);margin:44px 0 16px;line-height:1.15;}
+.article-content h2 em{font-style:italic;color:var(--ouro-claro);}
+
+/* STEP */
+.step-header{display:flex;align-items:center;gap:14px;margin-bottom:14px;margin-top:44px;}
+.step-num{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(200,146,42,0.35);}
+.step-label{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--cinza);}
+
+/* BOXES */
+.tip-box{background:rgba(3,105,161,0.12);border:1px solid rgba(3,105,161,0.3);border-radius:10px;padding:16px 20px;margin:20px 0;display:flex;gap:12px;}
+.tip-box .icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.tip-box p{font-size:14px;color:#93c5fd;margin:0;line-height:1.65;}
+.tip-box strong{color:#bfdbfe;}
+
+.warn-box{background:rgba(146,64,14,0.15);border:1px solid rgba(253,230,138,0.2);border-radius:10px;padding:16px 20px;margin:20px 0;display:flex;gap:12px;}
+.warn-box p{font-size:14px;color:#fcd34d;margin:0;line-height:1.65;}
+.warn-box strong{color:#fde68a;}
+
+.highlight-box{background:rgba(200,146,42,0.07);border-left:3px solid var(--ouro);border-radius:0 10px 10px 0;padding:20px 24px;margin:0 0 36px;}
+.highlight-box p{font-size:15px;color:rgba(248,245,240,0.85);margin:0;line-height:1.75;}
+.highlight-box strong{color:var(--ouro-claro);}
+
+/* LIST */
+.check-list{list-style:none;margin:16px 0 20px;padding:0;}
+.check-list li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:rgba(248,245,240,0.8);padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.6;}
+.check-list li:last-child{border-bottom:none;}
+.check-list li::before{content:'✓';color:var(--ouro);font-weight:700;flex-shrink:0;margin-top:2px;}
+
+hr.divider{border:none;border-top:1px solid var(--borda);margin:44px 0;}
+
+/* CTA FINAL */
+.cta-final{background:var(--noite3);border:1px solid var(--borda);border-radius:20px;padding:48px 40px;text-align:center;margin-top:8px;}
+.cta-final h3{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--branco);margin-bottom:12px;}
+.cta-final h3 em{font-style:italic;color:var(--ouro-claro);}
+.cta-final p{color:var(--cinza);margin-bottom:28px;font-size:15px;}
+.cta-final a{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-weight:700;font-size:15px;padding:16px 40px;border-radius:50px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(200,146,42,0.35);}
+.cta-final a:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(200,146,42,0.5);}
+
+/* AUTHOR */
+.author-box{display:flex;align-items:center;gap:16px;background:var(--noite3);border:1px solid var(--borda);border-radius:14px;padding:20px 24px;margin-top:36px;}
+.author-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.author-name{font-weight:700;font-size:15px;color:var(--branco);}
+.author-role{font-size:13px;color:var(--cinza);}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:90px;}
+.sidebar-card{background:var(--noite3);border:1px solid var(--borda);border-radius:16px;padding:24px;margin-bottom:16px;}
+.sidebar-card h3{font-size:13px;font-weight:700;color:var(--branco);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--borda);letter-spacing:0.04em;text-transform:uppercase;}
+.sidebar-card ul{list-style:none;padding:0;}
+.sidebar-card ul li{margin-bottom:4px;}
+.sidebar-card ul li a{color:var(--cinza);text-decoration:none;font-size:13px;line-height:1.5;display:block;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);transition:color 0.2s;}
+.sidebar-card ul li a:hover{color:var(--ouro-claro);}
+.sidebar-card ul li a::before{content:'→ ';color:var(--ouro);font-size:11px;}
+.cta-sidebar{background:linear-gradient(135deg,rgba(200,146,42,0.15),rgba(232,184,75,0.08));border:1px solid rgba(200,146,42,0.3);border-radius:16px;padding:24px;text-align:center;margin-bottom:16px;}
+.cta-sidebar p{font-size:13px;color:var(--cinza);margin-bottom:16px;line-height:1.6;}
+.cta-sidebar a{display:block;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-weight:700;font-size:14px;padding:13px 20px;border-radius:50px;text-decoration:none;transition:all 0.3s;}
+.cta-sidebar a:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,146,42,0.4);}
+
+/* FOOTER */
+
+
+    /* ── FOOTER padrão ── */
+    .footer-novo { background: var(--noite); border-top: 1px solid rgba(200,146,42,0.1); padding: 60px 5% 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .foot-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--branco); margin-bottom: 12px; }
+    .foot-logo span { color: var(--ouro-claro); }
+    .foot-desc { font-size: 13px; color: var(--cinza); line-height: 1.7; margin-bottom: 16px; max-width: 240px; }
+    .foot-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ouro); margin-bottom: 16px; }
+    .foot-col a { display: block; font-size: 13px; color: var(--cinza); text-decoration: none; margin-bottom: 8px; transition: color 0.3s; }
+    .foot-col a:hover { color: var(--branco); }
+    .footer-bottom { display: flex; align-items: center; justify-content: center; padding: 20px 0; }
+    .footer-copy { font-size: 12px; color: rgba(248,245,240,0.25); }
+    .footer-qr-inline { display: flex; align-items: center; gap: 8px; opacity: 0.6; transition: opacity 0.3s; text-decoration: none; }
+    .footer-qr-inline:hover { opacity: 1; }
+    .footer-qr-inline img { width: 40px; height: 40px; border-radius: 4px; background: #fff; padding: 2px; }
+    .footer-qr-inline span { font-size: 11px; color: rgba(248,245,240,0.5); line-height: 1.4; }
+    .foot-socials { display: flex; flex-direction: column; gap: 10px; }
+    .social-icon { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--cinza); text-decoration: none; transition: color 0.3s; }
+    .social-icon:hover { color: var(--ouro-claro); }
+    .social-icon svg { flex-shrink: 0; opacity: 0.7; }
+    .social-icon:hover svg { opacity: 1; }
+    @media(max-width:1200px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; } }
+    @media(max-width:900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } .foot-brand { grid-column: 1 / -1; } .foot-desc { max-width: 100%; } }
+    @media(max-width:768px){.footer-novo{padding:40px 5% 0;}.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}.foot-desc{max-width:100%;}.footer-qr-inline{margin-top:8px;}.footer-bottom{flex-direction:column;gap:6px;text-align:center;padding:16px 0;}.footer-copy{font-size:11px;}}
+    @media(max-width:480px){.footer-grid{grid-template-columns:1fr 1fr;gap:20px 16px;}.foot-col h4{margin-bottom:10px;}.foot-col a{font-size:12px;margin-bottom:6px;}.foot-logo{font-size:18px;}.foot-desc{font-size:12px;}.foot-socials{flex-direction:row;flex-wrap:wrap;gap:12px;}.social-icon{font-size:12px;}}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <svg width="160" height="66" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+      <title>Saewel Energia Solar</title>
+      <defs><clipPath id="hc"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
+      <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
+      <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hc)"/>
+      <text x="340" y="192" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text>
+      <text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/sobre/">Sobre</a></li>
+    <li class="nav-dropdown">
+      <a href="#" style="cursor:pointer;">Serviços ▾</a>
+      <ul class="nav-dropdown-menu">
+        <li><span class="nav-dropdown-label">Serviços</span></li>
+        <li><a href="/projetos-fotovoltaicos/">📋 Projetos Fotovoltaicos</a></li>
+        <li><a href="/instalacao/">⚡ Instalação</a></li>
+        <li><a href="/manutencao/">🔧 Manutenção</a></li>
+        <li><a href="/monitoramento/">📊 Monitoramento</a></li>
+        <li><a href="/consultoria/">🎓 Consultoria</a></li>
+        <li class="nav-dropdown-divider"></li>
+        <li><span class="nav-dropdown-label">Soluções</span></li>
+        <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
+        <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
+        <li><a href="/energia-solar-agronegocio/">🚜 Solar Agronegócio</a></li>
+        <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
+        <li><a href="/dados-solares-brasil/">📊 Dados Solares</a></li>
+      </ul>
+    </li>
+    <li><a href="/calculadora/">Calculadora</a></li>
+    <li><a href="/cidades/">Cidades</a></li>
+    <li><a href="/avaliacoes/">Avaliações</a></li>
+    <li><a href="/blog/" class="ativo">Blog</a></li>
+    <li><a href="/contato/">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/sobre/">Sobre</a>
+  <a href="/#servicos">Serviços</a>
+  <a href="/calculadora/">Calculadora Solar</a>
+  <a href="/dados-solares-brasil/">Dados Solares</a>
+  <a href="/cidades/">Cidades</a>
+  <a href="/avaliacoes/">Avaliações</a>
+  <a href="/blog/">Blog</a>
+  <a href="/contato/">Contato</a>
+  <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20mais%20sobre%20energia%20solar" class="mob-btn" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+</div>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="breadcrumb">
+    <a href="https://www.saewelenergiasolar.com.br/">Saewel</a>
+    <span>›</span>
+    <a href="https://www.saewelenergiasolar.com.br/blog/">Blog</a>
+    <span>›</span>
+    Energia Solar
+  </div>
+  <div class="cat-tags">
+    <span>Energia Solar</span>
+    <span>Guia Prático</span>
+    <span>Simulador</span>
+  </div>
+  <h1>Como usar o simulador solar<br>da Saewel — <em>passo a passo</em></h1>
+  <p class="deck">Preencha corretamente cada campo e receba uma proposta técnica completa em segundos — dimensionamento real, análise de 25 anos e geração mês a mês.</p>
+  <div class="article-meta">
+    <span>📅 <strong>07 de junho de 2026</strong></span>
+    <span>⏱ <strong>5 min de leitura</strong></span>
+    <span>✍️ <strong>Haroldo M. Silva · Eng. Renováveis</strong></span>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="article-wrap">
+
+  <main class="article-content">
+
+    <div class="highlight-box">
+      <p>O simulador solar da Saewel é <strong>gratuito e gera uma proposta técnica completa na hora</strong> — sem precisar esperar um vendedor ligar. Para que os resultados sejam precisos, é importante preencher cada campo corretamente. Este guia explica cada etapa.</p>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <span class="step-label">Primeiro passo</span>
+    </div>
+    <h2>Dados de <em>contato</em></h2>
+    <p>Preencha seu <strong>nome completo</strong> e o número do <strong>WhatsApp com DDD</strong>. Essas informações aparecem na proposta gerada e permitem que o engenheiro entre em contato para tirar dúvidas ou agendar a vistoria técnica gratuita.</p>
+    <div class="tip-box">
+      <span class="icon">💡</span>
+      <p><strong>Dica:</strong> use o número do WhatsApp que você acessa com frequência — ao final da simulação é gerado um QR code de contato direto com esse número.</p>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <span class="step-label">Segundo passo</span>
+    </div>
+    <h2>Sua <em>cidade</em></h2>
+    <p>Digite o nome da sua cidade e selecione na lista que aparece. O simulador usa os <strong>5.562 municípios brasileiros</strong>, cada um com sua irradiação solar real (fonte: Atlas Solarimétrico CRESESB/INPE).</p>
+    <p>A irradiação solar varia de cidade para cidade e impacta diretamente o tamanho do sistema e a geração estimada — por isso é fundamental selecionar a cidade correta, não a capital ou a cidade mais próxima.</p>
+    <div class="warn-box">
+      <span>⚠️</span>
+      <p><strong>Atenção:</strong> se a cidade não aparecer de imediato, tente digitar com o estado (ex: "Pereira Barreto - SP"). Cidades com nomes compostos funcionam melhor com a busca completa.</p>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <span class="step-label">Terceiro passo</span>
+    </div>
+    <h2>Perfil de <em>instalação</em></h2>
+    <p>Escolha o tipo de instalação que melhor descreve o seu caso:</p>
+    <ul class="check-list">
+      <li><strong>Residencial</strong> — casas e apartamentos com consumo típico doméstico</li>
+      <li><strong>Comercial</strong> — empresas, lojas, escritórios e estabelecimentos comerciais</li>
+      <li><strong>Agronegócio</strong> — propriedades rurais, fazendas e granjas</li>
+    </ul>
+    <p>Cada perfil usa um fator de dimensionamento diferente, pois o padrão de consumo ao longo do dia varia. Propriedades rurais costumam ter picos de consumo durante o dia, o que aumenta o aproveitamento da energia gerada.</p>
+
+    <!-- STEP 4 -->
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <span class="step-label">Quarto passo</span>
+    </div>
+    <h2>Tipo de <em>telhado</em></h2>
+    <p>Selecione o material do telhado onde os painéis serão instalados. Essa informação define o tipo de estrutura de fixação que aparece nos equipamentos da proposta:</p>
+    <ul class="check-list">
+      <li><strong>Cerâmico</strong> — telha francesa, portuguesa, colonial ou similar</li>
+      <li><strong>Fibrocimento</strong> — telha ondulada ou similar</li>
+      <li><strong>Metálico</strong> — chapa de aço, zinco ou alumínio</li>
+      <li><strong>Laje</strong> — cobertura plana de concreto</li>
+    </ul>
+    <div class="tip-box">
+      <span class="icon">💡</span>
+      <p><strong>Não tem certeza?</strong> Escolha o que parecer mais próximo. A estrutura definitiva é definida após a vistoria técnica presencial, inclusa em todos os projetos da Saewel.</p>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <span class="step-label">Quinto passo</span>
+    </div>
+    <h2>Seu <em>consumo</em> de energia</h2>
+    <p>Este é o campo mais importante da simulação. O consumo mensal em kWh está na sua conta de luz — procure por <strong>"Consumo de Energia Ativa"</strong> ou simplesmente <strong>"kWh"</strong>. Não confunda com o valor em reais.</p>
+    <ul class="check-list">
+      <li><strong>Consumo médio mensal</strong> — use o slider ou digite o valor médio. Mais rápido.</li>
+      <li><strong>Consumo mês a mês</strong> — informe os últimos 12 meses separadamente. Mais preciso, considera a sazonalidade do consumo.</li>
+    </ul>
+    <div class="warn-box">
+      <span>⚠️</span>
+      <p><strong>Onde encontrar?</strong> Se você tem conta no app da sua distribuidora (CPFL, Enel, Elektro etc.), o histórico dos últimos 12 meses fica em "Histórico de consumo".</p>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <span class="step-label">Sexto passo</span>
+    </div>
+    <h2>Tarifa de <em>energia</em></h2>
+    <p>Informe o valor que você paga por kWh. Esse número é usado para calcular a economia mensal e o retorno do investimento. Você encontra na conta de luz como "Tarifa de Energia" ou "TE + TUSD".</p>
+    <p>Se não encontrar, o simulador usa <strong>R$ 0,95/kWh</strong> como padrão — uma média adequada para a maioria dos casos residenciais no interior paulista.</p>
+    <div class="tip-box">
+      <span class="icon">💡</span>
+      <p><strong>Como calcular:</strong> divida o valor total da sua fatura (em R$) pelo consumo total (em kWh). O resultado é sua tarifa média efetiva.</p>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="step-header">
+      <div class="step-num">7</div>
+      <span class="step-label">Sétimo passo</span>
+    </div>
+    <h2>Tipo de <em>inversor</em></h2>
+    <p>Escolha entre as tecnologias disponíveis:</p>
+    <ul class="check-list">
+      <li><strong>Inversor String</strong> — um inversor central para todo o sistema. Melhor custo-benefício, ideal para telhados sem sombra.</li>
+      <li><strong>Microinversor</strong> — um inversor por módulo. Máxima eficiência em telhados com sombra parcial e monitoramento individual de cada painel.</li>
+    </ul>
+    <p>Após escolher a tecnologia, selecione a <strong>marca</strong>: Growatt ou WEG (string) · Growatt Micro ou Deye (microinversor).</p>
+    <div class="tip-box">
+      <span class="icon">💡</span>
+      <p><strong>Para a maioria dos casos residenciais</strong> sem sombramento significativo, o inversor string é a opção mais econômica com melhor payback.</p>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="step-header">
+      <div class="step-num">8</div>
+      <span class="step-label">Último passo</span>
+    </div>
+    <h2>Gerando sua <em>proposta</em></h2>
+    <p>Com tudo preenchido, clique em <strong>"Calcular minha economia"</strong>. Em segundos você recebe uma proposta técnica completa com:</p>
+    <ul class="check-list">
+      <li>Dimensionamento do sistema — kWp, número de módulos e área necessária</li>
+      <li>Inversor recomendado com especificações técnicas</li>
+      <li>Geração estimada mês a mês com comparativo Consumo × Geração</li>
+      <li>Projeção financeira de 25 anos com inflação tarifária de 4% ao ano</li>
+      <li>TIR, VPL e payback do investimento</li>
+      <li>Retorno ambiental — CO₂ evitado e equivalência em árvores</li>
+      <li>Equipamentos detalhados e termos e condições da proposta</li>
+    </ul>
+    <p>Ao final, você pode <strong>salvar em PDF</strong> ou entrar em contato pelo WhatsApp para agendar a vistoria técnica gratuita.</p>
+
+    <hr class="divider">
+
+    <div class="cta-final">
+      <h3>Pronto para simular sua <em>economia?</em></h3>
+      <p>Gratuito, leva menos de 2 minutos e você recebe uma proposta técnica completa na hora.</p>
+      <a href="https://www.saewelenergiasolar.com.br/calculadora/">☀️ Fazer minha simulação grátis</a>
+    </div>
+
+    <div class="author-box">
+      <div class="author-avatar">👷</div>
+      <div>
+        <div class="author-name">Haroldo M. Silva</div>
+        <div class="author-role">Engenheiro de Energias Renováveis · Saewel Energia Solar<br>CREA-SP · haroldo@saewelenergiasolar.com.br</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Neste artigo</h3>
+      <ul>
+        <li><a href="#">1. Dados de contato</a></li>
+        <li><a href="#">2. Sua cidade</a></li>
+        <li><a href="#">3. Perfil de instalação</a></li>
+        <li><a href="#">4. Tipo de telhado</a></li>
+        <li><a href="#">5. Consumo de energia</a></li>
+        <li><a href="#">6. Tarifa de energia</a></li>
+        <li><a href="#">7. Tipo de inversor</a></li>
+        <li><a href="#">8. Gerando a proposta</a></li>
+      </ul>
+    </div>
+    <div class="cta-sidebar">
+      <p>Simule agora gratuitamente e receba sua proposta técnica em segundos.</p>
+      <a href="https://www.saewelenergiasolar.com.br/calculadora/">☀️ Abrir simulador</a>
+    </div>
+    <div class="sidebar-card">
+      <h3>Artigos relacionados</h3>
+      <ul>
+        <li><a href="https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-em-casa-2026/">Quanto custa instalar energia solar em 2026?</a></li>
+        <li><a href="https://www.saewelenergiasolar.com.br/blog/economia-energia-solar/">Quanto posso economizar com solar?</a></li>
+        <li><a href="https://www.saewelenergiasolar.com.br/blog/melhor-inversor-solar-2026/">Qual o melhor inversor solar em 2026?</a></li>
+        <li><a href="https://www.saewelenergiasolar.com.br/blog/on-grid-off-grid-hibrido-qual-sistema-escolher/">On-grid, off-grid ou híbrido?</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="footer-novo">
+  <div class="footer-grid">
+    <div class="foot-brand">
+      <div class="foot-logo">Saewel <span>Energia Solar</span></div>
+      <p class="foot-desc">Projetos fotovoltaicos, instalação, monitoramento e consultoria técnica em energia solar para residências, empresas e agronegócio em São José do Rio Preto e região.</p>
+      <a class="footer-qr-inline" href="https://g.page/r/Cc14z3x8phLCEBM/review" target="_blank" rel="noopener noreferrer">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://g.page/r/Cc14z3x8phLCEBM/review" width="40" height="40" alt="QR Code Google">
+        <span>Avalie-nos<br>no Google ★</span>
+      </a>
+    </div>
+    <div class="foot-col">
+      <h4>Serviços</h4>
+      <a href="/projetos-fotovoltaicos/">Projetos Fotovoltaicos</a>
+      <a href="/instalacao/">Instalação</a>
+      <a href="/manutencao/">Manutenção</a>
+      <a href="/monitoramento/">Monitoramento</a>
+      <a href="/consultoria/">Consultoria</a>
+    </div>
+    <div class="foot-col">
+      <h4>Soluções</h4>
+      <a href="/energia-solar-residencial/">Residencial</a>
+      <a href="/energia-solar-comercial/">Comercial</a>
+      <a href="/energia-solar-agronegocio/">Agronegócio</a>
+      <a href="/armazenamento-de-energia/">Armazenamento BESS</a>
+    </div>
+    <div class="foot-col">
+      <h4>Área de Atuação</h4>
+      <a href="/cidades/sao-jose-do-rio-preto/">São José do Rio Preto</a>
+      <a href="/cidades/">Região Noroeste Paulista</a>
+      <a href="/cidades/" style="font-size:12px;opacity:0.7;">Ver todas as cidades →</a>
+    </div>
+    <div class="foot-col">
+      <h4>Institucional</h4>
+      <a href="/sobre/">Sobre</a>
+      <a href="/avaliacoes/">Avaliações</a>
+      <a href="/blog/">Blog</a>
+      <a href="/calculadora/">Calculadora Solar</a>
+      <a href="/dados-solares-brasil/">Dados Solares</a>
+      <a href="/comunidade/" style="color:#25D366;">📡 Canal WhatsApp</a>
+      <a href="/contato/">Contato</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="/politica-de-privacidade/">Política de Privacidade</a>
+      <a href="/termos-de-uso/">Termos de Uso</a>
+      <a href="/politica-de-cookies/">Política de Cookies</a>
+    </div>
+    <div class="foot-col">
+      <h4>Redes Sociais</h4>
+      <div class="foot-socials">
+        <a href="https://www.instagram.com/saewelenergia" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram
+        </a>
+        <a href="https://www.facebook.com/share/1ECXRSfupU/" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook
+        </a>
+        <a href="https://wa.me/5517982093739" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" target="_blank" rel="noopener noreferrer" class="social-icon" style="color:#25D366;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Canal Solar ☀️
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Saewel Energia Solar — CNPJ 36.866.433/0001-71 · São José do Rio Preto, SP</span>
+  </div>
+</footer>
+
+
+<script>
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
+mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+</script>
+</body>
+</html>

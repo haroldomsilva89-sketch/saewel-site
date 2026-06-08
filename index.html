@@ -51,10 +51,12 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0C0F'/%3E%3Ccircle cx='32' cy='34' r='16' fill='%23F5C040'/%3E%3Ccircle cx='32' cy='34' r='12' fill='%23E8A020'/%3E%3Ccircle cx='32' cy='34' r='8' fill='%23F5C040'/%3E%3Crect x='0' y='34' width='64' height='30' fill='%230A0C0F'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#C8922A">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;600;700&display=optional" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;600;700&display=optional"></noscript>
+<link rel="preload" href="/fonts/cormorant-garamond-v21-latin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-v21-latin-300italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-v21-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/outfit-v15-latin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/outfit-v15-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/outfit-v15-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -65,8 +67,12 @@
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--branco);overflow-x:hidden;}
-@font-face{font-family:'Outfit';src:local('Outfit');font-display:optional;}
-@font-face{font-family:'Cormorant Garamond';src:local('Cormorant Garamond');font-display:optional;}
+@font-face{font-family:'Cormorant Garamond';src:url('/fonts/cormorant-garamond-v21-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('/fonts/cormorant-garamond-v21-latin-300italic.woff2') format('woff2');font-weight:300;font-style:italic;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('/fonts/cormorant-garamond-v21-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('/fonts/outfit-v15-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('/fonts/outfit-v15-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('/fonts/outfit-v15-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
 @font-face{font-family:'Cormorant-fallback';src:local('Georgia');size-adjust:88%;ascent-override:105%;descent-override:30%;line-gap-override:0%;font-weight:300;}
 @font-face{font-family:'Cormorant-fallback';src:local('Georgia');size-adjust:88%;ascent-override:105%;descent-override:30%;line-gap-override:0%;font-weight:600;}
 

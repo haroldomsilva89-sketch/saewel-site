@@ -21,7 +21,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--noite:#0A0C0F;--noite2:#111418;--ouro:#C8922A;--ouro-claro:#E8B84B;--branco:#F8F5F0;--cinza:#8A9099;--texto:#D4CFC8;--verde:#3DAA6A;}
     html{scroll-behavior:smooth}
-    body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--texto);line-height:1.85;overflow-x:hidden}
+    body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--texto);overflow-x:hidden}
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.4}
     a{color:var(--ouro-claro);text-decoration:none} a:hover{text-decoration:underline} strong{color:var(--branco)} em{color:var(--ouro-claro);font-style:italic}
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;height:72px;background:rgba(10,12,15,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12)}
@@ -30,7 +30,7 @@
     .nav-links a{font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--cinza);text-decoration:none;transition:color 0.3s}
     .nav-links a:hover{color:var(--branco)}
     .nav-links a.ativo{color:var(--ouro-claro)}
-    .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;font-size:14px!important;font-family:"Outfit",sans-serif!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none}
+    .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none}
     .nav-cta{justify-self:end}
     .nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,146,42,0.5)!important}
     .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600}

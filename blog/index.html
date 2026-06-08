@@ -86,7 +86,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 .nav-btn{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite)!important;padding:11px 36px;border-radius:50px;font-weight:700!important;letter-spacing:0.04em!important;transition:all 0.3s!important;box-shadow:0 4px 20px rgba(200,146,42,0.35);text-decoration:none;}
 .nav-cta{justify-self:end;}
 .nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,146,42,0.5)!important;}
-.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:600;grid-column:3;justify-self:end;}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--branco);border-radius:2px;transition:all 0.35s;transform-origin:center;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
@@ -504,6 +504,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     .wa-float:hover { transform: scale(1.1); }
     @keyframes wa-pulse { 0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.05);opacity:0.85;} }
     @media(max-width:1200px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; } }
+    @media(max-width:900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } .foot-brand { grid-column: 1 / -1; } .foot-desc { max-width: 100%; } }
     @media(max-width:768px){.footer-novo{padding:40px 5% 0;}.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}.foot-desc{max-width:100%;}.footer-qr-inline{margin-top:8px;}.footer-bottom{flex-direction:column;gap:6px;text-align:center;padding:16px 0;}.footer-copy{font-size:11px;}}
     @media(max-width:480px){.footer-grid{grid-template-columns:1fr 1fr;gap:20px 16px;}.foot-col h4{margin-bottom:10px;}.foot-col a{font-size:12px;margin-bottom:6px;}.foot-logo{font-size:18px;}.foot-desc{font-size:12px;}.foot-socials{flex-direction:row;flex-wrap:wrap;gap:12px;}.social-icon{font-size:12px;}.wa-float{bottom:20px;right:20px;width:50px;height:50px;font-size:22px;}}
   </style>
@@ -694,6 +695,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <h3>Mapa Solar do Brasil — consulte a irradiação de qualquer município</h3>
       <p>Dados oficiais do CRESESB/SunData para 5.562 municípios. HSP mensal e anual, gráfico interativo e simulação de sistema para qualquer cidade.</p>
     </a>
+    <a href="/blog/como-calcular-tamanho-sistema-solar/" class="card-mini">
+      <div class="card-mini-tag">Dados e Inteligência</div>
+      <h3>Como calcular o tamanho ideal do seu sistema solar</h3>
+      <p>Passo a passo técnico para dimensionar corretamente — consumo, irradiação, PR, perdas e número de painéis. Com exemplos reais.</p>
+    </a>
+    <a href="/blog/o-que-e-pr-performance-ratio-energia-solar/" class="card-mini">
+      <div class="card-mini-tag">Dados e Inteligência</div>
+      <h3>O que é PR (Performance Ratio) e por que ele importa?</h3>
+      <p>O índice que revela se o seu sistema solar está funcionando corretamente — como calcular, interpretar e melhorar o desempenho real.</p>
+    </a>
   </div>
 
   <!-- ⚡ MERCADO DE ENERGIA -->
@@ -713,6 +724,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div class="card-mini-tag">Mercado de Energia</div>
       <h3>Quanto custa instalar energia solar em 2026?</h3>
       <p>Preços atualizados por porte de sistema, o que está incluído no orçamento e como comparar propostas com segurança.</p>
+    </a>
+    <a href="/blog/preco-paineis-solares-2026-vale-esperar-ou-instalar/" class="card-mini">
+      <div class="card-mini-tag">Mercado de Energia</div>
+      <h3>Preço dos painéis solares em 2026: vale esperar ou instalar agora?</h3>
+      <p>Análise de mercado com preços reais, tendências de custo e por que esperar pode custar mais caro do que parece.</p>
     </a>
   </div>
 
@@ -734,6 +750,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <h3>Lei 15.269/2025: o novo marco do armazenamento de energia solar</h3>
       <p>O que muda com a lei que regulamentou as baterias no Brasil — e como ela impacta quem instala solar com BESS agora.</p>
     </a>
+    <a href="/blog/aneel-energia-solar-o-que-mudou-2024-2026/" class="card-mini">
+      <div class="card-mini-tag">Legislação</div>
+      <h3>ANEEL e energia solar: o que mudou de 2024 a 2026?</h3>
+      <p>As principais resoluções e mudanças regulatórias da ANEEL — Fio B, REN 1000, marco do armazenamento e revisões tarifárias.</p>
+    </a>
   </div>
 
   <!-- 🔋 BESS -->
@@ -743,6 +764,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div class="card-mini-tag">BESS</div>
       <h3>Solar + BESS: a nova era da independência energética no Brasil</h3>
       <p>Como combinar energia solar, armazenamento e gestão inteligente para alcançar independência real da rede elétrica.</p>
+    </a>
+    <a href="/blog/quanto-custa-sistema-baterias-solar-2026/" class="card-mini">
+      <div class="card-mini-tag">BESS</div>
+      <h3>Quanto custa um sistema de baterias solar em 2026?</h3>
+      <p>Preços reais de sistemas BESS residenciais e comerciais — marcas, capacidades, tempo de retorno e o que mudou com a Lei 15.269/2025.</p>
+    </a>
+    <a href="/blog/bess-backup-energia-como-funciona-queda-de-luz/" class="card-mini">
+      <div class="card-mini-tag">BESS</div>
+      <h3>BESS como backup: como funciona durante queda de energia?</h3>
+      <p>Como o sistema de baterias garante energia mesmo quando a rede cai — modos de operação, autonomia e configuração.</p>
     </a>
   </div>
 
@@ -758,6 +789,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div class="card-mini-tag">Cidades</div>
       <h3>Energia solar para comércio em São José do Rio Preto</h3>
       <p>Como lojas, clínicas e empresas de SJRP estão reduzindo até 90% da conta de luz com energia solar.</p>
+    </a>
+    <a href="/blog/raio-x-solar-sao-jose-do-rio-preto/" class="card-mini">
+      <div class="card-mini-tag">Cidades</div>
+      <h3>Raio-X Solar: São José do Rio Preto</h3>
+      <p>Irradiação 5,36 kWh/m²/dia, produção estimada, payback e análise técnica completa com dados reais do CRESESB/SunData.</p>
+    </a>
+    <a href="/blog/raio-x-solar-mirassol/" class="card-mini">
+      <div class="card-mini-tag">Cidades</div>
+      <h3>Raio-X Solar: Mirassol</h3>
+      <p>Irradiação 5,37 kWh/m²/dia — potencial solar de Mirassol com dados reais, geração estimada e viabilidade fotovoltaica.</p>
+    </a>
+    <a href="/blog/raio-x-solar-olimpia/" class="card-mini">
+      <div class="card-mini-tag">Cidades</div>
+      <h3>Raio-X Solar: Olímpia</h3>
+      <p>Irradiação 5,39 kWh/m²/dia — análise técnica do potencial solar de Olímpia, com foco em hotelaria e agronegócio.</p>
+    </a>
+    <a href="/blog/raio-x-solar-catanduva/" class="card-mini">
+      <div class="card-mini-tag">Cidades</div>
+      <h3>Raio-X Solar: Catanduva</h3>
+      <p>Irradiação 5,34 kWh/m²/dia — potencial solar de Catanduva com análise para indústria citrícola e setor comercial.</p>
+    </a>
+    <a href="/blog/raio-x-solar-votuporanga/" class="card-mini">
+      <div class="card-mini-tag">Cidades</div>
+      <h3>Raio-X Solar: Votuporanga</h3>
+      <p>Irradiação 5,41 kWh/m²/dia — a maior da região. Análise do potencial solar de Votuporanga e polo moveleiro.</p>
+    </a>
+    <a href="/blog/raio-x-solar-bady-bassitt/" class="card-mini">
+      <div class="card-mini-tag">Cidades</div>
+      <h3>Raio-X Solar: Bady Bassitt</h3>
+      <p>Irradiação 5,35 kWh/m²/dia — potencial solar de Bady Bassitt com foco em energia solar rural e agropecuária.</p>
     </a>
   </div>
 

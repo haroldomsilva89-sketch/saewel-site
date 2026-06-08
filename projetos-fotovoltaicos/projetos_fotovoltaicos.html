@@ -4,9 +4,10 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contato — Saewel Energia Solar | São José do Rio Preto</title>
-<meta name="description" content="Entre em contato com a Saewel Energia Solar. Solicite uma análise personalizada para sua residência, empresa ou propriedade rural em São José do Rio Preto e região.">
-<link rel="canonical" href="https://www.saewelenergiasolar.com.br/contato/">
+<title>Projetos Fotovoltaicos em São José do Rio Preto | Saewel Energia Solar</title>
+<meta name="description" content="Projetos fotovoltaicos completos em São José do Rio Preto. Dimensionamento técnico, ART no CREA e homologação junto à distribuidora. Saewel Energia Solar.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.saewelenergiasolar.com.br/projetos-fotovoltaicos/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
@@ -47,14 +48,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 .nav-dropdown-divider{height:1px;background:rgba(200,146,42,0.12);margin:6px 0;}
 .nav-dropdown-label{display:block;padding:8px 20px 4px;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,146,42,0.6);cursor:default;}
 
+/* BREADCRUMB */
+.breadcrumb{padding:100px 5% 0;font-size:12px;color:var(--cinza);}
+.breadcrumb a{color:var(--cinza);text-decoration:none;transition:color 0.3s;}
+.breadcrumb a:hover{color:var(--ouro-claro);}
+.breadcrumb span{color:var(--ouro-claro);margin:0 6px;}
+
 /* HERO */
-.hero{min-height:72vh;display:flex;align-items:center;padding:140px 5% 80px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(200,146,42,0.07) 0%,transparent 60%);}
+.hero{padding:40px 5% 80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,146,42,0.07) 0%,transparent 60%);}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,146,42,0.2),transparent);}
-.hero-inner{max-width:700px;position:relative;z-index:1;}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:24px;}
+.hero-inner{max-width:680px;position:relative;z-index:1;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:20px;}
 .eyebrow::before{content:'';width:32px;height:1px;background:var(--ouro-claro);}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,72px);font-weight:300;line-height:1.08;color:var(--branco);margin-bottom:20px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,68px);font-weight:300;line-height:1.08;color:var(--branco);margin-bottom:20px;}
 h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:17px;font-weight:300;line-height:1.8;color:var(--cinza);max-width:540px;margin-bottom:36px;}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
@@ -71,50 +78,44 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
 .secao-inner{max-width:1100px;margin:0 auto;}
 .sec-ey{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
 .sec-ey::before{content:'';width:24px;height:1px;background:var(--ouro-claro);}
-.sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,48px);font-weight:300;line-height:1.1;color:var(--branco);margin-bottom:24px;}
+.sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:300;line-height:1.1;color:var(--branco);margin-bottom:16px;}
 .sec-h2 em{font-style:italic;color:var(--ouro-claro);}
+.sec-sub{font-size:15px;color:var(--cinza);line-height:1.7;max-width:600px;margin-bottom:48px;}
 
-/* FORMULÁRIO + BENEFÍCIOS */
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-.form-card{background:var(--noite3);border:1px solid rgba(200,146,42,0.15);border-radius:24px;padding:44px;position:relative;overflow:hidden;}
-.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--ouro),var(--ouro-claro),transparent);}
-.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.form-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--cinza);}
-.form-input,.form-select,.form-textarea{background:var(--noite);border:1px solid rgba(200,146,42,0.15);border-radius:10px;padding:13px 16px;font-family:'Outfit',sans-serif;font-size:15px;color:var(--branco);width:100%;transition:border-color 0.3s,box-shadow 0.3s;outline:none;-webkit-appearance:none;}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--ouro-claro);box-shadow:0 0 0 3px rgba(200,146,42,0.1);}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(138,144,153,0.45);}
-.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A9099' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:44px;}
-.form-select option{background:var(--noite2);}
-.form-textarea{resize:vertical;min-height:120px;}
-.btn-submit{width:100%;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;padding:18px;border:none;border-radius:12px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 24px rgba(200,146,42,0.4);margin-top:4px;}
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(200,146,42,0.55);}
-.form-success{display:none;text-align:center;padding:32px;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);border-radius:14px;margin-top:16px;}
-.form-success h3{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--branco);margin-bottom:8px;}
-.form-success p{font-size:14px;color:var(--cinza);}
+/* O QUE É BESS */
+.bess-intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.bess-intro-text p{font-size:15px;color:var(--cinza);line-height:1.8;margin-bottom:16px;}
+.bess-intro-text strong{color:var(--branco);}
+.bess-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.bess-stat{background:var(--noite3);border:1px solid rgba(200,146,42,0.1);border-radius:16px;padding:24px;text-align:center;}
+.bess-stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px;}
+.bess-stat-lbl{font-size:12px;color:var(--cinza);line-height:1.4;}
 
 /* BENEFÍCIOS */
-.benef-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;color:var(--branco);margin-bottom:32px;line-height:1.15;}
-.benef-titulo em{font-style:italic;color:var(--ouro-claro);}
-.benef-cards{display:flex;flex-direction:column;gap:16px;}
-.benef-card{display:flex;align-items:flex-start;gap:18px;background:var(--noite3);border:1px solid rgba(200,146,42,0.08);border-radius:16px;padding:22px 20px;transition:border-color 0.3s;}
-.benef-card:hover{border-color:rgba(200,146,42,0.25);}
-.benef-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-.benef-nome{font-size:15px;font-weight:600;color:var(--branco);margin-bottom:4px;}
-.benef-desc{font-size:13px;color:var(--cinza);line-height:1.6;}
+.benef-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.benef-card{background:var(--noite3);border:1px solid rgba(200,146,42,0.08);border-radius:20px;padding:32px 24px;position:relative;overflow:hidden;transition:all 0.3s;}
+.benef-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ouro),var(--ouro-claro));transform:scaleX(0);transition:transform 0.4s;transform-origin:left;}
+.benef-card:hover{border-color:rgba(200,146,42,0.25);transform:translateY(-4px);}
+.benef-card:hover::before{transform:scaleX(1);}
+.benef-icon{font-size:36px;margin-bottom:16px;}
+.benef-titulo{font-size:16px;font-weight:700;color:var(--branco);margin-bottom:10px;}
+.benef-desc{font-size:13px;color:var(--cinza);line-height:1.7;}
 
-/* INFORMAÇÕES DE CONTATO */
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.info-card{background:var(--noite3);border:1px solid rgba(200,146,42,0.1);border-radius:20px;padding:32px 24px;text-align:center;position:relative;overflow:hidden;transition:all 0.3s;}
-.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ouro),var(--ouro-claro));transform:scaleX(0);transition:transform 0.4s;transform-origin:left;}
-.info-card:hover{border-color:rgba(200,146,42,0.3);transform:translateY(-4px);}
-.info-card:hover::before{transform:scaleX(1);}
-.info-icon{font-size:36px;margin-bottom:14px;}
-.info-titulo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--branco);margin-bottom:8px;}
-.info-texto{font-size:13px;color:var(--cinza);line-height:1.6;margin-bottom:16px;}
-.info-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;font-size:13px;font-weight:700;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all 0.3s;}
-.info-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,211,102,0.4);}
-.info-link{display:inline-flex;align-items:center;gap:6px;color:var(--ouro-claro);font-size:13px;font-weight:600;text-decoration:none;transition:color 0.3s;}
-.info-link:hover{color:var(--branco);}
+/* APLICAÇÕES */
+.aplic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.aplic-card{background:var(--noite3);border:1px solid rgba(200,146,42,0.08);border-radius:20px;padding:28px 24px;transition:all 0.3s;}
+.aplic-card:hover{border-color:rgba(200,146,42,0.25);transform:translateY(-3px);}
+.aplic-icon{font-size:32px;margin-bottom:14px;}
+.aplic-titulo{font-size:15px;font-weight:700;color:var(--branco);margin-bottom:8px;}
+.aplic-desc{font-size:13px;color:var(--cinza);line-height:1.6;}
+
+/* COMO FUNCIONA */
+.steps{display:flex;flex-direction:column;gap:0;max-width:700px;margin:0 auto;}
+.step{display:flex;gap:24px;align-items:flex-start;padding:28px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.step:last-child{border-bottom:none;}
+.step-num{width:44px;height:44px;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--noite);flex-shrink:0;}
+.step-titulo{font-size:15px;font-weight:700;color:var(--branco);margin-bottom:6px;}
+.step-desc{font-size:13px;color:var(--cinza);line-height:1.6;}
 
 /* FAQ */
 .faq-list{display:flex;flex-direction:column;gap:12px;max-width:760px;margin:0 auto;}
@@ -124,7 +125,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
 .faq-q span{font-size:15px;font-weight:600;color:var(--branco);}
 .faq-arrow{font-size:18px;color:var(--ouro-claro);transition:transform 0.3s;flex-shrink:0;}
 .faq-item.open .faq-arrow{transform:rotate(180deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
 .faq-a p{padding:0 24px 20px;font-size:14px;color:var(--cinza);line-height:1.75;}
 .faq-item.open .faq-a{max-height:200px;}
 
@@ -158,52 +159,25 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
 .social-icon{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.3s;}
 .social-icon:hover{color:var(--ouro-claro);}
 .wa-float{position:fixed;bottom:32px;right:32px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;z-index:400;box-shadow:0 4px 24px rgba(37,211,102,0.5);animation:wa-pulse 3s infinite;}
-.wa-float:hover{transform:scale(1.1);}
 @keyframes wa-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
-/* RESPONSIVE */
 @media(max-width:1200px){.footer-grid{grid-template-columns:1fr 1fr 1fr;gap:32px;}}
-@media(max-width:768px){
-  .footer-novo{padding:40px 5% 0;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:24px;}
-  .foot-brand{grid-column:1/-1;}
-  .foot-desc{max-width:100%;}
-  .footer-qr-inline{margin-top:8px;}
-  .footer-bottom{flex-direction:column;gap:6px;text-align:center;padding:16px 0;}
-  .footer-copy{font-size:11px;}
-}
-@media(max-width:480px){
-  .footer-grid{grid-template-columns:1fr 1fr;gap:20px 16px;}
-  .foot-col h4{margin-bottom:10px;}
-  .foot-col a{font-size:12px;margin-bottom:6px;}
-  .foot-logo{font-size:18px;}
-  .foot-desc{font-size:12px;}
-  .foot-socials{flex-direction:row;flex-wrap:wrap;gap:12px;}
-  .social-icon{font-size:12px;}
-  .wa-float{bottom:20px;right:20px;width:50px;height:50px;font-size:22px;}
-}
-@media(max-width:1024px){.form-grid{grid-template-columns:1fr;gap:40px;}.info-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:1024px){.bess-intro{grid-template-columns:1fr;gap:40px;}.benef-grid,.aplic-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:768px){
   nav{padding:0 4%;grid-template-columns:auto 1fr auto;}
   .nav-links,.nav-cta{display:none;}
   .nav-hamburger{display:flex;grid-column:3;justify-self:end;}
   .mobile-menu{display:flex;}
-  .info-grid{grid-template-columns:1fr;}
+  .benef-grid,.aplic-grid{grid-template-columns:1fr;}
+  .bess-stats{grid-template-columns:1fr 1fr;}
   .secao{padding:64px 5%;}
-  .form-card{padding:28px 20px;}
   .cta-btns{flex-direction:column;align-items:center;}
 }
-}
-}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:400px){.footer-grid{grid-template-columns:1fr;}}
 </style>
-  <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:title" content="Contato | Saewel Energia Solar — São José do Rio Preto">
-  <meta property="og:description" content="Entre em contato com a Saewel Energia Solar. Fale com o engenheiro responsável e solicite uma simulação gratuita para seu projeto fotovoltaico.">
 </head>
 <body>
-
 <nav id="mainNav">
   <a href="/" class="nav-logo">
     <svg width="160" height="66" viewBox="0 0 680 280" role="img" style="display:block;" xmlns="http://www.w3.org/2000/svg">
@@ -230,7 +204,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="#" style="cursor:pointer;">Serviços ▾</a>
       <ul class="nav-dropdown-menu">
         <li><span class="nav-dropdown-label">Serviços</span></li>
-        <li><a href="/projetos-fotovoltaicos/">📋 Projetos Fotovoltaicos</a></li>
+        <li><a href="/projetos-fotovoltaicos/" class="ativo">📋 Projetos Fotovoltaicos</a></li>
         <li><a href="/instalacao/">⚡ Instalação</a></li>
         <li><a href="/manutencao/">🔧 Manutenção</a></li>
         <li><a href="/monitoramento/">📊 Monitoramento</a></li>
@@ -250,14 +224,13 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
     <li><a href="/cidades/">Cidades</a></li>
     <li><a href="/avaliacoes/">Avaliações</a></li>
     <li><a href="/blog/">Blog</a></li>
-    <li><a href="/contato/" class="ativo">Contato</a></li>
+    <li><a href="/contato/">Contato</a></li>
   </ul>
-  <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar" class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
+  <a href="https://wa.me/5517982093739?text=Olá!%20Tenho%20interesse%20em%20armazenamento%20de%20energia%20BESS." class="nav-btn nav-cta" target="_blank" rel="noopener noreferrer">Falar com engenheiro</a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <div class="mobile-menu" id="mobileMenu">
   <a href="/">Home</a>
   <a href="/sobre/">Sobre</a>
@@ -269,203 +242,114 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
   <a href="/energia-solar-residencial/">Solar Residencial</a>
   <a href="/energia-solar-comercial/">Solar Comercial</a>
   <a href="/calculadora/">Calculadora</a>
+  <a href="/dados-solares-brasil/">Dados Solares</a>
   <a href="/cidades/">Cidades</a>
   <a href="/avaliacoes/">Avaliações</a>
-  <a href="/dados-solares-brasil/">Dados Solares</a>
   <a href="/blog/">Blog</a>
+  <a href="/contato/">Contato</a>
   <a href="https://wa.me/5517982093739" class="mob-btn" target="_blank">Falar com Engenheiro</a>
 </div>
 
-<!-- ═══ HERO ═══ -->
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Início</a><span>›</span><a href="#">Serviços</a><span>›</span>Projetos Fotovoltaicos
+</div>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="eyebrow">São José do Rio Preto e Região</div>
-    <h1>Fale com um <em>Engenheiro</em><br>Especialista em Energia Solar</h1>
-    <p class="hero-sub">Solicite uma análise personalizada para sua residência, empresa ou propriedade rural. Atendemos São José do Rio Preto e região com projetos fotovoltaicos, instalação, monitoramento e consultoria técnica.</p>
+    <div class="eyebrow">Serviço · Saewel Energia Solar</div>
+    <h1>Projetos<br><em>Fotovoltaicos</em><br>em São José do Rio Preto</h1>
+    <p class="hero-sub">Desenvolvemos projetos fotovoltaicos completos para residências, empresas e agronegócio — com dimensionamento preciso, ART no CREA e acompanhamento da homologação junto à distribuidora local.</p>
     <div class="hero-btns">
-      <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20e%20quero%20uma%20análise%20de%20energia%20solar." class="btn-wpp" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/5517982093739?text=Olá!%20Tenho%20interesse%20em%20um%20projeto%20fotovoltaico." class="btn-wpp" target="_blank" rel="noopener noreferrer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        📲 Falar pelo WhatsApp
+        Solicitar Projeto
       </a>
-      <a href="/calculadora/" class="btn-gold">☀️ Usar Calculadora Solar</a>
+      <a href="/calculadora/" class="btn-ghost">☀️ Simular Sistema</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ FORMULÁRIO + BENEFÍCIOS ═══ -->
-<section class="secao" id="contato">
-  <div class="secao-inner">
-    <div class="form-grid">
-
-      <!-- FORMULÁRIO -->
-      <div>
-        <div class="sec-ey">Contato Direto</div>
-        <h2 class="sec-h2" style="margin-bottom:32px;">Solicite seu <em>Atendimento</em></h2>
-        <div class="form-card">
-          <form id="contatoForm" action="https://formspree.io/f/xpqngdgo" method="POST">
-            <div class="form-group">
-              <label class="form-label" for="nome">Nome Completo *</label>
-              <input type="text" id="nome" name="nome" class="form-input" placeholder="Ex: João da Silva" required>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-              <div class="form-group">
-                <label class="form-label" for="telefone">Telefone / WhatsApp *</label>
-                <input type="tel" id="telefone" name="telefone" class="form-input" placeholder="(17) 99999-0000" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">E-mail</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="cidade">Cidade</label>
-              <input type="text" id="cidade" name="cidade" class="form-input" placeholder="São José do Rio Preto - SP">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="interesse">Interesse *</label>
-              <select id="interesse" name="interesse" class="form-select" required>
-                <option value="" disabled selected>Selecione o que precisa</option>
-                <option>Energia Solar Residencial</option>
-                <option>Energia Solar Comercial</option>
-                <option>Energia Solar Agronegócio</option>
-                <option>Projeto Fotovoltaico</option>
-                <option>Instalação</option>
-                <option>Manutenção</option>
-                <option>Monitoramento</option>
-                <option>Consultoria</option>
-                <option>Armazenamento BESS</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" class="form-textarea" placeholder="Como podemos ajudar?"></textarea>
-            </div>
-            <input type="hidden" name="_subject" value="Novo contato — Saewel Energia Solar">
-            <input type="hidden" name="_next" value="https://www.saewelenergiasolar.com.br/contato/?enviado=true">
-            <button type="submit" class="btn-submit">Solicitar Atendimento →</button>
-          </form>
-          <div class="form-success" id="formSuccess">
-            <div style="font-size:48px;margin-bottom:12px;">✅</div>
-            <h3>Mensagem enviada!</h3>
-            <p>Retornaremos em até 24h úteis. Ou fale conosco agora pelo WhatsApp.</p>
-            <a href="https://wa.me/5517982093739" class="btn-wpp" style="display:inline-flex;margin-top:16px;" target="_blank">Falar pelo WhatsApp</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- BENEFÍCIOS -->
-      <div>
-        <div class="sec-ey">Por que a Saewel</div>
-        <h2 class="benef-titulo">Por que falar com a <em>Saewel?</em></h2>
-        <div class="benef-cards">
-          <div class="benef-card">
-            <div class="benef-icon">📋</div>
-            <div>
-              <div class="benef-nome">Engenharia com Responsabilidade Técnica</div>
-              <div class="benef-desc">Projetos com ART no CREA, elaborados por engenheiro especialista em energias renováveis.</div>
-            </div>
-          </div>
-          <div class="benef-card">
-            <div class="benef-icon">💰</div>
-            <div>
-              <div class="benef-nome">Foco na Economia Real</div>
-              <div class="benef-desc">Dimensionamento preciso baseado no seu consumo real e na irradiação solar da sua cidade.</div>
-            </div>
-          </div>
-          <div class="benef-card">
-            <div class="benef-icon">🤝</div>
-            <div>
-              <div class="benef-nome">Atendimento em Todas as Etapas</div>
-              <div class="benef-desc">Suporte próximo do projeto à homologação, com monitoramento online após a instalação.</div>
-            </div>
-          </div>
-          <div class="benef-card">
-            <div class="benef-icon">⚡</div>
-            <div>
-              <div class="benef-nome">Homologação na Distribuidora</div>
-              <div class="benef-desc">Acompanhamos todo o processo junto à distribuidora local e ANEEL — do projeto à conexão na rede.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ INFORMAÇÕES DE CONTATO ═══ -->
+<!-- O QUE ESTÁ INCLUSO -->
 <section class="secao secao-alt">
   <div class="secao-inner">
-    <div style="text-align:center;margin-bottom:48px;">
-      <div class="sec-ey" style="justify-content:center;">Canais de Atendimento</div>
-      <h2 class="sec-h2">Fale conosco pelo <em>canal preferido</em></h2>
-    </div>
-    <div class="info-grid">
-      <div class="info-card">
-        <div class="info-icon">💬</div>
-        <div class="info-titulo">WhatsApp</div>
-        <div class="info-texto">Atendimento rápido e direto com o engenheiro responsável.</div>
-        <a href="https://wa.me/5517982093739?text=Olá!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20sobre%20energia%20solar." class="info-btn" target="_blank" rel="noopener noreferrer">
-          Conversar Agora
-        </a>
+    <div class="bess-intro">
+      <div class="bess-intro-text">
+        <div class="sec-ey">O que está incluso</div>
+        <h2 class="sec-h2">Projeto técnico <em>completo</em></h2>
+        <p>Um projeto fotovoltaico bem elaborado é a base de um sistema que vai funcionar por 25 anos. <strong>Não é apenas um documento</strong> — é a garantia de que seu investimento foi dimensionado corretamente, que os equipamentos são adequados e que o sistema vai ser aprovado pela distribuidora.</p>
+        <p>Todos os nossos projetos incluem <strong>ART no CREA</strong> de projeto e execução, memorial descritivo completo, diagrama unifilar e acompanhamento até a homologação final.</p>
+        <p>Utilizamos <strong>dados reais de irradiação solar</strong> do município (Atlas Solarimétrico CRESESB/INPE) para o dimensionamento — não estimativas genéricas.</p>
       </div>
-      <div class="info-card">
-        <div class="info-icon">✉️</div>
-        <div class="info-titulo">E-mail</div>
-        <div class="info-texto">Envie sua dúvida ou solicite uma proposta por e-mail.</div>
-        <a href="mailto:atendimento@saewelenergiasolar.com.br" class="info-link">atendimento@saewelenergiasolar.com.br</a>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">📍</div>
-        <div class="info-titulo">Área de Atuação</div>
-        <div class="info-texto">São José do Rio Preto e toda a Região Noroeste Paulista.</div>
-        <a href="/cidades/" class="info-link">Ver cidades atendidas →</a>
+      <div class="bess-stats">
+        <div class="bess-stat"><div class="bess-stat-num">5 dias</div><div class="bess-stat-lbl">para entrega do projeto após vistoria</div></div>
+        <div class="bess-stat"><div class="bess-stat-num">ART</div><div class="bess-stat-lbl">inclusa em todos os projetos</div></div>
+        <div class="bess-stat"><div class="bess-stat-num">5.562</div><div class="bess-stat-lbl">municípios com dados reais de irradiação</div></div>
+        <div class="bess-stat"><div class="bess-stat-num">25 anos</div><div class="bess-stat-lbl">de análise financeira com TIR e VPL</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FAQ ═══ -->
+<!-- ETAPAS -->
+<section class="secao">
+  <div class="secao-inner">
+    <div class="sec-ey">Como Funciona</div>
+    <h2 class="sec-h2">Etapas do <em>projeto fotovoltaico</em></h2>
+    <p class="sec-sub">Do diagnóstico inicial à conexão na rede — cada etapa com responsabilidade técnica.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div><div class="step-titulo">Diagnóstico Energético</div><div class="step-desc">Análise do histórico de consumo, perfil de carga, estrutura elétrica existente e potencial solar do local com dados reais de irradiação do município.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div><div class="step-titulo">Dimensionamento do Sistema</div><div class="step-desc">Cálculo da potência instalada, número de módulos, inversor ideal e estimativa de geração mensal — tudo com base nos dados reais do Atlas Solarimétrico.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div><div class="step-titulo">Projeto Elétrico + ART</div><div class="step-desc">Elaboração do projeto elétrico completo com memorial descritivo, diagramas unifilares e Anotação de Responsabilidade Técnica no CREA.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div><div class="step-titulo">Análise de Viabilidade Financeira</div><div class="step-desc">Relatório com payback simples e descontado, TIR, VPL e comparativo com outras formas de investimento para 25 anos de projeção.</div></div></div>
+      <div class="step"><div class="step-num">5</div><div><div class="step-titulo">Homologação na Distribuidora</div><div class="step-desc">Submissão do projeto e acompanhamento completo do processo de aprovação junto à distribuidora local e ANEEL.</div></div></div>
+      <div class="step"><div class="step-num">6</div><div><div class="step-titulo">Entrega da Documentação</div><div class="step-desc">Entrega de toda a documentação técnica, configuração do monitoramento online e treinamento do cliente para acompanhar o sistema.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="secao secao-alt">
+  <div class="secao-inner">
+    <div class="sec-ey">Diferenciais</div>
+    <h2 class="sec-h2">Por que confiar um projeto à <em>Saewel?</em></h2>
+    <p class="sec-sub">Cada detalhe do projeto é pensado para maximizar a geração e proteger seu investimento.</p>
+    <div class="benef-grid">
+      <div class="benef-card"><div class="benef-icon">🎓</div><div class="benef-titulo">Engenheiro Responsável</div><div class="benef-desc">Todos os projetos são assinados por engenheiro habilitado no CREA, com ART de projeto e execução inclusa sem custo adicional.</div></div>
+      <div class="benef-card"><div class="benef-icon">📍</div><div class="benef-titulo">Dados Reais de Irradiação</div><div class="benef-desc">Utilizamos dados do Atlas Solarimétrico CRESESB/INPE para cada município — garantindo precisão real no dimensionamento.</div></div>
+      <div class="benef-card"><div class="benef-icon">🔎</div><div class="benef-titulo">Vistoria Presencial</div><div class="benef-desc">Avaliamos pessoalmente o telhado, a instalação elétrica e o ponto de conexão antes de qualquer proposta ou dimensionamento.</div></div>
+      <div class="benef-card"><div class="benef-icon">📈</div><div class="benef-titulo">Análise Financeira Completa</div><div class="benef-desc">TIR, VPL e payback detalhados para 25 anos — para você tomar a decisão com segurança e clareza sobre o retorno do investimento.</div></div>
+      <div class="benef-card"><div class="benef-icon">🏛️</div><div class="benef-titulo">Homologação Acompanhada</div><div class="benef-desc">Cuidamos de todo o processo junto à distribuidora local e ANEEL — você não precisa se preocupar com burocracia.</div></div>
+      <div class="benef-card"><div class="benef-icon">📊</div><div class="benef-titulo">Monitoramento Incluso</div><div class="benef-desc">Configuração do sistema de monitoramento online e treinamento para acompanhar sua geração pelo celular em tempo real.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
 <section class="secao">
   <div class="secao-inner">
     <div style="text-align:center;margin-bottom:48px;">
       <div class="sec-ey" style="justify-content:center;">Dúvidas Frequentes</div>
-      <h2 class="sec-h2" style="text-align:center;">Perguntas <em>frequentes</em></h2>
+      <h2 class="sec-h2" style="text-align:center;">Perguntas sobre <em>projetos fotovoltaicos</em></h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Quanto tempo leva para receber uma proposta?</span>
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-a"><p>Em até 24 horas úteis após o contato inicial. Para sistemas residenciais padrão, a proposta pode ser gerada ainda mais rápido usando nossa Calculadora Solar online.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Vocês atendem outras cidades além de São José do Rio Preto?</span>
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-a"><p>Sim. Atendemos toda a Região Noroeste Paulista, incluindo Mirassol, Bady Bassit, Olímpia, Catanduva, Votuporanga e municípios vizinhos. Para projetos de maior porte, também atendemos em todo o estado de São Paulo.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Vocês fazem a homologação junto à CPFL?</span>
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-a"><p>Sim. Acompanhamos o processo completo de homologação junto à distribuidora local e à ANEEL, incluindo a elaboração do projeto, ART no CREA, vistoria e conexão do sistema à rede.</p></div>
-      </div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>O projeto fotovoltaico é obrigatório?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><p>Sim. A distribuidora exige o projeto elétrico completo com ART para aprovar a conexão à rede. Sem o projeto técnico, o sistema não pode ser homologado e você não recebe os créditos de energia gerada.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Quanto tempo leva para elaborar o projeto?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><p>Após a vistoria e aprovação da proposta, o projeto é entregue em até 5 dias úteis. A homologação junto à distribuidora leva de 15 a 60 dias dependendo da concessionária.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>O projeto funciona para qualquer tipo de telhado?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><p>Desenvolvemos projetos para telhados cerâmicos, metálicos, fibrocimento, laje e instalações em solo. A vistoria avalia as condições específicas e define a melhor solução estrutural.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>A ART está inclusa no projeto?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><p>Sim. A ART de projeto e execução está inclusa em todos os nossos serviços — sem custo adicional.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CTA FINAL ═══ -->
+<!-- CTA -->
 <section class="cta-final">
   <div class="cta-inner">
-    <div class="cta-ey">Comece Hoje</div>
-    <h2>Pronto para começar<br>seu <em>projeto solar?</em></h2>
-    <p>Receba uma análise personalizada e descubra quanto pode economizar com energia solar em São José do Rio Preto e região.</p>
+    <div class="cta-ey">Comece seu Projeto</div>
+    <h2>Pronto para um projeto<br><em>fotovoltaico profissional?</em></h2>
+    <p>Solicite uma análise técnica gratuita e receba uma proposta personalizada para sua residência, empresa ou propriedade rural.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/5517982093739?text=Olá!%20Quero%20começar%20meu%20projeto%20solar." class="btn-wpp" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/5517982093739?text=Olá!%20Quero%20solicitar%20um%20projeto%20fotovoltaico." class="btn-wpp" target="_blank" rel="noopener noreferrer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         Falar pelo WhatsApp
       </a>
@@ -473,8 +357,6 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
     </div>
   </div>
 </section>
-
-<!-- ═══ FOOTER ═══ -->
 <footer class="footer-novo">
   <div class="footer-grid">
     <div class="foot-brand">
@@ -502,9 +384,13 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
     </div>
     <div class="foot-col">
       <h4>Área de Atuação</h4>
+      <a href="/cidades/">Cidades Atendidas</a>
       <a href="/cidades/sao-jose-do-rio-preto/">São José do Rio Preto</a>
-      <a href="/cidades/">Região Noroeste Paulista</a>
-      <a href="/cidades/" style="font-size:12px;opacity:0.7;">Ver todas as cidades →</a>
+      <a href="/cidades/bady-bassit/">Bady Bassit</a>
+      <a href="/cidades/mirassol/">Mirassol</a>
+      <a href="/cidades/olimpia/">Olímpia</a>
+      <a href="/cidades/catanduva/">Catanduva</a>
+      <a href="/cidades/votuporanga/">Votuporanga</a>
     </div>
     <div class="foot-col">
       <h4>Institucional</h4>
@@ -512,8 +398,6 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="/avaliacoes/">Avaliações</a>
       <a href="/blog/">Blog</a>
       <a href="/calculadora/">Calculadora Solar</a>
-      <a href="/dados-solares-brasil/">Dados Solares</a>
-      <a href="/comunidade/">📡 Canal WhatsApp</a>
       <a href="/contato/">Contato</a>
     </div>
     <div class="foot-col">
@@ -544,62 +428,12 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
     <span class="footer-copy">© 2026 Saewel Energia Solar — CNPJ 36.866.433/0001-71 · São José do Rio Preto, SP</span>
   </div>
 </footer>
-
 <a href="https://wa.me/5517982093739" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
-
 <script>
-// Hamburger
 const ham = document.getElementById('navHamburger');
-const mob = document.getElementById('mobileMenu');
-ham.addEventListener('click', () => {
-  ham.classList.toggle('open');
-  mob.classList.toggle('open');
-  ham.setAttribute('aria-expanded', mob.classList.contains('open'));
-});
-
-// FAQ
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// Formspree AJAX
-document.getElementById('contatoForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('.btn-submit');
-  btn.textContent = 'Enviando...';
-  btn.disabled = true;
-  try {
-    const res = await fetch(this.action, {
-      method: 'POST',
-      body: new FormData(this),
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      this.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    } else {
-      btn.textContent = 'Erro ao enviar. Tente pelo WhatsApp.';
-      btn.disabled = false;
-    }
-  } catch {
-    btn.textContent = 'Erro ao enviar. Tente pelo WhatsApp.';
-    btn.disabled = false;
-  }
-});
-
-// Máscara telefone
-document.getElementById('telefone').addEventListener('input', function() {
-  let v = this.value.replace(/\D/g, '');
-  if ((v.length === 13 || v.length === 12) && v.startsWith('55')) v = v.slice(2);
-  if (v.length <= 2) v = '(' + v;
-  else if (v.length <= 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
-  else if (v.length <= 10) v = '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6);
-  else v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7,11);
-  this.value = v;
-});
+const mob2 = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mob2.classList.toggle('open'); ham.setAttribute('aria-expanded', mob2.classList.contains('open')); });
+function toggleFaq(el) { const item = el.parentElement; const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open')); if (!isOpen) item.classList.add('open'); }
 </script>
 </body>
 </html>

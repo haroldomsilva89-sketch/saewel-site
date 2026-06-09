@@ -151,6 +151,32 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- BLOG — NOVOS (2026-06-09 sessão 3) -->
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/blog/como-funciona-monitoramento-solar/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/blog/monitoramento-sistema-solar-fotovoltaico/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-bady-bassitt/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-olimpia/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- BLOG — NOVOS (2026-06-09 sessão 2) -->
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/como-ler-conta-de-luz-calcular-potencial-solar/</loc>

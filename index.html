@@ -64,7 +64,7 @@
 :root{
   --ouro:#C8922A;--ouro-claro:#E8B84B;--ouro-palido:#F5E6C8;
   --noite:#0A0C0F;--noite2:#111418;--noite3:#181C22;
-  --cinza:#8A9099;--branco:#F8F5F0;
+  --cinza:#9BA3AD;--branco:#F8F5F0;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--branco);overflow-x:hidden;}
@@ -142,7 +142,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 
 /* Trust indicators */
 .hero-trust{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#8A9099;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#9BA3AD;}
 .trust-dot{width:5px;height:5px;background:var(--ouro);border-radius:50%;flex-shrink:0;}
 
 /* Hero visual — painel solar animado */
@@ -172,8 +172,8 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 .hsc-bar-label{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--cinza);margin-bottom:8px;}
 .hsc-bar-label span:last-child{color:#4ADE80;font-weight:600;}
 .hsc-bar-track{height:6px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden;}
-.hsc-bar-fill{height:100%;width:87%;background:linear-gradient(90deg,var(--ouro),var(--ouro-claro));border-radius:999px;animation:bar-grow 2s ease-out forwards;}
-@keyframes bar-grow{from{width:0%;}to{width:87%;}}
+.hsc-bar-fill{height:100%;width:87%;background:linear-gradient(90deg,var(--ouro),var(--ouro-claro));border-radius:999px;animation:bar-grow 2s ease-out forwards;transform-origin:left;will-change:transform;}
+@keyframes bar-grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
 
 .hsc-cidade{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--cinza);padding-top:14px;border-top:1px solid rgba(255,255,255,0.05);}
 .hsc-cidade strong{color:var(--ouro-claro);}
@@ -321,7 +321,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 .foot-col a{display:block;font-size:13px;color:var(--cinza);text-decoration:none;margin-bottom:4px;padding:6px 0;transition:color 0.3s;}
 .foot-col a:hover{color:var(--branco);}
 .footer-bottom{display:flex;align-items:center;justify-content:center;padding:20px 0;}
-.footer-copy{font-size:12px;color:#8A9099;}
+.footer-copy{font-size:12px;color:#9BA3AD;}
 .footer-qr-inline{display:flex;align-items:center;gap:10px;opacity:0.75;transition:opacity 0.3s;text-decoration:none;}
 .footer-qr-inline:hover{opacity:1;}
 .footer-qr-inline img{width:40px;height:40px;border-radius:6px;}

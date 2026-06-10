@@ -32,7 +32,7 @@
   --ouro:#C8922A;--ouro-claro:#E8B84B;--ouro-palido:#F5E6C8;
   --noite:#0A0C0F;--noite2:#111418;--noite3:#181C22;
   --cinza:#8A9099;--branco:#F8F5F0;
-  --verde-wpp:#25D366;--verde-wpp-dark:#1DA851;
+  --azul-tg:#2AABEE;--azul-tg-dark:#1a8fc2;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--branco);overflow-x:hidden;}
@@ -72,41 +72,39 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 5% 80px;position:relative;overflow:hidden;text-align:center;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(37,211,102,0.05) 0%,rgba(200,146,42,0.05) 40%,transparent 70%);pointer-events:none;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(42,171,238,0.05) 0%,rgba(200,146,42,0.05) 40%,transparent 70%);pointer-events:none;}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,146,42,0.25),transparent);}
 
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:24px;position:relative;z-index:1;}
 .hero-eyebrow::before,.hero-eyebrow::after{content:'';width:32px;height:1px;background:var(--ouro-claro);opacity:0.6;}
 
-.canal-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);border-radius:999px;padding:8px 20px;font-size:13px;font-weight:600;color:#25D366;margin-bottom:32px;position:relative;z-index:1;}
-.canal-badge::before{content:'';width:8px;height:8px;background:#25D366;border-radius:50%;animation:pulse 2s infinite;}
+.canal-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(42,171,238,0.1);border:1px solid rgba(42,171,238,0.25);border-radius:999px;padding:8px 20px;font-size:13px;font-weight:600;color:var(--azul-tg);margin-bottom:32px;position:relative;z-index:1;}
+.canal-badge::before{content:'';width:8px;height:8px;background:var(--azul-tg);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
 
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,72px);font-weight:300;line-height:1.1;color:var(--branco);margin-bottom:24px;letter-spacing:-0.01em;position:relative;z-index:1;max-width:800px;}
 .hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero p{font-size:clamp(15px,2vw,18px);color:var(--cinza);max-width:560px;line-height:1.75;margin-bottom:48px;position:relative;z-index:1;}
 
-.btn-canal{display:inline-flex;align-items:center;gap:12px;background:var(--verde-wpp);color:#fff;font-size:16px;font-weight:700;padding:18px 44px;border-radius:999px;text-decoration:none;transition:all 0.3s;box-shadow:0 8px 32px rgba(37,211,102,0.4);position:relative;z-index:1;letter-spacing:0.02em;}
-.btn-canal:hover{background:var(--verde-wpp-dark);transform:translateY(-2px);box-shadow:0 14px 44px rgba(37,211,102,0.55);}
+.btn-canal{display:inline-flex;align-items:center;gap:12px;background:var(--azul-tg);color:#fff;font-size:16px;font-weight:700;padding:18px 44px;border-radius:999px;text-decoration:none;transition:all 0.3s;box-shadow:0 8px 32px rgba(42,171,238,0.4);position:relative;z-index:1;letter-spacing:0.02em;}
+.btn-canal:hover{background:var(--azul-tg-dark);transform:translateY(-2px);box-shadow:0 14px 44px rgba(42,171,238,0.55);}
 .btn-canal svg{flex-shrink:0;}
 
 .hero-note{font-size:13px;color:var(--cinza);margin-top:16px;position:relative;z-index:1;}
 .hero-note span{color:var(--ouro-claro);}
 
-/* CONTEÚDO QUE VOCÊ RECEBE */
+/* BENEFÍCIOS */
 .secao{padding:80px 5%;max-width:1100px;margin:0 auto;}
 .sec-ey{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;}
 .sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.15;margin-bottom:16px;}
 .sec-h2 em{font-style:italic;color:var(--ouro-claro);}
 .sec-desc{color:var(--cinza);font-size:16px;line-height:1.75;max-width:600px;margin-bottom:56px;}
-
 .beneficios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .beneficio-card{background:var(--noite2);border:1px solid rgba(200,146,42,0.08);border-radius:16px;padding:32px 28px;transition:border-color 0.3s,transform 0.3s;}
 .beneficio-card:hover{border-color:rgba(200,146,42,0.25);transform:translateY(-4px);}
 .beneficio-icon{font-size:32px;margin-bottom:16px;display:block;}
 .beneficio-card h3{font-size:16px;font-weight:600;color:var(--branco);margin-bottom:10px;}
 .beneficio-card p{font-size:14px;color:var(--cinza);line-height:1.7;}
-
 @media(max-width:768px){.beneficios-grid{grid-template-columns:1fr 1fr;}.hero h1{font-size:38px;}}
 @media(max-width:480px){.beneficios-grid{grid-template-columns:1fr;}}
 
@@ -121,7 +119,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 
 /* CTA FINAL */
 .cta-final{padding:100px 5%;text-align:center;position:relative;overflow:hidden;}
-.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(37,211,102,0.05) 0%,transparent 70%);pointer-events:none;}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(42,171,238,0.05) 0%,transparent 70%);pointer-events:none;}
 .cta-final h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;margin-bottom:16px;position:relative;z-index:1;}
 .cta-final h2 em{font-style:italic;color:var(--ouro-claro);}
 .cta-final p{color:var(--cinza);font-size:16px;max-width:480px;margin:0 auto 40px;line-height:1.75;position:relative;z-index:1;}
@@ -134,8 +132,9 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 .foot-logo span{color:var(--ouro-claro);}
 .foot-desc{font-size:13px;color:var(--cinza);line-height:1.7;max-width:260px;}
 .footer-qr-inline{display:flex;align-items:center;gap:8px;background:#fff;border-radius:8px;padding:8px 10px;opacity:0.9;transition:opacity 0.3s;text-decoration:none;}
-    .footer-qr-inline span{font-size:11px;color:#1a1a1a;line-height:1.4;font-weight:600;}
+.footer-qr-inline:hover{opacity:1;}
 .footer-qr-inline img{width:40px;height:40px;border-radius:4px;}
+.footer-qr-inline span{font-size:11px;color:#1a1a1a;line-height:1.4;font-weight:600;}
 .foot-col{display:flex;flex-direction:column;gap:10px;}
 .foot-col h4{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ouro);margin-bottom:4px;}
 .foot-col a{font-size:13px;color:var(--cinza);text-decoration:none;transition:color 0.2s;}
@@ -145,10 +144,8 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 .social-icon:hover{color:var(--branco);}
 .footer-bottom{display:flex;align-items:center;justify-content:center;padding:20px 0;}
 .footer-copy{font-size:12px;color:rgba(138,144,153,0.6);}
-@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}}
-
-/* WA FLOAT */
-.wa-float{position:fixed;bottom:32px;right:32px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;z-index:400;box-shadow:0 4px 24px rgba(37,211,102,0.5);}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.foot-brand{grid-column:1/-1;}.footer-qr-inline{margin-top:8px;}.footer-bottom{flex-direction:column;gap:8px;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
 </style>
 <script>window.location.replace("https://t.me/saewelenergiasolar");</script>
 </head>
@@ -226,13 +223,14 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 <section class="hero">
   <div class="hero-eyebrow"><span></span>Saewel Energia Solar · Canal Exclusivo<span></span></div>
   <div class="canal-badge">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-    Canal no WhatsApp · Gratuito
+    <!-- Ícone Telegram -->
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.29 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.858.942z"/></svg>
+    Canal no Telegram · Gratuito
   </div>
-  <h1>Receba <em>inteligência solar</em><br>direto no seu WhatsApp</h1>
+  <h1>Receba <em>inteligência solar</em><br>direto no seu Telegram</h1>
   <p>Dados técnicos, novidades do setor, variação de preços e artigos em primeira mão — produzidos por engenheiro especialista. Tudo de graça, sem spam.</p>
-  <a href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" class="btn-canal" target="_blank" rel="noopener noreferrer">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <a href="https://t.me/saewelenergiasolar" class="btn-canal" target="_blank" rel="noopener noreferrer">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.29 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.858.942z"/></svg>
     Entrar no canal agora
   </a>
   <p class="hero-note">☀️ <span>100% gratuito</span> · Sem spam · Cancele quando quiser</p>
@@ -295,14 +293,13 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
   <div class="sec-ey" style="margin-bottom:16px;">Junte-se ao canal</div>
   <h2>Inteligência solar no seu bolso, <em>de graça</em></h2>
   <p>Entre agora e faça parte da comunidade de quem acompanha o mercado solar do interior de SP com informação de qualidade.</p>
-  <a href="https://whatsapp.com/channel/0029Vb8Zh3JGk1Fnm2fyW63i" class="btn-canal" target="_blank" rel="noopener noreferrer" style="display:inline-flex;">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <a href="https://t.me/saewelenergiasolar" class="btn-canal" target="_blank" rel="noopener noreferrer" style="display:inline-flex;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.29 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.858.942z"/></svg>
     Entrar no canal agora
   </a>
   <p class="hero-note" style="margin-top:16px;">☀️ <span style="color:var(--ouro-claro);">100% gratuito</span> · Sem spam · Cancele quando quiser</p>
 </section>
 
-<!-- FOOTER -->
 </main>
 
 <footer class="footer-novo">
@@ -312,7 +309,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
       <p class="foot-desc">Projetos fotovoltaicos, instalação, monitoramento e consultoria técnica em energia solar para residências, empresas e agronegócio em São José do Rio Preto e região.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <a class="footer-qr-inline" href="https://g.page/r/Cc14z3x8phLCEBM/review" target="_blank" rel="noopener noreferrer">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://g.page/r/Cc14z3x8phLCEBM/review" width="40" height="40" alt="QR Code Google">
+          <img src="/qr-google.png" width="40" height="40" alt="QR Code Google">
           <span>Avalie-nos<br>no Google ★</span>
         </a>
         <a class="footer-qr-inline" href="https://t.me/saewelenergiasolar" target="_blank" rel="noopener noreferrer">
@@ -322,7 +319,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
       </div>
     </div>
     <div class="foot-col">
-      <h3>Serviços</h3>
+      <h4>Serviços</h4>
       <a href="/projetos-fotovoltaicos/">Projetos Fotovoltaicos</a>
       <a href="/instalacao/">Instalação</a>
       <a href="/manutencao/">Manutenção</a>
@@ -330,20 +327,20 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
       <a href="/consultoria/">Consultoria</a>
     </div>
     <div class="foot-col">
-      <h3>Soluções</h3>
+      <h4>Soluções</h4>
       <a href="/energia-solar-residencial/">Residencial</a>
       <a href="/energia-solar-comercial/">Comercial</a>
       <a href="/energia-solar-agronegocio/">Agronegócio</a>
       <a href="/armazenamento-de-energia/">Armazenamento BESS</a>
     </div>
     <div class="foot-col">
-      <h3>Área de Atuação</h3>
+      <h4>Área de Atuação</h4>
       <a href="/cidades/sao-jose-do-rio-preto/">São José do Rio Preto</a>
       <a href="/cidades/">Região Noroeste Paulista</a>
       <a href="/cidades/" style="font-size:12px;opacity:0.7;">Ver todas as cidades →</a>
     </div>
     <div class="foot-col">
-      <h3>Institucional</h3>
+      <h4>Institucional</h4>
       <a href="/sobre/">Sobre</a>
       <a href="/avaliacoes/">Avaliações</a>
       <a href="/blog/">Blog</a>
@@ -351,13 +348,13 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
       <a href="/contato/">Contato</a>
     </div>
     <div class="foot-col">
-      <h3>Legal</h3>
+      <h4>Legal</h4>
       <a href="/politica-de-privacidade/">Política de Privacidade</a>
       <a href="/termos-de-uso/">Termos de Uso</a>
       <a href="/politica-de-cookies/">Política de Cookies</a>
     </div>
     <div class="foot-col">
-      <h3>Redes Sociais</h3>
+      <h4>Redes Sociais</h4>
       <div class="foot-socials">
         <a href="https://www.instagram.com/saewelenergia" target="_blank" rel="noopener noreferrer" class="social-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram
@@ -368,6 +365,9 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
         <a href="https://wa.me/5517982093739" target="_blank" rel="noopener noreferrer" class="social-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp
         </a>
+        <a href="https://t.me/saewelenergiasolar" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.29 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.858.942z"/></svg>Telegram
+        </a>
       </div>
     </div>
   </div>
@@ -376,7 +376,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
   </div>
 </footer>
 
-<a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20mais%20sobre%20energia%20solar!" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Saewel">💬</a>
+<a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Saewel%20e%20quero%20saber%20mais%20sobre%20energia%20solar!" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Saewel" style="position:fixed;bottom:32px;right:32px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;z-index:400;box-shadow:0 4px 24px rgba(37,211,102,0.5);">💬</a>
 
 <script>
 const nav = document.getElementById('mainNav');

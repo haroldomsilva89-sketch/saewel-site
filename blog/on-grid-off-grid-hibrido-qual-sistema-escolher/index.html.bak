@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>On-Grid, Off-Grid ou Híbrido: Qual Sistema Solar Escolher em 2026? | Saewel</title>
-  <meta name="description" content="On-grid, off-grid ou híbrido: qual sistema solar escolher? Comparativo completo com custos reais, payback e guia de perfil para tomar a decisão certa em 2026.">
+  <meta name="description" content="On-grid, off-grid ou híbrido? Veja o comparativo completo: custos, vantagens e qual sistema solar faz mais sentido para residências e empresas em 2026.">
   <meta name="author" content="Haroldo M. Silva — Engenheiro de Energias Renováveis, Saewel Energia Solar">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/on-grid-off-grid-hibrido-qual-sistema-escolher/">
@@ -37,47 +37,6 @@
     "dateModified": "2026-05-20",
     "mainEntityOfPage": "https://www.saewelenergiasolar.com.br/blog/on-grid-off-grid-hibrido-qual-sistema-escolher",
     "keywords": ["on-grid", "off-grid", "sistema híbrido", "energia solar", "bateria solar", "BESS", "qual sistema solar", "São José do Rio Preto"]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Qual a diferença entre sistema on-grid, off-grid e híbrido?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O sistema on-grid é conectado à rede elétrica e injeta o excedente de energia na distribuidora, gerando créditos. O off-grid funciona de forma independente, com baterias para armazenar energia. O híbrido combina os dois: está conectado à rede e também tem baterias, funcionando mesmo durante quedas de energia."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Qual sistema solar é mais barato: on-grid, off-grid ou híbrido?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O sistema on-grid é o mais barato, pois não utiliza baterias. O híbrido tem custo intermediário (40% a 70% a mais que o on-grid). O off-grid é o mais caro, podendo custar 2 a 3 vezes mais que o on-grid equivalente, principalmente pelo banco de baterias."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Sistema solar on-grid funciona quando a energia cai?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Não. Por norma de segurança, inversores on-grid desligam automaticamente durante quedas de energia na rede — mesmo com sol e painéis funcionando. Para manter energia durante apagões, é necessário um sistema híbrido com baterias ou off-grid."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Qual sistema solar escolher em 2026?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Para quem vai instalar agora, o inversor híbrido é a escolha mais estratégica em 2026 — mesmo sem baterias imediatas, permite adicioná-las depois sem trocar o equipamento. Para áreas rurais sem rede elétrica, o off-grid é a única opção. Para quem busca menor custo e payback rápido em área urbana com rede estável, o on-grid ainda é válido."
-        }
-      }
-    ]
   }
   </script>
 
@@ -652,7 +611,7 @@
 
 <section class="article-hero">
   <div class="breadcrumb">
-    <a href="https://www.saewelenergiasolar.com.br">Saewel</a> › <a href="https://www.saewelenergiasolar.com.br/blog/">Blog</a> › Tecnologia · Comparativo
+    <a href="https://www.saewelenergiasolar.com.br">Saewel</a> › <a href="https://www.saewelenergiasolar.com.br/blog/">Blog</a> › Projeto
   </div>
   <div class="article-eyebrow">Projeto · Tecnologia · Comparativo</div>
   <h1 class="article-title">On-grid, off-grid ou <em>híbrido</em>:<br>qual sistema solar escolher?</h1>
@@ -999,20 +958,6 @@
       Solicitar simulação gratuita
     </a>
   </div>
-
-  <h2>Perguntas frequentes sobre on-grid, off-grid e híbrido</h2>
-
-  <h3>Sistema on-grid funciona quando a energia cai?</h3>
-  <p>Não. Por norma de segurança (NR-10 e requisitos da ANEEL), inversores on-grid desligam automaticamente durante quedas de energia — mesmo com sol pleno e painéis funcionando. Para manter energia durante apagões, é necessário um sistema híbrido com baterias.</p>
-
-  <h3>Qual a diferença entre on-grid e off-grid na prática?</h3>
-  <p>O on-grid depende da rede elétrica para funcionar e usa a rede como "bateria virtual" via créditos de energia. O off-grid é totalmente independente, com baterias físicas no local — ideal para propriedades rurais sem acesso à rede.</p>
-
-  <h3>Vale a pena pagar mais pelo sistema híbrido?</h3>
-  <p>Depende do perfil. Para quem sofre quedas de energia frequentes, tem equipamentos críticos ou está instalando agora pensando no Fio B de 2029, sim — o híbrido se paga ao longo do tempo. Para quem tem fornecimento estável e quer o menor custo inicial, o on-grid ainda é excelente.</p>
-
-  <h3>Posso converter um sistema on-grid para híbrido depois?</h3>
-  <p>Inversores on-grid convencionais não são compatíveis com baterias — uma migração exige trocar o inversor. Por isso, quem instala um inversor híbrido desde o início tem mais flexibilidade: pode começar sem baterias e adicioná-las futuramente sem custo de substituição do inversor.</p>
 
   <div class="author-card">
     <img src="/haroldo-avatar.png" alt="Haroldo M. Silva — Engenheiro de Energias Renováveis" width="52" height="52" style="border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">

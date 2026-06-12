@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saewel Energia Solar — Links</title>
+  <meta name="description" content="Todos os links da Saewel Energia Solar: calculadora solar, blog, WhatsApp, avaliações e muito mais.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.saewelenergiasolar.com.br/links/">
+  <meta property="og:title" content="Saewel Energia Solar — Links">
+  <meta property="og:description" content="Calculadora solar gratuita, artigos técnicos, WhatsApp e muito mais.">
+  <meta property="og:url" content="https://www.saewelenergiasolar.com.br/links/">
+  <meta property="og:site_name" content="Saewel Energia Solar">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --noite: #0A0C0F;
+      --noite2: #111418;
+      --ouro: #C8922A;
+      --ouro-claro: #E8B84B;
+      --branco: #F8F5F0;
+      --cinza: #9BA3AD;
+      --texto: #D4CFC8;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--noite);
+      color: var(--texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 64px;
+    }
+
+    /* Glow de fundo */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 40vh;
+      background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(200,146,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      margin-bottom: 8px;
+    }
+
+    /* Nome e tagline */
+    .profile-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--branco);
+      text-align: center;
+    }
+    .profile-name span { color: var(--ouro-claro); }
+
+    .profile-tag {
+      font-size: 13px;
+      color: var(--cinza);
+      text-align: center;
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+
+    /* Linha dourada divisora */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--ouro), var(--ouro-claro));
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+
+    /* Botões de link */
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 16px 20px;
+      background: var(--noite2);
+      border: 1px solid rgba(200,146,42,0.12);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--branco);
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .link-btn:hover {
+      border-color: rgba(200,146,42,0.4);
+      background: rgba(200,146,42,0.06);
+      transform: translateY(-1px);
+    }
+    .link-btn.destaque {
+      background: linear-gradient(135deg, rgba(200,146,42,0.15), rgba(200,146,42,0.08));
+      border-color: rgba(200,146,42,0.35);
+    }
+    .link-btn.destaque:hover {
+      border-color: rgba(200,146,42,0.6);
+      background: linear-gradient(135deg, rgba(200,146,42,0.22), rgba(200,146,42,0.12));
+    }
+    .link-btn.whatsapp {
+      background: rgba(37,211,102,0.08);
+      border-color: rgba(37,211,102,0.25);
+    }
+    .link-btn.whatsapp:hover {
+      background: rgba(37,211,102,0.14);
+      border-color: rgba(37,211,102,0.5);
+    }
+
+    .btn-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+    .btn-content { flex: 1; }
+    .btn-title { font-size: 15px; font-weight: 600; color: var(--branco); }
+    .btn-sub { font-size: 12px; color: var(--cinza); margin-top: 2px; }
+    .btn-arrow { font-size: 16px; color: var(--ouro); flex-shrink: 0; }
+
+    /* Seção título */
+    .sec-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      align-self: flex-start;
+      margin-top: 8px;
+      margin-bottom: 2px;
+    }
+
+    /* Redes sociais */
+    .sociais {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--noite2);
+      border: 1px solid rgba(200,146,42,0.12);
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.25s;
+    }
+    .social-btn:hover {
+      border-color: rgba(200,146,42,0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer-link {
+      font-size: 12px;
+      color: var(--cinza);
+      text-decoration: none;
+      margin-top: 24px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .footer-link:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Logo -->
+  <div class="logo-wrap">
+    <svg width="100" height="42" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="hc"><rect x="240" y="0" width="200" height="108"/></clipPath></defs>
+      <line x1="340" y1="43" x2="340" y2="12" stroke="#F0A030" stroke-width="5" stroke-linecap="round"/>
+      <line x1="396" y1="75" x2="413" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="373" y1="52" x2="388" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="406" y1="108" x2="428" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <line x1="307" y1="52" x2="292" y2="36" stroke="#F0A030" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="284" y1="75" x2="267" y2="66" stroke="#E87820" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="274" y1="108" x2="252" y2="108" stroke="#E87820" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="340" cy="108" r="65" fill="#F5C040" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="50" fill="#E8A020" clip-path="url(#hc)"/>
+      <circle cx="340" cy="108" r="38" fill="#F5C040" clip-path="url(#hc)"/>
+      <text x="340" y="192" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="62" fill="#E87820" letter-spacing="2">SAEWEL ENERGIA</text>
+      <text x="340" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#F0A030" letter-spacing="3">A ENERGIA DO SOL AO SEU ALCANCE!</text>
+    </svg>
+  </div>
+
+  <div class="profile-name">Saewel <span>Energia Solar</span></div>
+  <div class="profile-tag">⚡ Energia solar em SJRP e Noroeste Paulista</div>
+  <div class="divider"></div>
+
+  <!-- CTA principal -->
+  <a href="/calculadora/" class="link-btn destaque">
+    <div class="btn-icon">☀️</div>
+    <div class="btn-content">
+      <div class="btn-title">Calculadora Solar Gratuita</div>
+      <div class="btn-sub">Simule sua economia em segundos</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/5517982093739?text=Ol%C3%A1!%20Vim%20pelo%20Instagram%20e%20quero%20saber%20mais%20sobre%20energia%20solar!" target="_blank" rel="noopener noreferrer" class="link-btn whatsapp">
+    <div class="btn-icon">💬</div>
+    <div class="btn-content">
+      <div class="btn-title">Falar com Engenheiro</div>
+      <div class="btn-sub">Atendimento via WhatsApp</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <!-- Serviços -->
+  <div class="sec-label">Serviços</div>
+
+  <a href="/instalacao/" class="link-btn">
+    <div class="btn-icon">⚡</div>
+    <div class="btn-content">
+      <div class="btn-title">Instalação de Energia Solar</div>
+      <div class="btn-sub">Projeto com ART + Homologação CPFL</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <a href="/manutencao/" class="link-btn">
+    <div class="btn-icon">🔧</div>
+    <div class="btn-content">
+      <div class="btn-title">Manutenção de Painéis</div>
+      <div class="btn-sub">Limpeza, revisão e diagnóstico</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <a href="/consultoria/" class="link-btn">
+    <div class="btn-icon">📋</div>
+    <div class="btn-content">
+      <div class="btn-title">Consultoria Técnica</div>
+      <div class="btn-sub">Laudo técnico com ART</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <!-- Blog destaque -->
+  <div class="sec-label">Artigos em destaque</div>
+
+  <a href="/blog/quanto-custa-instalar-energia-solar-2026/" class="link-btn">
+    <div class="btn-icon">💰</div>
+    <div class="btn-content">
+      <div class="btn-title">Quanto custa instalar energia solar?</div>
+      <div class="btn-sub">Tabela de preços real — 2026</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <a href="/blog/energia-solar-vale-a-pena-2026/" class="link-btn">
+    <div class="btn-icon">📊</div>
+    <div class="btn-content">
+      <div class="btn-title">Energia solar vale a pena em 2026?</div>
+      <div class="btn-sub">Análise honesta com números reais</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <a href="/blog/payback-energia-solar/" class="link-btn">
+    <div class="btn-icon">📈</div>
+    <div class="btn-content">
+      <div class="btn-title">Payback de energia solar</div>
+      <div class="btn-sub">Quanto tempo leva para se pagar?</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <a href="/blog/" class="link-btn">
+    <div class="btn-icon">📰</div>
+    <div class="btn-content">
+      <div class="btn-title">Ver todos os artigos</div>
+      <div class="btn-sub">48 artigos técnicos por engenheiro</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <!-- Avaliações -->
+  <div class="sec-label">Avaliações</div>
+
+  <a href="https://g.page/r/Cc14z3x8phLCEBM/review" target="_blank" rel="noopener noreferrer" class="link-btn">
+    <div class="btn-icon">⭐</div>
+    <div class="btn-content">
+      <div class="btn-title">Avaliar no Google</div>
+      <div class="btn-sub">Sua opinião é muito importante!</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <a href="/avaliacoes/" class="link-btn">
+    <div class="btn-icon">🏆</div>
+    <div class="btn-content">
+      <div class="btn-title">Ver avaliações de clientes</div>
+      <div class="btn-sub">O que nossos clientes dizem</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <!-- Redes sociais -->
+  <div class="sec-label">Redes sociais</div>
+  <div class="sociais">
+    <a href="https://www.instagram.com/saewel.energiasolar" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B84B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#E8B84B" stroke="none"/></svg>
+    </a>
+    <a href="https://www.facebook.com/share/1ECXRSfupU/" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B84B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://t.me/saewelenergiasolar" target="_blank" rel="noopener noreferrer" class="social-btn" title="Telegram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.29 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.858.942z"/></svg>
+    </a>
+    <a href="https://wa.me/5517982093739" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </a>
+  </div>
+
+  <a href="/" class="footer-link">saewelenergiasolar.com.br</a>
+
+</div>
+
+</body>
+</html>

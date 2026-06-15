@@ -823,19 +823,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   <div id="formulario">
     <div class="form-card">
 
-      <!-- DADOS DO CLIENTE -->
-      <div class="form-section-title">Dados do Cliente</div>
+      <!-- LOCALIZAÇÃO -->
+      <div class="form-section-title">Localização</div>
       <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label" for="nome">Nome completo <span>*</span></label>
-          <input type="text" id="nome" class="form-input" placeholder="Ex: João da Silva" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="telefone">WhatsApp <span>*</span></label>
-          <input type="tel" id="telefone" class="form-input" placeholder="(17) 99999-0000" required autocomplete="tel">
-        </div>
         <div class="form-group full">
-          <label class="form-label" for="cidadeInput">Cidade <span>*</span></label>
+          <label class="form-label" for="cidadeInput">Sua cidade <span>*</span></label>
           <div class="ac-wrap">
             <input type="text" id="cidadeInput" class="form-input" placeholder="Digite sua cidade..." autocomplete="off" required>
             <input type="hidden" id="cidadeValor">
@@ -944,8 +936,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         <span class="form-hint" style="margin-top:8px;display:block;">Preencha os valores da sua conta de energia — permite gerar o gráfico Consumo × Geração mês a mês</span>
       </div>
 
+      <!-- DADOS DO CLIENTE - no final para aumentar conversão -->
+      <div class="form-section-title" style="margin-top:28px;">Quase lá! Para onde enviamos sua proposta?</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="nome">Seu nome <span>*</span></label>
+          <input type="text" id="nome" class="form-input" placeholder="Ex: João da Silva" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="telefone">Seu WhatsApp <span>*</span></label>
+          <input type="tel" id="telefone" class="form-input" placeholder="(17) 99999-0000" required autocomplete="tel">
+          <span class="form-hint">Você receberá a proposta completa pelo WhatsApp</span>
+        </div>
+      </div>
+
       <div style="margin-top:24px;">
-        <button type="button" class="btn-calcular" onclick="calcular()">☀ Gerar Proposta Gratuitamente</button>
+        <button type="button" class="btn-calcular" onclick="calcular()">☀ Ver Minha Economia Gratuitamente</button>
       </div>
 
     </div>

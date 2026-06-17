@@ -601,6 +601,12 @@ document.getElementById('contatoForm').addEventListener('submit', async function
       headers: { 'Accept': 'application/json' }
     });
     if (res.ok) {
+      // ── EVENTO GOOGLE ANALYTICS: LEAD DE CONTATO ──
+      gtag('event', 'generate_lead', {
+        event_category: 'Contato',
+        event_label: 'Formulario',
+        value: 1
+      });
       this.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     } else {

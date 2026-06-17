@@ -1687,6 +1687,13 @@ Gostaria de avançar com o projeto!`);
   document.getElementById('btnWpp').href=`https://wa.me/5517982093739?text=${msg}`;
 
 
+  // ── EVENTO GOOGLE ANALYTICS: LEAD GERADO ──
+  gtag('event', 'generate_lead', {
+    event_category: 'Calculadora',
+    event_label: PERFIS[perfil],
+    value: 1
+  });
+
   // ── SALVAR LEAD NO GOOGLE SHEETS ──
   salvarLead({
     nome, telefone: tel, cidade,

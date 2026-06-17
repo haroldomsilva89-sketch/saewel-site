@@ -1688,11 +1688,15 @@ Gostaria de avançar com o projeto!`);
 
 
   // ── EVENTO GOOGLE ANALYTICS: LEAD GERADO ──
-  gtag('event', 'generate_lead', {
-    event_category: 'Calculadora',
-    event_label: PERFIS[perfil],
-    value: 1
-  });
+  try {
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        event_category: 'Calculadora',
+        event_label: PERFIS[perfil],
+        value: 1
+      });
+    }
+  } catch(e) { console.warn('gtag error:', e); }
 
   // ── SALVAR LEAD NO GOOGLE SHEETS ──
   salvarLead({

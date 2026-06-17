@@ -602,7 +602,7 @@ document.getElementById('contatoForm').addEventListener('submit', async function
     });
     if (res.ok) {
       // ── EVENTO GOOGLE ANALYTICS: LEAD DE CONTATO ──
-      gtag('event', 'generate_lead', {
+      if (typeof gtag === "function") gtag('event', 'generate_lead', {
         event_category: 'Contato',
         event_label: 'Formulario',
         value: 1

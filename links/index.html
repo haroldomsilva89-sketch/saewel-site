@@ -286,5 +286,29 @@
 
 </div>
 
+<script>
+// ── EVENTOS GOOGLE ANALYTICS: CLIQUES NA PÁGINA /LINKS/ ──
+// Essa página recebe a maior parte do tráfego do Instagram (link da bio).
+// Marcar os cliques como evento garante que a sessão conte como engajada.
+function trackClick(eventName, label) {
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, { event_category: 'Links', event_label: label, value: 1 });
+  }
+}
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+  link.addEventListener('click', function() {
+    trackClick('generate_lead', 'WhatsApp - ' + (this.classList.contains('social-btn') ? 'icone social' : 'botao destaque'));
+  });
+});
+document.querySelectorAll('a[href^="/calculadora/"]').forEach(function(link) {
+  link.addEventListener('click', function() { trackClick('select_content', 'Calculadora Solar'); });
+});
+document.querySelectorAll('a[href*="g.page"]').forEach(function(link) {
+  link.addEventListener('click', function() { trackClick('select_content', 'Avaliar no Google'); });
+});
+document.querySelectorAll('a[href^="/avaliacoes/"]').forEach(function(link) {
+  link.addEventListener('click', function() { trackClick('select_content', 'Ver avaliacoes'); });
+});
+</script>
 </body>
 </html>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q017N44D5S"></script>
+<!-- Google tag (gtag.js) — fila de eventos criada já, script real carregado depois do primeiro paint -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -309,6 +308,26 @@ document.querySelectorAll('a[href*="g.page"]').forEach(function(link) {
 document.querySelectorAll('a[href^="/avaliacoes/"]').forEach(function(link) {
   link.addEventListener('click', function() { trackClick('select_content', 'Ver avaliacoes'); });
 });
+
+// ── PERFORMANCE: carrega o gtag.js só depois da primeira pintura ──
+// Evita que o script de analytics atrase o LCP. Eventos disparados antes
+// disso ficam na fila (dataLayer) e são processados normalmente quando
+// o script real terminar de carregar — nada se perde.
+(function() {
+  var loaded = false;
+  function loadGtagScript() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Q017N44D5S';
+    document.head.appendChild(s);
+  }
+  ['scroll', 'click', 'keydown', 'touchstart', 'mousemove'].forEach(function(evt) {
+    window.addEventListener(evt, loadGtagScript, { once: true, passive: true });
+  });
+  window.addEventListener('load', function() { setTimeout(loadGtagScript, 2000); });
+})();
 </script>
 </body>
 </html>

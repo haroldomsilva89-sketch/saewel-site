@@ -213,6 +213,18 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 .sec-h2 em{font-style:italic;color:var(--ouro-claro);}
 .sec-desc{font-size:16px;font-weight:300;line-height:1.85;color:var(--cinza);max-width:680px;margin-bottom:16px;}
 
+/* ── Blog cards (homepage) ── */
+.blog-head-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:8px;}
+.blog-ver-todos{font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--ouro-claro);text-decoration:none;white-space:nowrap;padding-bottom:6px;}
+.blog-ver-todos:hover{text-decoration:underline;}
+.blog-card{background:var(--noite2);border:1px solid rgba(200,146,42,0.08);border-radius:12px;padding:32px 28px;text-decoration:none;color:inherit;transition:border-color 0.3s,transform 0.3s;display:flex;flex-direction:column;}
+.blog-card:hover{border-color:rgba(200,146,42,0.25);transform:translateY(-3px);}
+.blog-card-tag{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ouro);margin-bottom:14px;}
+.blog-card-title{font-family:'Cormorant Garamond','Cormorant-fallback',serif;font-size:20px;font-weight:600;line-height:1.3;color:var(--branco);margin-bottom:10px;}
+.blog-card-desc{font-size:13px;color:var(--cinza);line-height:1.6;flex:1;}
+@media(max-width:900px){.blog-cards-grid{grid-template-columns:1fr 1fr!important;}}
+@media(max-width:640px){.blog-cards-grid{grid-template-columns:1fr!important;}.blog-head-row{align-items:flex-start;}}
+
 /* ═══════════════════════════════
    SOLUÇÕES — LINHA 1 (perfis)
 ═══════════════════════════════ */
@@ -823,6 +835,38 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
       <a href="/cidades/" class="cidade-pill" style="border-style:dashed;color:var(--cinza);">🗺️ Ver todas as cidades →</a>
     </div>
   </div>
+</section>
+
+<!-- ════════════════════════════════
+     BLOG — ARTIGOS RECENTES
+════════════════════════════════ -->
+<section class="secao secao-alt" id="blog-home">
+  <div class="secao-inner">
+    <div class="blog-head-row">
+      <div>
+        <div class="sec-ey">Blog</div>
+        <h2 class="sec-h2">Conteúdo sobre <em>energia solar</em></h2>
+        <p class="sec-desc" style="margin-bottom:0;">Artigos técnicos, legislação e dados de mercado para quem quer entender antes de investir.</p>
+      </div>
+      <a href="/blog/" class="blog-ver-todos">Ver todos os artigos →</a>
+    </div>
+    <div class="blog-cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;margin-bottom:40px;">
+      <a href="/blog/baterias-aumentam-creditos-gd-tarifa-branca/" class="blog-card">
+        <div class="blog-card-tag">BESS · Novo</div>
+        <div class="blog-card-title">Baterias podem aumentar em 60% os créditos da sua usina solar</div>
+        <div class="blog-card-desc">Estudo da TR Soluções mostra como BESS + Tarifa Branca pode aumentar os créditos de GD em usinas do subgrupo A4.</div>
+      </a>
+      <a href="/blog/monitoramento-sistema-solar-fotovoltaico/" class="blog-card">
+        <div class="blog-card-tag">Monitoramento</div>
+        <div class="blog-card-title">Monitoramento solar: como saber se seu sistema está gerando corretamente</div>
+        <div class="blog-card-desc">Como identificar quedas de geração e por que sistemas sem monitoramento perdem dinheiro sem o proprietário perceber.</div>
+      </a>
+      <a href="/blog/como-ler-conta-de-luz-calcular-potencial-solar/" class="blog-card">
+        <div class="blog-card-tag">Técnico</div>
+        <div class="blog-card-title">Como ler a conta de luz da CPFL e calcular quantos painéis você precisa</div>
+        <div class="blog-card-desc">Entenda cada campo da conta, descubra seu consumo real em kWh e calcule o tamanho do seu sistema.</div>
+      </a>
+    </div>
 </section>
 
 <!-- ════════════════════════════════

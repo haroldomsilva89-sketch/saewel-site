@@ -495,8 +495,16 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/aneel-baterias-mercado/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- BLOG — NOVOS (2026-06-27) -->
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/blog/baterias-aumentam-creditos-gd-tarifa-branca/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

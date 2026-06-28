@@ -6,7 +6,15 @@
     <description>Artigos técnicos, legislação, dados solares e simulações de economia para quem quer instalar energia solar no interior de SP.</description>
     <language>pt-BR</language>
     <atom:link href="https://www.saewelenergiasolar.com.br/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 08 Jun 2026 22:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2026 19:00:00 -0300</lastBuildDate>
+
+    <item>
+      <title>Baterias podem aumentar em 60% os créditos da sua usina solar</title>
+      <link>https://www.saewelenergiasolar.com.br/blog/baterias-aumentam-creditos-gd-tarifa-branca/</link>
+      <description>Estudo da TR Soluções mostra que combinar BESS, Tarifa Branca e geração distribuída pode aumentar em mais de 60% os créditos de energia de empresas do subgrupo A4.</description>
+      <pubDate>Sat, 27 Jun 2026 19:00:00 -0300</pubDate>
+      <guid>https://www.saewelenergiasolar.com.br/blog/baterias-aumentam-creditos-gd-tarifa-branca/</guid>
+    </item>
 
     <item>
       <title>Como funciona o monitoramento solar: do inversor ao app</title>

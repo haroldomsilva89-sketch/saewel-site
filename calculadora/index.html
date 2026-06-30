@@ -245,7 +245,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .prop-page:nth-child(n+2){ counter-increment: pagina; }
 
   /* ── OCULTAR INTERFACE ── */
-  nav,.btn-calcular,.prop-ctas,.btn-nova,.footer-mini,
+  nav,.btn-calcular,.prop-ctas,.btn-nova,.footer-mini,.prop-proximos-passos,
   #formulario,.loading,body::before,.page-header{display:none!important;}
 
   /* ── RESET GERAL ── */
@@ -1314,7 +1314,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     <button class="btn-nova" onclick="novaSimulacao()">← Fazer nova simulação</button>
 
     <!-- PRÓXIMOS PASSOS -->
-    <div style="margin:40px 0 20px;padding:36px;background:#ffffff06;border:1px solid #ffffff10;border-radius:16px;text-align:center;">
+    <div class="prop-proximos-passos" style="margin:40px 0 20px;padding:36px;background:#ffffff06;border:1px solid #ffffff10;border-radius:16px;text-align:center;">
       <div style="font-size:13px;font-weight:700;letter-spacing:3px;color:var(--ouro-claro);text-transform:uppercase;margin-bottom:8px;">Enquanto aguarda o retorno</div>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--branco);margin-bottom:24px;">Explore mais conteúdos da Saewel</h3>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px;">

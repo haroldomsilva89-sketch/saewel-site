@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/energia-solar-comercial",
+      "destination": "/energia-solar-comercial/",
+      "permanent": true
+    }
+  ],
+  "trailingSlash": true
+}

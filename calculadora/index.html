@@ -1488,6 +1488,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const hsp=irr;
   const margem=perfil==='comercial'?1.30:perfil==='agronegocio'?1.35:1.20;
   const kwpBruto=consumoMedio/(hsp*30*ef);
+  kwpAlvo = kwpBruto*margem; // salva a meta original, antes de qualquer arredondamento por módulo
   const wpAtual=(typeof moduloAtual!=='undefined')?moduloAtual.wp:620;
   const nMod=Math.max(2,Math.ceil(kwpBruto*margem*1000/wpAtual));
   const kWp=parseFloat((nMod*620/1000).toFixed(2));
@@ -1602,7 +1603,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   // Datas
   const now=new Date();
   const dataFmt=now.toLocaleDateString('pt-BR');
-  const validade=new Date(now.getTime()+30*24*3600*1000).toLocaleDateString('pt-BR');
+  const validade=new Date(now.getTime()+15*24*3600*1000).toLocaleDateString('pt-BR');
 
   // ── NÚMERO SEQUENCIAL via AppScript ──
   let propNum = '';
@@ -1814,6 +1815,7 @@ const GRUPOS = {
 // Estado atual
 let moduloAtual = JINKO_MODS[0];
 let grupoAtual  = 'growatt';
+let kwpAlvo = 0; // meta original de potência (kWp), sem arredondamento — usada ao trocar de módulo
 let tecnologiaAtual = 'string'; // 'string' ou 'micro'
 let marcaAtual = 'growatt';
 
@@ -1888,10 +1890,9 @@ function trocarModulo(id) {
   if(foto) foto.src = mod.foto;
   set('eqModelo', mod.label);
   set('eqModDesc', mod.desc);
-  const kwpEl = document.getElementById('dPot');
-  if(kwpEl) {
-    const kWp = parseFloat(kwpEl.textContent);
-    if(!isNaN(kWp)) {
+  const kWp = kwpAlvo || parseFloat((document.getElementById('dPot')||{}).textContent);
+  {
+    if(!isNaN(kWp) && kWp > 0) {
       const nMod = Math.ceil(kWp*1000/mod.wp);
       const kWpReal = (nMod*mod.wp/1000).toFixed(2);
       set('eqQtd', nMod+'×');

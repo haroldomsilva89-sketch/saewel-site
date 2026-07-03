@@ -1465,22 +1465,35 @@ function mostrarMapaSatelite(lat, lon){
   document.getElementById('mapaImg').src = url;
   document.getElementById('mapaBlock').style.display = 'block';
 }
-function gerarVariantesEndereco(endereco){
+function gerarVariantesEndereco(endereco, cidadeSelecionada){
   // Gera versões progressivamente mais simples do endereço para tentar na geocodificação.
-  // Cidades pequenas costumam ter pouca cobertura de rua/número no OpenStreetMap,
-  // então tentamos do mais específico ao mais genérico até achar algo.
-  const variantes=[endereco];
+  // REGRAS DE SEGURANÇA:
+  // 1) Nunca deixamos passar uma tentativa que seja só número/texto curto demais
+  //    (ex: "227" sozinho pode bater com nome de rodovia, CEP etc. em qualquer lugar do Brasil)
+  // 2) Sempre que possível, "grudamos" a cidade já selecionada na tentativa, pra manter
+  //    a busca presa à região certa e evitar resultados de outro estado.
+  const variantes=[];
+  const nomeCidade=cidadeSelecionada?cidadeSelecionada.split(' - ')[0]:'';
+  const contemCidade=nomeCidade && endereco.toLowerCase().includes(nomeCidade.toLowerCase());
+  const sufixo=(cidadeSelecionada && !contemCidade)?', '+cidadeSelecionada:'';
+  function add(s){
+    s=(s||'').trim().replace(/^[,\-]\s*/,'');
+    if(!s)return;
+    if(/^\d+$/.test(s))return; // rejeita variante só-numérica (ex: "227")
+    if(s.replace(/\D/g,'').length===0 && s.length<4)return; // rejeita fragmento textual curto demais
+    if(!variantes.includes(s))variantes.push(s);
+  }
+  add(endereco+sufixo);
   // Remove número da casa (ex: ", 227" ou " 227," ou " nº 227")
   const semNumero=endereco.replace(/,?\s*(?:n[ºo°]?\.?\s*)?\d+\b/gi,'').replace(/,\s*,/,',').trim();
-  if(semNumero && semNumero!==endereco)variantes.push(semNumero);
+  if(semNumero && semNumero!==endereco)add(semNumero+sufixo);
   // Quebra só por vírgula ou hífen COM espaços dos dois lados (" - "), nunca por hífen colado
-  // (ex: "Rio Preto-SP" não deve virar "Rio Preto" + "SP")
   const partes=endereco.split(/,|\s-\s/).map(p=>p.trim()).filter(Boolean);
-  if(partes.length>2)variantes.push(partes.slice(1).join(', '));
-  if(partes.length>1)variantes.push(partes.slice(-2).join(', '));
-  if(partes.length>0)variantes.push(partes[partes.length-1]);
-  // Remove duplicadas mantendo a ordem
-  return [...new Set(variantes)];
+  if(partes.length>2)add(partes.slice(1).join(', ')+sufixo);
+  if(partes.length>1)add(partes.slice(-2).join(', ')+sufixo);
+  // Garantia final: a cidade já selecionada, sozinha
+  if(cidadeSelecionada)add(cidadeSelecionada);
+  return variantes;
 }
 async function geocodificar(query){
   const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(query);
@@ -1497,9 +1510,7 @@ async function buscarEndereco(){
   btn.disabled=true; btn.textContent='...';
   status.textContent='Buscando coordenadas...';
   try{
-    const variantes=gerarVariantesEndereco(endereco);
-    // Garantia final: a cidade já selecionada no campo acima, exatamente como está na nossa base
-    if(cidadeSelecionada && !variantes.includes(cidadeSelecionada))variantes.push(cidadeSelecionada);
+    const variantes=gerarVariantesEndereco(endereco, cidadeSelecionada);
     let resultado=null, usada=endereco, tentativas=0;
     for(const v of variantes){
       tentativas++;

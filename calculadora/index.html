@@ -1026,7 +1026,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         </div>
         <div id="capaMapaBlock" style="display:none;margin-top:20px;border-radius:14px;overflow:hidden;border:1px solid rgba(200,146,42,0.25);position:relative;max-height:320px;">
           <img id="capaMapaImg" src="" alt="Vista de satélite do endereço" style="width:100%;height:320px;object-fit:cover;display:block;background:#111;" onerror="document.getElementById('capaMapaBlock').style.display='none';">
-          <svg viewBox="0 0 24 34" style="position:absolute;top:50%;left:50%;width:30px;height:auto;transform:translate(-50%,-100%);filter:drop-shadow(0 2px 3px rgba(0,0,0,0.6));" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 34" style="position:absolute;top:30%;left:50%;width:30px;height:auto;transform:translate(-50%,-100%);filter:drop-shadow(0 2px 3px rgba(0,0,0,0.6));" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 22 12 22s12-13 12-22c0-6.6-5.4-12-12-12z" fill="#E8433A"/>
             <circle cx="12" cy="12" r="5" fill="#ffffff"/>
           </svg>
@@ -1454,16 +1454,23 @@ function cidadeMaisProxima(lat,lon){
   return {cidade:melhor, distancia:menorDist};
 }
 function mostrarMapaSatelite(lat, lon){
-  // Zoom aproximado: ~300m de largura de área visível (mais folga que a versão anterior de ~180m,
-  // reduz a chance do Esri não ter imagem de alta resolução disponível pra área exata)
-  const raioGraus = 0.0016; // ~180m em latitude
+  // Zoom aproximado: ~300m de largura de área visível.
+  // Enquadramento assimétrico: o pino fica a 30% do topo (em vez de 50%/centralizado),
+  // sobrando mais área visível ABAIXO do ponto (onde costuma estar o imóvel/quintal),
+  // e menos acima. Isso vale igual pra qualquer endereço buscado, não é fixo pra um caso.
+  const PIN_TOP_PCT = 30; // também usado no CSS do pino — mantenha os dois em sincronia
+  const raioGraus = 0.0016; // ~180m de raio base em latitude
+  const fatorCima = (PIN_TOP_PCT/100) * 2;       // 0.6
+  const fatorBaixo = (1 - PIN_TOP_PCT/100) * 2;  // 1.4
   const raioGrausLon = raioGraus / Math.cos(lat * Math.PI/180);
+  // Proporção da imagem pedida ao Esri já bate com a caixa onde ela é exibida (~2.7:1),
+  // evitando um corte extra e imprevisível feito pelo CSS (object-fit) por cima do que já veio da API.
   const minLon = lon - raioGrausLon, maxLon = lon + raioGrausLon;
-  const minLat = lat - raioGraus, maxLat = lat + raioGraus;
+  const minLat = lat - raioGraus*fatorBaixo, maxLat = lat + raioGraus*fatorCima;
   const bbox = [minLon, minLat, maxLon, maxLat].join(',');
   const url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
     + '?bbox=' + bbox
-    + '&bboxSR=4326&size=900,560&dpi=150&format=jpg&f=image';
+    + '&bboxSR=4326&size=920,340&dpi=150&format=jpg&f=image';
   const linkDiag=document.getElementById('mapaLinkDiag');
   if(linkDiag)linkDiag.href = url;
   // Mini-mapa na capa (único lugar onde a imagem de satélite aparece na proposta)

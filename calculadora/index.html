@@ -836,6 +836,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           </div>
           <span class="form-hint">Base com 5.562 municípios brasileiros com irradiação solar real</span>
         </div>
+        <div class="form-group full">
+          <label class="form-label" for="enderecoInput">Endereço completo <span style="color:var(--cinza);font-weight:400;">(opcional — para irradiação mais precisa)</span></label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="enderecoInput" class="form-input" placeholder="Rua, número, bairro, cidade - UF" autocomplete="off">
+            <button type="button" id="btnGeocode" onclick="buscarEndereco()" style="flex-shrink:0;background:transparent;border:1px solid rgba(200,146,42,0.35);color:var(--ouro-claro);border-radius:12px;padding:0 18px;font-family:'Outfit',sans-serif;font-weight:600;cursor:pointer;white-space:nowrap;">Buscar</button>
+          </div>
+          <span class="form-hint" id="geocodeStatus">Se preenchido, localizamos suas coordenadas exatas via mapa e usamos a irradiação do ponto mais próximo da sua base.</span>
+          <input type="hidden" id="geoLat">
+          <input type="hidden" id="geoLon">
+        </div>
       </div>
 
       <!-- PERFIL -->
@@ -1080,6 +1090,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           </div>
         </div>
       </div>
+
+      <!-- MAPA DE SATÉLITE -->
+      <div id="mapaBlock" style="display:none;margin-top:20px;">
+        <div class="form-section-title" style="margin-bottom:12px;">Vista <em>Aérea</em> do Imóvel</div>
+        <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(200,146,42,0.15);position:relative;">
+          <img id="mapaImg" src="" alt="Vista de satélite do endereço" style="width:100%;display:block;">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,12,15,0.75),transparent);padding:10px 14px;font-size:10px;color:rgba(255,255,255,0.75);">
+            Imagem de satélite (Esri World Imagery) — referência visual, sujeita a atualização e sombreamento não avaliado.
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- PÁGINA 3: GERAÇÃO MÊS A MÊS -->
@@ -1319,23 +1340,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
     <div class="prop-proximos-passos" style="margin:40px 0 20px;padding:36px;background:#ffffff06;border:1px solid #ffffff10;border-radius:16px;text-align:center;">
       <div style="font-size:13px;font-weight:700;letter-spacing:3px;color:var(--ouro-claro);text-transform:uppercase;margin-bottom:8px;">Enquanto aguarda o retorno</div>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--branco);margin-bottom:24px;">Explore mais conteúdos da Saewel</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px;">
-        <a href="/blog/quanto-custa-instalar-energia-solar-2026/" style="display:block;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:24px;">
+        <a href="/blog/quanto-custa-instalar-energia-solar-2026/" style="display:block;flex:1 1 180px;max-width:220px;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
           <div style="font-size:28px;margin-bottom:8px;">💰</div>
           <div style="font-size:13px;font-weight:700;color:var(--branco);margin-bottom:4px;">Quanto custa instalar?</div>
           <div style="font-size:11px;color:var(--cinza);">Tabela real de preços 2026</div>
         </a>
-        <a href="/blog/payback-energia-solar/" style="display:block;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
+        <a href="/blog/payback-energia-solar/" style="display:block;flex:1 1 180px;max-width:220px;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
           <div style="font-size:28px;margin-bottom:8px;">📈</div>
           <div style="font-size:13px;font-weight:700;color:var(--branco);margin-bottom:4px;">Entenda o payback</div>
           <div style="font-size:11px;color:var(--cinza);">Quando começo a lucrar?</div>
         </a>
-        <a href="/blog/financiamento-energia-solar-2026/" style="display:block;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
+        <a href="/blog/financiamento-energia-solar-2026/" style="display:block;flex:1 1 180px;max-width:220px;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
           <div style="font-size:28px;margin-bottom:8px;">🏦</div>
           <div style="font-size:13px;font-weight:700;color:var(--branco);margin-bottom:4px;">Financiamento solar</div>
           <div style="font-size:11px;color:var(--cinza);">Parcela menor que a economia</div>
         </a>
-        <a href="https://www.instagram.com/saewel.energiasolar" target="_blank" style="display:block;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
+        <a href="https://www.instagram.com/saewel.energiasolar" target="_blank" style="display:block;flex:1 1 180px;max-width:220px;padding:18px;background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;text-decoration:none;">
           <div style="font-size:28px;margin-bottom:8px;">📲</div>
           <div style="font-size:13px;font-weight:700;color:var(--branco);margin-bottom:4px;">Siga no Instagram</div>
           <div style="font-size:11px;color:var(--cinza);">Dicas e novidades diárias</div>
@@ -1399,6 +1420,73 @@ function selCidade(c,irr){
   document.getElementById('cidadeIrr').value=irr;
   document.getElementById('acList').classList.remove('show');
   document.getElementById('cidadeInput').blur();
+  // Endereço manual selecionado por cidade: limpa coordenadas de geocodificação para não conflitar
+  document.getElementById('geoLat').value='';
+  document.getElementById('geoLon').value='';
+}
+
+// ── GEOCODIFICAÇÃO DE ENDEREÇO (opcional, para irradiação mais precisa) ──
+function distanciaKm(lat1,lon1,lat2,lon2){
+  const R=6371, toRad=d=>d*Math.PI/180;
+  const dLat=toRad(lat2-lat1), dLon=toRad(lon2-lon1);
+  const a=Math.sin(dLat/2)**2+Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function cidadeMaisProxima(lat,lon){
+  let melhor=null, menorDist=Infinity;
+  for(const nome in COORDS_DB){
+    const [clat,clon]=COORDS_DB[nome];
+    const d=distanciaKm(lat,lon,clat,clon);
+    if(d<menorDist){menorDist=d;melhor=nome;}
+  }
+  return {cidade:melhor, distancia:menorDist};
+}
+function mostrarMapaSatelite(lat, lon){
+  // Zoom aproximado: ~150m de largura de área visível
+  const raioGraus = 0.0009; // ~100m em latitude
+  const raioGrausLon = raioGraus / Math.cos(lat * Math.PI/180);
+  const minLon = lon - raioGrausLon, maxLon = lon + raioGrausLon;
+  const minLat = lat - raioGraus, maxLat = lat + raioGraus;
+  const bbox = [minLon, minLat, maxLon, maxLat].join(',');
+  const url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
+    + '?bbox=' + bbox
+    + '&bboxSR=4326&imageSR=4326&size=900,560&format=png32&f=image';
+  document.getElementById('mapaImg').src = url;
+  document.getElementById('mapaBlock').style.display = 'block';
+}
+async function buscarEndereco(){
+  const endereco=document.getElementById('enderecoInput').value.trim();
+  const status=document.getElementById('geocodeStatus');
+  const btn=document.getElementById('btnGeocode');
+  if(!endereco){status.textContent='Digite um endereço para buscar.';return;}
+  btn.disabled=true; btn.textContent='...';
+  status.textContent='Buscando coordenadas...';
+  try{
+    const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(endereco);
+    const resp=await fetch(url,{headers:{'Accept':'application/json'}});
+    const data=await resp.json();
+    if(!data || !data.length){
+      status.textContent='Endereço não encontrado. Tente adicionar cidade/UF, ou selecione a cidade acima manualmente.';
+      btn.disabled=false; btn.textContent='Buscar';
+      return;
+    }
+    const lat=parseFloat(data[0].lat), lon=parseFloat(data[0].lon);
+    document.getElementById('geoLat').value=lat;
+    document.getElementById('geoLon').value=lon;
+    const {cidade,distancia}=cidadeMaisProxima(lat,lon);
+    if(cidade){
+      const irr=SOLAR_DB[cidade];
+      document.getElementById('cidadeInput').value=cidade;
+      document.getElementById('cidadeValor').value=cidade;
+      document.getElementById('cidadeIrr').value=irr;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)}) — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).`;
+    } else {
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)}), mas não foi possível estimar a irradiação. Selecione sua cidade manualmente.`;
+    }
+  }catch(e){
+    status.textContent='Não foi possível buscar o endereço agora. Selecione sua cidade manualmente.';
+  }
+  btn.disabled=false; btn.textContent='Buscar';
 }
 
 // ── SLIDER ──
@@ -1636,8 +1724,17 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
 
   // Dimensionamento
   set('dLocal',cidade);set('dIrr',irr.toFixed(2)+' kWh/m²/dia');set('dEstr',ESTRUTURAS[estrutura]);
+  const geoLatVal=parseFloat(document.getElementById('geoLat').value);
+  const geoLonVal=parseFloat(document.getElementById('geoLon').value);
+  const temGeo = !isNaN(geoLatVal) && !isNaN(geoLonVal);
   const coordCidade = (typeof COORDS_DB!=='undefined') ? COORDS_DB[cidade] : null;
-  set('dCoord', coordCidade ? coordCidade[0]+', '+coordCidade[1] : 'não encontrada — buscar manualmente');
+  if(temGeo){
+    set('dCoord', geoLatVal.toFixed(5)+', '+geoLonVal.toFixed(5)+' (endereço exato)');
+    mostrarMapaSatelite(geoLatVal, geoLonVal);
+  } else {
+    set('dCoord', coordCidade ? coordCidade[0]+', '+coordCidade[1] : 'não encontrada — buscar manualmente');
+    document.getElementById('mapaBlock').style.display='none';
+  }
   set('dPot',kWp.toFixed(2)+' kWp');set('dMod',nMod+'× módulos 620Wp bifaciais');
   set('dArea','~'+area+' m²');set('dInv',inv);set('dGer',geracaoMedia.toLocaleString('pt-BR')+' kWh/mês (média anual)');
   set('dPeso',Math.round(nMod*pesoModAtual)+' kg'+(pesoTemEstimativa?' (estimado)':''));

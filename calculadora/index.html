@@ -1106,7 +1106,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div id="mapaBlock" style="display:none;margin-top:20px;">
         <div class="form-section-title" style="margin-bottom:12px;">Vista <em>Aérea</em> do Imóvel</div>
         <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(200,146,42,0.15);position:relative;">
-          <img id="mapaImg" src="" alt="Vista de satélite do endereço" style="width:100%;display:block;">
+          <img id="mapaImg" src="" alt="Vista de satélite do endereço" style="width:100%;display:block;" onerror="document.getElementById('mapaBlock').style.display='none';">
           <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,12,15,0.75),transparent);padding:10px 14px;font-size:10px;color:rgba(255,255,255,0.75);">
             Imagem de satélite (Esri World Imagery) — referência visual, sujeita a atualização e sombreamento não avaliado.
           </div>
@@ -1926,7 +1926,19 @@ function imprimirProposta(){
     alert('Gere a proposta primeiro antes de imprimir.');
     return;
   }
-  window.print();
+  const mapaBlock = document.getElementById('mapaBlock');
+  const mapaImg = document.getElementById('mapaImg');
+  const mapaVisivel = mapaBlock && mapaBlock.style.display !== 'none' && mapaImg && mapaImg.src;
+  if(mapaVisivel && !mapaImg.complete){
+    // Espera a imagem de satélite carregar (ou desiste após 5s) antes de abrir o diálogo de impressão
+    let done=false;
+    const finalizar=()=>{if(done)return;done=true;window.print();};
+    mapaImg.addEventListener('load',finalizar,{once:true});
+    mapaImg.addEventListener('error',finalizar,{once:true});
+    setTimeout(finalizar,5000);
+  } else {
+    window.print();
+  }
 }
 
 // ═══════════════════════════════════════════

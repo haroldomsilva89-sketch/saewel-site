@@ -1579,12 +1579,15 @@ function gerarVariantesEndereco(endereco, cidadeSelecionada){
   // REGRAS DE SEGURANÇA:
   // 1) Nunca deixamos passar uma tentativa que seja só número/texto curto demais
   //    (ex: "227" sozinho pode bater com nome de rodovia, CEP etc. em qualquer lugar do Brasil)
-  // 2) Sempre que possível, "grudamos" a cidade já selecionada na tentativa, pra manter
-  //    a busca presa à região certa e evitar resultados de outro estado.
+  // 2) SEMPRE tentamos primeiro com a cidade selecionada grudada explicitamente no fim da
+  //    busca — mesmo se o NOME da cidade já aparecer em algum trecho do endereço (ex: um
+  //    bairro chamado "Jardim Nova Aliança" dentro de Ribeirão Preto contém a palavra "Nova
+  //    Aliança", mas isso não significa que o endereço seja do MUNICÍPIO Nova Aliança-SP).
+  //    Confiar nessa coincidência de texto já causou um caso real de match errado (bairro
+  //    homônimo em outra cidade, com mais dados no mapa, "roubando" a busca). Por isso a
+  //    versão SEM a cidade grudada agora é sempre a de MENOR prioridade, tentada só se as
+  //    variantes "ancoradas" na cidade certa falharem.
   const variantes=[];
-  const nomeCidade=cidadeSelecionada?cidadeSelecionada.split(' - ')[0]:'';
-  const contemCidade=nomeCidade && endereco.toLowerCase().includes(nomeCidade.toLowerCase());
-  const sufixo=(cidadeSelecionada && !contemCidade)?', '+cidadeSelecionada:'';
   function add(s){
     s=(s||'').trim().replace(/^[,\-]\s*/,'');
     if(!s)return;
@@ -1593,16 +1596,24 @@ function gerarVariantesEndereco(endereco, cidadeSelecionada){
     if(!variantes.includes(s))variantes.push(s);
   }
   const enderecoExpandido=expandirAbreviacoes(endereco);
-  // Prioridade máxima: endereço com abreviações expandidas (ex: "Jardim Aclimação" em vez de "JD Aclimação")
-  if(enderecoExpandido!==endereco)add(enderecoExpandido+sufixo);
-  add(endereco+sufixo);
-  // Remove número da casa (ex: ", 227" ou " 227," ou " nº 227")
+  const sufixoCidade=cidadeSelecionada?', '+cidadeSelecionada:'';
+  // Prioridade máxima: endereço (com abreviações expandidas) + cidade selecionada grudada —
+  // essa âncora evita cair num bairro/rua homônimo de outra cidade.
+  if(cidadeSelecionada){
+    if(enderecoExpandido!==endereco)add(enderecoExpandido+sufixoCidade);
+    add(endereco+sufixoCidade);
+  }
+  // Em seguida, as mesmas versões SEM grudar a cidade (útil se a cidade grudada duas vezes
+  // atrapalhar o Nominatim em algum caso raro) — prioridade menor que as ancoradas acima.
+  if(enderecoExpandido!==endereco)add(enderecoExpandido);
+  add(endereco);
+  // Remove número da casa (ex: ", 227" ou " 227," ou " nº 227"), ainda ancorado na cidade
   const semNumero=enderecoExpandido.replace(/,?\s*(?:n[ºo°]?\.?\s*)?\d+\b/gi,'').replace(/,\s*,/,',').trim();
-  if(semNumero && semNumero!==enderecoExpandido)add(semNumero+sufixo);
+  if(semNumero && semNumero!==enderecoExpandido)add(semNumero+sufixoCidade);
   // Quebra só por vírgula ou hífen COM espaços dos dois lados (" - "), nunca por hífen colado
   const partes=enderecoExpandido.split(/,|\s-\s/).map(p=>p.trim()).filter(Boolean);
-  if(partes.length>2)add(partes.slice(1).join(', ')+sufixo);
-  if(partes.length>1)add(partes.slice(-2).join(', ')+sufixo);
+  if(partes.length>2)add(partes.slice(1).join(', ')+sufixoCidade);
+  if(partes.length>1)add(partes.slice(-2).join(', ')+sufixoCidade);
   // Garantia final: a cidade já selecionada, sozinha
   if(cidadeSelecionada)add(cidadeSelecionada);
   return variantes;
@@ -1655,14 +1666,27 @@ async function buscarEndereco(){
     gerarPreviewMapa(lat,lon);
     const {cidade,distancia}=cidadeMaisProxima(lat,lon);
     const avisoCidade=!enderecoMencionaCidade?` ⚠️ O endereço não mencionava a cidade — a busca foi orientada por "${cidadeSelecionada}" (confira se é a cidade certa).`:'';
+    // Verificação extra: se o resultado da geocodificação caiu longe demais da cidade que
+    // o usuário já tinha selecionado manualmente, o nome do bairro/rua pode ter coincidido
+    // com o de outro município (caso real: "Jardim Nova Aliança" em Ribeirão Preto sendo
+    // confundido com o município Nova Aliança-SP). Nesse caso, avisamos com destaque em vez
+    // de simplesmente trocar a cidade sem chamar atenção pra isso.
+    const coordCidadeOriginal=(typeof COORDS_DB!=='undefined')?COORDS_DB[cidadeSelecionada]:null;
+    let avisoDistanciaGrande='';
+    if(coordCidadeOriginal){
+      const distDaSelecionada=distanciaKm(lat,lon,coordCidadeOriginal[0],coordCidadeOriginal[1]);
+      if(distDaSelecionada>80){
+        avisoDistanciaGrande=` 🔴 ATENÇÃO: esse ponto ficou a ${distDaSelecionada.toFixed(0)} km da cidade "${cidadeSelecionada}" que você havia selecionado — pode ter confundido um bairro/rua com nome parecido em outra cidade. Confira o pino no mapa abaixo e ajuste manualmente se necessário, ou refaça a busca incluindo o estado por extenso.`;
+      }
+    }
     if(cidade){
       const irr=SOLAR_DB[cidade];
       document.getElementById('cidadeInput').value=cidade;
       document.getElementById('cidadeValor').value=cidade;
       document.getElementById('cidadeIrr').value=irr;
-      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso} — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).${avisoCidade}`;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso} — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).${avisoCidade}${avisoDistanciaGrande}`;
     } else {
-      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso}, mas não foi possível estimar a irradiação. Selecione sua cidade manualmente.${avisoCidade}`;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso}, mas não foi possível estimar a irradiação. Selecione sua cidade manualmente.${avisoCidade}${avisoDistanciaGrande}`;
     }
   }catch(e){
     status.textContent='Não foi possível buscar o endereço agora. Selecione sua cidade manualmente.';

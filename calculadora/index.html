@@ -1507,6 +1507,9 @@ async function buscarEndereco(){
   const btn=document.getElementById('btnGeocode');
   const cidadeSelecionada=document.getElementById('cidadeValor').value||document.getElementById('cidadeInput').value.trim();
   if(!endereco){status.textContent='Digite um endereço para buscar.';return;}
+  if(!cidadeSelecionada){status.textContent='Selecione a cidade no campo "Sua cidade" acima primeiro — ela é usada como referência quando o endereço não é encontrado com precisão.';return;}
+  const nomeCidadeSel=cidadeSelecionada.split(' - ')[0];
+  const enderecoMencionaCidade=endereco.toLowerCase().includes(nomeCidadeSel.toLowerCase());
   btn.disabled=true; btn.textContent='...';
   status.textContent='Buscando coordenadas...';
   try{
@@ -1538,14 +1541,15 @@ async function buscarEndereco(){
     document.getElementById('geoLat').value=lat;
     document.getElementById('geoLon').value=lon;
     const {cidade,distancia}=cidadeMaisProxima(lat,lon);
+    const avisoCidade=!enderecoMencionaCidade?` ⚠️ O endereço não mencionava a cidade — a busca foi orientada por "${cidadeSelecionada}" (confira se é a cidade certa).`:'';
     if(cidade){
       const irr=SOLAR_DB[cidade];
       document.getElementById('cidadeInput').value=cidade;
       document.getElementById('cidadeValor').value=cidade;
       document.getElementById('cidadeIrr').value=irr;
-      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso} — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).`;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso} — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).${avisoCidade}`;
     } else {
-      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso}, mas não foi possível estimar a irradiação. Selecione sua cidade manualmente.`;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso}, mas não foi possível estimar a irradiação. Selecione sua cidade manualmente.${avisoCidade}`;
     }
   }catch(e){
     status.textContent='Não foi possível buscar o endereço agora. Selecione sua cidade manualmente.';

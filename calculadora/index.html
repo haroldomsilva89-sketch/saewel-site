@@ -1455,23 +1455,26 @@ function cidadeMaisProxima(lat,lon){
   return {cidade:melhor, distancia:menorDist};
 }
 function mostrarMapaSatelite(lat, lon){
-  // Zoom aproximado: ~300m de largura de área visível.
   // Enquadramento assimétrico: o pino fica a 30% do topo (em vez de 50%/centralizado),
-  // sobrando mais área visível ABAIXO do ponto (onde costuma estar o imóvel/quintal),
-  // e menos acima. Isso vale igual pra qualquer endereço buscado, não é fixo pra um caso.
+  // sobrando mais área visível ABAIXO do ponto (onde costuma estar o imóvel/quintal).
+  // Isso vale igual pra qualquer endereço buscado, não é fixo pra um caso.
   const PIN_TOP_PCT = 30; // também usado no CSS do pino — mantenha os dois em sincronia
-  const raioGraus = 0.0016; // ~180m de raio base em latitude
+  const IMG_W = 920, IMG_H = 340; // também usado no "size" da URL abaixo — mantenha em sincronia
+  const raioGraus = 0.0016; // ~180m de raio base em latitude (controla o "zoom")
   const fatorCima = (PIN_TOP_PCT/100) * 2;       // 0.6
   const fatorBaixo = (1 - PIN_TOP_PCT/100) * 2;  // 1.4
-  const raioGrausLon = raioGraus / Math.cos(lat * Math.PI/180);
-  // Proporção da imagem pedida ao Esri já bate com a caixa onde ela é exibida (~2.7:1),
-  // evitando um corte extra e imprevisível feito pelo CSS (object-fit) por cima do que já veio da API.
-  const minLon = lon - raioGrausLon, maxLon = lon + raioGrausLon;
   const minLat = lat - raioGraus*fatorBaixo, maxLat = lat + raioGraus*fatorCima;
+  // Calculamos a largura já na proporção EXATA da imagem pedida (IMG_W/IMG_H), em vez de
+  // pedir uma área quadrada e confiar que o servidor vai completar a largura do jeito certo
+  // (na prática ele pode reajustar a área toda de um jeito imprevisível, desalinhando o pino).
+  const alturaTotalGraus = raioGraus*(fatorCima+fatorBaixo);
+  const larguraTotalGraus = alturaTotalGraus * (IMG_W/IMG_H);
+  const raioGrausLon = (larguraTotalGraus/2) / Math.cos(lat * Math.PI/180);
+  const minLon = lon - raioGrausLon, maxLon = lon + raioGrausLon;
   const bbox = [minLon, minLat, maxLon, maxLat].join(',');
   const url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
     + '?bbox=' + bbox
-    + '&bboxSR=4326&size=920,340&dpi=150&format=jpg&f=image';
+    + '&bboxSR=4326&size='+IMG_W+','+IMG_H+'&format=jpg&f=image';
   const linkDiag=document.getElementById('mapaLinkDiag');
   if(linkDiag)linkDiag.href = url;
   // Mini-mapa na capa (único lugar onde a imagem de satélite aparece na proposta)

@@ -1618,8 +1618,19 @@ function gerarVariantesEndereco(endereco, cidadeSelecionada){
   if(cidadeSelecionada)add(cidadeSelecionada);
   return variantes;
 }
-async function geocodificar(query){
-  const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(query);
+async function geocodificar(query, biasCoords){
+  let url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(query);
+  if(biasCoords){
+    // Restringe a busca a uma "caixa" de ~1.2 grau (aprox. 130km) ao redor da cidade
+    // selecionada. Isso é diferente de só grudar o texto da cidade na busca: aqui é uma
+    // restrição GEOGRÁFICA de verdade, então o Nominatim fica fisicamente impedido de
+    // escolher um resultado a centenas de km de distância, mesmo que o nome do lugar
+    // combine texto-a-texto (ex: bairro homônimo em outra cidade).
+    const [lat,lon]=biasCoords;
+    const delta=0.6;
+    const viewbox=[lon-delta,lat+delta,lon+delta,lat-delta].join(',');
+    url+='&viewbox='+viewbox+'&bounded=1';
+  }
   const resp=await fetch(url,{headers:{'Accept':'application/json'}});
   const data=await resp.json();
   return (data && data.length) ? data[0] : null;
@@ -1637,13 +1648,30 @@ async function buscarEndereco(){
   status.textContent='Buscando coordenadas...';
   try{
     const variantes=gerarVariantesEndereco(endereco, cidadeSelecionada);
+    const coordCidadeSel=(typeof COORDS_DB!=='undefined')?COORDS_DB[cidadeSelecionada]:null;
     let resultado=null, usada=endereco, tentativas=0;
-    for(const v of variantes){
-      tentativas++;
-      if(tentativas>1)status.textContent='Endereço exato não encontrado — tentando "'+v+'"...';
-      resultado=await geocodificar(v);
-      if(resultado){usada=v;break;}
-      if(tentativas<variantes.length)await new Promise(r=>setTimeout(r,1100)); // respeita limite de 1 req/s do Nominatim
+    // 1ª passada: busca restrita geograficamente perto da cidade selecionada (evita
+    // confundir bairro/rua homônimo de outra cidade distante).
+    if(coordCidadeSel){
+      for(const v of variantes){
+        tentativas++;
+        if(tentativas>1)status.textContent='Endereço exato não encontrado perto de '+cidadeSelecionada+' — tentando "'+v+'"...';
+        resultado=await geocodificar(v, coordCidadeSel);
+        if(resultado){usada=v;break;}
+        if(tentativas<variantes.length)await new Promise(r=>setTimeout(r,1100)); // respeita limite de 1 req/s do Nominatim
+      }
+    }
+    // 2ª passada (só se a 1ª não achou nada): busca sem restrição geográfica, como
+    // reserva — ainda protegida pelo aviso de distância grande mais abaixo.
+    if(!resultado){
+      tentativas=0;
+      for(const v of variantes){
+        tentativas++;
+        if(tentativas>1)status.textContent='Ainda não encontrado — tentando "'+v+'" sem restrição de área...';
+        resultado=await geocodificar(v);
+        if(resultado){usada=v;break;}
+        if(tentativas<variantes.length)await new Promise(r=>setTimeout(r,1100));
+      }
     }
     let lat, lon, aviso;
     if(!resultado){

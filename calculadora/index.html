@@ -1702,7 +1702,7 @@ function setModoConsumo(modo){
 // ── GOOGLE SHEETS ──
 async function salvarLead(dados) {
   try {
-    await fetch('https://script.google.com/macros/s/AKfycbxJRwhOxl3S08ZsfsGrLdOiCqkh5os2jP3Pdfb5lhEqGlMYRncwnk7mcrsGiVkpVcA/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
@@ -1904,7 +1904,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   // ── NÚMERO SEQUENCIAL via AppScript ──
   let propNum = '';
   try {
-    const resp = await fetch('https://script.google.com/macros/s/AKfycbxJRwhOxl3S08ZsfsGrLdOiCqkh5os2jP3Pdfb5lhEqGlMYRncwnk7mcrsGiVkpVcA/exec?action=nextnum');
+    const resp = await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec?action=nextnum');
     const json = await resp.json();
     if (json.status === 'ok' && json.proposta) {
       propNum = json.proposta;
@@ -2068,6 +2068,7 @@ Gostaria de avançar com o projeto!`);
     modulos: nMod + 'x 620Wp',
     investimento: inv_faixa,
     economiaMes: 'R$ ' + formatMoeda(ecoMensal),
+    economia25anos: Math.round(e25), // valor numérico puro (sem "R$" nem separador), pra já cair pronto pra soma/análise no Power BI
     payback: payback_min.toFixed(1) + ' a ' + payback_max.toFixed(1) + ' anos',
     irradiacao: irr.toFixed(2) + ' kWh/m²/dia',
     proposta: propNum

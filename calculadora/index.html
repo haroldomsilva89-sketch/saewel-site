@@ -905,6 +905,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           <input type="number" id="tarifa" class="form-input" value="0.95" step="0.01" min="0.30" max="3.00" placeholder="0,95">
           <span class="form-hint">Verifique na sua fatura mensal</span>
         </div>
+        <div class="form-group">
+          <label class="form-label" for="ligacao">Tipo de ligação</label>
+          <select id="ligacao" class="form-select">
+            <option value="mono">Monofásico (mínimo 30 kWh)</option>
+            <option value="bi">Bifásico (mínimo 50 kWh)</option>
+            <option value="tri">Trifásico (mínimo 100 kWh)</option>
+          </select>
+          <span class="form-hint">Define a fatura mínima (custo de disponibilidade) — veja no padrão de entrada de energia</span>
+        </div>
       </div>
 
       <!-- CONSUMO -->
@@ -1072,6 +1081,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           <table class="prop-table">
             <tr><td style="color:var(--cinza);">Consumo médio mensal</td><td id="fCons">—</td></tr>
             <tr><td style="color:var(--cinza);">Tarifa utilizada</td><td id="fTar">—</td></tr>
+            <tr><td style="color:var(--cinza);">Fio B aplicado (Lei 14.300)</td><td id="fFioB">—</td></tr>
+            <tr><td style="color:var(--cinza);">Fatura mínima (padrão de ligação)</td><td id="fFatMin">—</td></tr>
             <tr><td style="color:var(--cinza);">Investimento estimado*</td><td class="ouro" id="fInv">—</td></tr>
             <tr><td colspan="2" style="font-size:10px;color:rgba(138,144,153,0.6);padding:6px 12px;font-style:italic;">* Faixa estimada. Valor final definido após vistoria técnica.</td></tr>
             <tr><td style="color:var(--cinza);">Economia mensal</td><td class="verde" id="fEcoMes">—</td></tr>
@@ -1147,7 +1158,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         <tbody id="tabelaMensal"></tbody>
         <tfoot id="tabelaTotal"></tfoot>
       </table></div>
-      <p style="font-size:11px;color:rgba(138,144,153,0.5);margin-top:10px;">* Valores estimados. Não considera possíveis cobranças de ICMS sobre a TUSD. Fatura mínima calculada sobre consumo mínimo de 30 kWh.</p>
+      <p style="font-size:11px;color:rgba(138,144,153,0.5);margin-top:10px;" id="avisoLegalMensal">* Valores estimados. Não considera possíveis cobranças de ICMS sobre a TUSD. Fatura mínima calculada sobre consumo mínimo de 30 kWh.</p>
     </div>
 
     <!-- PÁGINA 4: RETORNO DO INVESTIMENTO -->
@@ -1167,7 +1178,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         </thead>
         <tbody id="tabelaRetorno"></tbody>
       </table></div>
-      <p style="font-size:11px;color:rgba(138,144,153,0.5);margin-top:10px;">* Inflação tarifária: 4% ao ano. ** Módulos perdem 20% de eficiência em 25 anos (0,8%/ano).</p>
+      <p style="font-size:11px;color:rgba(138,144,153,0.5);margin-top:10px;" id="avisoLegalRetorno">* Inflação tarifária: 4% ao ano. ** Módulos perdem 20% de eficiência em 25 anos (0,8%/ano). *** Já considera o Fio B escalonado da Lei 14.300/2022 (estimativa).</p>
     </div>
 
     <!-- PÁGINA 5: ANÁLISE + AMBIENTAL -->
@@ -1539,6 +1550,7 @@ async function calcular(){
   const tarifa=parseFloat(document.getElementById('tarifa').value)||0.95;
   const perfil=document.querySelector('input[name=perfil]:checked').value;
   const estrutura=document.getElementById('estrutura').value;
+  const ligacao=document.getElementById('ligacao').value;
 
   if(!nome){alert('Informe seu nome.');return;}
   if(!tel||tel.length<14){alert('Informe um WhatsApp válido.');return;}
@@ -1567,10 +1579,10 @@ async function calcular(){
   document.getElementById('loading').classList.add('show');
   await new Promise(r=>setTimeout(r,1200));
   document.getElementById('loading').classList.remove('show');
-  await gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estrutura});
+  await gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estrutura,ligacao});
 }
 
-async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estrutura}){
+async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estrutura,ligacao}){
   // ── DIMENSIONAMENTO ──
   const ef=0.78;
   const hsp=irr;
@@ -1630,11 +1642,30 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const inv_min=Math.round(inv_total*0.88/500)*500;
   const inv_max=Math.round(inv_total*1.15/500)*500;
   const inv_faixa='R\$ '+formatMoeda(inv_min)+' a R\$ '+formatMoeda(inv_max);
-  const consumoMinimo=30;
+  const CONSUMO_MINIMO_KWH={mono:30,bi:50,tri:100};
+  const consumoMinimo=CONSUMO_MINIMO_KWH[ligacao]||30;
   const fatMin=consumoMinimo*tarifa;
+
+  // ── FIO B ESCALONADO (Lei 14.300/2022) ──
+  // Percentual da TUSD Fio B cobrado sobre a energia compensada, por ano civil.
+  // Fonte: cronograma legal — 2023:15%, 2024:30%, 2025:45%, 2026:60%, 2027:75%, 2028:90%, 2029+:100%.
+  const ANO_ATUAL=new Date().getFullYear();
+  function fioBPercentual(anoCalendario){
+    if(anoCalendario<=2023)return 0.15;
+    if(anoCalendario===2024)return 0.30;
+    if(anoCalendario===2025)return 0.45;
+    if(anoCalendario===2026)return 0.60;
+    if(anoCalendario===2027)return 0.75;
+    if(anoCalendario===2028)return 0.90;
+    return 1.00; // 2029 em diante
+  }
+  // Parcela estimada da tarifa cheia que corresponde à TUSD Fio B (varia por concessionária/classe).
+  // Usamos uma estimativa conservadora de mercado; não substitui a fatura real após vistoria.
+  const FIO_B_TUSD_PCT=0.30;
 
   // Tabela mensal
   let credAcum=0;
+  const fioBPctAno1=fioBPercentual(ANO_ATUAL);
   const tabMes=consumosMes.map((cons,i)=>{
     const ger=geracaoMensal[i];
     const credMes=Math.max(0,ger-cons);
@@ -1643,8 +1674,10 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     const sobra=ger-cons;
     const cred=Math.max(0,sobra);
     const faltou=Math.max(0,cons-ger);
+    const compensado=Math.min(cons,ger); // energia autoconsumida/compensada no mês, sujeita ao Fio B
+    const fioBValor=compensado*tarifa*FIO_B_TUSD_PCT*fioBPctAno1;
     const fatSem=parseFloat((cons*tarifa).toFixed(2));
-    const fatCom=parseFloat(Math.max(fatMin,faltou*tarifa).toFixed(2));
+    const fatCom=parseFloat(Math.max(fatMin,faltou*tarifa+fioBValor).toFixed(2));
     return {mes:MESES[i],cons,ger,credMes:cred,fatSem,fatCom};
   });
   // Recalcular crédito acumulado corretamente
@@ -1663,8 +1696,13 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
 
   // Retorno 25 anos
   const tabRet=[];let eco=0;let prod=totalGer;let tarAno=tarifa;
+  const ecoAnoArr=[]; // economia de cada ano civil, já líquida de Fio B, para reaproveitar em VPL/Eco10/Eco25
   for(let a=0;a<=25;a++){
-    const ecoAno=a===0?0:parseFloat((prod*tarAno).toFixed(2));
+    const anoCalendario=ANO_ATUAL+a;
+    const compensadoAno=Math.min(totalCons,prod);
+    const fioBAno=a===0?0:parseFloat((compensadoAno*tarAno*FIO_B_TUSD_PCT*fioBPercentual(anoCalendario)).toFixed(2));
+    const ecoAno=a===0?0:parseFloat((prod*tarAno-fioBAno).toFixed(2));
+    ecoAnoArr.push(ecoAno);
     eco+=ecoAno;
     tabRet.push({ano:a,tar:tarAno.toFixed(2),prod:Math.round(prod),eco:eco.toFixed(2),res:(eco-inv_total).toFixed(2),status:eco>=inv_total?'Lucro':'Investimento'});
     tarAno*=1.04;prod*=0.992; // 0.8% degradação anual
@@ -1675,13 +1713,13 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   // TIR aproximada
   const tirAprox=parseFloat((ecoAnual/inv_total*100).toFixed(1));
   // VPL a 6%
-  let vpl=-inv_total;let e2=ecoAnual;let t2=tarifa;
-  for(let a=1;a<=25;a++){vpl+=e2/Math.pow(1.06,a);e2*=1.04;}
+  let vpl=-inv_total;
+  for(let a=1;a<=25;a++){vpl+=ecoAnoArr[a]/Math.pow(1.06,a);}
   const vplFmt=formatMoeda(Math.round(vpl));
 
   // Eco 10/25 anos
-  let e10=0;let e25=0;let ea=ecoAnual;
-  for(let a=1;a<=25;a++){if(a<=10)e10+=ea;e25+=ea;ea*=1.04;}
+  let e10=0;let e25=0;
+  for(let a=1;a<=25;a++){if(a<=10)e10+=ecoAnoArr[a];e25+=ecoAnoArr[a];}
 
   // Ambiental
   const co2Total=parseFloat((totalGer*25*0.0761/1000).toFixed(1));
@@ -1747,6 +1785,10 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
 
   // Financeiro
   set('fCons',consumoMedio.toLocaleString('pt-BR')+' kWh/mês');set('fTar','R$ '+tarifa.toFixed(2)+'/kWh');
+  set('fFioB',(fioBPctAno1*100).toFixed(0)+'% da TUSD em '+ANO_ATUAL+' (estimado)');
+  set('fFatMin','R$ '+formatMoeda(fatMin)+' ('+consumoMinimo+' kWh — '+({mono:'monofásico',bi:'bifásico',tri:'trifásico'}[ligacao]||'monofásico')+')');
+  const avisoMensal=document.getElementById('avisoLegalMensal');
+  if(avisoMensal)avisoMensal.textContent='* Valores estimados. Já considera o Fio B ('+(fioBPctAno1*100).toFixed(0)+'% em '+ANO_ATUAL+', estimativa) sobre a energia compensada. Não considera possíveis cobranças de ICMS sobre a TUSD. Fatura mínima calculada sobre consumo mínimo de '+consumoMinimo+' kWh.';
   set('fInv',inv_faixa);set('fEcoMes','R$ '+formatMoeda(ecoMensal)+'/mês');
   set('fEcoAno','R$ '+formatMoeda(ecoAnual)+'/ano');
   set('fPay',payback_min.toFixed(1)+' a '+payback_max.toFixed(1)+' anos (estimado)');

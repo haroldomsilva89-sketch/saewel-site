@@ -253,6 +253,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
   /* ── IMAGENS NO PDF ── */
   img{display:block!important;visibility:visible!important;opacity:1!important;max-width:100%!important;}
+  .no-print{display:none!important;}
   #secaoEquipamentos{page-break-inside:avoid!important;break-inside:avoid!important;}
   #secaoEquipamentos > div:first-of-type{page-break-inside:avoid!important;break-inside:avoid!important;}
   /* Ocultar seletor de módulo no PDF */
@@ -1106,10 +1107,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div id="mapaBlock" style="display:none;margin-top:20px;">
         <div class="form-section-title" style="margin-bottom:12px;">Vista <em>Aérea</em> do Imóvel</div>
         <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(200,146,42,0.15);position:relative;">
-          <img id="mapaImg" src="" alt="Vista de satélite do endereço" style="width:100%;display:block;" onerror="document.getElementById('mapaBlock').style.display='none';">
+          <img id="mapaImg" src="" alt="Vista de satélite do endereço" style="width:100%;display:block;min-height:200px;background:#111;" onerror="document.getElementById('mapaBlock').style.display='none';">
           <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,12,15,0.75),transparent);padding:10px 14px;font-size:10px;color:rgba(255,255,255,0.75);">
             Imagem de satélite (Esri World Imagery) — referência visual, sujeita a atualização e sombreamento não avaliado.
           </div>
+        </div>
+        <div class="no-print" style="margin-top:6px;font-size:11px;">
+          <a id="mapaLinkDiag" href="#" target="_blank" style="color:var(--ouro-claro);text-decoration:underline;">Se o mapa acima aparecer em branco/quebrado, clique aqui pra abrir a imagem direto (ajuda a diagnosticar)</a>
         </div>
       </div>
     </div>
@@ -1453,16 +1457,20 @@ function cidadeMaisProxima(lat,lon){
   return {cidade:melhor, distancia:menorDist};
 }
 function mostrarMapaSatelite(lat, lon){
-  // Zoom aproximado: ~150m de largura de área visível
-  const raioGraus = 0.0009; // ~100m em latitude
+  // Zoom aproximado: ~300m de largura de área visível (mais folga que a versão anterior de ~180m,
+  // reduz a chance do Esri não ter imagem de alta resolução disponível pra área exata)
+  const raioGraus = 0.0016; // ~180m em latitude
   const raioGrausLon = raioGraus / Math.cos(lat * Math.PI/180);
   const minLon = lon - raioGrausLon, maxLon = lon + raioGrausLon;
   const minLat = lat - raioGraus, maxLat = lat + raioGraus;
   const bbox = [minLon, minLat, maxLon, maxLat].join(',');
   const url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
     + '?bbox=' + bbox
-    + '&bboxSR=4326&imageSR=4326&size=900,560&format=png32&f=image';
-  document.getElementById('mapaImg').src = url;
+    + '&bboxSR=4326&size=900,560&dpi=150&format=jpg&f=image';
+  const img=document.getElementById('mapaImg');
+  const linkDiag=document.getElementById('mapaLinkDiag');
+  img.src = url;
+  if(linkDiag)linkDiag.href = url;
   document.getElementById('mapaBlock').style.display = 'block';
 }
 function gerarVariantesEndereco(endereco, cidadeSelecionada){

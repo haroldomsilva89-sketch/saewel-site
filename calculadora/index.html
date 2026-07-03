@@ -1465,6 +1465,28 @@ function mostrarMapaSatelite(lat, lon){
   document.getElementById('mapaImg').src = url;
   document.getElementById('mapaBlock').style.display = 'block';
 }
+function gerarVariantesEndereco(endereco){
+  // Gera versões progressivamente mais simples do endereço para tentar na geocodificação.
+  // Cidades pequenas costumam ter pouca cobertura de rua/número no OpenStreetMap,
+  // então tentamos do mais específico ao mais genérico até achar algo.
+  const variantes=[endereco];
+  // Remove número da casa (ex: ", 227" ou " 227," ou " nº 227")
+  const semNumero=endereco.replace(/,?\s*(?:n[ºo°]?\.?\s*)?\d+\b/gi,'').replace(/,\s*,/,',').trim();
+  if(semNumero && semNumero!==endereco)variantes.push(semNumero);
+  // Quebra por vírgula/hífen e tenta a partir do segundo trecho em diante (remove a rua, mantém bairro/cidade)
+  const partes=endereco.split(/[,\-]/).map(p=>p.trim()).filter(Boolean);
+  if(partes.length>2)variantes.push(partes.slice(1).join(', '));
+  if(partes.length>1)variantes.push(partes.slice(-2).join(', '));
+  if(partes.length>0)variantes.push(partes[partes.length-1]);
+  // Remove duplicadas mantendo a ordem
+  return [...new Set(variantes)];
+}
+async function geocodificar(query){
+  const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(query);
+  const resp=await fetch(url,{headers:{'Accept':'application/json'}});
+  const data=await resp.json();
+  return (data && data.length) ? data[0] : null;
+}
 async function buscarEndereco(){
   const endereco=document.getElementById('enderecoInput').value.trim();
   const status=document.getElementById('geocodeStatus');
@@ -1473,26 +1495,33 @@ async function buscarEndereco(){
   btn.disabled=true; btn.textContent='...';
   status.textContent='Buscando coordenadas...';
   try{
-    const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(endereco);
-    const resp=await fetch(url,{headers:{'Accept':'application/json'}});
-    const data=await resp.json();
-    if(!data || !data.length){
-      status.textContent='Endereço não encontrado. Tente adicionar cidade/UF, ou selecione a cidade acima manualmente.';
+    const variantes=gerarVariantesEndereco(endereco);
+    let resultado=null, usada=endereco, tentativas=0;
+    for(const v of variantes){
+      tentativas++;
+      if(tentativas>1)status.textContent='Endereço exato não encontrado — tentando "'+v+'"...';
+      resultado=await geocodificar(v);
+      if(resultado){usada=v;break;}
+      if(tentativas<variantes.length)await new Promise(r=>setTimeout(r,1100)); // respeita limite de 1 req/s do Nominatim
+    }
+    if(!resultado){
+      status.textContent='Endereço não encontrado na base de mapas (comum em cidades pequenas, com poucas ruas mapeadas). A cidade já selecionada acima será usada normalmente.';
       btn.disabled=false; btn.textContent='Buscar';
       return;
     }
-    const lat=parseFloat(data[0].lat), lon=parseFloat(data[0].lon);
+    const lat=parseFloat(resultado.lat), lon=parseFloat(resultado.lon);
     document.getElementById('geoLat').value=lat;
     document.getElementById('geoLon').value=lon;
     const {cidade,distancia}=cidadeMaisProxima(lat,lon);
+    const aviso=usada!==endereco?` (encontrado por "${usada}", versão simplificada do endereço)`:'';
     if(cidade){
       const irr=SOLAR_DB[cidade];
       document.getElementById('cidadeInput').value=cidade;
       document.getElementById('cidadeValor').value=cidade;
       document.getElementById('cidadeIrr').value=irr;
-      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)}) — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).`;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso} — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).`;
     } else {
-      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)}), mas não foi possível estimar a irradiação. Selecione sua cidade manualmente.`;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)})${aviso}, mas não foi possível estimar a irradiação. Selecione sua cidade manualmente.`;
     }
   }catch(e){
     status.textContent='Não foi possível buscar o endereço agora. Selecione sua cidade manualmente.';

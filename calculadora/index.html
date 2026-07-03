@@ -1473,8 +1473,9 @@ function gerarVariantesEndereco(endereco){
   // Remove número da casa (ex: ", 227" ou " 227," ou " nº 227")
   const semNumero=endereco.replace(/,?\s*(?:n[ºo°]?\.?\s*)?\d+\b/gi,'').replace(/,\s*,/,',').trim();
   if(semNumero && semNumero!==endereco)variantes.push(semNumero);
-  // Quebra por vírgula/hífen e tenta a partir do segundo trecho em diante (remove a rua, mantém bairro/cidade)
-  const partes=endereco.split(/[,\-]/).map(p=>p.trim()).filter(Boolean);
+  // Quebra só por vírgula ou hífen COM espaços dos dois lados (" - "), nunca por hífen colado
+  // (ex: "Rio Preto-SP" não deve virar "Rio Preto" + "SP")
+  const partes=endereco.split(/,|\s-\s/).map(p=>p.trim()).filter(Boolean);
   if(partes.length>2)variantes.push(partes.slice(1).join(', '));
   if(partes.length>1)variantes.push(partes.slice(-2).join(', '));
   if(partes.length>0)variantes.push(partes[partes.length-1]);
@@ -1491,11 +1492,14 @@ async function buscarEndereco(){
   const endereco=document.getElementById('enderecoInput').value.trim();
   const status=document.getElementById('geocodeStatus');
   const btn=document.getElementById('btnGeocode');
+  const cidadeSelecionada=document.getElementById('cidadeValor').value||document.getElementById('cidadeInput').value.trim();
   if(!endereco){status.textContent='Digite um endereço para buscar.';return;}
   btn.disabled=true; btn.textContent='...';
   status.textContent='Buscando coordenadas...';
   try{
     const variantes=gerarVariantesEndereco(endereco);
+    // Garantia final: a cidade já selecionada no campo acima, exatamente como está na nossa base
+    if(cidadeSelecionada && !variantes.includes(cidadeSelecionada))variantes.push(cidadeSelecionada);
     let resultado=null, usada=endereco, tentativas=0;
     for(const v of variantes){
       tentativas++;
@@ -1504,16 +1508,25 @@ async function buscarEndereco(){
       if(resultado){usada=v;break;}
       if(tentativas<variantes.length)await new Promise(r=>setTimeout(r,1100)); // respeita limite de 1 req/s do Nominatim
     }
+    let lat, lon, aviso;
     if(!resultado){
-      status.textContent='Endereço não encontrado na base de mapas (comum em cidades pequenas, com poucas ruas mapeadas). A cidade já selecionada acima será usada normalmente.';
-      btn.disabled=false; btn.textContent='Buscar';
-      return;
+      // Nenhuma tentativa de geocodificação funcionou — usa a coordenada da cidade já selecionada,
+      // que já temos na nossa própria base (sem depender de rede), pra não deixar o usuário sem nada.
+      const coordCidade=(cidadeSelecionada && typeof COORDS_DB!=='undefined')?COORDS_DB[cidadeSelecionada]:null;
+      if(!coordCidade){
+        status.textContent='Endereço não encontrado e não há coordenadas para a cidade selecionada. Selecione sua cidade manualmente acima.';
+        btn.disabled=false; btn.textContent='Buscar';
+        return;
+      }
+      lat=coordCidade[0];lon=coordCidade[1];
+      aviso=' (endereço não localizado no mapa — usando o centro de '+cidadeSelecionada+' como aproximação)';
+    } else {
+      lat=parseFloat(resultado.lat);lon=parseFloat(resultado.lon);
+      aviso=usada!==endereco?` (encontrado por "${usada}", versão simplificada do endereço)`:'';
     }
-    const lat=parseFloat(resultado.lat), lon=parseFloat(resultado.lon);
     document.getElementById('geoLat').value=lat;
     document.getElementById('geoLon').value=lon;
     const {cidade,distancia}=cidadeMaisProxima(lat,lon);
-    const aviso=usada!==endereco?` (encontrado por "${usada}", versão simplificada do endereço)`:'';
     if(cidade){
       const irr=SOLAR_DB[cidade];
       document.getElementById('cidadeInput').value=cidade;

@@ -851,6 +851,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
             <div id="ajustePinImgWrap" style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(200,146,42,0.25);height:260px;cursor:crosshair;user-select:none;-webkit-user-select:none;touch-action:none;">
               <img id="ajustePinImg" src="" alt="Ajuste a posição do imóvel" style="width:100%;height:260px;object-fit:cover;display:block;background:#111;" draggable="false" onerror="document.getElementById('ajustePinBlock').style.display='none';">
               <div id="ajustePinDot" style="position:absolute;top:50%;left:50%;width:18px;height:18px;transform:translate(-50%,-50%);border-radius:50%;background:#E8433A;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.6);cursor:grab;"></div>
+              <div style="position:absolute;bottom:8px;right:8px;display:flex;flex-direction:column;gap:4px;">
+                <button type="button" onclick="zoomPreview(0.6)" title="Aproximar" style="width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,0.25);background:rgba(10,12,15,0.75);color:#fff;font-size:16px;font-weight:700;cursor:pointer;line-height:1;">+</button>
+                <button type="button" onclick="zoomPreview(1.6666)" title="Afastar" style="width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,0.25);background:rgba(10,12,15,0.75);color:#fff;font-size:16px;font-weight:700;cursor:pointer;line-height:1;">−</button>
+              </div>
             </div>
             <div style="font-size:10px;color:rgba(138,144,153,0.7);margin-top:4px;">O enquadramento final da proposta é recalculado automaticamente a partir desse ponto.</div>
           </div>
@@ -1496,11 +1500,14 @@ function mostrarMapaSatelite(lat, lon){
 }
 // ── AJUSTE MANUAL DO PIN (preview arrastável antes de gerar a proposta) ──
 let previewBBox = null; // guarda os limites geográficos da imagem de preview atual, pra converter pixel -> lat/lon
+let previewRaioGraus = 0.0022; // "zoom" atual do preview — menor valor = mais perto do chão
+const PREVIEW_RAIO_MIN = 0.0006; // limite de zoom máximo (~quadra/quintal)
+const PREVIEW_RAIO_MAX = 0.012;  // limite de zoom mínimo (~bairro inteiro)
 function gerarPreviewMapa(lat, lon){
   // Área de preview um pouco mais aberta que o crop final da capa (raioGraus maior),
   // pra dar espaço de sobra pro usuário arrastar o pino se o ponto caiu perto da borda.
   const IMG_W = 700, IMG_H = 260;
-  const raioGraus = 0.0022;
+  const raioGraus = previewRaioGraus;
   const larguraTotalGraus = (raioGraus*2) * (IMG_W/IMG_H);
   const raioGrausLon = (larguraTotalGraus/2) / Math.cos(lat * Math.PI/180);
   const minLat = lat - raioGraus, maxLat = lat + raioGraus;
@@ -1513,6 +1520,15 @@ function gerarPreviewMapa(lat, lon){
   document.getElementById('ajustePinDot').style.left='50%';
   document.getElementById('ajustePinDot').style.top='50%';
   document.getElementById('ajustePinBlock').style.display='block';
+}
+function zoomPreview(fator){
+  // Reaplica o preview centrado na posição ATUAL do pino (não na busca original),
+  // então dá pra arrastar, dar zoom, arrastar de novo, sem perder o lugar.
+  const lat=parseFloat(document.getElementById('geoLat').value);
+  const lon=parseFloat(document.getElementById('geoLon').value);
+  if(isNaN(lat)||isNaN(lon))return;
+  previewRaioGraus=Math.min(PREVIEW_RAIO_MAX,Math.max(PREVIEW_RAIO_MIN,previewRaioGraus*fator));
+  gerarPreviewMapa(lat,lon);
 }
 function moverPinPreview(clientX, clientY){
   if(!previewBBox)return;
@@ -1691,6 +1707,7 @@ async function buscarEndereco(){
     }
     document.getElementById('geoLat').value=lat;
     document.getElementById('geoLon').value=lon;
+    previewRaioGraus=0.0022; // reseta o zoom pro padrão a cada busca nova de endereço
     gerarPreviewMapa(lat,lon);
     const {cidade,distancia}=cidadeMaisProxima(lat,lon);
     const avisoCidade=!enderecoMencionaCidade?` ⚠️ O endereço não mencionava a cidade — a busca foi orientada por "${cidadeSelecionada}" (confira se é a cidade certa).`:'';

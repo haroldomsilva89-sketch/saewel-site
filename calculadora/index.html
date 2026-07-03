@@ -1473,6 +1473,26 @@ function mostrarMapaSatelite(lat, lon){
   if(linkDiag)linkDiag.href = url;
   document.getElementById('mapaBlock').style.display = 'block';
 }
+function expandirAbreviacoes(endereco){
+  // Nominatim faz match literal de texto — não expande abreviações sozinho.
+  // "JD Aclimação" não bate com "Jardim Aclimação" no OpenStreetMap, por exemplo.
+  const mapa=[
+    [/\bjd\.?(?=\s|,|$)/gi,'Jardim'],
+    [/\bpq\.?(?=\s|,|$)/gi,'Parque'],
+    [/\bav\.?(?=\s|,|$)/gi,'Avenida'],
+    [/\br\.?(?=\s|,|$)/gi,'Rua'],
+    [/\btrav\.?(?=\s|,|$)/gi,'Travessa'],
+    [/\bpça\.?(?=\s|,|$)/gi,'Praça'],
+    [/\bal\.?(?=\s|,|$)/gi,'Alameda'],
+    [/\bres\.?(?=\s|,|$)/gi,'Residencial'],
+    [/\bcj\.?(?=\s|,|$)/gi,'Conjunto'],
+    [/\bvl\.?(?=\s|,|$)/gi,'Vila'],
+    [/\bdist\.?(?=\s|,|$)/gi,'Distrito'],
+  ];
+  let s=endereco;
+  for(const [re,full] of mapa)s=s.replace(re,full);
+  return s;
+}
 function gerarVariantesEndereco(endereco, cidadeSelecionada){
   // Gera versões progressivamente mais simples do endereço para tentar na geocodificação.
   // REGRAS DE SEGURANÇA:
@@ -1491,12 +1511,15 @@ function gerarVariantesEndereco(endereco, cidadeSelecionada){
     if(s.replace(/\D/g,'').length===0 && s.length<4)return; // rejeita fragmento textual curto demais
     if(!variantes.includes(s))variantes.push(s);
   }
+  const enderecoExpandido=expandirAbreviacoes(endereco);
+  // Prioridade máxima: endereço com abreviações expandidas (ex: "Jardim Aclimação" em vez de "JD Aclimação")
+  if(enderecoExpandido!==endereco)add(enderecoExpandido+sufixo);
   add(endereco+sufixo);
   // Remove número da casa (ex: ", 227" ou " 227," ou " nº 227")
-  const semNumero=endereco.replace(/,?\s*(?:n[ºo°]?\.?\s*)?\d+\b/gi,'').replace(/,\s*,/,',').trim();
-  if(semNumero && semNumero!==endereco)add(semNumero+sufixo);
+  const semNumero=enderecoExpandido.replace(/,?\s*(?:n[ºo°]?\.?\s*)?\d+\b/gi,'').replace(/,\s*,/,',').trim();
+  if(semNumero && semNumero!==enderecoExpandido)add(semNumero+sufixo);
   // Quebra só por vírgula ou hífen COM espaços dos dois lados (" - "), nunca por hífen colado
-  const partes=endereco.split(/,|\s-\s/).map(p=>p.trim()).filter(Boolean);
+  const partes=enderecoExpandido.split(/,|\s-\s/).map(p=>p.trim()).filter(Boolean);
   if(partes.length>2)add(partes.slice(1).join(', ')+sufixo);
   if(partes.length>1)add(partes.slice(-2).join(', ')+sufixo);
   // Garantia final: a cidade já selecionada, sozinha

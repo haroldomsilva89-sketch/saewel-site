@@ -172,13 +172,13 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-bady-bassitt/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-olimpia/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -198,7 +198,7 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-votuporanga/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -218,7 +218,7 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-mirassol/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -238,12 +238,6 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-comercio-sao-jose-do-rio-preto/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/quanto-custa-energia-solar-sao-jose-do-rio-preto-2026/</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -286,19 +280,7 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-2026/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-em-2026/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-em-casa-2026/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -310,7 +292,7 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/lei-14300-fio-b-energia-solar/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -334,7 +316,7 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-rural-sitios-fazendas-agronegocio/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -346,7 +328,7 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/limpeza-paineis-solares-faca-voce-mesmo-ou-contrate/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -382,7 +364,7 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-votuporanga/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -439,7 +421,7 @@
 
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/instalacao-energia-solar-sao-jose-do-rio-preto/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -506,5 +488,11 @@
     <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/comunidade/</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

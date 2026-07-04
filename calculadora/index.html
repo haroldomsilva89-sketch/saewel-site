@@ -966,6 +966,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         <span class="form-hint" style="margin-top:8px;display:block;">Preencha os valores da sua conta de energia — permite gerar o gráfico Consumo × Geração mês a mês</span>
       </div>
 
+      <!-- ESTIMATIVA RÁPIDA — sem pedir nome/whatsapp, resolve a fricção antes do gate de contato -->
+      <div style="margin-top:24px;">
+        <button type="button" class="btn-calcular" style="background:transparent;border:1px solid rgba(200,146,42,0.5);color:var(--ouro-claro);box-shadow:none;" onclick="estimativaRapida()">👁 Ver Estimativa Rápida (sem compromisso)</button>
+      </div>
+      <div id="estimativaRapidaBox" style="display:none;margin-top:16px;padding:20px;border:1px solid rgba(200,146,42,0.35);border-radius:12px;background:rgba(200,146,42,0.06);">
+        <div style="font-size:14px;color:var(--cinza);margin-bottom:6px;">Estimativa de economia mensal</div>
+        <div id="estimativaRapidaValor" style="font-size:28px;font-weight:700;color:var(--ouro-claro);font-family:'Outfit',sans-serif;"></div>
+        <div style="font-size:13px;color:var(--cinza);margin-top:10px;">Valor aproximado, sem considerar equipamentos ou visita técnica. Preencha seus dados abaixo pra receber a proposta completa, com dimensionamento real e payback em 25 anos.</div>
+      </div>
+
       <!-- DADOS DO CLIENTE - no final para aumentar conversão -->
       <div class="form-section-title" style="margin-top:28px;">Quase lá! Para onde enviamos sua proposta?</div>
       <div class="form-grid">
@@ -1765,6 +1775,45 @@ async function salvarLead(dados) {
   }
 }
 // ── CALCULAR ──
+// Estimativa rápida: mesma lógica de consumo/cidade do calcular(), mas sem
+// exigir nome/WhatsApp — resolve a fricção de pedir contato antes de mostrar
+// qualquer número. A proposta completa (com equipamentos, PDF, etc.) continua
+// exigindo os dados de contato normalmente, mais abaixo no formulário.
+function estimativaRapida(){
+  const cidade=document.getElementById('cidadeValor').value||document.getElementById('cidadeInput').value.trim();
+  if(!cidade){alert('Selecione sua cidade na lista pra ver a estimativa.');return;}
+  const irr=SOLAR_DB[cidade];
+  if(!irr){alert('Cidade não encontrada. Tente com UF: "São Paulo - SP"');return;}
+
+  const tarifa=parseFloat(document.getElementById('tarifa').value)||0.95;
+
+  let consumoMedio;
+  if(modoConsumo==='mensal'){
+    let consumosMes=[];
+    for(let i=0;i<12;i++){
+      const v=parseFloat(document.getElementById('m'+i).value)||0;
+      consumosMes.push(v);
+    }
+    const preenchidos=consumosMes.filter(v=>v>0);
+    if(preenchidos.length===0){alert('Informe o consumo de pelo menos um mês pra ver a estimativa.');return;}
+    consumoMedio=Math.round(preenchidos.reduce((a,b)=>a+b,0)/preenchidos.length);
+  } else {
+    consumoMedio=parseInt(manual.value||slider.value);
+  }
+
+  // Fração média do consumo efetivamente compensada (considera Fio B — Lei
+  // 14.300 — e a fatura mínima de disponibilidade). Mostrado como faixa pra
+  // não passar falsa precisão numa estimativa sem visita técnica.
+  const economiaMin=Math.round(consumoMedio*tarifa*0.80);
+  const economiaMax=Math.round(consumoMedio*tarifa*0.90);
+
+  document.getElementById('estimativaRapidaValor').textContent =
+    'R$ ' + economiaMin.toLocaleString('pt-BR') + ' a R$ ' + economiaMax.toLocaleString('pt-BR') + ' / mês';
+  const box=document.getElementById('estimativaRapidaBox');
+  box.style.display='block';
+  box.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
 async function calcular(){
   const nome=document.getElementById('nome').value.trim();
   const tel=document.getElementById('telefone').value.trim();

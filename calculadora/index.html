@@ -1946,7 +1946,9 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const INVERSORES_DB=[
     {kwAC:2.0,  marca:'WEG',     fator:1.36, modelo:'WEG 2kW — SIW300H M020 — Mono — 2mppt — 220V'},
     {kwAC:3.0,  marca:'WEG',     fator:1.36, modelo:'WEG 3kW — SIW300H M030 L1 — Mono — 2mppt — 220V'},
+    {kwAC:4.0,  marca:'WEG',     fator:1.36, modelo:'WEG 4kW — SIW300H M040 L1 — Mono — 2mppt — 220V'},
     {kwAC:5.0,  marca:'WEG',     fator:1.36, modelo:'WEG 5kW — SIW300H M050 L1 — Mono — 2mppt — 220V'},
+    {kwAC:6.0,  marca:'WEG',     fator:1.36, modelo:'WEG 6kW — SIW300H M060 L1 — Mono — 2mppt — 220V'},
     {kwAC:6.0,  marca:'GROWATT', fator:1.44, modelo:'Growatt 6kW — MIN6000TL-X2 — Mono — 2mppt — 220V — AFCI'},
     {kwAC:8.5,  marca:'WEG',     fator:1.36, modelo:'WEG 8,5kW — SIW200 M085 — Mono — 3mppt — 220V'},
     {kwAC:10.0, marca:'WEG',     fator:1.36, modelo:'WEG 10kW — SIW200 M100 — Mono — 3mppt — 220V'},
@@ -1956,6 +1958,9 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     {kwAC:6.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-6K-G — Mono — 220V'},
     {kwAC:8.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-8K-G — Mono — 220V'},
     {kwAC:10.0, marca:'DEYE',    fator:1.30, modelo:'Deye SUN-10K-G — Mono — 220V'},
+    {kwAC:20.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST020 M3 — Trifásico — 3mppt — 220V'},
+    {kwAC:20.0, marca:'GROWATT', fator:1.44, modelo:'Growatt MID20KTL3-XL2 — Trifásico — 4mppt — 220V — AFCI'},
+    {kwAC:25.0, marca:'DEYE',    fator:1.30, modelo:'Deye SUN-25K-G02-LV — Trifásico — 3mppt — 220V — AFCI'},
     {kwAC:12.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST012 — Trifásico — 2mppt — 380V'},
     {kwAC:15.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST015 — Trifásico — 3mppt — 380V'},
     {kwAC:20.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST020 — Trifásico — 3mppt — 380V'},
@@ -1991,8 +1996,14 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     const opcaoMono=melhorEncaixeEntre(monofasicos);
     if(opcaoMono) return opcaoMono;
 
-    // 2) Só cai pra trifásico 380V se nenhum monofásico do catálogo
-    //    aguentar a potência exigida.
+    // 2) Sem monofásico suficiente — tenta TRIFÁSICO 220V (não precisa de
+    //    autotrafo, já que roda direto na tensão da rede local).
+    const trifasicos220=sorted.filter(i=>/Trif/i.test(i.modelo)&&/220V/i.test(i.modelo));
+    const opcaoTrif220=melhorEncaixeEntre(trifasicos220);
+    if(opcaoTrif220) return opcaoTrif220;
+
+    // 3) Só cai pra trifásico 380V (precisa de autotrafo) se nada acima
+    //    do catálogo aguentar a potência exigida.
     const opcaoQualquer=melhorEncaixeEntre(sorted);
     return opcaoQualquer||{modelo:'Inversor sob consulta ('+kwp.toFixed(2)+' kWp)',marca:'—'};
   }
@@ -2010,7 +2021,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     const necessario=kwAC*MARGEM_AUTOTRAFO;
     return AUTOTRAFOS_DB.find(kva=>kva>=necessario)||AUTOTRAFOS_DB[AUTOTRAFOS_DB.length-1];
   }
-  const autotrafoKva=/Trif/i.test(inv)?selecionarAutotrafo(invObj.kwAC):null;
+  const autotrafoKva=(/Trif/i.test(inv)&&/380V/i.test(inv))?selecionarAutotrafo(invObj.kwAC):null;
   const geracaoMensal=VAR_MES.map(f=>Math.round(kWp*hsp*30*ef*f));
   const geracaoMedia=Math.round(geracaoMensal.reduce((a,b)=>a+b,0)/12);
 

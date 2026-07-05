@@ -780,6 +780,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .graf-bars-cv{height:80px;}
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -1774,6 +1775,38 @@ async function salvarLead(dados) {
     console.log('Sheets:', e);
   }
 }
+
+// Salva automaticamente uma cópia em PDF da proposta gerada na pasta
+// ORÇAMENTOS do Drive (via Apps Script), sem depender do cliente clicar
+// em "Imprimir/Salvar PDF". Roda em segundo plano — se falhar, não afeta
+// a experiência do cliente na tela.
+async function salvarPDFOrcamento(propNum, nome, cidade){
+  try{
+    const elemento=document.getElementById('proposta');
+    const opt={
+      margin:0,
+      filename:`${propNum} - ${nome} - ${cidade}.pdf`,
+      image:{type:'jpeg',quality:0.92},
+      html2canvas:{scale:2},
+      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+    };
+    const pdfBlob=await html2pdf().set(opt).from(elemento).outputPdf('blob');
+    const base64=await new Promise((res)=>{
+      const reader=new FileReader();
+      reader.onloadend=()=>res(reader.result.split(',')[1]);
+      reader.readAsDataURL(pdfBlob);
+    });
+    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action:'salvarPDF', proposta:propNum, nome, cidade, pdfBase64:base64})
+    });
+  }catch(e){
+    console.log('Erro ao salvar PDF automaticamente:', e);
+  }
+}
+
 // ── CALCULAR ──
 // Estimativa rápida: mesma lógica de consumo/cidade do calcular(), mas sem
 // exigir nome/WhatsApp — resolve a fricção de pedir contato antes de mostrar
@@ -2181,6 +2214,9 @@ Gostaria de avançar com o projeto!`);
 
   // Atualiza título da página para nomear o PDF corretamente
   document.title = `Simulador Solar Gratuito - ${nome} ${propNum} - Saewel Energia Solar`;
+
+  // ── SALVAR CÓPIA EM PDF NA PASTA ORÇAMENTOS (automático, em segundo plano) ──
+  salvarPDFOrcamento(propNum, nome, cidade);
 }
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}

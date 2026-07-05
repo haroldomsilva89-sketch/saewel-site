@@ -1926,13 +1926,22 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     {kwAC:100.0,marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST100 — Trifásico — 6mppt — 800V'},
   ];
   function selecionarInversor(kwp){
-    const sorted=INVERSORES_DB.slice().sort((a,b)=>a.kwAC-b.kwAC);
-    // Prioriza WEG (marca padrão testada) — só cai pra outra marca se
-    // nenhum inversor WEG cobrir a potência necessária.
+    // Ordena pela capacidade REAL de cobertura (kwAC × fator de sobrecarga),
+    // não pelo kwAC nominal — marcas com fator de sobrecarga maior cobrem
+    // mais kWp com o mesmo kwAC nominal, então ordenar só por kwAC pode
+    // escolher um inversor com mais folga do que o necessário.
+    const sorted=INVERSORES_DB.slice().sort((a,b)=>(a.kwAC*a.fator)-(b.kwAC*b.fator));
+    // Prioriza WEG (marca padrão testada), mas evita sobredimensionar demais:
+    // se o menor WEG que cobre a potência exigir mais de 35% de folga extra
+    // (ex.: pular de 6,8 kWp direto pra 11,56 kWp de cobertura), usa o melhor
+    // encaixe disponível entre todas as marcas em vez de forçar a WEG.
+    const TOLERANCIA_SOBREDIMENSIONAMENTO=1.35;
     const foundWeg=sorted.find(i=>i.marca==='WEG'&&(i.kwAC*i.fator)>=kwp);
-    if(foundWeg) return foundWeg;
-    const found=sorted.find(i=>(i.kwAC*i.fator)>=kwp);
-    return found||{modelo:'Inversor sob consulta ('+kwp.toFixed(2)+' kWp)',marca:'—'};
+    const melhorEncaixe=sorted.find(i=>(i.kwAC*i.fator)>=kwp);
+    if(!foundWeg) return melhorEncaixe||{modelo:'Inversor sob consulta ('+kwp.toFixed(2)+' kWp)',marca:'—'};
+    const capacidadeWeg=foundWeg.kwAC*foundWeg.fator;
+    if(capacidadeWeg<=kwp*TOLERANCIA_SOBREDIMENSIONAMENTO) return foundWeg;
+    return melhorEncaixe;
   }
   const invObj=selecionarInversor(kWp);
   const inv=invObj.modelo;

@@ -848,10 +848,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           <input type="hidden" id="geoLat">
           <input type="hidden" id="geoLon">
           <div id="ajustePinBlock" class="no-print" style="display:none;margin-top:12px;">
-            <div style="font-size:11px;color:var(--cinza);margin-bottom:6px;">📍 O ponto caiu fora do lugar? Arraste o pino (ou toque/clique na imagem) para a posição exata do imóvel:</div>
+            <div style="font-size:11px;color:var(--cinza);margin-bottom:6px;">📍 O ponto caiu fora do lugar? Arraste o pino (ou toque/clique na imagem) para a posição exata do imóvel — ou digite a coordenada exata abaixo:</div>
             <div id="ajustePinImgWrap" style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(200,146,42,0.25);height:260px;cursor:crosshair;user-select:none;-webkit-user-select:none;touch-action:none;">
               <img id="ajustePinImg" src="" alt="Ajuste a posição do imóvel" style="width:100%;height:260px;object-fit:cover;display:block;background:#111;" draggable="false" onerror="document.getElementById('ajustePinBlock').style.display='none';">
               <div id="ajustePinDot" style="position:absolute;top:50%;left:50%;width:18px;height:18px;transform:translate(-50%,-50%);border-radius:50%;background:#E8433A;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.6);cursor:grab;"></div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:flex-end;margin-top:10px;">
+              <div style="flex:1;">
+                <label class="form-label" for="latManual" style="font-size:11px;">Latitude</label>
+                <input type="text" id="latManual" class="form-input" placeholder="-20.81690" inputmode="decimal" autocomplete="off">
+              </div>
+              <div style="flex:1;">
+                <label class="form-label" for="lonManual" style="font-size:11px;">Longitude</label>
+                <input type="text" id="lonManual" class="form-input" placeholder="-49.43850" inputmode="decimal" autocomplete="off">
+              </div>
+              <button type="button" onclick="aplicarCoordenadaManual()" style="flex-shrink:0;background:transparent;border:1px solid rgba(200,146,42,0.35);color:var(--ouro-claro);border-radius:12px;padding:0 18px;height:44px;font-family:'Outfit',sans-serif;font-weight:600;cursor:pointer;white-space:nowrap;">Aplicar</button>
             </div>
             <div style="font-size:10px;color:rgba(138,144,153,0.7);margin-top:4px;">O enquadramento final da proposta é recalculado automaticamente a partir desse ponto.</div>
           </div>
@@ -1524,6 +1535,9 @@ function gerarPreviewMapa(lat, lon){
   document.getElementById('ajustePinDot').style.left='50%';
   document.getElementById('ajustePinDot').style.top='50%';
   document.getElementById('ajustePinBlock').style.display='block';
+  const latManualEl=document.getElementById('latManual'), lonManualEl=document.getElementById('lonManual');
+  if(latManualEl)latManualEl.value=lat.toFixed(5);
+  if(lonManualEl)lonManualEl.value=lon.toFixed(5);
 }
 function moverPinPreview(clientX, clientY){
   if(!previewBBox)return;
@@ -1542,6 +1556,26 @@ function moverPinPreview(clientX, clientY){
   document.getElementById('geoLat').value=novaLat;
   document.getElementById('geoLon').value=novoLon;
   document.getElementById('geocodeStatus').textContent = 'Posição ajustada manualmente: ('+novaLat.toFixed(5)+', '+novoLon.toFixed(5)+').';
+  const latManualEl=document.getElementById('latManual'), lonManualEl=document.getElementById('lonManual');
+  if(latManualEl)latManualEl.value=novaLat.toFixed(5);
+  if(lonManualEl)lonManualEl.value=novoLon.toFixed(5);
+}
+// ── Aplica coordenada digitada manualmente (mais precisa que o arraste no touch) ──
+function aplicarCoordenadaManual(){
+  const latStr=document.getElementById('latManual').value.replace(',','.').trim();
+  const lonStr=document.getElementById('lonManual').value.replace(',','.').trim();
+  const lat=parseFloat(latStr), lon=parseFloat(lonStr);
+  if(isNaN(lat)||isNaN(lon)){
+    alert('Preencha latitude e longitude válidas. Exemplo: -20.81690 e -49.43850.');
+    return;
+  }
+  if(lat<-34||lat>6||lon<-74||lon>-32){
+    if(!confirm('Essa coordenada parece estar fora do Brasil. Confirma que está correta?'))return;
+  }
+  document.getElementById('geoLat').value=lat;
+  document.getElementById('geoLon').value=lon;
+  gerarPreviewMapa(lat, lon);
+  document.getElementById('geocodeStatus').textContent = 'Posição definida manualmente: ('+lat.toFixed(5)+', '+lon.toFixed(5)+').';
 }
 (function initArrastePin(){
   const wrap=document.getElementById('ajustePinImgWrap');

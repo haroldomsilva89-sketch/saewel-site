@@ -1304,6 +1304,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
               <td style="text-align:center;color:var(--branco);font-weight:700;">1 un.</td>
               <td style="color:var(--cinza);font-size:11px;">Inclusa no projeto</td>
             </tr>
+            <tr id="trAutotrafo" style="display:none;">
+              <td style="color:var(--cinza);">Autotransformador</td>
+              <td id="eqAutotrafo" style="color:var(--branco);">Autotrafo 380/220V</td>
+              <td style="text-align:center;color:var(--branco);font-weight:700;">1 un.</td>
+              <td style="color:var(--cinza);font-size:11px;">Incluso no projeto (necessário p/ inversor trifásico 380V)</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1965,21 +1971,46 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     // mais kWp com o mesmo kwAC nominal, então ordenar só por kwAC pode
     // escolher um inversor com mais folga do que o necessário.
     const sorted=INVERSORES_DB.slice().sort((a,b)=>(a.kwAC*a.fator)-(b.kwAC*b.fator));
-    // Prioriza WEG (marca padrão testada), mas evita sobredimensionar demais:
-    // se o menor WEG que cobre a potência exigir mais de 35% de folga extra
-    // (ex.: pular de 6,8 kWp direto pra 11,56 kWp de cobertura), usa o melhor
-    // encaixe disponível entre todas as marcas em vez de forçar a WEG.
     const TOLERANCIA_SOBREDIMENSIONAMENTO=1.35;
-    const foundWeg=sorted.find(i=>i.marca==='WEG'&&(i.kwAC*i.fator)>=kwp);
-    const melhorEncaixe=sorted.find(i=>(i.kwAC*i.fator)>=kwp);
-    if(!foundWeg) return melhorEncaixe||{modelo:'Inversor sob consulta ('+kwp.toFixed(2)+' kWp)',marca:'—'};
-    const capacidadeWeg=foundWeg.kwAC*foundWeg.fator;
-    if(capacidadeWeg<=kwp*TOLERANCIA_SOBREDIMENSIONAMENTO) return foundWeg;
-    return melhorEncaixe;
+
+    function melhorEncaixeEntre(lista){
+      // Prioriza WEG (marca padrão testada), mas evita sobredimensionar demais:
+      // se o menor WEG que cobre a potência exigir mais de 35% de folga extra,
+      // usa o melhor encaixe disponível entre todas as marcas da lista.
+      const foundWeg=lista.find(i=>i.marca==='WEG'&&(i.kwAC*i.fator)>=kwp);
+      const melhor=lista.find(i=>(i.kwAC*i.fator)>=kwp);
+      if(!foundWeg) return melhor;
+      const capacidadeWeg=foundWeg.kwAC*foundWeg.fator;
+      if(capacidadeWeg<=kwp*TOLERANCIA_SOBREDIMENSIONAMENTO) return foundWeg;
+      return melhor;
+    }
+
+    // 1) Tenta primeiro só entre os MONOFÁSICOS 220V — evita autotrafo
+    //    380/220V sempre que a potência permitir.
+    const monofasicos=sorted.filter(i=>/Mono/i.test(i.modelo));
+    const opcaoMono=melhorEncaixeEntre(monofasicos);
+    if(opcaoMono) return opcaoMono;
+
+    // 2) Só cai pra trifásico 380V se nenhum monofásico do catálogo
+    //    aguentar a potência exigida.
+    const opcaoQualquer=melhorEncaixeEntre(sorted);
+    return opcaoQualquer||{modelo:'Inversor sob consulta ('+kwp.toFixed(2)+' kWp)',marca:'—'};
   }
   const invObj=selecionarInversor(kWp);
   const inv=invObj.modelo;
   const invMarca=invObj.marca;
+
+  // ── SELEÇÃO DE AUTOTRAFO (só entra em jogo quando o inversor é trifásico) ──
+  // Dimensionamento: 25% de margem sobre a potência nominal do inversor
+  // (cobre fator de potência, correntes de partida/harmônicos e folga
+  // para eventual ampliação), arredondando para o próximo modelo disponível.
+  const AUTOTRAFOS_DB=[15,20,25,30,40,45,50,60,75,90,100,125,150,180,200,225,250,300,325,350,400,500,600,700,800,900];
+  function selecionarAutotrafo(kwAC){
+    const MARGEM_AUTOTRAFO=1.25;
+    const necessario=kwAC*MARGEM_AUTOTRAFO;
+    return AUTOTRAFOS_DB.find(kva=>kva>=necessario)||AUTOTRAFOS_DB[AUTOTRAFOS_DB.length-1];
+  }
+  const autotrafoKva=/Trif/i.test(inv)?selecionarAutotrafo(invObj.kwAC):null;
   const geracaoMensal=VAR_MES.map(f=>Math.round(kWp*hsp*30*ef*f));
   const geracaoMedia=Math.round(geracaoMensal.reduce((a,b)=>a+b,0)/12);
 
@@ -2101,6 +2132,8 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   // CAPA
   set('cNome',nome);set('cCidade',cidade);set('cNumData',`${propNum} · ${dataFmt}`);
   set('cPerfil',PERFIS[perfil]);
+  const capaTituloEl=document.querySelector('.capa-title em');
+  if(capaTituloEl) capaTituloEl.textContent=PERFIS[perfil]||'Comercial';
   set('cInvFaixa',inv_faixa);set('cIrr',irr.toFixed(2)+' kWh/m²/dia');set('cValidade',validade);
 
   // KPIs
@@ -2127,6 +2160,9 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   // Preenche tabela de equipamentos — grupos dinâmicos
   set('eqInversor',inv);
   set('eqEstrutura',ESTRUTURAS[estrutura]||'Telhado cerâmico / fibrocimento / metálico');
+  const trAutotrafoEl=document.getElementById('trAutotrafo');
+  if(trAutotrafoEl) trAutotrafoEl.style.display=autotrafoKva?'table-row':'none';
+  if(autotrafoKva) set('eqAutotrafo',`Transformador Isolador 380/220V TRI - ${autotrafoKva}kVA`);
   // Ativar grupo correto (Growatt ou WEG) e popular seletor de módulos
   if(typeof definirGrupoEquipamentos === 'function') definirGrupoEquipamentos(invMarca);
   else { set('eqModelo','Painel 620Wp Bifacial'); set('eqQtd',nMod+'×'); }
@@ -2264,7 +2300,7 @@ Gostaria de avançar com o projeto!`);
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
 function formatMoeda(n){return parseFloat(n).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function novaSimulacao(){document.getElementById('proposta').classList.remove('show');document.getElementById('formulario').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+function novaSimulacao(){document.getElementById('proposta').classList.remove('show');document.getElementById('formulario').style.display='block';window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cidadeValor').value='';const ci=document.getElementById('cidadeInput');if(ci)ci.value='';}
 
 // Numeração de páginas no print
 window.addEventListener('beforeprint',()=>{

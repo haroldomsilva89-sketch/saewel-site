@@ -1820,15 +1820,50 @@ async function salvarLead(dados) {
 // ORÇAMENTOS do Drive (via Apps Script), sem depender do cliente clicar
 // em "Imprimir/Salvar PDF". Roda em segundo plano — se falhar, não afeta
 // a experiência do cliente na tela.
+// Extrai o texto das regras do bloco @media print já existente no CSS,
+// para poder "injetar" essas mesmas regras (sem o wrapper @media print)
+// dentro do clone que o html2canvas usa pra tirar o print da proposta.
+// Sem isso, o html2canvas captura o layout de TELA (sem paginação A4,
+// com botões visíveis, sem cortes controlados) e o jsPDF corta a
+// imagem-gigante a cada 297mm às cegas — cortando imagens no meio e
+// deixando sobra em branco na última página.
+function getPrintCSSText(){
+  let css='';
+  for(const sheet of document.styleSheets){
+    let rules;
+    try{ rules=sheet.cssRules; }catch(e){ continue; }
+    if(!rules) continue;
+    for(const rule of rules){
+      if(rule.type===CSSRule.MEDIA_RULE && /print/i.test(rule.conditionText||rule.media.mediaText||'')){
+        for(const inner of rule.cssRules){ css+=inner.cssText+'\n'; }
+      }
+    }
+  }
+  return css;
+}
+
 async function salvarPDFOrcamento(propNum, nome, cidade){
   try{
     const elemento=document.getElementById('proposta');
+    const printCSS=getPrintCSSText();
     const opt={
       margin:0,
       filename:`${propNum} - ${nome} - ${cidade}.pdf`,
       image:{type:'jpeg',quality:0.92},
-      html2canvas:{scale:2,useCORS:true,allowTaint:false},
-      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+      html2canvas:{
+        scale:2,useCORS:true,allowTaint:false,
+        onclone:(clonedDoc)=>{
+          // Aplica as mesmas regras do @media print, agora sem a
+          // condição de mídia, para que o clone renderizado pelo
+          // html2canvas fique idêntico ao resultado do "Imprimir":
+          // páginas A4 exatas, botões/CTAs escondidos, sem sobra.
+          const style=clonedDoc.createElement('style');
+          style.textContent=printCSS;
+          clonedDoc.head.appendChild(style);
+        }
+      },
+      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
+      pagebreak:{mode:['css','legacy'],avoid:'.prop-page'}
     };
     const pdfBlob=await html2pdf().set(opt).from(elemento).outputPdf('blob');
     const base64=await new Promise((res)=>{

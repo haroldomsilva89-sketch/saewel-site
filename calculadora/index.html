@@ -1855,11 +1855,28 @@ async function salvarPDFOrcamento(propNum, nome, cidade){
         onclone:(clonedDoc)=>{
           // Aplica as mesmas regras do @media print, agora sem a
           // condição de mídia, para que o clone renderizado pelo
-          // html2canvas fique idêntico ao resultado do "Imprimir":
-          // páginas A4 exatas, botões/CTAs escondidos, sem sobra.
+          // html2canvas fique visualmente igual ao "Imprimir":
+          // botões/CTAs escondidos, cores corrigidas, quebras de
+          // página sinalizadas via page-break-after/inside.
           const style=clonedDoc.createElement('style');
           style.textContent=printCSS;
           clonedDoc.head.appendChild(style);
+
+          // IMPORTANTE: o html2canvas não pagina de verdade — ele só
+          // tira uma foto única do DOM. O @media print usa
+          // max-height:297mm + overflow:hidden pra simular o corte de
+          // folha, mas isso funciona só no motor de impressão real do
+          // navegador (que "estoura" o excesso pra próxima folha).
+          // Aqui isso CORTA E APAGA qualquer conteúdo mais alto que
+          // uma A4 (ex.: a tabela de Retorno do Investimento com 26
+          // linhas) — por isso páginas inteiras estavam sumindo.
+          // Removemos essa trava de altura só para a captura do
+          // html2canvas; o corte em páginas A4 continua acontecendo
+          // depois, no jsPDF, com base nos hints de page-break-after/
+          // page-break-inside que ficam definidos no CSS acima.
+          const unclip=clonedDoc.createElement('style');
+          unclip.textContent=`.prop-page{max-height:none!important;min-height:0!important;overflow:visible!important;}`;
+          clonedDoc.head.appendChild(unclip);
         }
       },
       jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},

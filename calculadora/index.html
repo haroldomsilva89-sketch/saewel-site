@@ -780,7 +780,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .graf-bars-cv{height:80px;}
 }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -1816,130 +1815,6 @@ async function salvarLead(dados) {
   }
 }
 
-// Salva automaticamente uma cópia em PDF da proposta gerada na pasta
-// ORÇAMENTOS do Drive (via Apps Script), sem depender do cliente clicar
-// em "Imprimir/Salvar PDF". Roda em segundo plano — se falhar, não afeta
-// a experiência do cliente na tela.
-// Extrai o texto das regras do bloco @media print já existente no CSS,
-// para poder "injetar" essas mesmas regras (sem o wrapper @media print)
-// dentro do clone que o html2canvas usa pra tirar o print da proposta.
-// Sem isso, o html2canvas captura o layout de TELA (sem paginação A4,
-// com botões visíveis, sem cortes controlados) e o jsPDF corta a
-// imagem-gigante a cada 297mm às cegas — cortando imagens no meio e
-// deixando sobra em branco na última página.
-function getPrintCSSText(){
-  let css='';
-  for(const sheet of document.styleSheets){
-    let rules;
-    try{ rules=sheet.cssRules; }catch(e){ continue; }
-    if(!rules) continue;
-    for(const rule of rules){
-      if(rule.type===CSSRule.MEDIA_RULE && /print/i.test(rule.conditionText||rule.media.mediaText||'')){
-        for(const inner of rule.cssRules){ css+=inner.cssText+'\n'; }
-      }
-    }
-  }
-  return css;
-}
-
-function esperarMapaCarregar(){
-  return new Promise((resolve)=>{
-    const mapaBlock=document.getElementById('capaMapaBlock');
-    const mapaImg=document.getElementById('capaMapaImg');
-    const mapaVisivel=mapaBlock&&mapaBlock.style.display!=='none'&&mapaImg&&mapaImg.src;
-    if(!mapaVisivel||mapaImg.complete){ resolve(); return; }
-    let done=false;
-    const finalizar=()=>{ if(done)return; done=true; resolve(); };
-    mapaImg.addEventListener('load',finalizar,{once:true});
-    mapaImg.addEventListener('error',finalizar,{once:true});
-    setTimeout(finalizar,5000);
-  });
-}
-
-async function salvarPDFOrcamento(propNum, nome, cidade){
-  try{
-    // Mesma espera que o botão "Imprimir" já faz: sem isso, o PDF automático
-    // corria o risco de tirar a foto da capa antes do mapa (e do pino de
-    // localização) terminarem de carregar — por isso o mapa saía sem o pino
-    // e às vezes com altura errada, empurrando o corte de página.
-    await esperarMapaCarregar();
-
-    const printCSS=getPrintCSSText();
-    const paginas=[...document.querySelectorAll('#proposta .prop-page')];
-
-    // ── POR QUE "1 CANVAS POR PÁGINA" ──
-    // Uma foto só da proposta inteira esbarra no limite de altura de
-    // <canvas> dos navegadores (tipicamente entre ~4.000 e ~16.000px) —
-    // o navegador não avisa, só corta/corrompe o que vier depois. Cada
-    // .prop-page agora vira seu próprio canvas pequeno e sua própria
-    // página no PDF, nunca chegando perto desse limite.
-    //
-    // IMPORTANTE: em vez de tentar travar a altura só via CSS (max-height/
-    // overflow:hidden), que não é confiável — o html2canvas mede a altura
-    // do elemento ANTES de aplicarmos o CSS no clone — passamos a altura
-    // máxima diretamente como opção do html2canvas (height/windowHeight).
-    // Isso garante o corte de verdade, no nível do próprio canvas.
-    const ALTURA_A4_PX=1123; // ~297mm a 96dpi (o "scale" do html2canvas multiplica a resolução final, não essa altura de referência)
-    const opt={
-      margin:0,
-      image:{type:'jpeg',quality:0.92},
-      html2canvas:{
-        scale:2,useCORS:true,allowTaint:false,backgroundColor:'#ffffff',
-        height:ALTURA_A4_PX,windowHeight:ALTURA_A4_PX,
-        onclone:(clonedDoc)=>{
-          // Mesmas regras do @media print (esconde botões/CTAs, corrige
-          // cores, reduz fonte das tabelas), aplicadas sem a condição de
-          // mídia — pra ficar visualmente igual ao "Imprimir".
-          const style=clonedDoc.createElement('style');
-          style.textContent=printCSS+`
-            .prop-page{margin:0!important;border:none!important;border-radius:0!important;}
-          `;
-          clonedDoc.head.appendChild(style);
-        }
-      },
-      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
-    };
-    const larguraMM=210, alturaMM=297;
-    const pausa=(ms)=>new Promise(r=>setTimeout(r,ms));
-
-    // Pega uma instância de jsPDF só pra ter o objeto em mãos — e removemos
-    // logo em seguida qualquer página que o próprio .toPdf() tenha criado
-    // sozinho. O .toPdf() faz sua PRÓPRIA paginação automática baseada na
-    // altura total do elemento, que é exatamente o comportamento que
-    // queremos evitar (é a causa original de imagem cortada/página em
-    // branco). Preenchemos o PDF manualmente, uma página por vez, do zero.
-    const pdf=await html2pdf().set(opt).from(paginas[0]).toPdf().get('pdf');
-    while(pdf.internal.getNumberOfPages()>1){
-      pdf.deletePage(pdf.internal.getNumberOfPages());
-    }
-    await pausa(200);
-
-    for(let i=0;i<paginas.length;i++){
-      const canvas=await html2pdf().set(opt).from(paginas[i]).toCanvas().get('canvas');
-      const imgData=canvas.toDataURL('image/jpeg',0.92);
-      const alturaImgMM=Math.min(canvas.height*larguraMM/canvas.width, alturaMM);
-      if(i>0) pdf.addPage();
-      pdf.addImage(imgData,'JPEG',0,0,larguraMM,alturaImgMM);
-      await pausa(200);
-    }
-
-    const pdfBlob=pdf.output('blob');
-    const base64=await new Promise((res)=>{
-      const reader=new FileReader();
-      reader.onloadend=()=>res(reader.result.split(',')[1]);
-      reader.readAsDataURL(pdfBlob);
-    });
-    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({action:'salvarPDF', proposta:propNum, nome, cidade, pdfBase64:base64})
-    });
-  }catch(e){
-    console.log('Erro ao salvar PDF automaticamente:', e);
-  }
-}
-
 // ── CALCULAR ──
 // Estimativa rápida: mesma lógica de consumo/cidade do calcular(), mas sem
 // exigir nome/WhatsApp — resolve a fricção de pedir contato antes de mostrar
@@ -2316,17 +2191,6 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   requestAnimationFrame(()=>{
     barsEl.querySelectorAll('[data-h]').forEach(el=>el.style.height=el.dataset.h+'%');
   });
-  // IMPORTANTE: o salvarPDFOrcamento roda logo em seguida, em paralelo
-  // com essa animação (que leva ~0,8s pra terminar). Se ele tirasse a
-  // "foto" antes da transição acabar, as barras saíam vazias no PDF
-  // automático. Por isso, ANTES de gerar o PDF, forçamos as barras já
-  // no valor final (sem esperar a transição), garantindo que a cópia
-  // salva no Drive sempre reflita os valores corretos — mesmo que a
-  // tela ainda esteja com a animação rolando.
-  function finalizarAlturasGrafico(){
-    barsEl.querySelectorAll('[data-h]').forEach(el=>{el.style.transition='none';el.style.height=el.dataset.h+'%';});
-  }
-
   // ── TABELA MENSAL ──
   const tbody=document.getElementById('tabelaMensal');
   const rowsHtml=tabMes.map(r=>`<tr>
@@ -2408,10 +2272,6 @@ Gostaria de avançar com o projeto!`);
 
   // Atualiza título da página para nomear o PDF corretamente
   document.title = `Simulador Solar Gratuito - ${nome} ${propNum} - Saewel Energia Solar`;
-
-  // ── SALVAR CÓPIA EM PDF NA PASTA ORÇAMENTOS (automático, em segundo plano) ──
-  finalizarAlturasGrafico(); // garante que as barras já estão no valor certo antes da captura
-  salvarPDFOrcamento(propNum, nome, cidade);
 }
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}

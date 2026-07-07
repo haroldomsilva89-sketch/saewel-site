@@ -1870,21 +1870,21 @@ async function salvarPDFOrcamento(propNum, nome, cidade){
       image:{type:'jpeg',quality:0.92},
       html2canvas:{
         scale:2,useCORS:true,allowTaint:false,backgroundColor:'#ffffff',
-        onclone:(clonedDoc,clonedEl)=>{
+        onclone:(clonedDoc)=>{
           // Mesmas regras do @media print (esconde botões/CTAs, corrige
           // cores, reduz fonte das tabelas), aplicadas sem a condição
           // de mídia — pra ficar visualmente igual ao "Imprimir".
           const style=clonedDoc.createElement('style');
-          style.textContent=printCSS;
+          style.textContent=printCSS+`
+            /* Seguro travar em 297mm aqui: como cada página gera seu
+               próprio canvas isolado, um conteúdo raro que passe disso só
+               afeta aquela página específica — nunca mais o documento
+               inteiro. Aplicado via seletor de classe (não via referência
+               direta ao elemento), porque essa versão do html2canvas só
+               passa o documento clonado pro onclone, não o elemento. */
+            .prop-page{max-height:297mm!important;overflow:hidden!important;margin:0!important;border:none!important;border-radius:0!important;}
+          `;
           clonedDoc.head.appendChild(style);
-          // Seguro travar em 297mm aqui: como cada página gera seu
-          // próprio canvas isolado, um conteúdo raro que passe disso só
-          // afeta aquela página específica — nunca mais o documento inteiro.
-          clonedEl.style.maxHeight='297mm';
-          clonedEl.style.overflow='hidden';
-          clonedEl.style.margin='0';
-          clonedEl.style.border='none';
-          clonedEl.style.borderRadius='0';
         }
       },
       jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}

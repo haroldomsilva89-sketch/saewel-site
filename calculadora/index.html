@@ -1842,47 +1842,57 @@ function getPrintCSSText(){
   return css;
 }
 
+function esperarMapaCarregar(){
+  return new Promise((resolve)=>{
+    const mapaBlock=document.getElementById('capaMapaBlock');
+    const mapaImg=document.getElementById('capaMapaImg');
+    const mapaVisivel=mapaBlock&&mapaBlock.style.display!=='none'&&mapaImg&&mapaImg.src;
+    if(!mapaVisivel||mapaImg.complete){ resolve(); return; }
+    let done=false;
+    const finalizar=()=>{ if(done)return; done=true; resolve(); };
+    mapaImg.addEventListener('load',finalizar,{once:true});
+    mapaImg.addEventListener('error',finalizar,{once:true});
+    setTimeout(finalizar,5000);
+  });
+}
+
 async function salvarPDFOrcamento(propNum, nome, cidade){
   try{
+    // Mesma espera que o botão "Imprimir" já faz: sem isso, o PDF automático
+    // corria o risco de tirar a foto da capa antes do mapa (e do pino de
+    // localização) terminarem de carregar — por isso o mapa saía sem o pino
+    // e às vezes com altura errada, empurrando o corte de página.
+    await esperarMapaCarregar();
+
     const printCSS=getPrintCSSText();
     const paginas=[...document.querySelectorAll('#proposta .prop-page')];
 
     // ── POR QUE "1 CANVAS POR PÁGINA" ──
-    // A versão anterior tirava UMA foto gigante da proposta inteira e
-    // só depois fatiava em folhas A4. Isso esbarra num limite real dos
-    // navegadores: o tamanho máximo de um <canvas> (normalmente entre
-    // ~4.000px e ~16.000px de altura, variando por navegador/aparelho).
-    // Com 7 seções somadas, a foto única passava desse limite — e o
-    // navegador não avisa, ele simplesmente CORTA ou CORROMPE o que vier
-    // depois (conteúdo sumindo, cores erradas, gráfico sem barras).
-    // Agora cada .prop-page vira seu próprio canvas pequeno e uma
-    // página própria no PDF — nunca chega perto desse limite.
+    // Uma foto só da proposta inteira esbarra no limite de altura de
+    // <canvas> dos navegadores (tipicamente entre ~4.000 e ~16.000px) —
+    // o navegador não avisa, só corta/corrompe o que vier depois. Cada
+    // .prop-page agora vira seu próprio canvas pequeno e sua própria
+    // página no PDF, nunca chegando perto desse limite.
     //
-    // IMPORTANTE: usamos só a API encadeável do próprio html2pdf()
-    // (.toCanvas/.toPdf/.get), em vez de chamar html2canvas(...) ou
-    // "new jsPDF(...)" como se fossem variáveis globais — o bundle
-    // html2pdf.bundle.min.js pode manter as duas bibliotecas só de uso
-    // INTERNO, sem expor esses nomes soltos no window. Foi provavelmente
-    // por isso que a tentativa anterior não gerou PDF nenhum (quebrou
-    // antes mesmo de tentar salvar, e caiu direto no catch).
+    // IMPORTANTE: em vez de tentar travar a altura só via CSS (max-height/
+    // overflow:hidden), que não é confiável — o html2canvas mede a altura
+    // do elemento ANTES de aplicarmos o CSS no clone — passamos a altura
+    // máxima diretamente como opção do html2canvas (height/windowHeight).
+    // Isso garante o corte de verdade, no nível do próprio canvas.
+    const ALTURA_A4_PX=1123; // ~297mm a 96dpi (o "scale" do html2canvas multiplica a resolução final, não essa altura de referência)
     const opt={
       margin:0,
       image:{type:'jpeg',quality:0.92},
       html2canvas:{
         scale:2,useCORS:true,allowTaint:false,backgroundColor:'#ffffff',
+        height:ALTURA_A4_PX,windowHeight:ALTURA_A4_PX,
         onclone:(clonedDoc)=>{
           // Mesmas regras do @media print (esconde botões/CTAs, corrige
-          // cores, reduz fonte das tabelas), aplicadas sem a condição
-          // de mídia — pra ficar visualmente igual ao "Imprimir".
+          // cores, reduz fonte das tabelas), aplicadas sem a condição de
+          // mídia — pra ficar visualmente igual ao "Imprimir".
           const style=clonedDoc.createElement('style');
           style.textContent=printCSS+`
-            /* Seguro travar em 297mm aqui: como cada página gera seu
-               próprio canvas isolado, um conteúdo raro que passe disso só
-               afeta aquela página específica — nunca mais o documento
-               inteiro. Aplicado via seletor de classe (não via referência
-               direta ao elemento), porque essa versão do html2canvas só
-               passa o documento clonado pro onclone, não o elemento. */
-            .prop-page{max-height:297mm!important;overflow:hidden!important;margin:0!important;border:none!important;border-radius:0!important;}
+            .prop-page{margin:0!important;border:none!important;border-radius:0!important;}
           `;
           clonedDoc.head.appendChild(style);
         }
@@ -1892,19 +1902,23 @@ async function salvarPDFOrcamento(propNum, nome, cidade){
     const larguraMM=210, alturaMM=297;
     const pausa=(ms)=>new Promise(r=>setTimeout(r,ms));
 
-    // 1ª página: deixa o próprio html2pdf montar o jsPDF, e pegamos essa
-    // instância pra ir adicionando as páginas seguintes nela.
+    // Pega uma instância de jsPDF só pra ter o objeto em mãos — e removemos
+    // logo em seguida qualquer página que o próprio .toPdf() tenha criado
+    // sozinho. O .toPdf() faz sua PRÓPRIA paginação automática baseada na
+    // altura total do elemento, que é exatamente o comportamento que
+    // queremos evitar (é a causa original de imagem cortada/página em
+    // branco). Preenchemos o PDF manualmente, uma página por vez, do zero.
     const pdf=await html2pdf().set(opt).from(paginas[0]).toPdf().get('pdf');
-    await pausa(200); // dá tempo do html2pdf limpar o container temporário
-                       // que ele cria escondido no body antes da próxima captura —
-                       // sem essa pausa, duas capturas em sequência rápida demais
-                       // podem se atropelar e misturar conteúdo de páginas diferentes.
+    while(pdf.internal.getNumberOfPages()>1){
+      pdf.deletePage(pdf.internal.getNumberOfPages());
+    }
+    await pausa(200);
 
-    for(let i=1;i<paginas.length;i++){
+    for(let i=0;i<paginas.length;i++){
       const canvas=await html2pdf().set(opt).from(paginas[i]).toCanvas().get('canvas');
       const imgData=canvas.toDataURL('image/jpeg',0.92);
       const alturaImgMM=Math.min(canvas.height*larguraMM/canvas.width, alturaMM);
-      pdf.addPage();
+      if(i>0) pdf.addPage();
       pdf.addImage(imgData,'JPEG',0,0,larguraMM,alturaImgMM);
       await pausa(200);
     }

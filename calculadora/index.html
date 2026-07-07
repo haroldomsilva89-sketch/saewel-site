@@ -2271,10 +2271,11 @@ Gostaria de avançar com o projeto!`);
   document.getElementById('proposta').scrollIntoView({behavior:'smooth',block:'start'});
 
   // Atualiza título da página para nomear o PDF corretamente
-  // Título no mesmo padrão de nome de arquivo usado na pasta ORÇAMENTOS
-  // (ID Projeto - Nome - Cidade/UF), pra já sair pronto ao salvar o PDF,
-  // sem precisar renomear manualmente depois.
-  document.title = `${propNum} - ${nome} - ${cidade}`;
+  // NOTA: o título da página NÃO é alterado aqui de propósito — trocar o
+  // <title> permanentemente prejudicaria o SEO da calculadora (o Google lê
+  // esse valor). O nome do arquivo do PDF é ajustado só no momento exato
+  // de clicar em "Imprimir/Salvar PDF", dentro de imprimirProposta(), e
+  // revertido logo em seguida.
 }
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
@@ -2293,6 +2294,26 @@ function imprimirProposta(){
     alert('Gere a proposta primeiro antes de imprimir.');
     return;
   }
+
+  // Troca o título só durante o print/salvar (pra sugerir o nome de
+  // arquivo certo: "ID Projeto - Nome - Cidade") e devolve o título
+  // original (SEO) assim que o diálogo de impressão fechar.
+  const tituloOriginal = document.title;
+  const nomeEl = document.getElementById('cNome');
+  const cidadeEl = document.getElementById('cCidade');
+  const numDataEl = document.getElementById('cNumData');
+  const propNum = numDataEl ? numDataEl.textContent.split('·')[0].trim() : '';
+  const nomeCliente = nomeEl ? nomeEl.textContent.trim() : '';
+  const cidadeCliente = cidadeEl ? cidadeEl.textContent.trim() : '';
+  if(propNum || nomeCliente){
+    document.title = [propNum, nomeCliente, cidadeCliente].filter(Boolean).join(' - ');
+  }
+  const restaurarTitulo = () => { document.title = tituloOriginal; };
+  window.addEventListener('afterprint', restaurarTitulo, {once:true});
+  // Salvaguarda: se o navegador não disparar 'afterprint' por algum motivo,
+  // restaura mesmo assim depois de um tempo generoso.
+  setTimeout(restaurarTitulo, 15000);
+
   const mapaBlock = document.getElementById('capaMapaBlock');
   const mapaImg = document.getElementById('capaMapaImg');
   const mapaVisivel = mapaBlock && mapaBlock.style.display !== 'none' && mapaImg && mapaImg.src;

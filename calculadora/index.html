@@ -1890,10 +1890,15 @@ async function salvarPDFOrcamento(propNum, nome, cidade){
       jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
     };
     const larguraMM=210, alturaMM=297;
+    const pausa=(ms)=>new Promise(r=>setTimeout(r,ms));
 
     // 1ª página: deixa o próprio html2pdf montar o jsPDF, e pegamos essa
     // instância pra ir adicionando as páginas seguintes nela.
     const pdf=await html2pdf().set(opt).from(paginas[0]).toPdf().get('pdf');
+    await pausa(200); // dá tempo do html2pdf limpar o container temporário
+                       // que ele cria escondido no body antes da próxima captura —
+                       // sem essa pausa, duas capturas em sequência rápida demais
+                       // podem se atropelar e misturar conteúdo de páginas diferentes.
 
     for(let i=1;i<paginas.length;i++){
       const canvas=await html2pdf().set(opt).from(paginas[i]).toCanvas().get('canvas');
@@ -1901,6 +1906,7 @@ async function salvarPDFOrcamento(propNum, nome, cidade){
       const alturaImgMM=Math.min(canvas.height*larguraMM/canvas.width, alturaMM);
       pdf.addPage();
       pdf.addImage(imgData,'JPEG',0,0,larguraMM,alturaImgMM);
+      await pausa(200);
     }
 
     const pdfBlob=pdf.output('blob');

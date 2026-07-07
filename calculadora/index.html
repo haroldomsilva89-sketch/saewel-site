@@ -1847,24 +1847,28 @@ async function salvarPDFOrcamento(propNum, nome, cidade){
     const printCSS=getPrintCSSText();
     const paginas=[...document.querySelectorAll('#proposta .prop-page')];
 
-    // ── POR QUE MUDAMOS PARA "1 CANVAS POR PÁGINA" ──
+    // ── POR QUE "1 CANVAS POR PÁGINA" ──
     // A versão anterior tirava UMA foto gigante da proposta inteira e
     // só depois fatiava em folhas A4. Isso esbarra num limite real dos
     // navegadores: o tamanho máximo de um <canvas> (normalmente entre
     // ~4.000px e ~16.000px de altura, variando por navegador/aparelho).
-    // Com 7 seções somadas (principalmente a tabela de Retorno do
-    // Investimento, com 26 linhas), a foto única passava desse limite
-    // — e o navegador não avisa, ele simplesmente CORTA ou CORROMPE o
-    // que vier depois (conteúdo sumindo, cores erradas, gráfico sem as
-    // barras que ainda estavam animando).
+    // Com 7 seções somadas, a foto única passava desse limite — e o
+    // navegador não avisa, ele simplesmente CORTA ou CORROMPE o que vier
+    // depois (conteúdo sumindo, cores erradas, gráfico sem barras).
     // Agora cada .prop-page vira seu próprio canvas pequeno e uma
     // página própria no PDF — nunca chega perto desse limite.
-    const jsPDFCtor=(window.jspdf&&window.jspdf.jsPDF)||window.jsPDF;
-    const pdf=new jsPDFCtor({unit:'mm',format:'a4',orientation:'portrait'});
-    const larguraMM=210, alturaMM=297;
-
-    for(let i=0;i<paginas.length;i++){
-      const canvas=await html2canvas(paginas[i],{
+    //
+    // IMPORTANTE: usamos só a API encadeável do próprio html2pdf()
+    // (.toCanvas/.toPdf/.get), em vez de chamar html2canvas(...) ou
+    // "new jsPDF(...)" como se fossem variáveis globais — o bundle
+    // html2pdf.bundle.min.js pode manter as duas bibliotecas só de uso
+    // INTERNO, sem expor esses nomes soltos no window. Foi provavelmente
+    // por isso que a tentativa anterior não gerou PDF nenhum (quebrou
+    // antes mesmo de tentar salvar, e caiu direto no catch).
+    const opt={
+      margin:0,
+      image:{type:'jpeg',quality:0.92},
+      html2canvas:{
         scale:2,useCORS:true,allowTaint:false,backgroundColor:'#ffffff',
         onclone:(clonedDoc,clonedEl)=>{
           // Mesmas regras do @media print (esconde botões/CTAs, corrige
@@ -1873,20 +1877,29 @@ async function salvarPDFOrcamento(propNum, nome, cidade){
           const style=clonedDoc.createElement('style');
           style.textContent=printCSS;
           clonedDoc.head.appendChild(style);
-          // Aqui SIM é seguro travar em 297mm: como cada página agora
-          // gera seu próprio canvas isolado, um conteúdo raro que ainda
-          // passe disso só afeta aquela página específica — nunca mais
-          // o documento inteiro.
+          // Seguro travar em 297mm aqui: como cada página gera seu
+          // próprio canvas isolado, um conteúdo raro que passe disso só
+          // afeta aquela página específica — nunca mais o documento inteiro.
           clonedEl.style.maxHeight='297mm';
           clonedEl.style.overflow='hidden';
           clonedEl.style.margin='0';
           clonedEl.style.border='none';
           clonedEl.style.borderRadius='0';
         }
-      });
+      },
+      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+    };
+    const larguraMM=210, alturaMM=297;
+
+    // 1ª página: deixa o próprio html2pdf montar o jsPDF, e pegamos essa
+    // instância pra ir adicionando as páginas seguintes nela.
+    const pdf=await html2pdf().set(opt).from(paginas[0]).toPdf().get('pdf');
+
+    for(let i=1;i<paginas.length;i++){
+      const canvas=await html2pdf().set(opt).from(paginas[i]).toCanvas().get('canvas');
       const imgData=canvas.toDataURL('image/jpeg',0.92);
       const alturaImgMM=Math.min(canvas.height*larguraMM/canvas.width, alturaMM);
-      if(i>0) pdf.addPage();
+      pdf.addPage();
       pdf.addImage(imgData,'JPEG',0,0,larguraMM,alturaImgMM);
     }
 

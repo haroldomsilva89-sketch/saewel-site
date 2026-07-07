@@ -2271,7 +2271,10 @@ Gostaria de avançar com o projeto!`);
   document.getElementById('proposta').scrollIntoView({behavior:'smooth',block:'start'});
 
   // Atualiza título da página para nomear o PDF corretamente
-  document.title = `Simulador Solar Gratuito - ${nome} ${propNum} - Saewel Energia Solar`;
+  // Título no mesmo padrão de nome de arquivo usado na pasta ORÇAMENTOS
+  // (ID Projeto - Nome - Cidade/UF), pra já sair pronto ao salvar o PDF,
+  // sem precisar renomear manualmente depois.
+  document.title = `${propNum} - ${nome} - ${cidade}`;
 }
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}

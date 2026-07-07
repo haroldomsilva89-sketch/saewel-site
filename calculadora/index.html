@@ -1844,45 +1844,53 @@ function getPrintCSSText(){
 
 async function salvarPDFOrcamento(propNum, nome, cidade){
   try{
-    const elemento=document.getElementById('proposta');
     const printCSS=getPrintCSSText();
-    const opt={
-      margin:0,
-      filename:`${propNum} - ${nome} - ${cidade}.pdf`,
-      image:{type:'jpeg',quality:0.92},
-      html2canvas:{
-        scale:2,useCORS:true,allowTaint:false,
-        onclone:(clonedDoc)=>{
-          // Aplica as mesmas regras do @media print, agora sem a
-          // condição de mídia, para que o clone renderizado pelo
-          // html2canvas fique visualmente igual ao "Imprimir":
-          // botões/CTAs escondidos, cores corrigidas, quebras de
-          // página sinalizadas via page-break-after/inside.
+    const paginas=[...document.querySelectorAll('#proposta .prop-page')];
+
+    // ── POR QUE MUDAMOS PARA "1 CANVAS POR PÁGINA" ──
+    // A versão anterior tirava UMA foto gigante da proposta inteira e
+    // só depois fatiava em folhas A4. Isso esbarra num limite real dos
+    // navegadores: o tamanho máximo de um <canvas> (normalmente entre
+    // ~4.000px e ~16.000px de altura, variando por navegador/aparelho).
+    // Com 7 seções somadas (principalmente a tabela de Retorno do
+    // Investimento, com 26 linhas), a foto única passava desse limite
+    // — e o navegador não avisa, ele simplesmente CORTA ou CORROMPE o
+    // que vier depois (conteúdo sumindo, cores erradas, gráfico sem as
+    // barras que ainda estavam animando).
+    // Agora cada .prop-page vira seu próprio canvas pequeno e uma
+    // página própria no PDF — nunca chega perto desse limite.
+    const jsPDFCtor=(window.jspdf&&window.jspdf.jsPDF)||window.jsPDF;
+    const pdf=new jsPDFCtor({unit:'mm',format:'a4',orientation:'portrait'});
+    const larguraMM=210, alturaMM=297;
+
+    for(let i=0;i<paginas.length;i++){
+      const canvas=await html2canvas(paginas[i],{
+        scale:2,useCORS:true,allowTaint:false,backgroundColor:'#ffffff',
+        onclone:(clonedDoc,clonedEl)=>{
+          // Mesmas regras do @media print (esconde botões/CTAs, corrige
+          // cores, reduz fonte das tabelas), aplicadas sem a condição
+          // de mídia — pra ficar visualmente igual ao "Imprimir".
           const style=clonedDoc.createElement('style');
           style.textContent=printCSS;
           clonedDoc.head.appendChild(style);
-
-          // IMPORTANTE: o html2canvas não pagina de verdade — ele só
-          // tira uma foto única do DOM. O @media print usa
-          // max-height:297mm + overflow:hidden pra simular o corte de
-          // folha, mas isso funciona só no motor de impressão real do
-          // navegador (que "estoura" o excesso pra próxima folha).
-          // Aqui isso CORTA E APAGA qualquer conteúdo mais alto que
-          // uma A4 (ex.: a tabela de Retorno do Investimento com 26
-          // linhas) — por isso páginas inteiras estavam sumindo.
-          // Removemos essa trava de altura só para a captura do
-          // html2canvas; o corte em páginas A4 continua acontecendo
-          // depois, no jsPDF, com base nos hints de page-break-after/
-          // page-break-inside que ficam definidos no CSS acima.
-          const unclip=clonedDoc.createElement('style');
-          unclip.textContent=`.prop-page{max-height:none!important;min-height:0!important;overflow:visible!important;}`;
-          clonedDoc.head.appendChild(unclip);
+          // Aqui SIM é seguro travar em 297mm: como cada página agora
+          // gera seu próprio canvas isolado, um conteúdo raro que ainda
+          // passe disso só afeta aquela página específica — nunca mais
+          // o documento inteiro.
+          clonedEl.style.maxHeight='297mm';
+          clonedEl.style.overflow='hidden';
+          clonedEl.style.margin='0';
+          clonedEl.style.border='none';
+          clonedEl.style.borderRadius='0';
         }
-      },
-      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
-      pagebreak:{mode:['css','legacy'],avoid:'.prop-page'}
-    };
-    const pdfBlob=await html2pdf().set(opt).from(elemento).outputPdf('blob');
+      });
+      const imgData=canvas.toDataURL('image/jpeg',0.92);
+      const alturaImgMM=Math.min(canvas.height*larguraMM/canvas.width, alturaMM);
+      if(i>0) pdf.addPage();
+      pdf.addImage(imgData,'JPEG',0,0,larguraMM,alturaImgMM);
+    }
+
+    const pdfBlob=pdf.output('blob');
     const base64=await new Promise((res)=>{
       const reader=new FileReader();
       reader.onloadend=()=>res(reader.result.split(',')[1]);
@@ -2271,9 +2279,20 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     </div>`;
   }).join('');
   labsEl.innerHTML=MESES.map(m=>`<div class="graf-cv-label">${m}</div>`).join('');
-  setTimeout(()=>{
+  // Anima na tela (grow-in de 0% até a altura real via transition CSS).
+  requestAnimationFrame(()=>{
     barsEl.querySelectorAll('[data-h]').forEach(el=>el.style.height=el.dataset.h+'%');
-  },100);
+  });
+  // IMPORTANTE: o salvarPDFOrcamento roda logo em seguida, em paralelo
+  // com essa animação (que leva ~0,8s pra terminar). Se ele tirasse a
+  // "foto" antes da transição acabar, as barras saíam vazias no PDF
+  // automático. Por isso, ANTES de gerar o PDF, forçamos as barras já
+  // no valor final (sem esperar a transição), garantindo que a cópia
+  // salva no Drive sempre reflita os valores corretos — mesmo que a
+  // tela ainda esteja com a animação rolando.
+  function finalizarAlturasGrafico(){
+    barsEl.querySelectorAll('[data-h]').forEach(el=>{el.style.transition='none';el.style.height=el.dataset.h+'%';});
+  }
 
   // ── TABELA MENSAL ──
   const tbody=document.getElementById('tabelaMensal');
@@ -2358,6 +2377,7 @@ Gostaria de avançar com o projeto!`);
   document.title = `Simulador Solar Gratuito - ${nome} ${propNum} - Saewel Energia Solar`;
 
   // ── SALVAR CÓPIA EM PDF NA PASTA ORÇAMENTOS (automático, em segundo plano) ──
+  finalizarAlturasGrafico(); // garante que as barras já estão no valor certo antes da captura
   salvarPDFOrcamento(propNum, nome, cidade);
 }
 

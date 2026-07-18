@@ -947,11 +947,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div id="modoMedio">
         <div class="form-group">
           <label class="form-label">Consumo médio mensal <span>*</span></label>
-          <input type="range" id="consumo" class="form-slider" min="50" max="5000" step="10" value="300">
+          <input type="range" id="consumo" class="form-slider" min="50" max="5000" step="10" value="300" aria-label="Consumo médio mensal em kWh">
           <div style="display:flex;align-items:center;gap:12px;margin-top:8px;flex-wrap:wrap;">
             <div class="slider-val"><span id="consumoVal">300</span> kWh/mês</div>
             <span style="font-size:12px;color:var(--cinza);">ou digite:</span>
-            <input type="number" id="consumoManual" class="form-input" style="width:110px;" min="50" max="50000" placeholder="kWh">
+            <input type="number" id="consumoManual" class="form-input" style="width:110px;" min="50" max="50000" placeholder="kWh" aria-label="Consumo médio mensal, em kWh, digitado manualmente">
           </div>
           <span class="form-hint">Média da conta: residencial 150–400 kWh · comercial 500–5000 kWh</span>
         </div>
@@ -961,18 +961,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div id="modoMensal" style="display:none;">
         <label class="form-label" style="margin-bottom:10px;display:block;">Consumo dos últimos 12 meses (kWh) <span style="color:var(--ouro-claro);">*</span></label>
         <div class="consumo-meses">
-          <div class="consumo-mes"><label>Jan</label><input type="number" class="mes-input" id="m0" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Fev</label><input type="number" class="mes-input" id="m1" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Mar</label><input type="number" class="mes-input" id="m2" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Abr</label><input type="number" class="mes-input" id="m3" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Mai</label><input type="number" class="mes-input" id="m4" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Jun</label><input type="number" class="mes-input" id="m5" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Jul</label><input type="number" class="mes-input" id="m6" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Ago</label><input type="number" class="mes-input" id="m7" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Set</label><input type="number" class="mes-input" id="m8" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Out</label><input type="number" class="mes-input" id="m9" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Nov</label><input type="number" class="mes-input" id="m10" placeholder="kWh" min="0"></div>
-          <div class="consumo-mes"><label>Dez</label><input type="number" class="mes-input" id="m11" placeholder="kWh" min="0"></div>
+          <div class="consumo-mes"><label for="m0">Jan</label><input type="number" class="mes-input" id="m0" placeholder="kWh" min="0" aria-label="Consumo de janeiro em kWh"></div>
+          <div class="consumo-mes"><label for="m1">Fev</label><input type="number" class="mes-input" id="m1" placeholder="kWh" min="0" aria-label="Consumo de fevereiro em kWh"></div>
+          <div class="consumo-mes"><label for="m2">Mar</label><input type="number" class="mes-input" id="m2" placeholder="kWh" min="0" aria-label="Consumo de março em kWh"></div>
+          <div class="consumo-mes"><label for="m3">Abr</label><input type="number" class="mes-input" id="m3" placeholder="kWh" min="0" aria-label="Consumo de abril em kWh"></div>
+          <div class="consumo-mes"><label for="m4">Mai</label><input type="number" class="mes-input" id="m4" placeholder="kWh" min="0" aria-label="Consumo de maio em kWh"></div>
+          <div class="consumo-mes"><label for="m5">Jun</label><input type="number" class="mes-input" id="m5" placeholder="kWh" min="0" aria-label="Consumo de junho em kWh"></div>
+          <div class="consumo-mes"><label for="m6">Jul</label><input type="number" class="mes-input" id="m6" placeholder="kWh" min="0" aria-label="Consumo de julho em kWh"></div>
+          <div class="consumo-mes"><label for="m7">Ago</label><input type="number" class="mes-input" id="m7" placeholder="kWh" min="0" aria-label="Consumo de agosto em kWh"></div>
+          <div class="consumo-mes"><label for="m8">Set</label><input type="number" class="mes-input" id="m8" placeholder="kWh" min="0" aria-label="Consumo de setembro em kWh"></div>
+          <div class="consumo-mes"><label for="m9">Out</label><input type="number" class="mes-input" id="m9" placeholder="kWh" min="0" aria-label="Consumo de outubro em kWh"></div>
+          <div class="consumo-mes"><label for="m10">Nov</label><input type="number" class="mes-input" id="m10" placeholder="kWh" min="0" aria-label="Consumo de novembro em kWh"></div>
+          <div class="consumo-mes"><label for="m11">Dez</label><input type="number" class="mes-input" id="m11" placeholder="kWh" min="0" aria-label="Consumo de dezembro em kWh"></div>
         </div>
         <span class="form-hint" style="margin-top:8px;display:block;">Preencha os valores da sua conta de energia — permite gerar o gráfico Consumo × Geração mês a mês</span>
       </div>
@@ -1257,7 +1257,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
               <div style="font-size:10px;color:var(--cinza);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Módulo Solar</div>
               <!-- Seletor de módulo (apenas na tela, oculto no PDF) -->
               <div id="eqModSeletorWrap" style="margin-bottom:8px;">
-                <select id="eqModSeletor" onchange="trocarModulo(this.value)" style="background:#1a1f2e;color:var(--ouro-claro);border:1px solid rgba(200,146,42,0.4);border-radius:6px;padding:4px 8px;font-size:11px;width:100%;cursor:pointer;">
+                <select id="eqModSeletor" onchange="trocarModulo(this.value)" aria-label="Selecionar marca do módulo solar" style="background:#1a1f2e;color:var(--ouro-claro);border:1px solid rgba(200,146,42,0.4);border-radius:6px;padding:4px 8px;font-size:11px;width:100%;cursor:pointer;">
                   <option value="">— selecione —</option>
                 </select>
               </div>

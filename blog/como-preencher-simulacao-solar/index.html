@@ -66,6 +66,7 @@
   --borda:rgba(200,146,42,0.15);
 }
 html{scroll-behavior:smooth;}
+.article-content h2{scroll-margin-top:100px;}
 body{font-family:'Outfit',sans-serif;background:var(--noite);color:var(--texto);overflow-x:hidden}
 
 /* NAV */
@@ -209,7 +210,8 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
 .share-btn-fb:hover{background:#1464d0;transform:translateY(-1px);}
 .share-btn-copy{background:var(--noite3);color:var(--cinza);border:1px solid rgba(200,146,42,0.2);}
 .share-btn-copy:hover{color:var(--ouro-claro);border-color:var(--ouro-claro);transform:translateY(-1px);}
-.canal-cta{max-width:800px;margin:48px auto 0;padding:28px 32px;background:linear-gradient(135deg,#0a1f0d,#091209);border:1px solid rgba(37,211,102,0.2);border-radius:16px;display:flex;align-items:center;gap:24px;}
+.canal-cta{max-width:800px;margin:48px auto 0;padding:28px 32px;background:linear-gradient(135deg,#0a1f0d,#091209);border:1px solid rgba(37,211,102,0.2);border-radius:16px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.canal-cta-text{flex:1 1 200px;min-width:200px;}
 .canal-cta-icon{font-size:40px;flex-shrink:0;}
 .canal-cta-text h4{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--branco);margin-bottom:6px;}
 .canal-cta-text p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;}
@@ -289,7 +291,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">1</div>
       <span class="step-label">Primeiro passo</span>
     </div>
-    <h2>Dados de <em>contato</em></h2>
+    <h2 id="dados-contato">Dados de <em>contato</em></h2>
     <p>Preencha seu <strong>nome completo</strong> e o número do <strong>WhatsApp com DDD</strong>. Essas informações aparecem na proposta gerada e permitem que o engenheiro entre em contato para tirar dúvidas ou agendar a vistoria técnica gratuita.</p>
     <div class="tip-box">
       <span class="icon">💡</span>
@@ -301,7 +303,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">2</div>
       <span class="step-label">Segundo passo</span>
     </div>
-    <h2>Sua <em>cidade</em></h2>
+    <h2 id="sua-cidade">Sua <em>cidade</em></h2>
     <p>Digite o nome da sua cidade e selecione na lista que aparece. O simulador usa os <strong>5.562 municípios brasileiros</strong>, cada um com sua irradiação solar real (fonte: Atlas Solarimétrico CRESESB/INPE).</p>
     <p>A irradiação solar varia de cidade para cidade e impacta diretamente o tamanho do sistema e a geração estimada — por isso é fundamental selecionar a cidade correta, não a capital ou a cidade mais próxima.</p>
     <div class="warn-box">
@@ -314,7 +316,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">3</div>
       <span class="step-label">Terceiro passo</span>
     </div>
-    <h2>Perfil de <em>instalação</em></h2>
+    <h2 id="perfil-instalacao">Perfil de <em>instalação</em></h2>
     <p>Escolha o tipo de instalação que melhor descreve o seu caso:</p>
     <ul class="check-list">
       <li><strong>Residencial</strong> — casas e apartamentos com consumo típico doméstico</li>
@@ -328,7 +330,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">4</div>
       <span class="step-label">Quarto passo</span>
     </div>
-    <h2>Tipo de <em>telhado</em></h2>
+    <h2 id="tipo-telhado">Tipo de <em>telhado</em></h2>
     <p>Selecione o material do telhado onde os painéis serão instalados. Essa informação define o tipo de estrutura de fixação que aparece nos equipamentos da proposta:</p>
     <ul class="check-list">
       <li><strong>Cerâmico</strong> — telha francesa, portuguesa, colonial ou similar</li>
@@ -346,7 +348,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">5</div>
       <span class="step-label">Quinto passo</span>
     </div>
-    <h2>Seu <em>consumo</em> de energia</h2>
+    <h2 id="consumo-energia">Seu <em>consumo</em> de energia</h2>
     <p>Este é o campo mais importante da simulação. O consumo mensal em kWh está na sua conta de luz — procure por <strong>"Consumo de Energia Ativa"</strong> ou simplesmente <strong>"kWh"</strong>. Não confunda com o valor em reais.</p>
     <ul class="check-list">
       <li><strong>Consumo médio mensal</strong> — use o slider ou digite o valor médio. Mais rápido.</li>
@@ -362,7 +364,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">6</div>
       <span class="step-label">Sexto passo</span>
     </div>
-    <h2>Tarifa de <em>energia</em></h2>
+    <h2 id="tarifa-energia">Tarifa de <em>energia</em></h2>
     <p>Informe o valor que você paga por kWh. Esse número é usado para calcular a economia mensal e o retorno do investimento. Você encontra na conta de luz como "Tarifa de Energia" ou "TE + TUSD".</p>
     <p>Se não encontrar, o simulador usa <strong>R$ 0,95/kWh</strong> como padrão — uma média adequada para a maioria dos casos residenciais no interior paulista.</p>
     <div class="tip-box">
@@ -375,7 +377,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">7</div>
       <span class="step-label">Sétimo passo</span>
     </div>
-    <h2>Tipo de <em>inversor</em></h2>
+    <h2 id="tipo-inversor">Tipo de <em>inversor</em></h2>
     <p>Escolha entre as tecnologias disponíveis:</p>
     <ul class="check-list">
       <li><strong>Inversor String</strong> — um inversor central para todo o sistema. Melhor custo-benefício, ideal para telhados sem sombra.</li>
@@ -392,7 +394,7 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
       <div class="step-num">8</div>
       <span class="step-label">Último passo</span>
     </div>
-    <h2>Gerando sua <em>proposta</em></h2>
+    <h2 id="gerando-proposta">Gerando sua <em>proposta</em></h2>
     <p>Com tudo preenchido, clique em <strong>"Calcular minha economia"</strong>. Em segundos você recebe uma proposta técnica completa com:</p>
     <ul class="check-list">
       <li>Dimensionamento do sistema — kWp, número de módulos e área necessária</li>
@@ -436,14 +438,14 @@ footer a{color:var(--ouro-claro);text-decoration:none;}
     <div class="sidebar-card">
       <h3>Neste artigo</h3>
       <ul>
-        <li><a href="#">1. Dados de contato</a></li>
-        <li><a href="#">2. Sua cidade</a></li>
-        <li><a href="#">3. Perfil de instalação</a></li>
-        <li><a href="#">4. Tipo de telhado</a></li>
-        <li><a href="#">5. Consumo de energia</a></li>
-        <li><a href="#">6. Tarifa de energia</a></li>
-        <li><a href="#">7. Tipo de inversor</a></li>
-        <li><a href="#">8. Gerando a proposta</a></li>
+        <li><a href="#dados-contato">1. Dados de contato</a></li>
+        <li><a href="#sua-cidade">2. Sua cidade</a></li>
+        <li><a href="#perfil-instalacao">3. Perfil de instalação</a></li>
+        <li><a href="#tipo-telhado">4. Tipo de telhado</a></li>
+        <li><a href="#consumo-energia">5. Consumo de energia</a></li>
+        <li><a href="#tarifa-energia">6. Tarifa de energia</a></li>
+        <li><a href="#tipo-inversor">7. Tipo de inversor</a></li>
+        <li><a href="#gerando-proposta">8. Gerando a proposta</a></li>
       </ul>
     </div>
     <div class="cta-sidebar">

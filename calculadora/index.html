@@ -1015,7 +1015,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div id="estimativaRapidaBox" style="display:none;margin-top:16px;padding:20px;border:1px solid rgba(200,146,42,0.35);border-radius:12px;background:rgba(200,146,42,0.06);">
         <div style="font-size:14px;color:var(--cinza);margin-bottom:6px;">Estimativa de economia mensal</div>
         <div id="estimativaRapidaValor" style="font-size:28px;font-weight:700;color:var(--ouro-claro);font-family:'Outfit',sans-serif;"></div>
-        <div style="font-size:13px;color:var(--cinza);margin-top:10px;">Valor aproximado, sem considerar equipamentos ou visita técnica. Preencha seus dados abaixo pra receber a proposta completa, com dimensionamento real e payback em 25 anos.</div>
+        <div style="font-size:13px;color:var(--cinza);margin-top:10px;">Valor aproximado — a simulação completa abaixo recalcula com mais precisão e pode ajustar esse número pra cima ou pra baixo. Preencha seus dados abaixo pra receber a proposta completa, com dimensionamento, equipamentos e payback em 25 anos.</div>
       </div>
 
       <!-- DADOS DO CLIENTE - no final para aumentar conversão -->
@@ -1938,11 +1938,17 @@ function estimativaRapida(){
     consumoMedio=parseInt(manual.value||slider.value);
   }
 
+  // Desconta o consumo mínimo obrigatório (taxa de disponibilidade), que nunca
+  // é compensável — mesma lógica da simulação completa, só que simplificada.
+  // Isso aproxima bem mais a estimativa rápida do valor real da proposta.
+  const minimoKwh = {mono:30, bi:50, tri:100}[document.getElementById('ligacao').value] || 30;
+  const consumoCompensavel = Math.max(0, consumoMedio - minimoKwh);
+
   // Fração média do consumo efetivamente compensada (considera Fio B — Lei
-  // 14.300 — e a fatura mínima de disponibilidade). Mostrado como faixa pra
-  // não passar falsa precisão numa estimativa sem visita técnica.
-  const economiaMin=Math.round(consumoMedio*tarifa*0.80);
-  const economiaMax=Math.round(consumoMedio*tarifa*0.90);
+  // 14.300). Mostrado como faixa pra não passar falsa precisão numa
+  // estimativa sem visita técnica.
+  const economiaMin=Math.round(consumoCompensavel*tarifa*0.80);
+  const economiaMax=Math.round(consumoCompensavel*tarifa*0.90);
 
   document.getElementById('estimativaRapidaValor').textContent =
     'R$ ' + economiaMin.toLocaleString('pt-BR') + ' a R$ ' + economiaMax.toLocaleString('pt-BR') + ' / mês';

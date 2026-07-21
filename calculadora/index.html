@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q017N44D5S"></script>
 <script>
@@ -9,26 +11,31 @@
   gtag('js', new Date());
   gtag('config', 'G-Q017N44D5S');
 </script>
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel Code (adiado até a página terminar de carregar, para não competir com o LCP) -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '552988121990638');
-fbq('track', 'PageView');
+function carregarMetaPixel() {
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '552988121990638');
+  fbq('track', 'PageView');
+}
+if (document.readyState === 'complete') {
+  carregarMetaPixel();
+} else {
+  window.addEventListener('load', carregarMetaPixel);
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora Solar Gratuita: Simule sua Economia em São José do Rio Preto | Saewel</title>
 <meta name="description" content="Simule sua economia com energia solar em SJRP em segundos — grátis. Dimensionamento real, payback, análise financeira de 25 anos e proposta personalizada com engenheiro.">
 <meta name="keywords" content="calculadora energia solar, simulador solar gratuito, quanto economiza painel solar, dimensionamento fotovoltaico">

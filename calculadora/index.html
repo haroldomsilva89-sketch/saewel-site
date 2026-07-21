@@ -2402,6 +2402,7 @@ Gostaria de avançar com o projeto!`);
   // ── SALVAR LEAD NO GOOGLE SHEETS ──
   salvarLead({
     nome, telefone: tel, cidade,
+    endereco: document.getElementById('enderecoInput').value.trim(),
     perfil: PERFIS[perfil],
     consumo: consumoMedio,
     kwp: kWp.toFixed(2),

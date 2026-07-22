@@ -278,6 +278,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 .btn-pdf-p{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--noite2);border:1px solid rgba(200,146,42,0.3);color:var(--ouro-claro);font-size:15px;font-weight:600;padding:18px 24px;border-radius:12px;cursor:pointer;transition:all 0.3s;font-family:'Outfit',sans-serif;}
 .btn-pdf-p:hover{border-color:var(--ouro-claro);background:rgba(200,146,42,0.07);}
 .btn-nova{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--cinza);font-size:13px;cursor:pointer;background:none;border:none;font-family:'Outfit',sans-serif;padding:14px;transition:color 0.3s;width:100%;}
+
+/* PERGUNTA DE FINANCIAMENTO (pós-resultado) */
+.financiamento-wrap{margin-top:28px;padding:26px 24px;background:var(--noite2);border:1px solid rgba(200,146,42,0.15);border-radius:16px;text-align:center;}
+.financiamento-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:10px;}
+.financiamento-pergunta{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:var(--branco);margin-bottom:18px;}
+.financiamento-opcoes{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.btn-financiamento{background:var(--noite3);border:1px solid rgba(200,146,42,0.2);color:var(--branco);padding:12px 22px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.btn-financiamento:hover{border-color:var(--ouro-claro);background:rgba(200,146,42,0.08);}
+.btn-financiamento.selecionado{background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);border-color:transparent;}
+.financiamento-ok{display:none;font-size:13px;color:var(--verde);margin-top:14px;}
+.financiamento-ok.show{display:block;}
+@media print{.financiamento-wrap{display:none;}}
 .btn-nova:hover{color:var(--branco);}
 
 /* FOOTER */
@@ -912,6 +924,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
               <img id="ajustePinImg" src="" alt="Ajuste a posição do imóvel" style="width:100%;height:260px;object-fit:cover;display:block;background:#111;" draggable="false" onerror="document.getElementById('ajustePinBlock').style.display='none';">
               <div id="ajustePinDot" style="position:absolute;top:50%;left:50%;width:18px;height:18px;transform:translate(-50%,-50%);border-radius:50%;background:#E8433A;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.6);cursor:grab;"></div>
             </div>
+            <button type="button" id="btnAmpliarMapa" onclick="ampliarAreaPreview()" style="margin-top:8px;width:100%;background:transparent;border:1px dashed rgba(200,146,42,0.35);color:var(--ouro-claro);border-radius:10px;padding:9px;font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;">🔍 Não encontro meu local — ampliar mapa</button>
             <div style="display:flex;gap:8px;align-items:flex-end;margin-top:10px;">
               <div style="flex:1;">
                 <label class="form-label" for="latManual" style="font-size:11px;">Latitude</label>
@@ -1446,6 +1459,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         Imprimir / Salvar PDF
       </button>
     </div>
+    <!-- QUALIFICAÇÃO PÓS-RESULTADO: forma de pagamento pretendida -->
+    <div class="financiamento-wrap" id="financiamentoWrap">
+      <div class="financiamento-eyebrow">Só mais uma coisa</div>
+      <div class="financiamento-pergunta">Como você pretende viabilizar o investimento?</div>
+      <div class="financiamento-opcoes" id="financiamentoOpcoes">
+        <button type="button" class="btn-financiamento" onclick="responderFinanciamento('À vista', this)">À vista</button>
+        <button type="button" class="btn-financiamento" onclick="responderFinanciamento('Financiamento', this)">Financiamento</button>
+        <button type="button" class="btn-financiamento" onclick="responderFinanciamento('Ainda não sei', this)">Ainda não sei</button>
+      </div>
+      <div class="financiamento-ok" id="financiamentoConfirmado">✓ Obrigado! Isso ajuda o engenheiro a preparar a proposta certa pra você.</div>
+    </div>
+
     <button class="btn-nova" onclick="novaSimulacao()">← Fazer nova simulação</button>
 
     <!-- PRÓXIMOS PASSOS -->
@@ -1507,6 +1532,10 @@ const ESTRUTURAS = {ceramica:'Cerâmico',metalica:'Metálico',fibrocimento:'Fibr
 const urlParamsTier = new URLSearchParams(window.location.search);
 const tierRecebido = urlParamsTier.get('tier') || '';
 const origemRecebida = urlParamsTier.get('origem') || '';
+// Guarda o WhatsApp do lead que acabou de simular, pra poder mandar a
+// resposta da pergunta de financiamento (feita DEPOIS de ver o resultado)
+// como uma atualização separada, sem precisar re-simular nada.
+let leadAtualWhats = '';
 // Fator de variação mensal de irradiação (base = 1.0)
 const VAR_MES = [1.08,1.15,1.05,0.97,0.88,0.83,0.82,0.92,0.93,0.97,0.97,1.04];
 let modoConsumo = 'medio';
@@ -1657,11 +1686,15 @@ function mostrarMapaSatelite(lat, lon){
 }
 // ── AJUSTE MANUAL DO PIN (preview arrastável antes de gerar a proposta) ──
 let previewBBox = null; // guarda os limites geográficos da imagem de preview atual, pra converter pixel -> lat/lon
-function gerarPreviewMapa(lat, lon){
+const RAIO_PADRAO_PREVIEW = 0.0035; // ~parecido a 550m de raio — mais contexto ao redor do pino que antes (era 0.0022)
+const RAIO_MAXIMO_PREVIEW = 0.02;   // trava de segurança pro botão "ampliar" (~2.2km de raio, já bem afastado)
+let previewRaioAtual = RAIO_PADRAO_PREVIEW;
+function gerarPreviewMapa(lat, lon, raioCustom){
   // Área de preview um pouco mais aberta que o crop final da capa (raioGraus maior),
   // pra dar espaço de sobra pro usuário arrastar o pino se o ponto caiu perto da borda.
   const IMG_W = 700, IMG_H = 260;
-  const raioGraus = 0.0022;
+  const raioGraus = raioCustom || RAIO_PADRAO_PREVIEW;
+  previewRaioAtual = raioGraus;
   const larguraTotalGraus = (raioGraus*2) * (IMG_W/IMG_H);
   const raioGrausLon = (larguraTotalGraus/2) / Math.cos(lat * Math.PI/180);
   const minLat = lat - raioGraus, maxLat = lat + raioGraus;
@@ -1677,6 +1710,13 @@ function gerarPreviewMapa(lat, lon){
   const latManualEl=document.getElementById('latManual'), lonManualEl=document.getElementById('lonManual');
   if(latManualEl)latManualEl.value=lat.toFixed(5);
   if(lonManualEl)lonManualEl.value=lon.toFixed(5);
+  // Só reseta o botão "ampliar" numa busca NOVA (raioCustom vazio) — se for
+  // um clique de ampliar em si (raioCustom preenchido), o estado dele
+  // (habilitado/desabilitado) é tratado direto pela função ampliarAreaPreview.
+  if(!raioCustom){
+    const btnAmpliar = document.getElementById('btnAmpliarMapa');
+    if(btnAmpliar){ btnAmpliar.disabled = false; btnAmpliar.textContent = '🔍 Não encontro meu local — ampliar mapa'; }
+  }
 }
 function moverPinPreview(clientX, clientY){
   if(!previewBBox)return;
@@ -1698,6 +1738,23 @@ function moverPinPreview(clientX, clientY){
   const latManualEl=document.getElementById('latManual'), lonManualEl=document.getElementById('lonManual');
   if(latManualEl)latManualEl.value=novaLat.toFixed(5);
   if(lonManualEl)lonManualEl.value=novoLon.toFixed(5);
+}
+// Reabre a imagem do mapa com uma área maior (raio ~1.8x), centralizada na
+// posição ATUAL do pino (não no ponto original do geocode) — assim, se o
+// cliente já arrastou na direção certa mas ainda não achou o lugar exato,
+// ele consegue "abrir mais" e continuar se orientando, em vez de ficar
+// travado no quadro pequeno original.
+function ampliarAreaPreview(){
+  const latEl = document.getElementById('geoLat'), lonEl = document.getElementById('geoLon');
+  const lat = parseFloat(latEl && latEl.value), lon = parseFloat(lonEl && lonEl.value);
+  if(isNaN(lat) || isNaN(lon)) return;
+  const novoRaio = Math.min(previewRaioAtual * 1.8, RAIO_MAXIMO_PREVIEW);
+  gerarPreviewMapa(lat, lon, novoRaio);
+  const btnAmpliar = document.getElementById('btnAmpliarMapa');
+  if(btnAmpliar && novoRaio >= RAIO_MAXIMO_PREVIEW){
+    btnAmpliar.textContent = '🔍 Área máxima atingida';
+    btnAmpliar.disabled = true;
+  }
 }
 // ── Aplica coordenada digitada manualmente (mais precisa que o arraste no touch) ──
 function aplicarCoordenadaManual(){
@@ -1946,6 +2003,32 @@ async function salvarLead(dados) {
     });
   } catch(e) {
     console.log('Sheets:', e);
+  }
+}
+
+// Envia a resposta da pergunta de financiamento como uma atualização
+// separada e leve — não re-salva o lead nem mexe no histórico de
+// revisões, só atualiza um campo na linha que já existe.
+async function responderFinanciamento(opcao, botaoClicado) {
+  document.querySelectorAll('.btn-financiamento').forEach(function(b){ b.classList.remove('selecionado'); });
+  botaoClicado.classList.add('selecionado');
+  document.getElementById('financiamentoConfirmado').classList.add('show');
+
+  if (!leadAtualWhats) return; // segurança: sem WhatsApp não tem como localizar o lead
+
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'atualizarFinanciamento',
+        telefone: leadAtualWhats,
+        financiamento: opcao
+      })
+    });
+  } catch(e) {
+    console.log('Financiamento:', e);
   }
 }
 
@@ -2424,6 +2507,7 @@ Gostaria de avançar com o projeto!`);
     tier: tierRecebido,
     origem: origemRecebida
   });
+  leadAtualWhats = tel;
 
   // Mostrar
   document.getElementById('proposta').classList.add('show');

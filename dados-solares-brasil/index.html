@@ -29,8 +29,8 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa Solar do Brasil: Consulte a Irradiação da Sua Cidade | Saewel</title>
-  <meta name="description" content="Consulte a irradiação solar (HSP) de qualquer um dos 5.562 municípios brasileiros. Dados oficiais CRESESB/SunData — gratuito, interativo e com simulação de sistema.">
+  <title>Consulta CRESESB/SunData: Irradiação Solar por Cidade (Grátis) | Saewel</title>
+  <meta name="description" content="Digite sua cidade e veja a irradiação solar (HSP) na hora. Dados oficiais CRESESB/SunData dos 5.562 municípios do Brasil, gratuito.">
   <meta name="keywords" content="irradiação solar por município, HSP cidade, potencial solar Brasil, CRESESB SunData, dados solares, horas sol pico">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/dados-solares-brasil/">
   <meta property="og:title" content="Irradiação Solar por Município — Consulta Gratuita | Saewel">
@@ -228,6 +228,54 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
     details[open] > p{animation:fadeIn 0.25s ease;}
     @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "O que é HSP — Horas de Sol Pico?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HSP é a quantidade de energia solar equivalente a horas com irradiância de 1.000 W/m² — a condição de referência dos painéis fotovoltaicos. Um município com HSP 5,36 significa que, em média, cada dia equivale a 5,36 horas de sol pleno. É o principal dado de entrada para dimensionar um sistema solar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "De onde vêm esses dados?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Todos os dados são do CRESESB/SunData — o Centro de Referência para Energia Solar e Eólica, mantido pelo CEPEL, vinculado ao governo federal. É a fonte oficial usada por engenheiros em todo o Brasil para emissão de ART de projetos fotovoltaicos. Os valores são plano horizontal (GHI), série histórica de mais de 20 anos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como usar o HSP para calcular a geração do meu sistema?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A fórmula básica é: Geração mensal (kWh) = Potência (kWp) × HSP × 30 dias × PR, onde PR é o Performance Ratio do sistema (normalmente 0,75 a 0,82). Exemplo: sistema de 5 kWp em São José do Rio Preto (HSP 5,36) com PR 0,78 gera aproximadamente 627 kWh/mês."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Por que agosto tem mais irradiação do que dezembro no interior de SP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A irradiação depende do ângulo do sol e da cobertura de nuvens. No interior paulista, dezembro e janeiro coincidem com a estação chuvosa, o que reduz a irradiação direta. Agosto é seco e com céu limpo na maior parte dos dias, resultando em mais irradiação mesmo com o sol mais baixo no horizonte."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A simulação rápida é um orçamento real?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não — é uma estimativa de dimensionamento baseada no HSP da cidade e no consumo informado. O projeto técnico real considera também orientação e inclinação do telhado, sombreamentos, tipo de estrutura e a tarifa vigente da distribuidora."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -303,6 +351,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   <div class="hero-eyebrow">Atlas Solar · Saewel Energia Solar</div>
   <h1 class="hero-title">Irradiação solar de <em>qualquer cidade</em> do Brasil</h1>
   <p class="hero-sub">Consulte o HSP (Horas de Sol Pico) mensal e anual de 5.562 municípios brasileiros — os mesmos dados do CRESESB/SunData que engenheiros usam para dimensionar sistemas fotovoltaicos</p>
+  <p class="tool-intro" style="max-width:640px;margin:14px auto 0;font-size:14px;line-height:1.6;color:#9BA3AD;">Antes de dimensionar qualquer sistema solar, é preciso saber quanto sol a sua cidade recebe. Essa ferramenta consulta em tempo real os dados oficiais do CRESESB/SunData — a mesma fonte usada por engenheiros em todo o Brasil para calcular a geração de energia e emitir a ART do projeto — para qualquer um dos 5.562 municípios brasileiros.</p>
   <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;position:relative;">
     <span class="hero-badge">☀️ 5.562 municípios</span>
     <span class="hero-badge">📡 Fonte: CRESESB/SunData</span>
@@ -394,6 +443,31 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   </div><!-- /result -->
 
 </div><!-- /widget-wrap -->
+
+<!-- CIDADES EM DESTAQUE -->
+<div style="max-width:900px;margin:0 auto;padding:0 5% 40px;">
+  <section class="cidades-destaque">
+    <h2 style="font-size:22px;margin-bottom:20px;">Irradiação solar nas principais cidades da região</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--ouro);text-align:left;">
+          <th style="padding:10px 8px;">Cidade</th>
+          <th style="padding:10px 8px;">HSP médio anual (kWh/m²/dia)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #2a2d33;"><td style="padding:10px 8px;">São José do Rio Preto</td><td style="padding:10px 8px;">5,36</td></tr>
+        <tr style="border-bottom:1px solid #2a2d33;"><td style="padding:10px 8px;">Votuporanga</td><td style="padding:10px 8px;">5,41</td></tr>
+        <tr style="border-bottom:1px solid #2a2d33;"><td style="padding:10px 8px;">Olímpia</td><td style="padding:10px 8px;">5,39</td></tr>
+        <tr style="border-bottom:1px solid #2a2d33;"><td style="padding:10px 8px;">Mirassol</td><td style="padding:10px 8px;">5,37</td></tr>
+        <tr style="border-bottom:1px solid #2a2d33;"><td style="padding:10px 8px;">Catanduva</td><td style="padding:10px 8px;">5,34</td></tr>
+        <tr style="border-bottom:1px solid #2a2d33;"><td style="padding:10px 8px;">Bady Bassitt</td><td style="padding:10px 8px;">5,35</td></tr>
+        <tr style="border-bottom:1px solid #2a2d33;"><td style="padding:10px 8px;">Nova Aliança</td><td style="padding:10px 8px;">5,36</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:16px;font-size:13px;color:#9BA3AD;">Para referência: a Alemanha, líder mundial em energia solar instalada, tem irradiação média de apenas 2,8 kWh/m²/dia — o interior paulista recebe quase o dobro.</p>
+  </section>
+</div>
 
 <!-- FAQ + CTA -->
 <div style="max-width:900px;margin:0 auto;padding:0 5% 80px;">

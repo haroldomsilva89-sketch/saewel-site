@@ -1876,6 +1876,31 @@ async function geocodificar(query, biasCoords){
   const data=await resp.json();
   return (data && data.length) ? data[0] : null;
 }
+// ── CORREÇÕES MANUAIS DE GEOCODIFICAÇÃO ──
+// O Nominatim (serviço gratuito de geocodificação) às vezes erra feio em
+// vilas/localidades rurais pouco mapeadas — pode devolver um ponto a vários
+// km de distância do endereço real. Pra esses casos conhecidos, guardamos
+// aqui a coordenada certa (conferida manualmente no Google Maps), e a
+// calculadora usa ela direto, sem nem chamar o serviço externo.
+// Pra adicionar um novo caso: 'chave' é um trecho (sem acento, minúsculo)
+// que deve aparecer no endereço digitado; 'cidade' idem, mas da cidade
+// selecionada; lat/lon são as coordenadas corretas.
+const CORRECOES_GEOCODE_MANUAL = [
+  { chave: 'vila de furnas', cidade: 'icem', lat: -20.347539535207886, lon: -49.19702827486722 }
+];
+function normalizarTextoBusca_(s){
+  return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+function buscarCorrecaoManual_(endereco, cidadeSelecionada){
+  const enderecoNorm = normalizarTextoBusca_(endereco);
+  const cidadeNorm = normalizarTextoBusca_(cidadeSelecionada);
+  for(const c of CORRECOES_GEOCODE_MANUAL){
+    if(enderecoNorm.includes(c.chave) && cidadeNorm.includes(c.cidade)){
+      return {lat: c.lat, lon: c.lon};
+    }
+  }
+  return null;
+}
 async function buscarEndereco(){
   const endereco=document.getElementById('enderecoInput').value.trim();
   const status=document.getElementById('geocodeStatus');
@@ -1887,6 +1912,27 @@ async function buscarEndereco(){
   const enderecoMencionaCidade=endereco.toLowerCase().includes(nomeCidadeSel.toLowerCase());
   btn.disabled=true; btn.textContent='...';
   status.textContent='Buscando coordenadas...';
+  // Checa a lista de correções manuais ANTES de chamar o Nominatim — se bater,
+  // usa a coordenada verificada direto, sem esperar rede nem arriscar erro.
+  const correcaoManual=buscarCorrecaoManual_(endereco, cidadeSelecionada);
+  if(correcaoManual){
+    const {lat,lon}=correcaoManual;
+    document.getElementById('geoLat').value=lat;
+    document.getElementById('geoLon').value=lon;
+    gerarPreviewMapa(lat,lon);
+    const {cidade,distancia}=cidadeMaisProxima(lat,lon);
+    if(cidade){
+      const irr=SOLAR_DB[cidade];
+      document.getElementById('cidadeInput').value=cidade;
+      document.getElementById('cidadeValor').value=cidade;
+      document.getElementById('cidadeIrr').value=irr;
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)}) — irradiação de referência: ${cidade} (${distancia.toFixed(1)} km do ponto exato).`;
+    } else {
+      status.textContent=`Coordenadas encontradas (${lat.toFixed(4)}, ${lon.toFixed(4)}).`;
+    }
+    btn.disabled=false; btn.textContent='Buscar';
+    return;
+  }
   try{
     const variantes=gerarVariantesEndereco(endereco, cidadeSelecionada);
     const coordCidadeSel=(typeof COORDS_DB!=='undefined')?COORDS_DB[cidadeSelecionada]:null;

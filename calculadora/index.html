@@ -1499,6 +1499,13 @@ const MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov'
 const MESES_FULL = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const PERFIS = {residencial:'Residencial',comercial:'Comercial',agronegocio:'Agronegócio'};
 const ESTRUTURAS = {ceramica:'Cerâmico',metalica:'Metálico',fibrocimento:'Fibrocimento',laje:'Laje/Plana',solo:'Solo'};
+
+// ── TIER DE QUALIFICAÇÃO (vindo do quiz /qualificacao/, se aplicável) ──
+// Se o lead chegou aqui direto (sem passar pelo quiz — ex: link do site,
+// indicação, Instagram), o parâmetro não existe e o campo fica vazio.
+// Isso é normal e esperado, não é um erro.
+const urlParamsTier = new URLSearchParams(window.location.search);
+const tierRecebido = urlParamsTier.get('tier') || '';
 // Fator de variação mensal de irradiação (base = 1.0)
 const VAR_MES = [1.08,1.15,1.05,0.97,0.88,0.83,0.82,0.92,0.93,0.97,0.97,1.04];
 let modoConsumo = 'medio';
@@ -2412,7 +2419,8 @@ Gostaria de avançar com o projeto!`);
     economia25anos: Math.round(e25), // valor numérico puro (sem "R$" nem separador), pra já cair pronto pra soma/análise no Power BI
     payback: payback_min.toFixed(1) + ' a ' + payback_max.toFixed(1) + ' anos',
     irradiacao: irr.toFixed(2) + ' kWh/m²/dia',
-    proposta: propNum
+    proposta: propNum,
+    tier: tierRecebido
   });
 
   // Mostrar

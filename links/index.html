@@ -240,12 +240,12 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   <div class="profile-tag">⚡ Energia solar em SJRP e Noroeste Paulista</div>
   <div class="divider"></div>
 
-  <!-- CTA principal -->
-  <a href="/calculadora/" class="link-btn destaque">
-    <div class="btn-icon">☀️</div>
+  <!-- Quiz de qualificação (único CTA principal — leva pra calculadora no final) -->
+  <a href="/qualificacao/?fonte=bio_instagram" class="link-btn destaque">
+    <div class="btn-icon">🎯</div>
     <div class="btn-content">
-      <div class="btn-title">Calculadora Solar Gratuita</div>
-      <div class="btn-sub">Simule sua economia em segundos</div>
+      <div class="btn-title">Simule sua Economia (Rápido)</div>
+      <div class="btn-sub">3 perguntas e você já vê o resultado</div>
     </div>
     <div class="btn-arrow">›</div>
   </a>
@@ -316,8 +316,8 @@ document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
     trackClick('generate_lead', 'WhatsApp - ' + (this.classList.contains('social-btn') ? 'icone social' : 'botao destaque'));
   });
 });
-document.querySelectorAll('a[href^="/calculadora/"]').forEach(function(link) {
-  link.addEventListener('click', function() { trackClick('select_content', 'Calculadora Solar'); });
+document.querySelectorAll('a[href^="/qualificacao/"]').forEach(function(link) {
+  link.addEventListener('click', function() { trackClick('select_content', 'Quiz Qualificacao'); });
 });
 document.querySelectorAll('a[href*="g.page"]').forEach(function(link) {
   link.addEventListener('click', function() { trackClick('select_content', 'Avaliar no Google'); });

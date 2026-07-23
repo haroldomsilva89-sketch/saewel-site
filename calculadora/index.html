@@ -2553,7 +2553,8 @@ Gostaria de avançar com o projeto!`);
     tier: tierRecebido,
     origem: origemRecebida,
     tipoTelhado: ESTRUTURAS[estrutura] || '',
-    tipoLigacao: ({mono:'Monofásico',bi:'Bifásico',tri:'Trifásico'}[ligacao]) || ''
+    tipoLigacao: ({mono:'Monofásico',bi:'Bifásico',tri:'Trifásico'}[ligacao]) || '',
+    tarifa: 'R$ ' + tarifa.toFixed(2) + '/kWh'
   });
   leadAtualWhats = tel;
 

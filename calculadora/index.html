@@ -926,8 +926,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           <input type="hidden" id="geoLon">
           <div id="ajustePinBlock" class="no-print" style="display:none;margin-top:12px;">
             <div style="font-size:11px;color:var(--cinza);margin-bottom:6px;">📍 O ponto caiu fora do lugar? Arraste o pino (ou toque/clique na imagem) para a posição exata do imóvel — ou digite a coordenada exata abaixo:</div>
-            <div id="ajustePinImgWrap" style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(200,146,42,0.25);height:260px;cursor:crosshair;user-select:none;-webkit-user-select:none;touch-action:none;">
-              <img id="ajustePinImg" src="" alt="Ajuste a posição do imóvel" style="width:100%;height:260px;object-fit:cover;display:block;background:#111;" draggable="false" onerror="document.getElementById('ajustePinBlock').style.display='none';">
+            <div id="ajustePinImgWrap" style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(200,146,42,0.25);height:450px;cursor:crosshair;user-select:none;-webkit-user-select:none;touch-action:none;">
+              <img id="ajustePinImg" src="" alt="Ajuste a posição do imóvel" style="width:100%;height:450px;object-fit:cover;display:block;background:#111;" draggable="false" onerror="document.getElementById('ajustePinBlock').style.display='none';">
               <div id="ajustePinDot" style="position:absolute;top:50%;left:50%;width:18px;height:18px;transform:translate(-50%,-50%);border-radius:50%;background:#E8433A;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.6);cursor:grab;"></div>
             </div>
             <button type="button" id="btnAmpliarMapa" onclick="ampliarAreaPreview()" style="margin-top:8px;width:100%;background:transparent;border:1px dashed rgba(200,146,42,0.35);color:var(--ouro-claro);border-radius:10px;padding:9px;font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;">🔍 Não encontro meu local — ampliar mapa</button>
@@ -1704,13 +1704,13 @@ function mostrarMapaSatelite(lat, lon){
 }
 // ── AJUSTE MANUAL DO PIN (preview arrastável antes de gerar a proposta) ──
 let previewBBox = null; // guarda os limites geográficos da imagem de preview atual, pra converter pixel -> lat/lon
-const RAIO_PADRAO_PREVIEW = 0.0035; // ~parecido a 550m de raio — mais contexto ao redor do pino que antes (era 0.0022)
+const RAIO_PADRAO_PREVIEW = 0.0030; // ~parecido a 470m de raio (ajustado de 0.0035, que ficou um pouco alto)
 const RAIO_MAXIMO_PREVIEW = 0.02;   // trava de segurança pro botão "ampliar" (~2.2km de raio, já bem afastado)
 let previewRaioAtual = RAIO_PADRAO_PREVIEW;
 function gerarPreviewMapa(lat, lon, raioCustom){
   // Área de preview um pouco mais aberta que o crop final da capa (raioGraus maior),
   // pra dar espaço de sobra pro usuário arrastar o pino se o ponto caiu perto da borda.
-  const IMG_W = 700, IMG_H = 260;
+  const IMG_W = 700, IMG_H = 450;
   const raioGraus = raioCustom || RAIO_PADRAO_PREVIEW;
   previewRaioAtual = raioGraus;
   const larguraTotalGraus = (raioGraus*2) * (IMG_W/IMG_H);
@@ -2606,7 +2606,9 @@ Gostaria de avançar com o projeto!`);
     origem: origemRecebida,
     tipoTelhado: ESTRUTURAS[estrutura] || '',
     tipoLigacao: ({mono:'Monofásico',bi:'Bifásico',tri:'Trifásico'}[ligacao]) || '',
-    tarifa: 'R$ ' + tarifa.toFixed(2) + '/kWh'
+    tarifa: 'R$ ' + tarifa.toFixed(2) + '/kWh',
+    latitude: temGeo ? geoLatVal.toFixed(6) : '',
+    longitude: temGeo ? geoLonVal.toFixed(6) : ''
   });
   leadAtualWhats = tel;
 

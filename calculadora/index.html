@@ -281,6 +281,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
 /* PERGUNTA DE FINANCIAMENTO (pós-resultado) */
 .financiamento-wrap{margin-top:28px;padding:26px 24px;background:var(--noite2);border:1px solid rgba(200,146,42,0.15);border-radius:16px;text-align:center;}
+.endereco-prompt-wrap{margin-top:16px;padding:26px 24px;background:var(--noite2);border:1px solid rgba(200,146,42,0.15);border-radius:16px;text-align:center;}
+.endereco-prompt-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:4px;}
+.endereco-prompt-form input{flex:1 1 260px;max-width:360px;}
+.btn-pular-endereco{background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--cinza);padding:12px 20px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.btn-pular-endereco:hover{border-color:rgba(255,255,255,0.3);color:var(--branco);}
+@media print{.endereco-prompt-wrap{display:none;}}
 .financiamento-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:10px;}
 .financiamento-pergunta{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:var(--branco);margin-bottom:18px;}
 .financiamento-opcoes{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
@@ -1471,6 +1477,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
       <div class="financiamento-ok" id="financiamentoConfirmado">✓ Obrigado! Isso ajuda o engenheiro a preparar a proposta certa pra você.</div>
     </div>
 
+    <!-- QUALIFICAÇÃO PÓS-RESULTADO: endereço completo (opcional) -->
+    <div class="endereco-prompt-wrap" id="enderecoPromptWrap">
+      <div class="financiamento-eyebrow" id="enderecoPromptEyebrow">Quer um dimensionamento mais preciso?</div>
+      <div class="financiamento-pergunta" id="enderecoPromptPergunta">Informe seu endereço completo (opcional)</div>
+      <div class="endereco-prompt-form" id="enderecoPromptForm">
+        <input type="text" id="enderecoPromptInput" class="form-input" placeholder="Rua, número, bairro, cidade - UF" autocomplete="off">
+        <button type="button" class="btn-financiamento" style="background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);border-color:transparent;" onclick="enviarEnderecoPrompt()">Enviar</button>
+        <button type="button" class="btn-pular-endereco" onclick="pularEnderecoPrompt()">Pular</button>
+      </div>
+      <div class="financiamento-ok" id="enderecoPromptConfirmado">✓ Endereço registrado! Isso ajuda o engenheiro a refinar o dimensionamento.</div>
+    </div>
+
     <button class="btn-nova" onclick="novaSimulacao()">← Fazer nova simulação</button>
 
     <!-- PRÓXIMOS PASSOS -->
@@ -2076,6 +2094,40 @@ async function responderFinanciamento(opcao, botaoClicado) {
   } catch(e) {
     console.log('Financiamento:', e);
   }
+}
+
+// Prompt de endereço pós-resultado: opcional, aparece depois que o lead já
+// viu o resultado e demonstrou interesse — mesma filosofia do prompt de
+// financiamento, pra não arriscar a conversão do formulário inicial.
+async function enviarEnderecoPrompt() {
+  const endereco = document.getElementById('enderecoPromptInput').value.trim();
+  if (!endereco) return; // campo vazio: não faz nada, deixa a pessoa clicar "Pular" se não quiser preencher
+
+  document.getElementById('enderecoPromptForm').style.display = 'none';
+  document.getElementById('enderecoPromptEyebrow').style.display = 'none';
+  document.getElementById('enderecoPromptPergunta').style.display = 'none';
+  document.getElementById('enderecoPromptConfirmado').classList.add('show');
+
+  if (!leadAtualWhats) return; // segurança: sem WhatsApp não tem como localizar o lead
+
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'atualizarEndereco',
+        telefone: leadAtualWhats,
+        endereco: endereco
+      })
+    });
+  } catch(e) {
+    console.log('Endereco:', e);
+  }
+}
+
+function pularEnderecoPrompt() {
+  document.getElementById('enderecoPromptWrap').style.display = 'none';
 }
 
 // ── CALCULAR ──

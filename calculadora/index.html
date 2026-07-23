@@ -2551,7 +2551,9 @@ Gostaria de avançar com o projeto!`);
     irradiacao: irr.toFixed(2) + ' kWh/m²/dia',
     proposta: propNum,
     tier: tierRecebido,
-    origem: origemRecebida
+    origem: origemRecebida,
+    tipoTelhado: ESTRUTURAS[estrutura] || '',
+    tipoLigacao: ({mono:'Monofásico',bi:'Bifásico',tri:'Trifásico'}[ligacao]) || ''
   });
   leadAtualWhats = tel;
 

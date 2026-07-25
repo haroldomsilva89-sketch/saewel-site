@@ -114,37 +114,37 @@
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/mirassol/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/catanduva/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/olimpia/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/votuporanga/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/nova-alianca/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/bady-bassit/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -170,18 +170,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-bady-bassitt/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-olimpia/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  
+  
 
   <!-- BLOG — NOVOS (2026-06-09 sessão 2) -->
   <url>
@@ -196,12 +186,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-votuporanga/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  
 
   <!-- BLOG — NOVOS (2026-06-09) -->
   <url>
@@ -210,18 +195,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-catanduva/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/energia-solar-mirassol/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  
+  
 
   <!-- BLOG — EXISTENTES -->
   <url>
@@ -338,48 +313,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-sao-jose-do-rio-preto/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-mirassol/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-nova-alianca/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-catanduva/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-olimpia/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-votuporanga/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saewelenergiasolar.com.br/blog/raio-x-solar-bady-bassitt/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  
+  
+  
+  
+  
+  
+  
   <url>
     <loc>https://www.saewelenergiasolar.com.br/blog/irradiacao-solar-cidade-cresesb-sundata/</loc>
     <lastmod>2026-07-17</lastmod>

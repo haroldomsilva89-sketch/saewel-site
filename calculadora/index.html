@@ -1407,8 +1407,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         </table>
       </div>
 
-      <!-- NOTA ESTIMATIVA -->
-      <div style="margin-top:24px;background:rgba(200,146,42,0.06);border:1px solid rgba(200,146,42,0.2);border-radius:10px;padding:16px 20px;font-size:12px;color:var(--cinza);line-height:1.6;">
+      <!-- NOTA ESTIMATIVA (só na tela — oculta no PDF/impressão pra evitar bug de sobreposição) -->
+      <div class="no-print" style="margin-top:24px;background:rgba(200,146,42,0.06);border:1px solid rgba(200,146,42,0.2);border-radius:10px;padding:16px 20px;font-size:12px;color:var(--cinza);line-height:1.6;">
         <strong style="color:var(--ouro-claro);">⚠️ Esta é uma estimativa automática.</strong> Para um dimensionamento preciso e proposta comercial personalizada, solicite uma análise técnica gratuita.<br>
         Os dados de irradiação são reais (fonte: Atlas Solarimétrico CRESESB/INPE). A <strong style="color:var(--branco);">faixa de investimento</strong> e os indicadores financeiros são referenciais — os valores finais dependem da vistoria técnica presencial, estado da instalação elétrica, orientação e inclinação do telhado, sombreamentos e tarifa vigente. <strong style="color:var(--branco);">A Saewel Energia Solar realiza o projeto técnico definitivo após visita ao local, com ART inclusa.</strong>
       </div>

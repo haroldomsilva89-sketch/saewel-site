@@ -1565,6 +1565,7 @@ const origemRecebida = urlParamsTier.get('origem') || '';
 // resposta da pergunta de financiamento (feita DEPOIS de ver o resultado)
 // como uma atualização separada, sem precisar re-simular nada.
 let leadAtualWhats = '';
+let leadAtualCidade = '';
 // Fator de variação mensal de irradiação (base = 1.0)
 const VAR_MES = [1.08,1.15,1.05,0.97,0.88,0.83,0.82,0.92,0.93,0.97,0.97,1.04];
 let modoConsumo = 'medio';
@@ -2067,6 +2068,46 @@ function setModoConsumo(modo){
 }
 
 
+// ── CEP AUTOMÁTICO (busca reversa por endereço) ──
+// O campo de endereço é texto livre (opcional, só pra irradiação mais
+// precisa) — o cliente raramente digita o CEP junto. Antes de enviar o
+// lead, tentamos descobrir o CEP automaticamente via ViaCEP (busca
+// reversa: UF + Cidade + Logradouro → CEP), pra já cair pronto na
+// Planilha-Mestre sem precisar editar nada manualmente depois. Se não
+// encontrar (endereço rural, nome de rua não bate, API fora do ar, etc.),
+// o endereço segue sem CEP mesmo — best-effort, nunca trava o envio.
+function extrairLogradouroParaCep_(enderecoTexto){
+  // Reaproveita a mesma lógica de "remover número da casa" usada na
+  // geocodificação — ViaCEP também não quer número, só o nome da rua.
+  return enderecoTexto
+    .split(/,|\s-\s/)[0] // pega só o primeiro pedaço (antes da 1ª vírgula/hífen)
+    .replace(/,?\s*(?:n[ºo°]?\.?\s*)?\d+\b/gi,'')
+    .trim();
+}
+async function buscarCepAutomatico_(enderecoTexto, cidadeSelecionada){
+  if(!enderecoTexto || !cidadeSelecionada) return enderecoTexto;
+  // Já tem CEP escrito no texto? Não mexe.
+  if(/CEP\s*[\d.\-]+/i.test(enderecoTexto)) return enderecoTexto;
+
+  const partesCidade=cidadeSelecionada.split(' - ');
+  const uf=(partesCidade[1]||'').trim();
+  const nomeCidade=(partesCidade[0]||'').trim();
+  const logradouro=extrairLogradouroParaCep_(enderecoTexto);
+  if(!uf || uf.length!==2 || !nomeCidade || logradouro.length<3) return enderecoTexto;
+
+  try{
+    const url=`https://viacep.com.br/ws/${encodeURIComponent(uf)}/${encodeURIComponent(nomeCidade)}/${encodeURIComponent(logradouro)}/json/`;
+    const resp=await fetch(url);
+    const data=await resp.json();
+    if(Array.isArray(data) && data.length && data[0].cep){
+      return enderecoTexto+' - CEP '+data[0].cep;
+    }
+  }catch(e){
+    console.log('Busca automática de CEP falhou (seguindo sem CEP):', e);
+  }
+  return enderecoTexto;
+}
+
 // ── GOOGLE SHEETS ──
 async function salvarLead(dados) {
   try {
@@ -2122,6 +2163,7 @@ async function enviarEnderecoPrompt() {
   if (!leadAtualWhats) return; // segurança: sem WhatsApp não tem como localizar o lead
 
   try {
+    const enderecoComCep = await buscarCepAutomatico_(endereco, leadAtualCidade);
     await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
       method: 'POST',
       mode: 'no-cors',
@@ -2129,7 +2171,7 @@ async function enviarEnderecoPrompt() {
       body: JSON.stringify({
         action: 'atualizarEndereco',
         telefone: leadAtualWhats,
-        endereco: endereco
+        endereco: enderecoComCep
       })
     });
   } catch(e) {
@@ -2600,9 +2642,11 @@ Gostaria de avançar com o projeto!`);
   } catch(e) { console.warn('fbq error:', e); }
 
   // ── SALVAR LEAD NO GOOGLE SHEETS ──
+  const enderecoDigitado = document.getElementById('enderecoInput').value.trim();
+  const enderecoComCep = await buscarCepAutomatico_(enderecoDigitado, cidade);
   salvarLead({
     nome, telefone: tel, cidade,
-    endereco: document.getElementById('enderecoInput').value.trim(),
+    endereco: enderecoComCep,
     perfil: PERFIS[perfil],
     consumo: consumoMedio,
     kwp: kWp.toFixed(2),
@@ -2622,6 +2666,7 @@ Gostaria de avançar com o projeto!`);
     longitude: temGeo ? geoLonVal.toFixed(6) : ''
   });
   leadAtualWhats = tel;
+  leadAtualCidade = cidade;
 
   // Mostrar
   document.getElementById('proposta').classList.add('show');

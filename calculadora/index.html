@@ -2117,7 +2117,7 @@ async function buscarCepAutomatico_(enderecoTexto, cidadeSelecionada){
 // ── GOOGLE SHEETS ──
 async function salvarLead(dados) {
   try {
-    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
@@ -2139,7 +2139,7 @@ async function responderFinanciamento(opcao, botaoClicado) {
   if (!leadAtualWhats) return; // segurança: sem WhatsApp não tem como localizar o lead
 
   try {
-    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
@@ -2170,7 +2170,7 @@ async function enviarEnderecoPrompt() {
 
   try {
     const enderecoComCep = await buscarCepAutomatico_(endereco, leadAtualCidade);
-    await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
@@ -2504,7 +2504,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   // ── NÚMERO SEQUENCIAL via AppScript ──
   let propNum = '';
   try {
-    const resp = await fetch('https://script.google.com/macros/s/AKfycbxFQLSzfyjDK9sMH_Ab7XIgKAAciQmEi7_EkKc_73afeHtR2masaX-94KlFAXvyGpp-og/exec?action=nextnum');
+    const resp = await fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec?action=nextnum');
     const json = await resp.json();
     if (json.status === 'ok' && json.proposta) {
       propNum = json.proposta;

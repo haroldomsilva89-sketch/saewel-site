@@ -2684,6 +2684,8 @@ Gostaria de avançar com o projeto!`);
     consumo: consumoMedio,
     kwp: kWp.toFixed(2),
     modulos: nMod + 'x 620Wp',
+    areaOcupada: area + ' m²',
+    pesoTotal: Math.round(nMod*pesoModAtual) + ' kg' + (pesoTemEstimativa ? ' (estimado)' : ''),
     investimento: inv_faixa,
     economiaMes: 'R$ ' + formatMoeda(ecoMensal),
     economia25anos: Math.round(e25), // valor numérico puro (sem "R$" nem separador), pra já cair pronto pra soma/análise no Power BI

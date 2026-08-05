@@ -969,10 +969,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
             <div class="perfil-opt"><input type="radio" name="perfil" id="p_agr" value="agronegocio"><label class="perfil-lbl" for="p_agr"><span class="perfil-ico">🚜</span><span class="perfil-nm">Agronegócio</span><span class="perfil-ds">Rural</span></label></div>
           </div>
         </div>
-        <!-- SELETOR DE TECNOLOGIA (oculto do cliente — fica a critério técnico da Saewel.
-             Mantido no DOM, só escondido, para não quebrar a lógica JS que depende de
-             selecionarTecnologia()/selecionarMarca() e dos defaults string/growatt. -->
-        <div class="form-group full" style="display:none;">
+        <!-- SELETOR DE TECNOLOGIA — oculto por padrão (fica a critério técnico da
+             Saewel pro cliente final). Só aparece em "modo atendente"
+             (?interno=1 na URL), pra quem já sabe que o cliente pediu
+             microinversor poder selecionar isso na hora do atendimento.
+             Ver ativarModoAtendente() no final do script. -->
+        <div class="form-group full" id="wrapTecnologia" style="display:none;">
           <label class="form-label">Tecnologia do inversor <span>*</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px;">
             <button type="button" id="btn_string" onclick="selecionarTecnologia('string')"
@@ -2762,8 +2764,26 @@ function imprimirProposta(){
   }
 }
 
-// ═══════════════════════════════════════════
-// BANCO DE MÓDULOS E INVERSORES POR GRUPO
+// ── Modo atendente: revela o seletor de Tecnologia/Marca pra quem já sabe
+// que o cliente pediu microinversor. Ativa com ?interno=1 na URL — o link
+// público do site continua sem esse parâmetro, então continua escondido
+// pra qualquer visitante comum. ──
+function ativarModoAtendente() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('interno') !== '1') return;
+  const wrap = document.getElementById('wrapTecnologia');
+  if (wrap) wrap.style.display = '';
+  // Aviso visual discreto, só pra quem está no modo atendente, confirmando
+  // que a opção de tecnologia está ativa nessa sessão.
+  const aviso = document.createElement('div');
+  aviso.textContent = '🔧 Modo atendente — seleção de tecnologia do inversor liberada';
+  aviso.style.cssText = 'background:rgba(200,146,42,0.15);color:var(--ouro-claro);' +
+    'border:1px solid rgba(200,146,42,0.4);border-radius:8px;padding:8px 12px;' +
+    'font-size:12px;font-weight:600;margin-bottom:12px;text-align:center;';
+  if (wrap) wrap.parentNode.insertBefore(aviso, wrap);
+}
+ativarModoAtendente();
+
 // ═══════════════════════════════════════════
 const JINKO_MODS = [
   { id:'jinko620', label:'Jinko Tiger Neo 620W — N-Type Bifacial — Ef. 21,33%', wp:620, area:2.70, peso:32.4, desc:'Bifacial · Ef. 21,33% · 87,4% aos 30 anos', foto:'img/equipamentos/preview-modulo-default.webp' },

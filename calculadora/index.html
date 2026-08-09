@@ -1409,6 +1409,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
               <td style="text-align:center;color:var(--branco);font-weight:700;">1 un.</td>
               <td style="color:var(--cinza);font-size:11px;">Incluso no projeto (necessário p/ inversor trifásico 380V)</td>
             </tr>
+            <tr id="trBateria" style="display:none;">
+              <td style="color:var(--cinza);">Bateria (Backup)*</td>
+              <td style="color:var(--branco);">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <img src="img/equipamentos/bateria-luna2000.webp" loading="lazy" width="28" height="30" style="object-fit:contain;flex-shrink:0;" alt="LUNA2000"/>
+                  <span>Huawei LUNA2000 (compatível)</span>
+                </div>
+              </td>
+              <td style="text-align:center;color:var(--branco);font-weight:700;">—</td>
+              <td style="color:var(--cinza);font-size:11px;">*Não inclusa — item opcional, disponível à parte</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2579,6 +2590,10 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const trAutotrafoEl=document.getElementById('trAutotrafo');
   if(trAutotrafoEl) trAutotrafoEl.style.display=autotrafoKva?'table-row':'none';
   if(autotrafoKva) set('eqAutotrafo',`Transformador Isolador 380/220V TRI - ${autotrafoKva}kVA`);
+  // Bateria (backup) — só aparece na tabela quando o inversor escolhido é
+  // híbrido (compatível LUNA2000). Sempre marcada como não inclusa/opcional.
+  const trBateriaEl=document.getElementById('trBateria');
+  if(trBateriaEl) trBateriaEl.style.display=/Híbrido/i.test(inv)?'table-row':'none';
   // Ativar grupo correto (Growatt ou WEG) e popular seletor de módulos
   if(typeof definirGrupoEquipamentos === 'function') definirGrupoEquipamentos(invMarca, inv);
   else { set('eqModelo','Painel 620Wp Bifacial'); set('eqQtd',nMod+'×'); }

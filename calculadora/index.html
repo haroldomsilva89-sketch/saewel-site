@@ -2309,11 +2309,20 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     // Huawei SUN2000-L1 (High Current) — monofásico, 2mppt, 220/230/240V.
     // Fator 1,5 = "Recommended max. PV power" / potência nominal de saída,
     // conforme datasheet oficial (idêntico nos 7 tamanhos da linha).
-    {kwAC:2.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-2KTL-L1 — Mono — 2mppt — 220V — High Current'},
-    {kwAC:3.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-3KTL-L1 — Mono — 2mppt — 220V — High Current'},
-    {kwAC:4.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-4KTL-L1 — Mono — 2mppt — 220V — High Current'},
-    {kwAC:5.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-5KTL-L1 — Mono — 2mppt — 220V — High Current'},
-    {kwAC:6.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-6KTL-L1 — Mono — 2mppt — 220V — High Current'},
+    // Huawei SUN2000-L1 — "Smart Energy Controller", monofásico HÍBRIDO,
+    // compatível com bateria HUAWEI Smart ESS Battery 5kWh-30kWh (backup via
+    // Backup Box-5000). Datasheet confirmado em 08/08 — antes achávamos que
+    // essa linha não tinha bateria, mas o datasheet completo mostra que sim.
+    {kwAC:2.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-2KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:3.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-3KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:4.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-4KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:5.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-5KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:6.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-6KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    // Huawei SUN2000-LC0 — "Smart Energy Controller", monofásico HÍBRIDO,
+    // compatível com bateria LUNA2000-5/10/15-S0 (backup via SmartGuard-63A-S0).
+    // Fator 1,5 = mesmo padrão "Recommended max. PV power" / potência nominal.
+    {kwAC:8.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-8K-LC0 — Híbrido — Mono — 3mppt — 220V — Compatível LUNA2000'},
+    {kwAC:10.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-10K-LC0 — Híbrido — Mono — 3mppt — 220V — Compatível LUNA2000'},
     {kwAC:2.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-2K-G — Mono — 220V'},
     {kwAC:3.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-3K-G — Mono — 220V'},
     {kwAC:5.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-5K-G — Mono — 220V'},
@@ -2323,15 +2332,28 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     {kwAC:20.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST020 M3 — Trifásico — 3mppt — 220V'},
     {kwAC:20.0, marca:'GROWATT', fator:1.44, modelo:'Growatt MID20KTL3-XL2 — Trifásico — 4mppt — 220V — AFCI'},
     {kwAC:25.0, marca:'DEYE',    fator:1.30, modelo:'Deye SUN-25K-G02-LV — Trifásico — 3mppt — 220V — AFCI'},
-    // Huawei SUN2000-M1 (High Current) — trifásico, configurável 220V ou 380V no
-    // mesmo equipamento. Fator 1,5 = "Recommended max. PV power" / potência nominal
-    // de saída, conforme datasheet oficial (idêntico nos 6 tamanhos da linha).
-    {kwAC:3.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-3KTL-M1 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:4.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-4KTL-M1 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:5.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-5KTL-M1 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:6.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-6KTL-M1 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:8.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-8KTL-M1 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:10.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-10KTL-M1 — Trifásico — 2mppt — 220V/380V — High Current'},
+    // Huawei SUN2000-M2 (High Current) — trifásico puro (grid-tie, sem
+    // bateria), configurável 220V ou 380V. Fator 1,5 = "Recommended max. PV
+    // power" / potência nominal, conforme datasheet oficial (idêntico nos
+    // 6 tamanhos). Substitui a linha M1 antiga (3-10kW) — catálogo M2 vai
+    // de 8 a 20kW, com foto e datasheet oficiais confirmados.
+    // Huawei SUN2000-M1 (High Current) — trifásico HÍBRIDO, compatível com
+    // bateria LUNA2000 (confirmado na lista "Compatible inverters" do
+    // datasheet oficial da LUNA2000-S1). Preferido sobre o M2 dentro da
+    // faixa que cobre (3-10kW), já que a prioridade é vender sempre com
+    // disponibilidade de backup.
+    {kwAC:3.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-3KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:4.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-4KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:5.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-5KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:6.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-6KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:8.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-8KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:10.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-10KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    // Huawei SUN2000-M2 — trifásico grid-tie PURO (sem bateria confirmada
+    // ainda), só cobre a faixa ACIMA do que o M1 híbrido alcança (>10kW).
+    {kwAC:12.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-12KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
+    {kwAC:15.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-15KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
+    {kwAC:17.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-17KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
+    {kwAC:20.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-20KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
     {kwAC:12.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST012 — Trifásico — 2mppt — 380V'},
     {kwAC:15.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST015 — Trifásico — 3mppt — 380V'},
     {kwAC:20.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST020 — Trifásico — 3mppt — 380V'},
@@ -2355,11 +2377,11 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     const sorted=INVERSORES_DB.slice().sort((a,b)=>(a.kwAC*a.fator)-(b.kwAC*b.fator));
     const TOLERANCIA_SOBREDIMENSIONAMENTO=1.35;
 
-    function melhorEncaixeEntre(lista){
+    function melhorEncaixeEntre(lista, marcaPreferidaEfetiva){
       // Prioriza a marca preferida, mas evita sobredimensionar demais: se o
       // menor modelo dessa marca que cobre a potência exigir mais de 35% de
       // folga extra, usa o melhor encaixe disponível entre todas as marcas.
-      const foundPreferida=lista.find(i=>i.marca===marcaPreferida&&(i.kwAC*i.fator)>=kwp);
+      const foundPreferida=lista.find(i=>i.marca===marcaPreferidaEfetiva&&(i.kwAC*i.fator)>=kwp);
       const melhor=lista.find(i=>(i.kwAC*i.fator)>=kwp);
       if(!foundPreferida) return melhor;
       const capacidadePreferida=foundPreferida.kwAC*foundPreferida.fator;
@@ -2368,20 +2390,22 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     }
 
     // 1) Tenta primeiro só entre os MONOFÁSICOS 220V — evita autotrafo
-    //    380/220V sempre que a potência permitir.
+    //    380/220V sempre que a potência permitir. Aqui entram tanto os
+    //    Huawei padrão (L1) quanto os híbridos com bateria (LC0, 8-10kW).
     const monofasicos=sorted.filter(i=>/Mono/i.test(i.modelo));
-    const opcaoMono=melhorEncaixeEntre(monofasicos);
+    const opcaoMono=melhorEncaixeEntre(monofasicos, marcaPreferida);
     if(opcaoMono) return opcaoMono;
 
     // 2) Sem monofásico suficiente — tenta TRIFÁSICO 220V (não precisa de
-    //    autotrafo, já que roda direto na tensão da rede local).
+    //    autotrafo, já que roda direto na tensão da rede local). Huawei
+    //    entra aqui normalmente com a linha M2 (8-20kW).
     const trifasicos220=sorted.filter(i=>/Trif/i.test(i.modelo)&&/220V/i.test(i.modelo));
-    const opcaoTrif220=melhorEncaixeEntre(trifasicos220);
+    const opcaoTrif220=melhorEncaixeEntre(trifasicos220, marcaPreferida);
     if(opcaoTrif220) return opcaoTrif220;
 
     // 3) Só cai pra trifásico 380V (precisa de autotrafo) se nada acima
     //    do catálogo aguentar a potência exigida.
-    const opcaoQualquer=melhorEncaixeEntre(sorted);
+    const opcaoQualquer=melhorEncaixeEntre(sorted, marcaPreferida);
     return opcaoQualquer||{modelo:'Inversor sob consulta ('+kwp.toFixed(2)+' kWp)',marca:'—'};
   }
   // Mapeia o grupo/marca escolhido na tela pra marca do catálogo de inversores.
@@ -2556,7 +2580,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   if(trAutotrafoEl) trAutotrafoEl.style.display=autotrafoKva?'table-row':'none';
   if(autotrafoKva) set('eqAutotrafo',`Transformador Isolador 380/220V TRI - ${autotrafoKva}kVA`);
   // Ativar grupo correto (Growatt ou WEG) e popular seletor de módulos
-  if(typeof definirGrupoEquipamentos === 'function') definirGrupoEquipamentos(invMarca);
+  if(typeof definirGrupoEquipamentos === 'function') definirGrupoEquipamentos(invMarca, inv);
   else { set('eqModelo','Painel 620Wp Bifacial'); set('eqQtd',nMod+'×'); }
 
   // Financeiro
@@ -2802,7 +2826,7 @@ const WEG_MODS = [
 const GRUPOS = {
   growatt:       { modulos: JINKO_MODS, fotoInversor: 'img/equipamentos/preview-inversor-default.webp',       marcaInv:'GROWATT' },
   weg:           { modulos: WEG_MODS,   fotoInversorPeq: 'img/equipamentos/inversor-weg-peq.webp', fotoInversorGrd: 'img/equipamentos/inversor-weg-grd.webp', marcaInv:'WEG' },
-  huawei:        { modulos: WEG_MODS,   fotoInversor: 'img/equipamentos/inversor-huawei.webp', marcaInv:'HUAWEI' },
+  huawei:        { modulos: WEG_MODS,   fotoInversorPadrao: 'img/equipamentos/inversor-huawei.webp', fotoInversorHibrido: 'img/equipamentos/inversor-huawei-hibrido.webp', fotoInversorTrifasico: 'img/equipamentos/inversor-huawei-trifasico.webp', marcaInv:'HUAWEI' },
   micro_growatt: { modeloInv: 'Growatt Micro 600W — MIN600TL-X — Mono — 1mppt — 220V', modulos: JINKO_MODS, fotoInversor: 'img/equipamentos/inversor-micro_growatt-img.webp', marcaInv:'GROWATT' },
   micro_deye:    { modeloInv: 'Deye Mono — SUN600G3-EU-230 — Monofásico — 220V', modulos: WEG_MODS,   fotoInversor: 'img/equipamentos/inversor-micro_deye-img.webp',    marcaInv:'DEYE'    },
   // Sungrow S2500S-L: 1 unidade = 4 MPPTs independentes = 4 módulos (560-720W
@@ -2929,7 +2953,7 @@ function trocarModulo(id) {
 // escolheu — podendo divergir (ex: foto Growatt com texto "WEG 8,5kW").
 const MARCA_PARA_GRUPO_STRING = { GROWATT:'growatt', WEG:'weg', HUAWEI:'huawei' };
 
-function definirGrupoEquipamentos(invMarca) {
+function definirGrupoEquipamentos(invMarca, invModeloTexto) {
   // Na tecnologia "string", o grupo mostrado (foto + módulos) precisa refletir
   // a marca REAL escolhida pelo algoritmo de dimensionamento — não o botão
   // que ficou marcado de uma rodada de cálculo anterior. Na tecnologia
@@ -2950,6 +2974,15 @@ function definirGrupoEquipamentos(invMarca) {
     const kwpEl = document.getElementById('dPot');
     const kWp = kwpEl ? parseFloat(kwpEl.textContent) : 0;
     fotoInv = (kWp > 8) ? g.fotoInversorGrd : g.fotoInversorPeq;
+  }
+  if(grupo === 'huawei') {
+    // 3 fotos diferentes conforme o modelo real escolhido: trifásico (M1/M2,
+    // checado primeiro — cobre até o híbrido M1, que não tem foto própria
+    // ainda), híbrido monofásico (L1/LC0, com bateria) ou padrão (fallback).
+    const texto = invModeloTexto || '';
+    if(/Trif/i.test(texto)) fotoInv = g.fotoInversorTrifasico;
+    else if(/LC0|Híbrido/i.test(texto)) fotoInv = g.fotoInversorHibrido;
+    else fotoInv = g.fotoInversorPadrao;
   }
   const imgInv = document.getElementById('eqInvFoto');
   if(imgInv) imgInv.src = fotoInv;

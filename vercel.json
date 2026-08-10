@@ -4,6 +4,11 @@
       "source": "/energia-solar-comercial",
       "destination": "/energia-solar-comercial/",
       "permanent": true
+    },
+    {
+      "source": "/quiz",
+      "destination": "/qualificacao/",
+      "permanent": false
     }
   ],
   "trailingSlash": true

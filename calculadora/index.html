@@ -933,6 +933,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
             <button type="button" id="btnGeocode" onclick="buscarEndereco()" style="flex-shrink:0;background:transparent;border:1px solid rgba(200,146,42,0.35);color:var(--ouro-claro);border-radius:12px;padding:0 18px;font-family:'Outfit',sans-serif;font-weight:600;cursor:pointer;white-space:nowrap;">Buscar</button>
           </div>
           <span class="form-hint" id="geocodeStatus">Se preenchido, localizamos suas coordenadas exatas via mapa e usamos a irradiação do ponto mais próximo da sua base.</span>
+          <button type="button" id="btnUsarLocalizacao" onclick="usarLocalizacaoAtual()" style="margin-top:8px;width:100%;background:transparent;border:1px dashed rgba(200,146,42,0.35);color:var(--ouro-claro);border-radius:10px;padding:9px;font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;">📍 Usar minha localização atual</button>
           <input type="hidden" id="geoLat">
           <input type="hidden" id="geoLon">
           <div id="ajustePinBlock" class="no-print" style="display:none;margin-top:12px;">
@@ -1819,6 +1820,35 @@ function aplicarCoordenadaManual(){
   document.getElementById('geoLon').value=lon;
   gerarPreviewMapa(lat, lon);
   document.getElementById('geocodeStatus').textContent = 'Posição definida manualmente: ('+lat.toFixed(5)+', '+lon.toFixed(5)+').';
+}
+// ── Usa o GPS do celular pra pular a geocodificação por texto (mais preciso
+// em zona rural, onde o Nominatim costuma errar) — a pessoa normalmente já
+// está no imóvel quando preenche a calculadora.
+function usarLocalizacaoAtual(){
+  if(!navigator.geolocation){
+    showToast('Geolocalização não suportada neste navegador.');
+    return;
+  }
+  const btn = document.getElementById('btnUsarLocalizacao');
+  const status = document.getElementById('geocodeStatus');
+  btn.disabled = true;
+  btn.textContent = 'Obtendo localização...';
+  navigator.geolocation.getCurrentPosition(function(pos){
+    const lat = pos.coords.latitude, lon = pos.coords.longitude;
+    document.getElementById('geoLat').value = lat;
+    document.getElementById('geoLon').value = lon;
+    const latManualEl = document.getElementById('latManual'), lonManualEl = document.getElementById('lonManual');
+    if(latManualEl) latManualEl.value = lat.toFixed(5);
+    if(lonManualEl) lonManualEl.value = lon.toFixed(5);
+    gerarPreviewMapa(lat, lon);
+    if(status) status.textContent = 'Localização atual usada: ('+lat.toFixed(5)+', '+lon.toFixed(5)+'). Confira o pino abaixo e ajuste se necessário.';
+    btn.disabled = false;
+    btn.textContent = '📍 Usar minha localização atual';
+  }, function(erro){
+    showToast('Não foi possível obter sua localização: ' + erro.message);
+    btn.disabled = false;
+    btn.textContent = '📍 Usar minha localização atual';
+  }, { enableHighAccuracy: true, timeout: 10000 });
 }
 (function initArrastePin(){
   const wrap=document.getElementById('ajustePinImgWrap');

@@ -6,7 +6,7 @@
       "permanent": true
     },
     {
-      "source": "/quiz",
+      "source": "/quiz/",
       "destination": "/qualificacao/",
       "permanent": false
     }

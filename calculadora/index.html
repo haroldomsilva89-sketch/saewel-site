@@ -2767,7 +2767,11 @@ Gostaria de avançar com o projeto!`);
     tipoLigacao: ({mono:'Monofásico',bi:'Bifásico',tri:'Trifásico'}[ligacao]) || '',
     tarifa: 'R$ ' + tarifa.toFixed(2) + '/kWh',
     latitude: temGeo ? geoLatVal.toFixed(6) : '',
-    longitude: temGeo ? geoLonVal.toFixed(6) : ''
+    longitude: temGeo ? geoLonVal.toFixed(6) : '',
+    fabricanteInversor: invMarca,
+    modeloInversor: inv,
+    potenciaInversor: invObj.kwAC.toFixed(2) + ' kW',
+    quantidadeInversores: 1
   });
   leadAtualWhats = tel;
   leadAtualCidade = cidade;

@@ -2966,6 +2966,13 @@ function verificarModoVisualizacao() {
       set2('rvPayback', dados.payback || '—');
       set2('rvNumProposta', dados.numProposta);
       set2('rvData', dados.data);
+      const wppEl = document.getElementById('rvWpp');
+      if (wppEl) {
+        const primeiroNome = (dados.nome || '').trim().split(' ')[0];
+        const msg = 'Olá! Sou ' + (primeiroNome || dados.nome || '') +
+          ', vi minha proposta de energia solar (Nº ' + (dados.numProposta || numProposta) + ') e queria falar com um técnico sobre ela.';
+        wppEl.href = 'https://wa.me/5517981253889?text=' + encodeURIComponent(msg);
+      }
       const resumo = document.getElementById('resumoVisualizacao');
       if (resumo) resumo.style.display = 'block';
     })

@@ -1007,6 +1007,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           </div>
         </div>
 
+        <!-- SELETOR DE CLASSE DE GD (I/II/III) — mesmo padrão do seletor de
+             tecnologia: oculto por padrão, só aparece em "modo atendente"
+             (?interno=1). Usado pra casos fora do padrão (sistema antigo
+             com direito adquirido, ou minigeração >500kW) — o padrão
+             continua GD II, que é o caso de praticamente todo cliente novo.
+             Ver ativarModoAtendente() e fioBPercentualEfetivo() no final
+             do script. -->
+        <div class="form-group full" id="wrapClasseGD" style="display:none;">
+          <label class="form-label">Classe de GD (Lei 14.300)</label>
+          <select id="classeGD" class="form-input" onchange="atualizarClasseGD()">
+            <option value="GD2" selected>GD II — padrão (protocolo a partir de 08/01/2023)</option>
+            <option value="GD1">GD I — direito adquirido (sistema antigo, isento de Fio B até 2045)</option>
+            <option value="GD3">GD III — minigeração &gt;500kW remota/compartilhada (100% Fio B desde o início)</option>
+          </select>
+          <p style="font-size:11px;color:var(--cinza);margin:6px 0 0;">Só muda o cálculo do Fio B na simulação. Deixe em GD II salvo confirmação em contrário do caso.</p>
+        </div>
+
         <div class="form-group">
           <label class="form-label" for="estrutura">Tipo de telhado <span style="color:var(--cinza);font-weight:400;">(opcional)</span></label>
           <select id="estrutura" class="form-select">
@@ -1113,6 +1130,49 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   <div class="loading" id="loading">
     <div class="loading-spinner"></div>
     <p style="color:var(--cinza);font-size:14px;">Calculando sua proposta personalizada...</p>
+  </div>
+
+  <!-- ═══════════════════════════════
+       RESUMO PÚBLICO DA PROPOSTA (?ver=NUMPROPOSTA)
+       Tela enxuta mostrada quando alguém abre o link de acompanhamento
+       da proposta (em vez de rodar uma simulação nova). Registra a
+       visualização no CRM na mesma chamada que busca os dados.
+  ═══════════════════════════════ -->
+  <div id="resumoVisualizacao" style="display:none;max-width:480px;margin:40px auto;padding:32px 28px;background:var(--noite2,#12151a);border:1px solid rgba(200,146,42,0.25);border-radius:16px;text-align:center;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--ouro-claro,#E8B84B);text-transform:uppercase;margin-bottom:6px;">Sua proposta Saewel</div>
+    <div id="rvNome" style="font-size:20px;font-weight:800;margin-bottom:4px;">—</div>
+    <div id="rvCidade" style="font-size:13px;color:var(--cinza,#9BA3AD);margin-bottom:20px;">—</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+      <div style="background:rgba(200,146,42,0.08);border:1px solid rgba(200,146,42,0.2);border-radius:10px;padding:14px;">
+        <div style="font-size:10px;color:var(--cinza,#9BA3AD);text-transform:uppercase;margin-bottom:4px;">Potência</div>
+        <div id="rvPotencia" style="font-size:16px;font-weight:700;">—</div>
+      </div>
+      <div style="background:rgba(200,146,42,0.08);border:1px solid rgba(200,146,42,0.2);border-radius:10px;padding:14px;">
+        <div style="font-size:10px;color:var(--cinza,#9BA3AD);text-transform:uppercase;margin-bottom:4px;">Investimento</div>
+        <div id="rvInvestimento" style="font-size:14px;font-weight:700;">—</div>
+      </div>
+      <div style="background:rgba(200,146,42,0.08);border:1px solid rgba(200,146,42,0.2);border-radius:10px;padding:14px;">
+        <div style="font-size:10px;color:var(--cinza,#9BA3AD);text-transform:uppercase;margin-bottom:4px;">Economia/mês</div>
+        <div id="rvEconomia" style="font-size:16px;font-weight:700;">—</div>
+      </div>
+      <div style="background:rgba(200,146,42,0.08);border:1px solid rgba(200,146,42,0.2);border-radius:10px;padding:14px;">
+        <div style="font-size:10px;color:var(--cinza,#9BA3AD);text-transform:uppercase;margin-bottom:4px;">Payback</div>
+        <div id="rvPayback" style="font-size:16px;font-weight:700;">—</div>
+      </div>
+    </div>
+
+    <a id="rvWpp" href="https://wa.me/5517981253889" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--ouro,#C8922A),var(--ouro-claro,#E8B84B));color:var(--noite,#0A0C0F);padding:13px;border-radius:10px;font-weight:700;text-decoration:none;font-size:14px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Falar com Técnico pelo WhatsApp
+    </a>
+    <div style="font-size:11px;color:var(--cinza,#9BA3AD);margin-top:14px;">Nº <span id="rvNumProposta">—</span> · gerada em <span id="rvData">—</span></div>
+  </div>
+
+  <div id="resumoNaoEncontrado" style="display:none;max-width:480px;margin:40px auto;padding:32px 28px;background:var(--noite2,#12151a);border:1px solid rgba(200,146,42,0.25);border-radius:16px;text-align:center;">
+    <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Não encontramos essa proposta</div>
+    <div style="font-size:13px;color:var(--cinza,#9BA3AD);">O link pode estar incompleto ou desatualizado. Fale com a gente pelo WhatsApp pra conferir.</div>
+    <a href="https://wa.me/5517981253889" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:16px;color:var(--ouro-claro,#E8B84B);font-weight:700;text-decoration:none;">Falar no WhatsApp →</a>
   </div>
 
   <!-- ═══════════════════════════════
@@ -2494,13 +2554,23 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     if(anoCalendario===2028)return 0.90;
     return 1.00; // 2029 em diante
   }
+  // Aplica a Classe de GD selecionada (modo atendente, ?interno=1) por cima
+  // do cronograma padrão: GD I é isento (direito adquirido, sistemas com
+  // protocolo até 06/01/2023) e GD III paga 100% do Fio B desde o início
+  // (minigeração >500kW remota/compartilhada) — GD II (padrão) segue o
+  // cronograma normal, igual antes.
+  function fioBPercentualEfetivo(anoCalendario){
+    if(classeGDAtual==='GD1')return 0;
+    if(classeGDAtual==='GD3')return 1.00;
+    return fioBPercentual(anoCalendario);
+  }
   // Parcela estimada da tarifa cheia que corresponde à TUSD Fio B (varia por concessionária/classe).
   // Usamos uma estimativa conservadora de mercado; não substitui a fatura real após vistoria.
   const FIO_B_TUSD_PCT=0.30;
 
   // Tabela mensal
   let credAcum=0;
-  const fioBPctAno1=fioBPercentual(ANO_ATUAL);
+  const fioBPctAno1=fioBPercentualEfetivo(ANO_ATUAL);
   const tabMes=consumosMes.map((cons,i)=>{
     const ger=geracaoMensal[i];
     const credMes=Math.max(0,ger-cons);
@@ -2535,7 +2605,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   for(let a=0;a<=25;a++){
     const anoCalendario=ANO_ATUAL+a;
     const compensadoAno=Math.min(totalCons,prod);
-    const fioBAno=a===0?0:parseFloat((compensadoAno*tarAno*FIO_B_TUSD_PCT*fioBPercentual(anoCalendario)).toFixed(2));
+    const fioBAno=a===0?0:parseFloat((compensadoAno*tarAno*FIO_B_TUSD_PCT*fioBPercentualEfetivo(anoCalendario)).toFixed(2));
     const ecoAno=a===0?0:parseFloat((prod*tarAno-fioBAno).toFixed(2));
     ecoAnoArr.push(ecoAno);
     eco+=ecoAno;
@@ -2630,7 +2700,8 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
 
   // Financeiro
   set('fCons',consumoMedio.toLocaleString('pt-BR')+' kWh/mês');set('fTar','R$ '+tarifa.toFixed(2)+'/kWh');
-  set('fFioB',(fioBPctAno1*100).toFixed(0)+'% da TUSD em '+ANO_ATUAL+' (estimado)');
+  const rotuloClasseGD={GD1:'GD I — isento',GD2:'GD II — padrão',GD3:'GD III — 100% desde o início'}[classeGDAtual]||'GD II — padrão';
+  set('fFioB',(fioBPctAno1*100).toFixed(0)+'% da TUSD em '+ANO_ATUAL+' (estimado, '+rotuloClasseGD+')');
   set('fFatMin','R$ '+formatMoeda(fatMin)+' ('+consumoMinimo+' kWh — '+({mono:'monofásico',bi:'bifásico',tri:'trifásico'}[ligacao]||'monofásico')+')');
   const avisoMensal=document.getElementById('avisoLegalMensal');
   if(avisoMensal)avisoMensal.textContent='* Valores estimados. Já considera o Fio B ('+(fioBPctAno1*100).toFixed(0)+'% em '+ANO_ATUAL+', estimativa) sobre a energia compensada. Não considera possíveis cobranças de ICMS sobre a TUSD. Fatura mínima calculada sobre consumo mínimo de '+consumoMinimo+' kWh.';
@@ -2848,16 +2919,63 @@ function ativarModoAtendente() {
   if (params.get('interno') !== '1') return;
   const wrap = document.getElementById('wrapTecnologia');
   if (wrap) wrap.style.display = '';
+  const wrapGD = document.getElementById('wrapClasseGD');
+  if (wrapGD) wrapGD.style.display = '';
   // Aviso visual discreto, só pra quem está no modo atendente, confirmando
   // que a opção de tecnologia está ativa nessa sessão.
   const aviso = document.createElement('div');
-  aviso.textContent = '🔧 Modo atendente — seleção de tecnologia do inversor liberada';
+  aviso.textContent = '🔧 Modo atendente — seleção de tecnologia do inversor e classe de GD liberadas';
   aviso.style.cssText = 'background:rgba(200,146,42,0.15);color:var(--ouro-claro);' +
     'border:1px solid rgba(200,146,42,0.4);border-radius:8px;padding:8px 12px;' +
     'font-size:12px;font-weight:600;margin-bottom:12px;text-align:center;';
   if (wrap) wrap.parentNode.insertBefore(aviso, wrap);
 }
 ativarModoAtendente();
+
+// ── Modo visualização de proposta salva: ?ver=SAEWEL-202608-0099 ──
+// Ativa quando o cliente abre o link enviado pelo comercial (em vez de
+// rodar uma simulação nova). Busca o resumo já salvo no CRM (mesmo
+// domínio do Apps Script usado pelo ?action=nextnum) e, na mesma
+// chamada, registra a visualização — é assim que o comercial sabe a
+// hora exata em que o cliente abriu.
+function verificarModoVisualizacao() {
+  const params = new URLSearchParams(window.location.search);
+  const numProposta = params.get('ver');
+  if (!numProposta) return;
+
+  const formulario = document.getElementById('formulario');
+  const loadingEl = document.getElementById('loading');
+  if (formulario) formulario.style.display = 'none';
+  if (loadingEl) loadingEl.classList.add('show');
+
+  fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec?action=verproposta&numProposta=' + encodeURIComponent(numProposta))
+    .then(function(resp) { return resp.json(); })
+    .then(function(dados) {
+      if (loadingEl) loadingEl.classList.remove('show');
+      if (!dados || !dados.encontrado) {
+        const naoEncontrado = document.getElementById('resumoNaoEncontrado');
+        if (naoEncontrado) naoEncontrado.style.display = 'block';
+        return;
+      }
+      const set2 = function(id, val) { const el = document.getElementById(id); if (el) el.textContent = val || '—'; };
+      set2('rvNome', dados.nome);
+      set2('rvCidade', [dados.cidade, dados.perfil].filter(Boolean).join(' · '));
+      set2('rvPotencia', dados.potencia ? (dados.potencia + ' kWp') : '—');
+      set2('rvInvestimento', dados.investimento);
+      set2('rvEconomia', dados.economia ? ('R$ ' + dados.economia) : '—');
+      set2('rvPayback', dados.payback ? (dados.payback + ' anos') : '—');
+      set2('rvNumProposta', dados.numProposta);
+      set2('rvData', dados.data);
+      const resumo = document.getElementById('resumoVisualizacao');
+      if (resumo) resumo.style.display = 'block';
+    })
+    .catch(function() {
+      if (loadingEl) loadingEl.classList.remove('show');
+      const naoEncontrado = document.getElementById('resumoNaoEncontrado');
+      if (naoEncontrado) naoEncontrado.style.display = 'block';
+    });
+}
+verificarModoVisualizacao();
 
 // ═══════════════════════════════════════════
 const JINKO_MODS = [
@@ -2890,6 +3008,11 @@ let grupoAtual  = 'growatt';
 let kwpAlvo = 0; // meta original de potência (kWp), sem arredondamento — usada ao trocar de módulo
 let tecnologiaAtual = 'string'; // 'string' ou 'micro'
 let marcaAtual = 'growatt';
+let classeGDAtual = 'GD2'; // padrão — GD I e GD III só via modo atendente (?interno=1)
+function atualizarClasseGD() {
+  const sel = document.getElementById('classeGD');
+  if (sel) classeGDAtual = sel.value;
+}
 
 // ── Seletor de Tecnologia (String / Micro) ──
 function selecionarTecnologia(tec) {

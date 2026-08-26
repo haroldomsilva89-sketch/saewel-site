@@ -2962,8 +2962,8 @@ function verificarModoVisualizacao() {
       set2('rvCidade', [dados.cidade, dados.perfil].filter(Boolean).join(' · '));
       set2('rvPotencia', dados.potencia ? (dados.potencia + ' kWp') : '—');
       set2('rvInvestimento', dados.investimento);
-      set2('rvEconomia', dados.economia ? ('R$ ' + dados.economia) : '—');
-      set2('rvPayback', dados.payback ? (dados.payback + ' anos') : '—');
+      set2('rvEconomia', dados.economia || '—');
+      set2('rvPayback', dados.payback || '—');
       set2('rvNumProposta', dados.numProposta);
       set2('rvData', dados.data);
       const resumo = document.getElementById('resumoVisualizacao');

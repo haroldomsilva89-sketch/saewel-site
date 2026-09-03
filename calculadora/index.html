@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q017N44D5S"></script>
+<!-- Google tag (gtag.js) — fila de eventos criada já, script real carregado depois da primeira interação, igual à home -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -273,7 +272,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
 
 /* CTAs */
 .prop-ctas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
-.btn-wpp-p{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:white;font-size:15px;font-weight:700;padding:18px 24px;border-radius:12px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(37,211,102,0.35);}
+.btn-wpp-p{display:flex;align-items:center;justify-content:center;gap:10px;background:#0F7A40;color:white;font-size:15px;font-weight:700;padding:18px 24px;border-radius:12px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(37,211,102,0.35);}
 .btn-wpp-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,0.5);}
 .btn-pdf-p{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--noite2);border:1px solid rgba(200,146,42,0.3);color:var(--ouro-claro);font-size:15px;font-weight:600;padding:18px 24px;border-radius:12px;cursor:pointer;transition:all 0.3s;font-family:'Outfit',sans-serif;}
 .btn-pdf-p:hover{border-color:var(--ouro-claro);background:rgba(200,146,42,0.07);}
@@ -2414,16 +2413,16 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     // compatível com bateria HUAWEI Smart ESS Battery 5kWh-30kWh (backup via
     // Backup Box-5000). Datasheet confirmado em 08/08 — antes achávamos que
     // essa linha não tinha bateria, mas o datasheet completo mostra que sim.
-    {kwAC:2.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-2KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
-    {kwAC:3.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-3KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
-    {kwAC:4.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-4KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
-    {kwAC:5.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-5KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
-    {kwAC:6.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-6KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:2.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-2KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:3.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-3KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:4.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-4KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:5.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-5KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
+    {kwAC:6.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-6KTL-L1 — Híbrido — Mono — 2mppt — 220V — Compatível ESS Battery'},
     // Huawei SUN2000-LC0 — "Smart Energy Controller", monofásico HÍBRIDO,
     // compatível com bateria LUNA2000-5/10/15-S0 (backup via SmartGuard-63A-S0).
     // Fator 1,5 = mesmo padrão "Recommended max. PV power" / potência nominal.
-    {kwAC:8.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-8K-LC0 — Híbrido — Mono — 3mppt — 220V — Compatível LUNA2000'},
-    {kwAC:10.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-10K-LC0 — Híbrido — Mono — 3mppt — 220V — Compatível LUNA2000'},
+    {kwAC:8.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-8K-LC0 — Híbrido — Mono — 3mppt — 220V — Compatível LUNA2000'},
+    {kwAC:10.0, marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-10K-LC0 — Híbrido — Mono — 3mppt — 220V — Compatível LUNA2000'},
     {kwAC:2.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-2K-G — Mono — 220V'},
     {kwAC:3.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-3K-G — Mono — 220V'},
     {kwAC:5.0,  marca:'DEYE',    fator:1.30, modelo:'Deye SUN-5K-G — Mono — 220V'},
@@ -2443,18 +2442,18 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     // datasheet oficial da LUNA2000-S1). Preferido sobre o M2 dentro da
     // faixa que cobre (3-10kW), já que a prioridade é vender sempre com
     // disponibilidade de backup.
-    {kwAC:3.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-3KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
-    {kwAC:4.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-4KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
-    {kwAC:5.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-5KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
-    {kwAC:6.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-6KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
-    {kwAC:8.0,  marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-8KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
-    {kwAC:10.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-10KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:3.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-3KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:4.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-4KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:5.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-5KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:6.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-6KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:8.0,  marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-8KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
+    {kwAC:10.0, marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-10KTL-M1 — Híbrido — Trifásico — 2mppt — 220V/380V — Compatível LUNA2000'},
     // Huawei SUN2000-M2 — trifásico grid-tie PURO (sem bateria confirmada
     // ainda), só cobre a faixa ACIMA do que o M1 híbrido alcança (>10kW).
-    {kwAC:12.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-12KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:15.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-15KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:17.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-17KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
-    {kwAC:20.0, marca:'HUAWEI',  fator:1.50, modelo:'Huawei SUN2000-20KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
+    {kwAC:12.0, marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-12KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
+    {kwAC:15.0, marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-15KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
+    {kwAC:17.0, marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-17KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
+    {kwAC:20.0, marca:'HUAWEI',  fator:1.36, modelo:'Huawei SUN2000-20KTL-M2 — Trifásico — 2mppt — 220V/380V — High Current'},
     {kwAC:12.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST012 — Trifásico — 2mppt — 380V'},
     {kwAC:15.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST015 — Trifásico — 3mppt — 380V'},
     {kwAC:20.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST020 — Trifásico — 3mppt — 380V'},
@@ -3195,6 +3194,26 @@ function definirGrupoEquipamentos(invMarca, invModeloTexto) {
   }
 }
 
+
+// ── PERFORMANCE: carrega o gtag.js só depois da primeira interação ──
+// Evita que o script de analytics atrase o LCP. Eventos disparados antes
+// disso ficam na fila (dataLayer) e são processados normalmente quando
+// o script real terminar de carregar — nada se perde.
+(function() {
+  var loaded = false;
+  function loadGtagScript() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Q017N44D5S';
+    document.head.appendChild(s);
+  }
+  ['scroll', 'click', 'keydown', 'touchstart', 'mousemove'].forEach(function(evt) {
+    window.addEventListener(evt, loadGtagScript, { once: true, passive: true });
+  });
+  window.addEventListener('load', function() { setTimeout(loadGtagScript, 2000); });
+})();
 </script>
 </body>
 </html>

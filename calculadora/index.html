@@ -2382,7 +2382,7 @@ async function calcular(){
 
 async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil,estrutura,ligacao}){
   // ── DIMENSIONAMENTO ──
-  const ef=0.78;
+  const ef=0.80;
   const hsp=irr;
   const margem=perfil==='comercial'?1.30:perfil==='agronegocio'?1.35:1.20;
   const kwpBruto=consumoMedio/(hsp*30*ef);

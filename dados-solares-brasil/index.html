@@ -196,7 +196,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
     .btn-gold:hover{opacity:0.85;text-decoration:none}
 
     /* INFO SOURCE */
-    .source-note{font-size:11px;color:rgba(138,144,153,0.6);text-align:center;padding:16px 0;border-top:1px solid rgba(255,255,255,0.04)}
+    .source-note{font-size:11px;color:rgba(138,144,153,0.9);text-align:center;padding:16px 0;border-top:1px solid rgba(255,255,255,0.04)}
 
     /* FOOTER */
     .footer-novo{background:var(--noite);border-top:1px solid rgba(200,146,42,0.1);padding:60px 5% 0}
@@ -208,7 +208,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
     .foot-col a{display:block;font-size:13px;color:var(--cinza);text-decoration:none;margin-bottom:10px;transition:color 0.2s}
     .foot-col a:hover{color:var(--branco)}
     .footer-bottom{display:flex;align-items:center;justify-content:center;padding:20px 0}
-    .footer-copy{font-size:12px;color:rgba(248,245,240,0.25)}
+    .footer-copy{font-size:12px;color:rgba(248,245,240,0.55)}
     .footer-qr-inline{display:flex;align-items:center;gap:10px;opacity:0.75;transition:opacity 0.3s;text-decoration:none;}
 .footer-qr-inline:hover{opacity:1;}
 .footer-qr-inline img{width:40px;height:40px;border-radius:6px;}
@@ -367,7 +367,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
     <span class="search-label">Buscar município</span>
     <div class="search-row">
       <div class="search-input-wrap" id="searchWrap">
-        <input type="text" id="searchInput" class="search-input" placeholder="Digite o nome da cidade (ex: São José do Rio Preto - SP)" autocomplete="off" spellcheck="false">
+        <input type="text" id="searchInput" class="search-input" placeholder="Digite o nome da cidade (ex: São José do Rio Preto - SP)" autocomplete="off" spellcheck="false" aria-label="Buscar município">
         <button class="search-clear" id="searchClear" aria-label="Limpar">✕</button>
         <div class="autocomplete-list" id="acList"></div>
       </div>
@@ -404,11 +404,11 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
       <div class="calc-title">⚡ Simulação rápida para esta cidade</div>
       <div class="calc-row">
         <div class="calc-field">
-          <label>Consumo mensal (kWh)</label>
+          <label for="calcConsumo">Consumo mensal (kWh)</label>
           <input type="number" id="calcConsumo" value="500" min="50" max="50000" step="50">
         </div>
         <div class="calc-field">
-          <label>Eficiência do sistema (PR)</label>
+          <label for="calcPR">Eficiência do sistema (PR)</label>
           <input type="number" id="calcPR" value="0.78" min="0.6" max="0.9" step="0.01">
         </div>
       </div>
@@ -432,7 +432,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
     <!-- CTA -->
     <div class="cta-strip">
       <div class="cta-text">
-        <h3>Quer um projeto completo para esta cidade?</h3>
+        <h2 style="font-size:20px;">Quer um projeto completo para esta cidade?</h2>
         <p>O técnico dimensiona com os dados reais mensais do CRESESB, emite o TRT e cuida da homologação na distribuidora.</p>
       </div>
       <a href="https://wa.me/5517982093739?text=Ol%C3%A1%20Haroldo!%20Consultei%20os%20dados%20solares%20no%20site%20e%20quero%20um%20projeto%20fotovoltaico" class="btn-gold" target="_blank" rel="noopener noreferrer">Falar com o técnico →</a>

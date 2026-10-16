@@ -453,5 +453,16 @@ function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList
 hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
 mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
 </script>
+<script>
+/* Rastreia cliques nos botões de WhatsApp (GA4: whatsapp_click | Meta Pixel: Contact) */
+document.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+  if(!a)return;
+  try{
+    if(typeof gtag==='function'){gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(typeof fbq==='function'){fbq('track','Contact');}
+  }catch(_){}
+},true);
+</script>
 </body>
 </html>

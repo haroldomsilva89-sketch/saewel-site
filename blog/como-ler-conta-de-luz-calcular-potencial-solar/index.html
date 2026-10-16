@@ -29,13 +29,13 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Como Ler a Conta de Luz da CPFL e Calcular Quantos Painéis Você Precisa | Saewel</title>
-  <meta name="description" content="Entenda cada campo da conta de luz da CPFL, descubra seu consumo real em kWh e calcule quantos painéis solares você precisa. Guia prático passo a passo com exemplos reais.">
+  <title>Como Ler a Conta de Luz CPFL e Calcular Seus Painéis Solares</title>
+  <meta name="description" content="Aprenda a ler a conta de luz da CPFL, achar seu consumo em kWh e calcular quantos painéis solares você precisa, com fórmula e exemplo passo a passo.">
   <meta name="author" content="Haroldo M. Silva — Técnico em Eletrotécnica, Saewel Energia Solar">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/como-ler-conta-de-luz-calcular-potencial-solar/">
-  <meta property="og:title" content="Como ler sua conta de luz e calcular o potencial solar">
-  <meta property="og:description" content="Guia prático: entenda cada campo da conta de luz, encontre o consumo em kWh e calcule quantos painéis solares você precisa.">
+  <meta property="og:title" content="Como Ler a Conta de Luz CPFL e Calcular Seus Painéis Solares">
+  <meta property="og:description" content="Aprenda a ler a conta de luz da CPFL, achar seu consumo em kWh e calcular quantos painéis solares você precisa, com fórmula e exemplo passo a passo.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/como-ler-conta-de-luz-calcular-potencial-solar/">
   <meta property="og:site_name" content="Saewel Energia Solar">
@@ -479,6 +479,17 @@ const mobileMenu=document.getElementById('mobileMenu');
 function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
 hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
 mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+</script>
+<script>
+/* Rastreia cliques nos botões de WhatsApp (GA4: whatsapp_click | Meta Pixel: Contact) */
+document.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+  if(!a)return;
+  try{
+    if(typeof gtag==='function'){gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(typeof fbq==='function'){fbq('track','Contact');}
+  }catch(_){}
+},true);
 </script>
 </body>
 </html>

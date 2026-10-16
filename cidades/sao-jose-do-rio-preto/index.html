@@ -205,6 +205,7 @@ details[open] summary::after{transform:rotate(45deg);}
   <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
@@ -452,6 +453,53 @@ details[open] summary::after{transform:rotate(45deg);}
   </div>
 </section>
 
+<!-- GUIAS -->
+<section class="secao">
+  <div class="secao-inner">
+    <div class="sec-ey">Guias do blog</div>
+    <h2 class="sec-h2">Antes de decidir, <em>entenda os números</em></h2>
+    <p class="sec-desc">Artigos técnicos escritos pelo técnico responsável da Saewel para quem está avaliando energia solar em São José do Rio Preto e região.</p>
+    <div class="srv-grid">
+      <a href="/blog/quanto-custa-instalar-energia-solar-2026/" class="srv-card">
+        <div class="srv-icon">💰</div>
+        <div class="srv-nome">Quanto custa em 2026</div>
+        <p class="srv-mini">Faixas de preço por valor da conta de luz, o que muda o orçamento e o payback.</p>
+        <span class="srv-link">Ler guia →</span>
+      </a>
+      <a href="/blog/lei-14300-fio-b-energia-solar/" class="srv-card">
+        <div class="srv-icon">⚖️</div>
+        <div class="srv-nome">Lei 14.300 e Fio B</div>
+        <p class="srv-mini">Tabela do Fio B até 2029, direito adquirido e o impacto real no retorno do sistema.</p>
+        <span class="srv-link">Ler guia →</span>
+      </a>
+      <a href="/blog/como-ler-conta-de-luz-calcular-potencial-solar/" class="srv-card">
+        <div class="srv-icon">🧾</div>
+        <div class="srv-nome">Como ler a conta de luz</div>
+        <p class="srv-mini">Encontre seu consumo em kWh e calcule quantos painéis você precisa.</p>
+        <span class="srv-link">Ler guia →</span>
+      </a>
+      <a href="/blog/irradiacao-solar-cidade-cresesb-sundata/" class="srv-card">
+        <div class="srv-icon">☀️</div>
+        <div class="srv-nome">Irradiação solar da sua cidade</div>
+        <p class="srv-mini">Como consultar o CRESESB SunData e entender HSP e plano inclinado.</p>
+        <span class="srv-link">Ler guia →</span>
+      </a>
+      <a href="/blog/fatura-zerada-energia-solar/" class="srv-card">
+        <div class="srv-icon">📉</div>
+        <div class="srv-nome">Fatura zerada: quanto ainda se paga</div>
+        <p class="srv-mini">O que continua na conta mesmo com um sistema bem dimensionado.</p>
+        <span class="srv-link">Ler guia →</span>
+      </a>
+      <a href="/blog/tarifa-social-energia-solar/" class="srv-card">
+        <div class="srv-icon">🏷️</div>
+        <div class="srv-nome">Tarifa social e energia solar</div>
+        <p class="srv-mini">Dá para ter os dois? Veja o que muda na conta e se vale a pena.</p>
+        <span class="srv-link">Ler guia →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="secao secao-alt">
   <div class="secao-inner" style="text-align:center;">
@@ -487,6 +535,18 @@ details[open] summary::after{transform:rotate(45deg);}
         <details>
           <summary>Vale a pena instalar energia solar em São José do Rio Preto?</summary>
           <p class="faq-resp">Sim — e com destaque. SJRP combina alta irradiação solar (acima de 5,36 kWh/m²/dia), tarifas elevadas de energia elétrica e crescimento econômico regional que sustenta o mercado imobiliário. O payback médio na cidade fica entre 3,5 e 5 anos, com geração garantida por 25 anos.</p>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Como funciona a homologação na distribuidora em São José do Rio Preto?</summary>
+          <p class="faq-resp">Depois da instalação, o projeto é homologado junto à distribuidora local, que troca o medidor por um bidirecional e autoriza o sistema a injetar energia na rede. A Saewel prepara o projeto com memorial descritivo e TRT e acompanha a solicitação de acesso até a liberação.</p>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>A Lei 14.300 (Fio B) tira a vantagem da energia solar?</summary>
+          <p class="faq-resp">Não. A lei prevê a cobrança gradual do Fio B sobre a energia injetada (60% em 2026, chegando a 100% em 2029 para sistemas novos), o que alonga um pouco o retorno, mas a economia na conta continua relevante. Quem se enquadrou nas regras de transição tem direito adquirido até 2045. Veja a tabela completa no <a href="/blog/lei-14300-fio-b-energia-solar/" style="color:var(--ouro-claro);">guia sobre a Lei 14.300</a>.</p>
         </details>
       </div>
 
@@ -601,6 +661,17 @@ const mobileMenu=document.getElementById('mobileMenu');
 function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
 hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
 mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+</script>
+<script>
+/* Rastreia cliques nos botões de WhatsApp (GA4: whatsapp_click | Meta Pixel: Contact) */
+document.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+  if(!a)return;
+  try{
+    if(typeof gtag==='function'){gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(typeof fbq==='function'){fbq('track','Contact');}
+  }catch(_){}
+},true);
 </script>
 </body>
 </html>

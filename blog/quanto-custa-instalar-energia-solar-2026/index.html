@@ -29,13 +29,13 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quanto Custa Energia Solar em 2026? Tabela de Preços | Saewel</title>
-  <meta name="description" content="Veja as faixas de preço da energia solar em 2026 por valor da conta (R$300 a R$800/mês), o que muda o orçamento e o payback de 4 a 7 anos. Simule grátis.">
+  <title>Quanto Custa Energia Solar em 2026? Preço por Valor da Conta</title>
+  <meta name="description" content="Quanto custa energia solar em 2026 para contas de R$ 300 a R$ 800/mês: faixas de preço, o que muda o orçamento e payback de 4 a 7 anos. Simule grátis.">
   <meta name="author" content="Haroldo M. Silva — Técnico em Eletrotécnica, Saewel Energia Solar">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-2026/">
-  <meta property="og:title" content="Quanto Custa Instalar Energia Solar em 2026? Tabela de Preços">
-  <meta property="og:description" content="Veja as faixas de preço da energia solar em 2026 por valor da conta (R$300 a R$800/mês), o que muda o orçamento e o payback de 4 a 7 anos. Simule grátis.">
+  <meta property="og:title" content="Quanto Custa Energia Solar em 2026? Preço por Valor da Conta">
+  <meta property="og:description" content="Quanto custa energia solar em 2026 para contas de R$ 300 a R$ 800/mês: faixas de preço, o que muda o orçamento e payback de 4 a 7 anos. Simule grátis.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/quanto-custa-instalar-energia-solar-2026/">
   <meta property="og:site_name" content="Saewel Energia Solar">
@@ -1134,6 +1134,17 @@ const mobileMenu=document.getElementById('mobileMenu');
 function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
 hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
 mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+</script>
+<script>
+/* Rastreia cliques nos botões de WhatsApp (GA4: whatsapp_click | Meta Pixel: Contact) */
+document.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+  if(!a)return;
+  try{
+    if(typeof gtag==='function'){gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(typeof fbq==='function'){fbq('track','Contact');}
+  }catch(_){}
+},true);
 </script>
 </body>
 </html>

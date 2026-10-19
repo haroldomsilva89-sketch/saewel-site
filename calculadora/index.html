@@ -850,6 +850,58 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
   .graf-bars-cv{height:80px;}
 }
 </style>
+<style id="pcStyle">
+/* ── Projeto customizado (modo atendente) ── */
+#wrapProjetoCustom{border:1px dashed rgba(200,146,42,0.45);border-radius:12px;padding:14px 16px;background:rgba(200,146,42,0.05);}
+.pc-check{display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--branco,#fff);cursor:pointer;line-height:1.4;}
+.pc-check input{margin-top:3px;flex-shrink:0;}
+.pc-main{font-weight:700;font-size:15px;color:var(--ouro-claro);}
+.pc-sub{margin:18px 0 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ouro-claro);}
+.pc-hint{font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--cinza);}
+.pc-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.pc-checks{flex-direction:column;align-items:flex-start;gap:8px;}
+.pc-btn{background:rgba(200,146,42,0.18);color:var(--ouro-claro);border:1px solid rgba(200,146,42,0.5);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.pc-btn:hover{background:rgba(200,146,42,0.3);}
+.pc-btn-s{margin-top:8px;padding:6px 12px;font-size:12px;}
+.pc-card{border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:rgba(255,255,255,0.02);}
+.pc-grid{display:grid;grid-template-columns:2.4fr .7fr 1.1fr 1.2fr 1.2fr 28px;gap:8px;align-items:center;}
+.pc-grid2{display:grid;grid-template-columns:1.3fr 3fr 1fr 1fr 28px;gap:8px;align-items:center;}
+.pc-tec{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;font-size:12px;color:var(--cinza);align-items:center;}
+.pc-tec input{width:84px;}
+.pc-in{width:100%;min-width:0;background:#1a1f2e;color:#fff;border:1px solid rgba(255,255,255,0.16);border-radius:6px;padding:7px 8px;font-size:13px;font-family:inherit;}
+.pc-x{background:none;border:none;color:#e8433a;font-size:18px;cursor:pointer;line-height:1;}
+.pc-lbl{display:block;margin:10px 0 4px;font-size:12px;color:var(--cinza);}
+.pc-ta{font-size:13px;line-height:1.45;resize:vertical;}
+.pc-resumo{font-size:13px;line-height:1.6;color:var(--branco,#fff);background:rgba(0,0,0,0.25);border-radius:8px;padding:10px 12px;}
+.pc-resumo .ok{color:#4ade80;} .pc-resumo .av{color:#fbbf24;}
+@media(max-width:720px){.pc-grid,.pc-grid2{grid-template-columns:1fr 1fr;} }
+/* páginas da proposta customizada */
+.pc-page .pc-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pc-page .pc-tbl th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;padding:7px 8px;border-bottom:1px solid rgba(200,146,42,.4);color:var(--ouro-claro);}
+.pc-page .pc-tbl td{padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.07);vertical-align:top;}
+.pc-page .pc-tbl td.n,.pc-page .pc-tbl th.n{text-align:right;white-space:nowrap;}
+.pc-page .pc-tbl tr.gh td{background:rgba(200,146,42,.10);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ouro-claro);padding:5px 8px;}
+.pc-page .pc-tbl tr.tot td{font-weight:700;border-top:2px solid rgba(200,146,42,.5);}
+.pc-page .pc-sm{display:block;font-size:11.5px;color:var(--cinza);font-weight:400;margin-top:2px;line-height:1.35;}
+.pc-page .pc-badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.pc-page .pc-list{margin:6px 0 0;padding-left:20px;font-size:13px;line-height:1.5;}
+.pc-page .pc-list li{margin-bottom:4px;}
+.pc-page .pc-box{border:1px solid rgba(200,146,42,.3);background:rgba(200,146,42,.06);border-radius:10px;padding:10px 14px;font-size:12.5px;line-height:1.5;margin-top:12px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.pc-page h3.pc-h{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--ouro-claro);margin:16px 0 6px;font-weight:700;}
+.pc-page .pc-2col{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media print{
+  /* neutraliza regras posicionais do print que miram a 3ª/4ª página do fluxo padrão */
+  .prop-page.pc-page:nth-child(n) table{table-layout:auto!important;width:100%!important;}
+  .prop-page.pc-page:nth-child(n) table th:nth-child(n), .prop-page.pc-page:nth-child(n) table td:nth-child(n){width:auto!important;white-space:normal!important;}
+  .prop-page.pc-page:nth-child(n) .pc-fixed th:nth-child(n), .prop-page.pc-page:nth-child(n) .pc-fixed td:nth-child(n){width:auto!important;}
+  .prop-page.pc-page:nth-child(n) .prop-sec-title{font-size:36px!important;margin-bottom:6px!important;}
+  .prop-page.pc-page:nth-child(n) .prop-sec-sub{margin-bottom:18px!important;}
+  .pc-page .pc-tbl{font-size:11.5px;}
+  .pc-page .pc-tbl td{padding:5px 7px;}
+  .pc-page .pc-list{font-size:12px;}
+  .pc-page .pc-box{font-size:11.5px;}
+}
+</style>
 </head>
 <body>
 
@@ -1013,6 +1065,41 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
              continua GD II, que é o caso de praticamente todo cliente novo.
              Ver ativarModoAtendente() e fioBPercentualEfetivo() no final
              do script. -->
+        <!-- ═══ PROJETO CUSTOMIZADO (só modo atendente ?interno=1) — painel para projetos grandes ═══ -->
+        <div class="form-group full" id="wrapProjetoCustom" style="display:none;">
+          <label class="pc-check pc-main"><input type="checkbox" id="pcAtivo" onchange="pcToggle()"> <span>Projeto customizado (grande porte — dimensionamento manual)</span></label>
+          <div id="pcBody" style="display:none;">
+            <div class="pc-row">
+              <button type="button" class="pc-btn" onclick="pcCarregarPreset('lanchonete')">↺ Carregar Lanchonete Parada Obrigatória</button>
+              <span class="pc-hint">Preenche equipamentos, valores, escopo e dados do cliente. Tudo continua editável.</span>
+            </div>
+
+            <div class="pc-sub">Escopo desta proposta</div>
+            <div class="pc-row pc-checks">
+              <label class="pc-check"><input type="checkbox" id="pcProjeto" checked onchange="pcAtualizar()"> <span>Projeto (memorial, TRT, homologação)</span></label>
+              <label class="pc-check"><input type="checkbox" id="pcExecucao" checked onchange="pcAtualizar()"> <span>Execução (instalação + materiais)</span></label>
+              <label class="pc-check"><input type="checkbox" id="pcRemanejar" onchange="pcAtualizar()"> <span>Remanejar os módulos existentes (opcional)</span></label>
+            </div>
+
+            <div class="pc-sub">Equipamentos <span class="pc-hint">(situação, disponibilidade e faturamento aparecem na proposta)</span></div>
+            <div id="pcEquipLista"></div>
+            <button type="button" class="pc-btn pc-btn-s" onclick="pcAddEquip()">+ Adicionar item</button>
+
+            <div class="pc-sub">Valores por grupo <span class="pc-hint">(mínimo e máximo — deixe o máximo vazio se o valor é fechado)</span></div>
+            <div id="pcValLista"></div>
+            <button type="button" class="pc-btn pc-btn-s" onclick="pcAddValor()">+ Adicionar valor</button>
+
+            <div class="pc-sub">Textos da proposta <span class="pc-hint">(uma linha = um item)</span></div>
+            <label class="pc-lbl">Escopo do projeto</label><textarea id="pcTxtProj" class="form-input pc-ta" rows="4"></textarea>
+            <label class="pc-lbl">Escopo da execução</label><textarea id="pcTxtExec" class="form-input pc-ta" rows="4"></textarea>
+            <label class="pc-lbl">Fora do escopo Saewel (obra civil e terceiros)</label><textarea id="pcTxtExcl" class="form-input pc-ta" rows="4"></textarea>
+            <label class="pc-lbl">Premissas e pendências</label><textarea id="pcTxtPrem" class="form-input pc-ta" rows="4"></textarea>
+
+            <div class="pc-sub">Conferência rápida</div>
+            <div id="pcResumo" class="pc-resumo"></div>
+          </div>
+        </div>
+
         <div class="form-group full" id="wrapClasseGD" style="display:none;">
           <label class="form-label">Classe de GD (Lei 14.300)</label>
           <select id="classeGD" class="form-input" onchange="atualizarClasseGD()">
@@ -1348,7 +1435,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
         </thead>
         <tbody id="tabelaMensal"></tbody>
         <tfoot id="tabelaTotal"></tfoot>
-      </table></div>
+      </table>
       <p style="font-size:11px;color:rgba(155,163,173,0.8);margin-top:10px;" id="avisoLegalMensal">* Valores estimados. Não considera possíveis cobranças de ICMS sobre a TUSD. Fatura mínima calculada sobre consumo mínimo de 30 kWh.</p>
     </div>
 
@@ -1368,7 +1455,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
           </tr>
         </thead>
         <tbody id="tabelaRetorno"></tbody>
-      </table></div>
+      </table>
       <p style="font-size:11px;color:rgba(155,163,173,0.9);margin-top:10px;" id="avisoLegalRetorno">* Inflação tarifária: 4% ao ano. ** Módulos perdem 20% de eficiência em 25 anos (0,8%/ano). *** Já considera o Fio B escalonado da Lei 14.300/2022 (estimativa).</p>
     </div>
 
@@ -2373,6 +2460,17 @@ async function calcular(){
   }
   const consumoMedio=Math.round(consumosMes.reduce((a,b)=>a+b,0)/12);
 
+  // Modo atendente: projeto customizado (fluxo separado, só com ?interno=1)
+  if(typeof pcAtivo==='function' && pcAtivo()){
+    if(!PC.equip.length){showToast('Adicione os equipamentos do projeto customizado.');return;}
+    document.getElementById('formulario').style.display='none';
+    document.getElementById('loading').classList.add('show');
+    await new Promise(r=>setTimeout(r,600));
+    document.getElementById('loading').classList.remove('show');
+    await gerarProjetoCustom({nome,tel,cidade,irr,consumoMedio,tarifa,perfil,estrutura,ligacao});
+    return;
+  }
+
   document.getElementById('formulario').style.display='none';
   document.getElementById('loading').classList.add('show');
   await new Promise(r=>setTimeout(r,1200));
@@ -2860,7 +2958,7 @@ Gostaria de avançar com o projeto!`);
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
 function formatMoeda(n){return parseFloat(n).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function novaSimulacao(){document.getElementById('proposta').classList.remove('show');document.getElementById('formulario').style.display='block';window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cidadeValor').value='';const ci=document.getElementById('cidadeInput');if(ci)ci.value='';}
+function novaSimulacao(){if(window.__pcGerado){location.reload();return;}document.getElementById('proposta').classList.remove('show');document.getElementById('formulario').style.display='block';window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cidadeValor').value='';const ci=document.getElementById('cidadeInput');if(ci)ci.value='';}
 
 // Numeração de páginas no print
 window.addEventListener('beforeprint',()=>{
@@ -2987,8 +3085,8 @@ verificarModoVisualizacao();
 const JINKO_MODS = [
   { id:'jinko620', label:'Jinko Tiger Neo 620W — N-Type Bifacial — Ef. 21,33%', wp:620, area:2.70, peso:32.4, desc:'Bifacial · Ef. 21,33% · 87,4% aos 30 anos', foto:'img/equipamentos/preview-modulo-default.webp' },
   { id:'jinko635c', label:'Jinko Tiger Neo 635W (frame compacto) — N-Type Bifacial — Ef. 23,51%', wp:635, area:2.70, peso:32.4, desc:'Bifacial · frame compacto 2382×1134mm · Ef. 23,51%', foto:'img/equipamentos/modulo-jinko635c.webp' },
-  { id:'jinko635g', label:'Jinko Tiger Neo 635W (frame maior) — N-Type Bifacial — Ef. 23,51%', wp:635, area:2.80, peso:34.0, desc:'Bifacial · frame maior 2465×1134mm · Ef. 23,51%', foto:'img/equipamentos/modulo-jinko635c.webp' },
-  { id:'jinko640', label:'Jinko Tiger Neo 640W — N-Type Bifacial — Ef. 23,69%', wp:640, area:2.80, peso:34.0, desc:'Bifacial · Ef. 23,69% · Garantia 25 anos',  foto:'img/equipamentos/modulo-jinko640.webp' },
+  { id:'jinko635g', label:'Jinko Tiger Neo 635W (frame maior) — N-Type Bifacial — Ef. 23,51%', wp:635, area:2.795, peso:34.0, desc:'Bifacial · frame maior 2465×1134mm · Ef. 23,51%', foto:'img/equipamentos/modulo-jinko635c.webp' },
+  { id:'jinko640', label:'Jinko Tiger Neo 640W — N-Type Bifacial — Ef. 23,69%', wp:640, area:2.795, peso:34.0, desc:'Bifacial · Ef. 23,69% · Garantia 25 anos',  foto:'img/equipamentos/modulo-jinko640.webp' },
 ];
 const WEG_MODS = [
   { id:'trina620', label:'Trina Solar 620W — N-Type Bifacial — Ef. 23,00%',     wp:620, area:2.70, peso:31.9, desc:'Bifacial · Ef. 23,00% · N-Type',              foto:'img/equipamentos/modulo-trina620.webp' },
@@ -3214,6 +3312,483 @@ function definirGrupoEquipamentos(invMarca, invModeloTexto) {
   });
   window.addEventListener('load', function() { setTimeout(loadGtagScript, 2000); });
 })();
+
+// ══════════════════════════════════════════════════════════════════════
+// PROJETO CUSTOMIZADO — só no modo atendente (?interno=1)
+// Fluxo separado do calculador público: dimensionamento manual por itens,
+// proposta com situação (existente / já adquirido / a adquirir), disponibilidade
+// e faturamento de cada equipamento, valores por grupo em faixa (mín–máx) e
+// escopo Projeto / Execução. Salva no CRM pelo mesmo salvarLead().
+// ══════════════════════════════════════════════════════════════════════
+const PC_STATUS = {existente:'Existente', adquirido:'Já adquirido', adquirir:'A adquirir', cotacao:'Em cotação'};
+const PC_STATUS_COR = {existente:['#e0e7ff','#3730a3'], adquirido:['#dcfce7','#166534'], adquirir:['#fef3c7','#92400e'], cotacao:['#f3e8ff','#6b21a8']};
+const PC_FAT = {direto:'Direto ao cliente', saewel:'Via Saewel', definir:'A definir', na:'—'};
+const PC_GRUPOS = {
+  investido:'Já investido pelo cliente',
+  equip:'Equipamentos a adquirir',
+  projeto:'Saewel · Projeto',
+  execucao:'Saewel · Instalação (mão de obra)',
+  materiais:'Materiais elétricos e acessórios',
+  terceiros:'Obra civil e terceiros (fora do escopo Saewel)'
+};
+const PC_ORDEM_G = ['investido','equip','projeto','execucao','materiais','terceiros'];
+const PC_TIPOS = {mod:'Módulo', inv:'Inversor', bat:'Bateria', out:'Medição / outros'};
+const PC_BLOCOS = {on:'On-grid', hib:'Híbrido (Grid Zero)'};
+
+const PC_PRESETS = {
+  lanchonete: {
+    cliente: {nome:'Lanchonete Parada Obrigatória (Vinicius)', cidade:'Novo Horizonte - SP', endereco:'Novo Horizonte - SP', perfil:'comercial', ligacao:'tri', estrutura:'solo', consumo:10500, classeGD:'GD1'},
+    equip: [
+      {tipo:'mod', bloco:'on',  nome:'Módulo Canadian Solar HiKu CS3W-455MS — 455 Wp', qtd:120, status:'existente', disp:'Instalados', fat:'na', wp:455, area:2.21, peso:24.9, nota:'Permanecem onde estão (não serão movidos)'},
+      {tipo:'mod', bloco:'hib', nome:'Módulo Jinko Tiger Neo 78HL4-BDV — 630 Wp', qtd:160, status:'adquirido', disp:'Pedido Fortlev fechado', fat:'direto', wp:630, area:2.795, peso:34.0, nota:'4 fileiras de 40 módulos, estrutura de solo'},
+      {tipo:'inv', bloco:'on',  nome:'Inversor Growatt MID25KTL3-XL2 — 25 kW', qtd:1, status:'adquirir', disp:'Imediata', fat:'direto', kwAC:25, nota:'98 módulos · 4 MPPT'},
+      {tipo:'inv', bloco:'on',  nome:'Inversor Growatt MIN 5000TL-X — 5 kW', qtd:1, status:'existente', disp:'Instalado', fat:'na', kwAC:5, nota:'14 módulos'},
+      {tipo:'inv', bloco:'on',  nome:'Inversor Growatt MIN 3000TL-X — 3 kW', qtd:1, status:'existente', disp:'Instalado', fat:'na', kwAC:3, nota:'8 módulos'},
+      {tipo:'inv', bloco:'hib', nome:'Inversor híbrido FoxESS H3-Pro-30.0 (220/127 V) — 17,3 kW', qtd:3, status:'adquirido', disp:'Pedido Fortlev fechado', fat:'direto', kwAC:17.3, nota:'40 módulos por inversor'},
+      {tipo:'inv', bloco:'hib', nome:'Inversor híbrido FoxESS H3-Pro-30.0 (220/127 V) — 17,3 kW', qtd:1, status:'adquirir', disp:'Final de nov/dez 2026', fat:'direto', kwAC:17.3, nota:'4º inversor — fornecedor AVT (faturamento direto a confirmar)'},
+      {tipo:'bat', bloco:'hib', nome:'Bateria FoxESS EP12 — 11,52 kWh', qtd:4, status:'adquirir', disp:'Final de nov/dez 2026', fat:'direto', kwh:11.52, nota:'Banco de 46,08 kWh — fornecedor AVT (faturamento direto a confirmar)'},
+      {tipo:'out', bloco:'on',  nome:'Medidor Growatt Smart Energy Manager', qtd:1, status:'adquirir', disp:'A definir', fat:'definir', nota:'Monitora a injeção do bloco Growatt'},
+      {tipo:'out', bloco:'on',  nome:'ShineMaster (datalogger Growatt)', qtd:1, status:'adquirir', disp:'A definir', fat:'definir', nota:''},
+      {tipo:'out', bloco:'on',  nome:'TCs do Smart Energy Manager', qtd:1, status:'adquirir', disp:'A definir', fat:'definir', nota:'Instalados no QGD interno (ou caixa próxima — a definir na visita)'},
+      {tipo:'out', bloco:'on',  nome:'Caixa de medição do padrão de entrada', qtd:1, status:'adquirir', disp:'10 a 15 dias', fat:'direto', nota:'Metalplast (Rio Preto) — Saewel leva o equipamento'},
+      {tipo:'out', bloco:'hib', nome:'Cabos de potência (Cobre / Alumínio)', qtd:1, status:'cotacao', disp:'Aguardando cotação', fat:'definir', nota:'Lista enviada à Cobrecom; cabos de alumínio em cotação'}
+    ],
+    valores: [
+      {g:'investido', nome:'Pedido Fortlev (3 inversores H3-Pro, 160 módulos Jinko, estrutura de solo e acessórios) e consultoria técnica', min:180090, max:'', nota:''},
+      {g:'equip', nome:'Inversor Growatt MID25KTL3-XL2 (25 kW)', min:9500, max:'', nota:''},
+      {g:'equip', nome:'Kit AVT: 4º inversor H3-Pro-30.0 + 4 baterias EP12', min:67300, max:'', nota:''},
+      {g:'projeto', nome:'Projeto técnico, memorial descritivo e homologação (CERNHE)', min:5524, max:5765, nota:''},
+      {g:'execucao', nome:'Instalação e comissionamento (mão de obra)', min:60000, max:100000, nota:''},
+      {g:'execucao', nome:'Remanejamento dos 120 módulos existentes (somente se decidido)', min:'', max:'', nota:'', opc:'remanejar'},
+      {g:'materiais', nome:'Materiais elétricos (cabos, quadros, disjuntores, eletrodutos, chave ATS e demais)', min:50000, max:90000, nota:''},
+      {g:'terceiros', nome:'Sondagem SPT + resistividade (Tecnosolo)', min:6825, max:'', nota:''},
+      {g:'terceiros', nome:'Fundações / estrutura de solo (execução)', min:8000, max:29000, nota:''},
+      {g:'terceiros', nome:'CCM (obra civil)', min:40000, max:80000, nota:''},
+      {g:'terceiros', nome:'Terraplanagem', min:20000, max:50000, nota:''},
+      {g:'terceiros', nome:'Padrão de entrada (alvenaria) + transformador da concessionária', min:40000, max:80000, nota:''}
+    ],
+    txtProj: [
+      'Projeto elétrico completo da minigeração: ampliação com bloco híbrido (Grid Zero) + adequação do sistema on-grid existente',
+      'Memorial descritivo, diagramas unifilares e plantas, com TRT de projeto no CFT/SINCETI',
+      'Trâmites junto à CERNHE: parecer de acesso, estudo de inversão de fluxo, homologação e vistoria',
+      'Parametrização e limitação de injeção conforme exigência da concessionária'
+    ].join('\n'),
+    txtExec: [
+      'Instalação dos módulos novos, conexões CC/CA e cabeamento até o CCM',
+      'Instalação dos inversores, baterias, quadros (QDSFV, QDC EPS, QPA, Chave ATS), medidores e TCs',
+      'Comissionamento, parametrização dos inversores e treinamento do cliente no monitoramento',
+      'Supervisão de técnico responsável, com TRT de execução'
+    ].join('\n'),
+    txtExcl: [
+      'CCM (casa de comando dos inversores) — obra civil',
+      'Padrão de entrada: alvenaria, chumbamento das caixas de medição e transformador da concessionária',
+      'Fundações, terraplanagem e sondagem do solo',
+      'Vala e eletrodutos enterrados, caso feitos por terceiros'
+    ].join('\n'),
+    txtPrem: [
+      'Valores por grupo são faixas: tornam-se valores firmes à medida que as cotações fecham, com a proposta reemitida em nova revisão',
+      'A posição do padrão e do transformador (norma: transformador a até 10 m do ponto de conexão) e do CCM será definida na visita técnica; a distância de cabos altera o custo dos materiais',
+      'Itens de medição (Smart Energy Manager, ShineMaster, TCs) ainda sem preço — não estão somados aos totais',
+      'Geração informada é potencial: a injeção na rede é limitada (Grid Zero / estudo da CERNHE), então o aproveitamento depende do consumo da unidade',
+      'Sistema existente homologado em 2021 (GD I — direito adquirido)'
+    ].join('\n')
+  }
+};
+
+const PC = {ativo:false, equip:[], valores:[]};
+
+function pcEsc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function pcN(x){const v=parseFloat(String(x).replace(',','.'));return isFinite(v)?v:0;}
+function pcFmt0(n){return Math.round(n).toLocaleString('pt-BR');}
+function pcFmt1(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});}
+function pcFmt2(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function pcRs(n){return 'R$ '+pcFmt0(n);}
+function pcAtivo(){return !!(PC.ativo && document.getElementById('pcAtivo') && document.getElementById('pcAtivo').checked);}
+
+function pcEscopo(){
+  return {
+    projeto: document.getElementById('pcProjeto').checked,
+    execucao: document.getElementById('pcExecucao').checked,
+    remanejar: document.getElementById('pcRemanejar').checked
+  };
+}
+
+// ── Cálculo puro (sem DOM) ──
+function calcularProjetoCustom(pc, escopo, irr){
+  const E=pc.equip, N=pcN;
+  const mods=E.filter(e=>e.tipo==='mod'), invs=E.filter(e=>e.tipo==='inv'), bats=E.filter(e=>e.tipo==='bat');
+  const soma=(l,f)=>l.reduce((a,e)=>a+f(e),0);
+  const kwp=l=>soma(l,e=>N(e.qtd)*N(e.wp)/1000);
+  const ac=l=>soma(l,e=>N(e.qtd)*N(e.kwAC));
+  const on=l=>l.filter(e=>e.bloco==='on'), hib=l=>l.filter(e=>e.bloco==='hib');
+  const exist=mods.filter(m=>m.status==='existente'), novos=mods.filter(m=>m.status!=='existente');
+  const r={};
+  r.kwpOn=kwp(on(mods)); r.kwpHib=kwp(hib(mods)); r.kwpTotal=r.kwpOn+r.kwpHib;
+  r.acOn=ac(on(invs)); r.acHib=ac(hib(invs)); r.acTotal=r.acOn+r.acHib;
+  r.nModOn=soma(on(mods),m=>N(m.qtd)); r.nModHib=soma(hib(mods),m=>N(m.qtd)); r.nModTotal=r.nModOn+r.nModHib;
+  r.nInvOn=soma(on(invs),i=>N(i.qtd)); r.nInvHib=soma(hib(invs),i=>N(i.qtd)); r.nInvTotal=r.nInvOn+r.nInvHib;
+  r.kwhBat=soma(bats,b=>N(b.qtd)*N(b.kwh)); r.nBat=soma(bats,b=>N(b.qtd));
+  r.nExist=soma(exist,m=>N(m.qtd)); r.nNovos=soma(novos,m=>N(m.qtd));
+  r.areaExist=soma(exist,m=>N(m.qtd)*N(m.area)); r.areaNovos=soma(novos,m=>N(m.qtd)*N(m.area));
+  r.pesoExist=soma(exist,m=>N(m.qtd)*N(m.peso)); r.pesoNovos=soma(novos,m=>N(m.qtd)*N(m.peso));
+  r.areaInstal=r.areaNovos+(escopo.remanejar?r.areaExist:0);
+  r.pesoInstal=r.pesoNovos+(escopo.remanejar?r.pesoExist:0);
+  r.nModInstal=r.nNovos+(escopo.remanejar?r.nExist:0);
+  // geração potencial (mesmo modelo do calculador público: kWp × HSP × 30 × 0,80 × sazonalidade)
+  r.ger=null;
+  if(irr){
+    const f=(k,i)=>Math.round(k*irr*30*0.80*VAR_MES[i]);
+    r.ger={on:[],hib:[],total:[]};
+    for(let i=0;i<12;i++){const a=f(r.kwpOn,i), b=f(r.kwpHib,i); r.ger.on.push(a); r.ger.hib.push(b); r.ger.total.push(a+b);}
+    r.gerAnual=r.ger.total.reduce((a,b)=>a+b,0); r.gerMedia=Math.round(r.gerAnual/12);
+  }
+  // valores
+  const ativoG=g=>g==='projeto'?escopo.projeto:(g==='execucao'||g==='materiais')?escopo.execucao:true;
+  r.grupos={};
+  PC_ORDEM_G.forEach(g=>{r.grupos[g]={g, ativo:ativoG(g), min:0, max:0, itens:[], semPreco:[]};});
+  pc.valores.forEach(v=>{
+    if(v.opc==='remanejar' && !escopo.remanejar) return;
+    const G=r.grupos[v.g]; if(!G) return;
+    const mn=N(v.min), mx=(v.max===''||v.max==null)?mn:N(v.max);
+    if(!mn && !mx){ G.semPreco.push(v); G.itens.push(Object.assign({},v,{vmin:0,vmax:0})); return; }
+    G.min+=mn; G.max+=mx; G.itens.push(Object.assign({},v,{vmin:mn,vmax:mx}));
+  });
+  r.totalMin=0; r.totalMax=0;
+  PC_ORDEM_G.forEach(g=>{const G=r.grupos[g]; if(G.ativo){r.totalMin+=G.min; r.totalMax+=G.max;}});
+  r.invMin=r.grupos.investido.min; r.invMax=r.grupos.investido.max;
+  r.aInvMin=r.totalMin-r.invMin; r.aInvMax=r.totalMax-r.invMax;
+  r.media=(r.totalMin+r.totalMax)/2;
+  return r;
+}
+
+// ── Painel ──
+function pcLer(){ // lê os textos fixos do painel
+  return {proj:document.getElementById('pcTxtProj').value, exec:document.getElementById('pcTxtExec').value,
+          excl:document.getElementById('pcTxtExcl').value, prem:document.getElementById('pcTxtPrem').value};
+}
+function pcOpts(obj,sel){return Object.keys(obj).map(k=>`<option value="${k}"${k===sel?' selected':''}>${pcEsc(obj[k])}</option>`).join('');}
+function pcRender(){
+  const el=document.getElementById('pcEquipLista');
+  el.innerHTML=PC.equip.map((e,i)=>{
+    let tec='';
+    if(e.tipo==='mod') tec=`Wp <input class="pc-in" type="number" value="${pcEsc(e.wp)}" oninput="pcSet('equip',${i},'wp',this.value)"> m²/un <input class="pc-in" type="number" step="0.01" value="${pcEsc(e.area)}" oninput="pcSet('equip',${i},'area',this.value)"> kg/un <input class="pc-in" type="number" step="0.1" value="${pcEsc(e.peso)}" oninput="pcSet('equip',${i},'peso',this.value)">`;
+    else if(e.tipo==='inv') tec=`kW CA (cada) <input class="pc-in" type="number" step="0.1" value="${pcEsc(e.kwAC)}" oninput="pcSet('equip',${i},'kwAC',this.value)">`;
+    else if(e.tipo==='bat') tec=`kWh (cada) <input class="pc-in" type="number" step="0.01" value="${pcEsc(e.kwh)}" oninput="pcSet('equip',${i},'kwh',this.value)">`;
+    return `<div class="pc-card">
+      <div class="pc-grid">
+        <input class="pc-in" value="${pcEsc(e.nome)}" placeholder="Descrição do item" oninput="pcSet('equip',${i},'nome',this.value)">
+        <input class="pc-in" type="number" min="0" value="${pcEsc(e.qtd)}" title="Quantidade" oninput="pcSet('equip',${i},'qtd',this.value)">
+        <select class="pc-in" onchange="pcSet('equip',${i},'status',this.value)">${pcOpts(PC_STATUS,e.status)}</select>
+        <input class="pc-in" value="${pcEsc(e.disp)}" placeholder="Disponibilidade" oninput="pcSet('equip',${i},'disp',this.value)">
+        <select class="pc-in" onchange="pcSet('equip',${i},'fat',this.value)">${pcOpts(PC_FAT,e.fat)}</select>
+        <button type="button" class="pc-x" title="Remover" onclick="pcDel('equip',${i})">×</button>
+      </div>
+      <div class="pc-tec">
+        <select class="pc-in" style="width:auto" onchange="pcSet('equip',${i},'tipo',this.value,true)">${pcOpts(PC_TIPOS,e.tipo)}</select>
+        <select class="pc-in" style="width:auto" onchange="pcSet('equip',${i},'bloco',this.value)">${pcOpts(PC_BLOCOS,e.bloco)}</select>
+        ${tec}
+        <input class="pc-in" style="flex:1;min-width:180px;width:auto" value="${pcEsc(e.nota)}" placeholder="Observação (aparece na proposta)" oninput="pcSet('equip',${i},'nota',this.value)">
+      </div></div>`;
+  }).join('');
+  const vl=document.getElementById('pcValLista');
+  vl.innerHTML=PC.valores.map((v,i)=>`<div class="pc-card"><div class="pc-grid2">
+      <select class="pc-in" onchange="pcSet('valores',${i},'g',this.value)">${pcOpts(PC_GRUPOS,v.g)}</select>
+      <input class="pc-in" value="${pcEsc(v.nome)}" placeholder="Descrição" oninput="pcSet('valores',${i},'nome',this.value)">
+      <input class="pc-in" type="number" min="0" value="${pcEsc(v.min)}" placeholder="Mínimo" oninput="pcSet('valores',${i},'min',this.value)">
+      <input class="pc-in" type="number" min="0" value="${pcEsc(v.max)}" placeholder="Máximo" oninput="pcSet('valores',${i},'max',this.value)">
+      <button type="button" class="pc-x" title="Remover" onclick="pcDel('valores',${i})">×</button>
+    </div></div>`).join('');
+  pcAtualizar();
+}
+function pcSet(lista,i,campo,val,rerender){
+  const it=PC[lista][i]; if(!it) return;
+  it[campo]=val;
+  if(rerender) pcRender(); else pcAtualizar();
+}
+function pcDel(lista,i){PC[lista].splice(i,1);pcRender();}
+function pcAddEquip(){PC.equip.push({tipo:'out',bloco:'on',nome:'',qtd:1,status:'adquirir',disp:'A definir',fat:'definir',nota:''});pcRender();}
+function pcAddValor(){PC.valores.push({g:'materiais',nome:'',min:'',max:''});pcRender();}
+
+function pcAtualizar(){
+  const box=document.getElementById('pcResumo'); if(!box) return;
+  const r=calcularProjetoCustom(PC,pcEscopo(),null);
+  const ratio=(dc,ac)=>ac>0?(dc/ac):0;
+  const flag=x=>x>1.5?'av':'ok';
+  box.innerHTML=
+    `<b>${pcFmt2(r.kwpTotal)} kWp</b> no total (${r.nModTotal} módulos) · <b>${pcFmt2(r.acTotal)} kW CA</b> (${r.nInvTotal} inversores)<br>`+
+    `On-grid: ${pcFmt2(r.kwpOn)} kWp / ${pcFmt2(r.acOn)} kW CA — CC/CA <span class="${flag(ratio(r.kwpOn,r.acOn))}">${pcFmt2(ratio(r.kwpOn,r.acOn))}</span><br>`+
+    `Híbrido: ${pcFmt2(r.kwpHib)} kWp / ${pcFmt2(r.acHib)} kW CA — CC/CA <span class="${flag(ratio(r.kwpHib,r.acHib))}">${pcFmt2(ratio(r.kwpHib,r.acHib))}</span> · baterias ${pcFmt2(r.kwhBat)} kWh<br>`+
+    `Área: existente ${pcFmt0(r.areaExist)} m² (${pcFmt2(r.pesoExist/1000)} t) · nova ${pcFmt0(r.areaNovos)} m² (${pcFmt2(r.pesoNovos/1000)} t)<br>`+
+    `Valor do escopo marcado: <b>${pcRs(r.totalMin)} a ${pcRs(r.totalMax)}</b> (já investido ${pcRs(r.invMin)} · a investir ${pcRs(r.aInvMin)} a ${pcRs(r.aInvMax)})`;
+}
+function pcToggle(){
+  const on=document.getElementById('pcAtivo').checked;
+  PC.ativo=on;
+  document.getElementById('pcBody').style.display=on?'block':'none';
+  if(on && !PC.equip.length) pcRender();
+}
+function pcCarregarPreset(key){
+  const p=PC_PRESETS[key]; if(!p) return;
+  PC.equip=JSON.parse(JSON.stringify(p.equip));
+  PC.valores=JSON.parse(JSON.stringify(p.valores));
+  document.getElementById('pcTxtProj').value=p.txtProj;
+  document.getElementById('pcTxtExec').value=p.txtExec;
+  document.getElementById('pcTxtExcl').value=p.txtExcl;
+  document.getElementById('pcTxtPrem').value=p.txtPrem;
+  const c=p.cliente, g=id=>document.getElementById(id);
+  if(!g('nome').value) g('nome').value=c.nome;
+  g('cidadeInput').value=c.cidade; g('cidadeValor').value='';
+  if(g('enderecoInput') && !g('enderecoInput').value) g('enderecoInput').value=c.endereco;
+  const rad=document.querySelector('input[name=perfil][value='+c.perfil+']'); if(rad) rad.checked=true;
+  g('ligacao').value=c.ligacao; g('estrutura').value=c.estrutura;
+  if(typeof slider!=='undefined' && slider){slider.value=c.consumo; slider.dispatchEvent(new Event('input',{bubbles:true}));}
+  if(typeof manual!=='undefined' && manual){manual.value=c.consumo; manual.dispatchEvent(new Event('input',{bubbles:true}));}
+  if(g('classeGD')){g('classeGD').value=c.classeGD; try{atualizarClasseGD();}catch(e){}}
+  g('pcAtivo').checked=true; PC.ativo=true; g('pcBody').style.display='block';
+  g('pcProjeto').checked=true; g('pcExecucao').checked=true; g('pcRemanejar').checked=false;
+  pcRender();
+  showToast('Preset carregado. Preencha o WhatsApp do cliente e confira os valores.');
+}
+function pcInit(){
+  const params=new URLSearchParams(window.location.search);
+  if(params.get('interno')!=='1') return;
+  const w=document.getElementById('wrapProjetoCustom'); if(w) w.style.display='';
+  const pr=params.get('preset');
+  if(pr && PC_PRESETS[pr]) pcCarregarPreset(pr);
+}
+
+// ── Geração da proposta customizada ──
+function pcBadge(st){const c=PC_STATUS_COR[st]||['#eee','#333'];return `<span class="pc-badge" style="background:${c[0]};color:${c[1]};">${pcEsc(PC_STATUS[st]||st)}</span>`;}
+function pcLinhas(txt){return String(txt||'').split('\n').map(s=>s.trim()).filter(Boolean);}
+function pcLista(txt){return '<ul class="pc-list">'+pcLinhas(txt).map(l=>`<li>${pcEsc(l)}</li>`).join('')+'</ul>';}
+function pcPagina(inner){
+  const logoSrc=document.querySelector('#proposta .prop-page-logo');
+  const d=document.createElement('div'); d.className='prop-page pc-page';
+  d.innerHTML=(logoSrc?logoSrc.outerHTML:'')+inner; return d;
+}
+
+async function gerarProjetoCustom({nome,tel,cidade,irr,consumoMedio,tarifa,perfil,estrutura,ligacao}){
+  const escopo=pcEscopo(), T=pcLer();
+  const r=calcularProjetoCustom(PC,escopo,irr);
+  const now=new Date(), dataFmt=now.toLocaleDateString('pt-BR');
+  const validade=new Date(now.getTime()+15*24*3600*1000).toLocaleDateString('pt-BR');
+
+  // número sequencial (mesmo mecanismo do fluxo padrão)
+  let propNum='';
+  try{
+    const resp=await fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec?action=nextnum');
+    const json=await resp.json();
+    if(json.status==='ok'&&json.proposta) propNum=json.proposta;
+  }catch(err){console.warn('AppScript indisponível, usando fallback local:',err);}
+  if(!propNum){
+    propNum=`SAEWEL-${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getTime()).slice(-4)}`;
+  }
+
+  const faixa = (r.totalMax>r.totalMin) ? `${pcRs(r.totalMin)} a ${pcRs(r.totalMax)}` : pcRs(r.totalMin);
+  const escTxt=[escopo.projeto?'Projeto':'',escopo.execucao?'Execução':''].filter(Boolean).join(' + ')||'Fornecimento';
+
+  // ── CAPA ──
+  set('cNome',nome); set('cCidade',cidade); set('cNumData',`${propNum} · ${dataFmt}`);
+  set('cPerfil',(PERFIS[perfil]||'Comercial')+' · Projeto de grande porte');
+  set('cInvFaixa',faixa); set('cIrr',irr.toFixed(2)+' kWh/m²/dia'); set('cValidade',validade);
+  const capaLbl=document.querySelector('#cInvFaixa')?.previousElementSibling;
+  if(capaLbl) capaLbl.textContent='💰 Investimento total estimado do projeto';
+  const capaTituloEl=document.querySelector('.capa-title em'); if(capaTituloEl) capaTituloEl.textContent='Projeto Solar';
+  const mapaBlock=document.getElementById('capaMapaBlock');
+  const geoLat=parseFloat(document.getElementById('geoLat').value), geoLon=parseFloat(document.getElementById('geoLon').value);
+  const temGeo=!isNaN(geoLat)&&!isNaN(geoLon);
+  if(temGeo){ try{mostrarMapaSatelite(geoLat,geoLon);}catch(e){} } else if(mapaBlock){ mapaBlock.style.display='none'; }
+  const coordCidade=(typeof COORDS_DB!=='undefined')?COORDS_DB[cidade]:null;
+  const coordTxt=temGeo?geoLat.toFixed(5)+', '+geoLon.toFixed(5):(coordCidade?coordCidade[0]+', '+coordCidade[1]:'a definir na visita');
+
+  // ── PÁG. 2: VISÃO GERAL ──
+  const modsEx=PC.equip.filter(e=>e.tipo==='mod'&&e.status==='existente');
+  const modsNv=PC.equip.filter(e=>e.tipo==='mod'&&e.status!=='existente');
+  const descMod=l=>l.map(m=>`${pcFmt0(pcN(m.qtd))}× ${pcN(m.wp)} Wp`).join(' + ')||'—';
+  const p2=pcPagina(`
+    <div class="prop-sec-title">Visão geral do <em>Projeto</em></div>
+    <div class="prop-sec-sub">Sistema existente + ampliação · escopo desta proposta: ${pcEsc(escTxt)}</div>
+    <div class="kpis-grid">
+      <div class="kpi-box"><div class="kpi-icon">☀️</div><div class="kpi-num">${pcFmt2(r.kwpTotal)}</div><div class="kpi-lbl">kWp instalados (total)</div></div>
+      <div class="kpi-box"><div class="kpi-icon">⚡</div><div class="kpi-num">${pcFmt1(r.acTotal)}</div><div class="kpi-lbl">kW de inversores (CA)</div></div>
+      <div class="kpi-box"><div class="kpi-icon">🔋</div><div class="kpi-num">${pcFmt2(r.kwhBat)}</div><div class="kpi-lbl">kWh de baterias</div></div>
+      <div class="kpi-box"><div class="kpi-icon">📈</div><div class="kpi-num">${pcFmt0(r.gerMedia)}</div><div class="kpi-lbl">kWh/mês de geração potencial</div></div>
+    </div>
+    <h3 class="pc-h">Dimensionamento técnico</h3>
+    <table class="pc-tbl">
+      <tr><td>Localidade</td><td class="n">${pcEsc(cidade)}</td></tr>
+      <tr><td>Irradiação solar diária</td><td class="n">${irr.toFixed(2)} kWh/m²/dia</td></tr>
+      <tr><td>Coordenadas</td><td class="n">${pcEsc(coordTxt)}</td></tr>
+      <tr><td>Estrutura</td><td class="n">Solo / ground mount</td></tr>
+      <tr><td>Bloco On-grid (existente + Growatt 25 kW)<span class="pc-sm">${pcEsc(descMod(PC.equip.filter(e=>e.tipo==='mod'&&e.bloco==='on')))}</span></td><td class="n">${pcFmt2(r.kwpOn)} kWp · ${pcFmt1(r.acOn)} kW CA</td></tr>
+      <tr><td>Bloco Híbrido — Grid Zero, com backup EPS<span class="pc-sm">${pcEsc(descMod(PC.equip.filter(e=>e.tipo==='mod'&&e.bloco==='hib')))} · ${r.nBat} baterias</span></td><td class="n">${pcFmt2(r.kwpHib)} kWp · ${pcFmt1(r.acHib)} kW CA</td></tr>
+      <tr class="tot"><td>Potência total do projeto</td><td class="n">${pcFmt2(r.kwpTotal)} kWp · ${pcFmt1(r.acTotal)} kW CA</td></tr>
+      <tr><td>Geração potencial média</td><td class="n">${pcFmt0(r.gerMedia)} kWh/mês</td></tr>
+    </table>
+    <h3 class="pc-h">Módulos: área e peso</h3>
+    <table class="pc-tbl">
+      <thead><tr><th>Conjunto</th><th class="n">Módulos</th><th class="n">Área</th><th class="n">Peso</th></tr></thead>
+      <tr><td>Existentes (permanecem onde estão)<span class="pc-sm">${pcEsc(descMod(modsEx))}</span></td><td class="n">${pcFmt0(r.nExist)}</td><td class="n">≈ ${pcFmt0(r.areaExist)} m²</td><td class="n">≈ ${pcFmt2(r.pesoExist/1000)} t</td></tr>
+      <tr><td>Novos (estrutura e fundação a executar)<span class="pc-sm">${pcEsc(descMod(modsNv))}</span></td><td class="n">${pcFmt0(r.nNovos)}</td><td class="n">≈ ${pcFmt0(r.areaNovos)} m²</td><td class="n">≈ ${pcFmt2(r.pesoNovos/1000)} t</td></tr>
+      <tr class="tot"><td>Área e peso considerados na instalação${escopo.remanejar?' (inclui remanejamento dos existentes)':''}</td><td class="n">${pcFmt0(r.nModInstal)}</td><td class="n">≈ ${pcFmt0(r.areaInstal)} m²</td><td class="n">≈ ${pcFmt2(r.pesoInstal/1000)} t</td></tr>
+    </table>
+    <div class="pc-box">Os módulos novos pesam quase o dobro do conjunto existente (≈ ${pcFmt2(r.pesoNovos/1000)} t contra ≈ ${pcFmt2(r.pesoExist/1000)} t), por isso a estrutura e as fundações do bloco novo são dimensionadas para essa carga.</div>
+  `);
+
+  // ── PÁG. 3: EQUIPAMENTOS ──
+  const gruposEq=[['mod','Módulos fotovoltaicos'],['inv','Inversores'],['bat','Baterias'],['out','Medição, monitoramento e materiais']];
+  let linhasEq='';
+  gruposEq.forEach(([t,tit])=>{
+    const its=PC.equip.filter(e=>e.tipo===t); if(!its.length) return;
+    linhasEq+=`<tr class="gh"><td colspan="4">${tit}</td></tr>`;
+    its.forEach(e=>{
+      linhasEq+=`<tr><td>${pcEsc(e.nome)}${e.nota?`<span class="pc-sm">${pcEsc(e.nota)}</span>`:''}</td>
+        <td class="n">${pcFmt0(pcN(e.qtd))}×</td><td>${pcBadge(e.status)}<span class="pc-sm">${pcEsc(e.disp)}</span></td>
+        <td>${pcEsc(PC_FAT[e.fat]||'—')}</td></tr>`;
+    });
+  });
+  const p3=pcPagina(`
+    <div class="prop-sec-title">Equipamentos e <em>Situação</em></div>
+    <div class="prop-sec-sub">O que já existe, o que já foi comprado e o que ainda será adquirido</div>
+    <table class="pc-tbl pc-fixed" style="table-layout:fixed!important;">
+      <colgroup><col style="width:47%"><col style="width:7%"><col style="width:26%"><col style="width:20%"></colgroup>
+      <thead><tr><th style="width:46%!important">Item</th><th class="n" style="width:7%!important">Qtd</th><th style="width:27%!important">Situação / disponibilidade</th><th style="width:20%!important">Faturamento</th></tr></thead>
+      ${linhasEq}
+    </table>
+    <div class="pc-box"><b>Faturamento direto ao cliente:</b> o fornecedor fatura o equipamento ao cliente, que paga diretamente. <b>Via Saewel:</b> a Saewel adquire e repassa. <b>A definir:</b> será combinado conforme a cotação final.</div>
+  `);
+
+  // ── PÁG. 4: GERAÇÃO ──
+  const maxG=Math.max(...r.ger.total,1);
+  const consMes=VAR_MES.map(f=>Math.round(consumoMedio*f));
+  const linhasG=MESES_FULL.map((m,i)=>`<tr><td>${m}</td><td class="n">${pcFmt0(r.ger.on[i])}</td><td class="n">${pcFmt0(r.ger.hib[i])}</td>
+      <td class="n"><b>${pcFmt0(r.ger.total[i])}</b></td><td class="n">${pcFmt0(consMes[i])}</td></tr>`).join('');
+  const p4=pcPagina(`
+    <div class="prop-sec-title">Geração <em>Estimada</em></div>
+    <div class="prop-sec-sub">Potencial de geração mês a mês · ${pcFmt2(r.kwpTotal)} kWp · irradiação ${irr.toFixed(2)} kWh/m²/dia</div>
+    <table class="pc-tbl">
+      <thead><tr><th>Mês</th><th class="n">On-grid (kWh)</th><th class="n">Híbrido (kWh)</th><th class="n">Total (kWh)</th><th class="n">Consumo ref. (kWh)</th></tr></thead>
+      ${linhasG}
+      <tr class="tot"><td>Total anual</td><td class="n">${pcFmt0(r.ger.on.reduce((a,b)=>a+b,0))}</td><td class="n">${pcFmt0(r.ger.hib.reduce((a,b)=>a+b,0))}</td><td class="n">${pcFmt0(r.gerAnual)}</td><td class="n">${pcFmt0(consMes.reduce((a,b)=>a+b,0))}</td></tr>
+    </table>
+    <div class="pc-box">Geração potencial calculada por kWp × irradiação × 30 dias × 0,80 (eficiência do sistema), com sazonalidade mensal. Em sistemas com limitação de injeção (Grid Zero, conforme estudo da distribuidora), o aproveitamento real depende do consumo da unidade no horário de geração. Esta proposta não estima economia em reais nem payback.</div>
+  `);
+
+  // ── PÁG. 5: INVESTIMENTO ──
+  let linhasV='';
+  PC_ORDEM_G.forEach(g=>{
+    const G=r.grupos[g]; if(!G.ativo||!G.itens.length) return;
+    const itens=G.itens.map(i=>i.nome).filter(Boolean).join(' · ');
+    const txt=(G.max>G.min)?[pcRs(G.min),pcRs(G.max)]:[pcRs(G.min),pcRs(G.min)];
+    linhasV+=`<tr><td><b>${PC_GRUPOS[g]}</b><span class="pc-sm">${pcEsc(itens)}${G.semPreco.length?' · (itens a orçar)':''}</span></td><td class="n">${txt[0]}</td><td class="n">${txt[1]}</td></tr>`;
+  });
+  const tcDet=r.grupos.terceiros.itens.map(i=>`<tr><td>${pcEsc(i.nome)}</td><td class="n">${pcRs(i.vmin)}</td><td class="n">${pcRs(i.vmax)}</td></tr>`).join('');
+  const naoSomados=PC.equip.filter(e=>e.tipo==='out'&&/medidor|shinemaster|tc/i.test(e.nome)&&e.status==='adquirir').map(e=>e.nome);
+  const p5=pcPagina(`
+    <div class="prop-sec-title">Investimento <em>Estimado</em></div>
+    <div class="prop-sec-sub">Valores por grupo, em faixa — tornam-se firmes conforme as cotações fecham</div>
+    <table class="pc-tbl">
+      <thead><tr><th>Grupo</th><th class="n">Mínimo</th><th class="n">Máximo</th></tr></thead>
+      ${linhasV}
+      <tr class="tot"><td>Total estimado do projeto (escopo: ${pcEsc(escTxt)})</td><td class="n">${pcRs(r.totalMin)}</td><td class="n">${pcRs(r.totalMax)}</td></tr>
+      <tr><td>Já investido pelo cliente</td><td class="n">${pcRs(r.invMin)}</td><td class="n">${pcRs(r.invMax)}</td></tr>
+      <tr><td><b>Ainda a investir</b></td><td class="n"><b>${pcRs(r.aInvMin)}</b></td><td class="n"><b>${pcRs(r.aInvMax)}</b></td></tr>
+      <tr><td>Valor médio de referência (parâmetro geral, não é preço fechado)</td><td class="n" colspan="2">${pcRs(r.media)}</td></tr>
+    </table>
+    ${tcDet?`<h3 class="pc-h">Detalhe: obra civil e terceiros (fora do escopo de execução Saewel)</h3><table class="pc-tbl"><thead><tr><th>Item</th><th class="n">Mínimo</th><th class="n">Máximo</th></tr></thead>${tcDet}</table>`:''}
+    <div class="pc-box">${naoSomados.length?`Ainda sem preço e <b>não somados</b> aos totais: ${pcEsc(naoSomados.join(', '))}. `:''}Cada grupo vira valor fechado quando o orçamento correspondente é confirmado; a proposta é então reemitida em nova revisão.</div>
+  `);
+
+  // ── PÁG. 6: ESCOPO ──
+  const blocoProj=escopo.projeto?`<h3 class="pc-h">Escopo Saewel — Projeto</h3>${pcLista(T.proj)}`:'';
+  const blocoExec=escopo.execucao?`<h3 class="pc-h">Escopo Saewel — Execução</h3>${pcLista(T.exec)}`:'';
+  const blocoRem=escopo.remanejar?`<div class="pc-box"><b>Remanejamento incluído:</b> os ${pcFmt0(r.nExist)} módulos existentes serão movidos; área e peso da instalação consideram o conjunto completo (≈ ${pcFmt0(r.areaInstal)} m² · ≈ ${pcFmt2(r.pesoInstal/1000)} t).</div>`:'';
+  const p6=pcPagina(`
+    <div class="prop-sec-title">Escopo e <em>Premissas</em></div>
+    <div class="prop-sec-sub">O que esta proposta cobre, o que fica de fora e o que ainda será definido</div>
+    ${blocoProj}${blocoExec}${!escopo.projeto&&!escopo.execucao?'<p style="font-size:13px;">Esta proposta cobre apenas o dimensionamento e o fornecimento listados.</p>':''}
+    ${blocoRem}
+    <h3 class="pc-h">Fora do escopo Saewel</h3>${pcLista(T.excl)}
+    <h3 class="pc-h">Premissas e pendências</h3>${pcLista(T.prem)}
+  `);
+
+  // ── Monta o DOM ──
+  document.querySelectorAll('#proposta .pc-page').forEach(n=>n.remove());
+  const todas=[...document.querySelectorAll('#proposta > .prop-page:not(.pc-page)')];
+  const capa=todas[0];
+  const termos=document.querySelector('#proposta .termos-box').closest('.prop-page');
+  todas.forEach(p=>{ if(p!==capa && p!==termos) p.style.display='none'; });
+  const frag=document.createDocumentFragment();
+  [p2,p3,p4,p5,p6].forEach(p=>frag.appendChild(p));
+  capa.parentNode.insertBefore(frag,capa.nextSibling);
+  termos.style.display='';
+
+  // ── Termos (substitui os itens padrão) ──
+  const termosHtml=[];
+  const it=(ic,tx)=>termosHtml.push(`<div class="termos-item"><span class="termos-icon">${ic}</span><div>${tx}</div></div>`);
+  if(escopo.projeto) it('📋','<strong>Projeto:</strong> memorial descritivo, diagramas, TRT no CFT/SINCETI e trâmites de acesso e homologação junto à concessionária.');
+  if(escopo.execucao){ it('⚡','<strong>Execução:</strong> instalação e comissionamento dos sistemas descritos, com supervisão de técnico responsável e TRT de execução.'); it('🔧','<strong>Garantia de instalação:</strong> 12 meses.'); }
+  it('💰','<strong>Valores:</strong> apresentados em faixas por grupo; tornam-se firmes conforme as cotações são confirmadas, com a proposta reemitida em nova revisão. O valor médio é apenas uma referência geral.');
+  it('🧾','<strong>Faturamento:</strong> itens marcados como “direto ao cliente” são faturados pelo fornecedor ao próprio cliente; os demais seguem a definição indicada na proposta.');
+  it('🚫','<strong>Fora do escopo:</strong> obra civil de qualquer natureza (CCM, padrão de entrada, fundações, terraplanagem) e sondagem do solo, contratados à parte.');
+  it('📦','<strong>Disponibilidade:</strong> conforme a tabela de equipamentos; prazos de fornecedores sujeitos a confirmação.');
+  it('🔲','<strong>Garantias de equipamentos:</strong> conforme os termos de cada fabricante.');
+  it('⚖️','<strong>Resultado:</strong> a geração informada é potencial. Esta proposta não garante economia em reais, que depende do consumo e da limitação de injeção da concessionária.');
+  it('📅','<strong>Validade da proposta:</strong> 15 dias.');
+  document.querySelector('#proposta .termos-box').innerHTML=termosHtml.join('');
+  set('assCliente',nome); set('assTel',tel); set('assLocal',cidade);
+  set('propRodape',`${propNum} · Emitida em ${dataFmt} · Válida até ${validade} · Saewel Energia Solar`);
+  // imprimirProposta() só imprime se a tabela mensal original tiver linhas
+  const tbm=document.getElementById('tabelaMensal'); if(tbm) tbm.innerHTML='<tr><td>—</td></tr>';
+
+  // WhatsApp
+  const msg=encodeURIComponent(`Olá Haroldo! Gerei a proposta do projeto.\n\n📋 *${propNum}*\n👤 ${nome}\n📍 ${cidade}\n🔆 Sistema: ${pcFmt2(r.kwpTotal)} kWp\n💰 Estimativa: ${faixa}`);
+  const bw=document.getElementById('btnWpp'); if(bw) bw.href=`https://wa.me/5517981253889?text=${msg}`;
+
+  // ── CRM ──
+  const enderecoDigitado=document.getElementById('enderecoInput').value.trim();
+  const enderecoComCep=await buscarCepAutomatico_(enderecoDigitado,cidade);
+  const nomesInv=[...new Set(PC.equip.filter(e=>e.tipo==='inv').map(e=>e.nome.split('—')[0].replace(/^Inversor( híbrido)?\s*/i,'').trim()))].join(' + ');
+  const resumoItens=PC.equip.map(e=>`${pcFmt0(pcN(e.qtd))}× ${e.nome} [${PC_STATUS[e.status]}; ${e.disp||'—'}; ${PC_FAT[e.fat]||'—'}]`).join(' | ');
+  salvarLead({
+    nome, telefone:tel, cidade,
+    endereco:enderecoComCep,
+    perfil:(PERFIS[perfil]||'Comercial')+' (projeto customizado)',
+    consumo:consumoMedio,
+    kwp:r.kwpTotal.toFixed(2),
+    modulos:PC.equip.filter(e=>e.tipo==='mod').map(m=>`${pcN(m.qtd)}x ${pcN(m.wp)}Wp`).join(' + '),
+    areaOcupada:`${pcFmt0(r.areaNovos)} m² novos + ${pcFmt0(r.areaExist)} m² existentes`,
+    pesoTotal:`${Math.round(r.pesoNovos)} kg novos + ${Math.round(r.pesoExist)} kg existentes`,
+    investimento:faixa,
+    economiaMes:'', economia25anos:0, payback:'',
+    irradiacao:irr.toFixed(2)+' kWh/m²/dia',
+    proposta:propNum,
+    tier:tierRecebido, origem:origemRecebida,
+    tipoTelhado:'Solo / ground mount',
+    tipoLigacao:({mono:'Monofásico',bi:'Bifásico',tri:'Trifásico'}[ligacao])||'',
+    tarifa:'R$ '+tarifa.toFixed(2)+'/kWh',
+    latitude:temGeo?geoLat.toFixed(6):'', longitude:temGeo?geoLon.toFixed(6):'',
+    fabricanteInversor:'Growatt + FoxESS',
+    modeloInversor:nomesInv,
+    potenciaInversor:r.acTotal.toFixed(2)+' kW',
+    quantidadeInversores:r.nInvTotal,
+    // campos extras do modo projeto customizado (o Apps Script precisa ter colunas para eles)
+    tipoProposta:'projeto_customizado',
+    escopo:escTxt,
+    valorMin:Math.round(r.totalMin), valorMax:Math.round(r.totalMax), valorMedio:Math.round(r.media),
+    jaInvestido:Math.round(r.invMin), aInvestirMin:Math.round(r.aInvMin), aInvestirMax:Math.round(r.aInvMax),
+    bateriaKwh:r.kwhBat.toFixed(2),
+    itensProposta:resumoItens
+  });
+  leadAtualWhats=tel; leadAtualCidade=cidade;
+  window.__pcGerado=true;
+
+  document.getElementById('proposta').classList.add('show');
+  document.getElementById('proposta').scrollIntoView({behavior:'smooth',block:'start'});
+  return {propNum,r};
+}
+
+pcInit();
 </script>
 </body>
 </html>

@@ -2487,7 +2487,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   kwpAlvo = kwpBruto*margem; // salva a meta original, antes de qualquer arredondamento por módulo
   const wpAtual=(typeof moduloAtual!=='undefined')?moduloAtual.wp:620;
   const nMod=Math.max(2,Math.ceil(kwpBruto*margem*1000/wpAtual));
-  const kWp=parseFloat((nMod*620/1000).toFixed(2));
+  const kWp=parseFloat((nMod*wpAtual/1000).toFixed(2));
   const areaModAtual=(typeof moduloAtual!=='undefined')?moduloAtual.area:2.25;
   // Peso: usa o peso real do datasheet se já estiver cadastrado nesse módulo;
   // senão, cai numa estimativa aproximada (~46g por Watt, típico de módulo bifacial).
@@ -2749,7 +2749,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     const ano = now.getFullYear();
     const mes = String(now.getMonth()+1).padStart(2,'0');
     const ts  = String(now.getTime()).slice(-4);
-    propNum = `SAEWEL-${ano}${mes}-${ts}`;
+    propNum = `SAEWEL-${ano}${mes}-T${ts}`;
   }
 
   // ── PREENCHER HTML ──
@@ -2778,7 +2778,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     const capaMapaBlock=document.getElementById('capaMapaBlock');
     if(capaMapaBlock)capaMapaBlock.style.display='none';
   }
-  set('dPot',kWp.toFixed(2)+' kWp');set('dMod',nMod+'× módulos 620Wp bifaciais');
+  set('dPot',kWp.toFixed(2)+' kWp');set('dMod',nMod+'× módulos '+wpAtual+'Wp bifaciais');
   set('dArea','~'+area+' m²');set('dInv',inv);set('dGer',geracaoMedia.toLocaleString('pt-BR')+' kWh/mês (média anual)');
   set('dPeso',Math.round(nMod*pesoModAtual)+' kg'+(pesoTemEstimativa?' (estimado)':''));
   // Preenche tabela de equipamentos — grupos dinâmicos
@@ -2920,7 +2920,7 @@ Gostaria de avançar com o projeto!`);
     perfil: PERFIS[perfil],
     consumo: consumoMedio,
     kwp: kWp.toFixed(2),
-    modulos: nMod + 'x 620Wp',
+    modulos: nMod + 'x ' + wpAtual + 'Wp',
     areaOcupada: area + ' m²',
     pesoTotal: Math.round(nMod*pesoModAtual) + ' kg' + (pesoTemEstimativa ? ' (estimado)' : ''),
     investimento: inv_faixa,
@@ -2948,12 +2948,43 @@ Gostaria de avançar com o projeto!`);
   document.getElementById('proposta').classList.add('show');
   document.getElementById('proposta').scrollIntoView({behavior:'smooth',block:'start'});
 
+  salvarPropostaNoDrive(propNum, nome, cidade, tel);
+
   // Atualiza título da página para nomear o PDF corretamente
   // NOTA: o título da página NÃO é alterado aqui de propósito — trocar o
   // <title> permanentemente prejudicaria o SEO da calculadora (o Google lê
   // esse valor). O nome do arquivo do PDF é ajustado só no momento exato
   // de clicar em "Imprimir/Salvar PDF", dentro de imprimirProposta(), e
   // revertido logo em seguida.
+}
+
+// ── SALVAR PROPOSTA NO DRIVE (snapshot HTML autocontido) ──
+// Depois que a proposta aparece na tela, manda uma cópia dela ao Apps Script
+// (ação "salvarProposta"), que grava na pasta ORÇAMENTOS do Drive. Abrir o
+// arquivo no navegador e imprimir gera o mesmo PDF do site.
+async function salvarPropostaNoDrive(propNum, nome, cidade, tel){
+  try{
+    await new Promise(function(r){setTimeout(r,2500);}); // deixa gráficos/animações terminarem
+    const prop=document.getElementById('proposta');
+    if(!prop||!propNum) return;
+    const clone=prop.cloneNode(true);
+    clone.querySelectorAll('script,.btn-wpp-p,.btn-pdf-p,.btn-nova,.financiamento-wrap,.endereco-prompt-wrap').forEach(function(el){el.remove();});
+    clone.querySelectorAll('[onclick]').forEach(function(el){el.removeAttribute('onclick');});
+    const estilos=Array.from(document.querySelectorAll('style')).map(function(st){return st.textContent;}).join('\n');
+    const titulo=[propNum,nome,cidade].filter(Boolean).join(' - ');
+    const html='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">'+
+      '<meta name="viewport" content="width=device-width, initial-scale=1.0">'+
+      '<base href="https://www.saewelenergiasolar.com.br/calculadora/">'+
+      '<title>'+pcEsc(titulo)+'</title>'+
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;600;700&display=swap">'+
+      '<style>'+estilos+'\n#btnSalvarPdf{position:fixed;top:12px;right:12px;z-index:2000;padding:10px 16px;border:0;border-radius:8px;background:#C8922A;color:#0A0C0F;font:600 13px Outfit,sans-serif;cursor:pointer;}@media print{#btnSalvarPdf{display:none!important;}}</style>'+
+      '</head><body><button id="btnSalvarPdf" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>'+
+      clone.outerHTML+'</body></html>';
+    await fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec',{
+      method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action:'salvarProposta',proposta:propNum,nome:nome,cidade:cidade,telefone:tel,html:html})
+    });
+  }catch(e){console.warn('Salvar proposta no Drive:',e);}
 }
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
@@ -3581,7 +3612,7 @@ async function gerarProjetoCustom({nome,tel,cidade,irr,consumoMedio,tarifa,perfi
     if(json.status==='ok'&&json.proposta) propNum=json.proposta;
   }catch(err){console.warn('AppScript indisponível, usando fallback local:',err);}
   if(!propNum){
-    propNum=`SAEWEL-${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getTime()).slice(-4)}`;
+    propNum=`SAEWEL-${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}-T${String(now.getTime()).slice(-4)}`;
   }
 
   const faixa = (r.totalMax>r.totalMin) ? `${pcRs(r.totalMin)} a ${pcRs(r.totalMax)}` : pcRs(r.totalMin);
@@ -3785,6 +3816,7 @@ async function gerarProjetoCustom({nome,tel,cidade,irr,consumoMedio,tarifa,perfi
 
   document.getElementById('proposta').classList.add('show');
   document.getElementById('proposta').scrollIntoView({behavior:'smooth',block:'start'});
+  salvarPropostaNoDrive(propNum, nome, cidade, tel);
   return {propNum,r};
 }
 

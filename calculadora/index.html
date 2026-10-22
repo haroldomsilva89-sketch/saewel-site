@@ -2929,6 +2929,7 @@ Gostaria de avançar com o projeto!`);
     payback: payback_min.toFixed(1) + ' a ' + payback_max.toFixed(1) + ' anos',
     irradiacao: irr.toFixed(2) + ' kWh/m²/dia',
     proposta: propNum,
+    chave: gerarChaveProposta(),
     tier: tierRecebido,
     origem: origemRecebida,
     tipoTelhado: ESTRUTURAS[estrutura] || '',
@@ -2956,6 +2957,15 @@ Gostaria de avançar com o projeto!`);
   // esse valor). O nome do arquivo do PDF é ajustado só no momento exato
   // de clicar em "Imprimir/Salvar PDF", dentro de imprimirProposta(), e
   // revertido logo em seguida.
+}
+
+// Chave secreta da proposta: vai para a planilha ("Chave Proposta") e deve
+// acompanhar o link de visualização (?ver=NUM&k=CHAVE). Sem ela, o link não abre.
+function gerarChaveProposta(){
+  const a='abcdefghjkmnpqrstuvwxyz23456789';
+  const b=new Uint8Array(10);
+  (window.crypto||window.msCrypto).getRandomValues(b);
+  return Array.from(b).map(function(x){return a[x%a.length];}).join('');
 }
 
 // ── SALVAR PROPOSTA NO DRIVE (snapshot HTML autocontido) ──
@@ -3076,7 +3086,7 @@ function verificarModoVisualizacao() {
   if (formulario) formulario.style.display = 'none';
   if (loadingEl) loadingEl.classList.add('show');
 
-  fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec?action=verproposta&numProposta=' + encodeURIComponent(numProposta))
+  fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec?action=verproposta&full=1&numProposta=' + encodeURIComponent(numProposta) + '&k=' + encodeURIComponent(params.get('k') || ''))
     .then(function(resp) { return resp.json(); })
     .then(function(dados) {
       if (loadingEl) loadingEl.classList.remove('show');
@@ -3085,6 +3095,7 @@ function verificarModoVisualizacao() {
         if (naoEncontrado) naoEncontrado.style.display = 'block';
         return;
       }
+      if (dados.html) { document.open(); document.write(dados.html); document.close(); return; } // proposta completa salva no Drive
       const set2 = function(id, val) { const el = document.getElementById(id); if (el) el.textContent = val || '—'; };
       set2('rvNome', dados.nome);
       set2('rvCidade', [dados.cidade, dados.perfil].filter(Boolean).join(' · '));
@@ -3794,6 +3805,7 @@ async function gerarProjetoCustom({nome,tel,cidade,irr,consumoMedio,tarifa,perfi
     economiaMes:'', economia25anos:0, payback:'',
     irradiacao:irr.toFixed(2)+' kWh/m²/dia',
     proposta:propNum,
+    chave: gerarChaveProposta(),
     tier:tierRecebido, origem:origemRecebida,
     tipoTelhado:'Solo / ground mount',
     tipoLigacao:({mono:'Monofásico',bi:'Bifásico',tri:'Trifásico'}[ligacao])||'',

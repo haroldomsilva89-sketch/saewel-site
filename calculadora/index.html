@@ -2495,7 +2495,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const pesoTemEstimativa=!(typeof moduloAtual!=='undefined'&&moduloAtual.peso);
   const area=(nMod*areaModAtual).toFixed(1);
   // ── SELEÇÃO DE INVERSOR (modelos reais Saewel) ──
-  const INVERSORES_DB=[
+  const INVERSORES_DB_PADRAO=[
     {kwAC:2.0,  marca:'WEG',     fator:1.36, modelo:'WEG 2kW — SIW300H M020 — Mono — 2mppt — 220V'},
     {kwAC:3.0,  marca:'WEG',     fator:1.36, modelo:'WEG 3kW — SIW300H M030 L1 — Mono — 2mppt — 220V'},
     {kwAC:4.0,  marca:'WEG',     fator:1.36, modelo:'WEG 4kW — SIW300H M040 L1 — Mono — 2mppt — 220V'},
@@ -2561,6 +2561,8 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
     {kwAC:60.0, marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST060 — Trifásico — 6mppt — 380V'},
     {kwAC:100.0,marca:'WEG',     fator:1.36, modelo:'WEG String SIW500H — ST100 — Trifásico — 6mppt — 800V'},
   ];
+  // Catálogo vindo da planilha (aba "Catálogo Site") substitui o embutido quando carregou.
+  const INVERSORES_DB=(window.__catalogoInv&&window.__catalogoInv.length)?window.__catalogoInv:INVERSORES_DB_PADRAO;
   function selecionarInversor(kwp, marcaPreferida){
     // marcaPreferida vem do botão de marca escolhido na tela (Growatt/WEG/Huawei).
     // Sem isso, a função sempre devolvia WEG mesmo com "Growatt" selecionado no
@@ -2792,7 +2794,7 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   const trBateriaEl=document.getElementById('trBateria');
   if(trBateriaEl) trBateriaEl.style.display=/Híbrido/i.test(inv)?'table-row':'none';
   // Ativar grupo correto (Growatt ou WEG) e popular seletor de módulos
-  if(typeof definirGrupoEquipamentos === 'function') definirGrupoEquipamentos(invMarca, inv);
+  if(typeof definirGrupoEquipamentos === 'function') definirGrupoEquipamentos(invMarca, inv, invObj.foto);
   else { set('eqModelo','Painel 620Wp Bifacial'); set('eqQtd',nMod+'×'); }
 
   // Financeiro
@@ -3209,6 +3211,58 @@ function selecionarMarca(grupo) {
   if(sel) { sel.style.borderColor='var(--ouro-claro)'; sel.style.background='rgba(200,146,42,0.1)'; sel.style.color='var(--branco)'; }
 }
 
+// ── CATÁLOGO DE EQUIPAMENTOS VINDO DA PLANILHA (aba "Catálogo Site") ──
+// Se carregar, substitui as listas embutidas de módulos e inversores; se falhar
+// (sem internet, aba vazia ou inválida), a calculadora segue com as listas embutidas.
+(function carregarCatalogoSite(){
+  const num=function(v){const n=parseFloat(String(v).replace(',','.'));return isNaN(n)?0:n;};
+  // A coluna Foto aceita: caminho completo, nome com extensão ou só o nome do arquivo
+  // (sem extensão) dentro de img/equipamentos — nesse caso testa .webp, .png, .jpg, .jpeg.
+  const resolverFoto=function(f){
+    return new Promise(function(res){
+      f=String(f||'').trim();
+      if(!f)return res('');
+      const base=f.indexOf('/')>=0?f:'img/equipamentos/'+f;
+      if(/\.(webp|png|jpe?g|gif|svg)$/i.test(f))return res(base);
+      const exts=['.webp','.png','.jpg','.jpeg'];
+      (function tenta(k){
+        if(k>=exts.length)return res('');
+        const im=new Image();
+        im.onload=function(){res(base+exts[k]);};
+        im.onerror=function(){tenta(k+1);};
+        im.src=encodeURI(base+exts[k]);
+      })(0);
+    });
+  };
+  fetch('https://script.google.com/macros/s/AKfycbxNobXQq1zvxPqcF7VeSs8WIuQDQ1HxBjVqdSM49YW7PJWS4GPJ_ukSHJi8e_I58y3F/exec?action=catalogo')
+    .then(function(r){return r.json();})
+    .then(function(cat){
+      if(!cat||cat.status!=='ok')return;
+      const FOTO_MOD='img/equipamentos/preview-modulo-default.webp';
+      const mods=(cat.modulos||[]).filter(function(m){return num(m.wp)>0&&m.label;});
+      const lista=function(nome){
+        return mods.filter(function(m){return m.lista===nome||m.lista==='Todos';}).map(function(m,i){
+          const wp=num(m.wp);
+          return {id:m.id||('cat'+i+'_'+wp),label:m.label,wp:wp,area:num(m.area)||wp/230,peso:num(m.peso)||0,
+                  desc:m.desc||'',foto:FOTO_MOD,_f:m.foto};
+        });
+      };
+      const a=lista('Growatt'),b=lista('WEG');
+      const inv=(cat.inversores||[]).filter(function(i){return num(i.kwAC)>0&&num(i.fator)>0&&i.marca&&i.modelo;})
+        .map(function(i){return {kwAC:num(i.kwAC),marca:String(i.marca).toUpperCase(),fator:num(i.fator),modelo:String(i.modelo),_f:i.foto};});
+      return Promise.all(a.concat(b,inv).map(function(x){
+        return resolverFoto(x._f).then(function(u){ if(u)x.foto=u; else if(x.foto===FOTO_MOD&&x._f)x.foto=FOTO_MOD; delete x._f; });
+      })).then(function(){
+        if(a.length&&b.length){
+          JINKO_MODS.splice.apply(JINKO_MODS,[0,JINKO_MODS.length].concat(a));
+          WEG_MODS.splice.apply(WEG_MODS,[0,WEG_MODS.length].concat(b));
+        }
+        if(inv.length)window.__catalogoInv=inv;
+      });
+    })
+    .catch(function(e){console.warn('Catálogo da planilha indisponível, usando o embutido:',e);});
+})();
+
 // ── Popular seletor de módulo ──
 function popularSeletorModulo(grupo) {
   const selEl = document.getElementById('eqModSeletor');
@@ -3271,7 +3325,7 @@ function trocarModulo(id) {
 // escolheu — podendo divergir (ex: foto Growatt com texto "WEG 8,5kW").
 const MARCA_PARA_GRUPO_STRING = { GROWATT:'growatt', WEG:'weg', HUAWEI:'huawei' };
 
-function definirGrupoEquipamentos(invMarca, invModeloTexto) {
+function definirGrupoEquipamentos(invMarca, invModeloTexto, fotoModelo) {
   // Na tecnologia "string", o grupo mostrado (foto + módulos) precisa refletir
   // a marca REAL escolhida pelo algoritmo de dimensionamento — não o botão
   // que ficou marcado de uma rodada de cálculo anterior. Na tecnologia
@@ -3302,6 +3356,7 @@ function definirGrupoEquipamentos(invMarca, invModeloTexto) {
     else if(/LC0|Híbrido/i.test(texto)) fotoInv = g.fotoInversorHibrido;
     else fotoInv = g.fotoInversorPadrao;
   }
+  if(fotoModelo) fotoInv = fotoModelo; // foto própria do modelo (coluna Foto da aba Catálogo Site)
   const imgInv = document.getElementById('eqInvFoto');
   if(imgInv) imgInv.src = fotoInv;
   popularSeletorModulo(grupo);

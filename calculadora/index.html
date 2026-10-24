@@ -1561,7 +1561,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-c
               <td style="color:var(--branco);">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <img src="img/equipamentos/bateria-luna2000.webp" loading="lazy" width="28" height="30" style="object-fit:contain;flex-shrink:0;" alt="LUNA2000"/>
-                  <span>Huawei LUNA2000 (compatível)</span>
+                  <span id="eqBateriaModelo">Huawei LUNA2000 (compatível)</span>
                 </div>
               </td>
               <td style="text-align:center;color:var(--branco);font-weight:700;">—</td>
@@ -2793,6 +2793,8 @@ async function gerar({nome,tel,cidade,irr,consumosMes,consumoMedio,tarifa,perfil
   // híbrido (compatível LUNA2000). Sempre marcada como não inclusa/opcional.
   const trBateriaEl=document.getElementById('trBateria');
   if(trBateriaEl) trBateriaEl.style.display=/Híbrido/i.test(inv)?'table-row':'none';
+  const eqBatModEl=document.getElementById('eqBateriaModelo');
+  if(eqBatModEl) eqBatModEl.textContent=/FoxESS/i.test(inv)?'FoxESS EP12 11,52 kWh (compatível)':'Huawei LUNA2000 (compatível)';
   // Ativar grupo correto (Growatt ou WEG) e popular seletor de módulos
   if(typeof definirGrupoEquipamentos === 'function') definirGrupoEquipamentos(invMarca, inv, invObj.foto);
   else { set('eqModelo','Painel 620Wp Bifacial'); set('eqQtd',nMod+'×'); }

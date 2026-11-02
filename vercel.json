@@ -9,6 +9,46 @@
       "source": "/quiz/",
       "destination": "/qualificacao/",
       "permanent": false
+    },
+    {
+      "source": "/comunidade/blog/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/comunidade/blog/:slug/",
+      "destination": "/blog/:slug/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/resolucao-normativa-1000-aneel-energ-solar/",
+      "destination": "/blog/resolucao-normativa-1000-aneel-energia-solar/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/resolucao-normativa-aneel-energia-solar/",
+      "destination": "/blog/resolucao-normativa-1000-aneel-energia-solar/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tarifa-solar-energia-solar/",
+      "destination": "/blog/tarifa-social-energia-solar/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/quanto-custa-instalar-energia-solar-em-casa-2026/",
+      "destination": "/blog/quanto-custa-instalar-energia-solar-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/cidades/bady-bassitt/",
+      "destination": "/cidades/bady-bassit/",
+      "permanent": true
+    },
+    {
+      "source": "/cidades/sao-jose-do-rio-preto/",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "trailingSlash": true

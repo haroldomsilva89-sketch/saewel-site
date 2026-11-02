@@ -28,12 +28,12 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consulta CRESESB/SunData: Irradiação Solar por Cidade (Grátis) | Saewel</title>
+  <title>Consulta CRESESB SunData: Irradiação Solar por Cidade Grátis</title>
   <meta name="description" content="Digite sua cidade e veja a irradiação solar (HSP) na hora. Dados oficiais CRESESB/SunData dos 5.562 municípios do Brasil, gratuito.">
   <meta name="keywords" content="irradiação solar por município, HSP cidade, potencial solar Brasil, CRESESB SunData, dados solares, horas sol pico">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/dados-solares-brasil/">
-  <meta property="og:title" content="Irradiação Solar por Município — Consulta Gratuita | Saewel">
-  <meta property="og:description" content="HSP mensal e anual de 5.562 municípios brasileiros. Dados oficiais do CRESESB/SunData — consulta gratuita e interativa.">
+  <meta property="og:title" content="Consulta CRESESB SunData: Irradiação Solar por Cidade Grátis">
+  <meta property="og:description" content="Digite sua cidade e veja a irradiação solar (HSP) na hora. Dados oficiais CRESESB/SunData dos 5.562 municípios do Brasil, gratuito.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.saewelenergiasolar.com.br/dados-solares-brasil/">
   <meta property="og:site_name" content="Saewel Energia Solar">
@@ -431,10 +431,13 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
     <!-- CTA -->
     <div class="cta-strip">
       <div class="cta-text">
-        <h2 style="font-size:20px;">Quer um projeto completo para esta cidade?</h2>
-        <p>O técnico dimensiona com os dados reais mensais do CRESESB, emite o TRT e cuida da homologação na distribuidora.</p>
+        <h2 style="font-size:20px;">Quanto isso vira de economia na sua conta?</h2>
+        <p>Leve a irradiação desta cidade e o seu consumo para a calculadora e veja investimento, economia mensal e payback em reais.</p>
       </div>
-      <a href="https://wa.me/5517981253889?text=Ol%C3%A1%20Haroldo!%20Consultei%20os%20dados%20solares%20no%20site%20e%20quero%20um%20projeto%20fotovoltaico" class="btn-gold" target="_blank" rel="noopener noreferrer">Falar com o técnico →</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <a href="/calculadora/" id="ctaCalculadora" class="btn-gold">Simular economia em R$ →</a>
+        <a href="https://wa.me/5517981253889?text=Ol%C3%A1%20Haroldo!%20Consultei%20os%20dados%20solares%20no%20site%20e%20quero%20um%20projeto%20fotovoltaico" class="btn-gold" style="background:transparent;border:1px solid var(--ouro);color:var(--ouro-claro);" target="_blank" rel="noopener noreferrer">Falar com o técnico</a>
+      </div>
     </div>
 
     <div class="source-note">Dados: CRESESB/SunData — Centro de Referência para Energia Solar e Eólica (CEPEL/MME) · Plano Horizontal · Série histórica compilada pela Saewel Energia Solar</div>
@@ -576,7 +579,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
     <div class="foot-col">
       <h3>Área de Atuação</h3>
       <a href="/cidades/">Cidades Atendidas</a>
-      <a href="/cidades/sao-jose-do-rio-preto/">São José do Rio Preto</a>
+      <a href="/">São José do Rio Preto</a>
       <a href="/cidades/bady-bassit/">Bady Bassit</a>
       <a href="/cidades/mirassol/">Mirassol</a>
       <a href="/cidades/olimpia/">Olímpia</a>
@@ -759,6 +762,8 @@ function updateCalc(){
   document.getElementById('calcPotencia').textContent = pot.toFixed(2);
   document.getElementById('calcGeracao').textContent = geracao.toLocaleString('pt-BR');
   document.getElementById('calcPaineis').textContent = paineis;
+  const cta = document.getElementById('ctaCalculadora');
+  if(cta) cta.href = '/calculadora/?cidade=' + encodeURIComponent(selectedCity) + '&consumo=' + Math.round(consumo) + '&origem=dados-solares';
 }
 
 document.getElementById('calcConsumo').addEventListener('input', updateCalc);

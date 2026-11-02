@@ -1758,10 +1758,28 @@ fetch('/dados-solares.json')
     NORM_SOLAR_DB = {};
     for(const k in SOLAR_DB){ NORM_SOLAR_DB[normalizeCidadeStr(k)] = k; }
     dadosSolaresProntos = true;
+    prefillDaURL();
   })
   .catch(() => {
     showToast('Não foi possível carregar os dados solares. Recarregue a página ou tente novamente em instantes.');
   });
+
+// ── PRÉ-PREENCHIMENTO VIA URL ──
+// Vindo da página /dados-solares-brasil/ com ?cidade=Nome - UF&consumo=500,
+// a calculadora já abre com a cidade selecionada e o consumo preenchido.
+function prefillDaURL(){
+  const p = new URLSearchParams(window.location.search);
+  const cid = p.get('cidade');
+  if(cid){
+    const chave = SOLAR_DB[cid] !== undefined ? cid : NORM_SOLAR_DB[normalizeCidadeStr(cid)];
+    if(chave) selCidade(chave, SOLAR_DB[chave]);
+  }
+  const kwh = parseInt(p.get('consumo'), 10);
+  if(kwh >= 50 && kwh <= 50000){
+    const m = document.getElementById('consumoManual');
+    if(m){ m.value = kwh; m.dispatchEvent(new Event('input')); }
+  }
+}
 
 // ── AUTOCOMPLETE ──
 let acIdx = -1;
@@ -3226,9 +3244,9 @@ function selecionarMarca(grupo) {
       if(!f)return res('');
       const base=f.indexOf('/')>=0?f:'img/equipamentos/'+f;
       if(/\.(webp|png|jpe?g|gif|svg)$/i.test(f))return res(base);
-      const exts=['.webp','.png','.jpg','.jpeg'];
+      const exts=['.webp','.png','.jpg','.jpeg','.avif','.WEBP','.PNG','.JPG','.JPEG'];
       (function tenta(k){
-        if(k>=exts.length)return res('');
+        if(k>=exts.length){console.warn('Foto do catálogo não encontrada em img/equipamentos:',f);return res('');}
         const im=new Image();
         im.onload=function(){res(base+exts[k]);};
         im.onerror=function(){tenta(k+1);};

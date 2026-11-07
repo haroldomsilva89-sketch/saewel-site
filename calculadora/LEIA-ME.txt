@@ -1,0 +1,20 @@
+ATUALIZAÇÃO DO SITE SAEWEL — 07/11/2026
+Copie estas pastas por cima do repositório (mesma estrutura) e faça o deploy.
+
+PÁGINAS NOVAS
+- /distribuidora-reprovou-energia-solar/  (reprovação por rede no limite ou por projeto mal feito; Grid Zero e híbrido; 9 perguntas frequentes e caso real anônimo)
+- /cidades/novo-horizonte/
+- /cidades/promissao/
+
+ALTERAÇÕES
+- Todas as páginas: script curto no <head> que registra de onde o visitante veio (IA, Busca, Google Ads, Redes sociais...).
+- Calculadora: salvarLead() agora envia origemCanal, origemFonte, origemCampanha, origemPrimeira e paginaEntrada.
+  >> O Apps Script precisa gravar esses 5 campos em colunas novas da planilha Leads (hoje ele ignora campos desconhecidos).
+- Menu Serviços > Soluções: item "Distribuidora reprovou?".
+- Rodapé (Área de Atuação) e índice /cidades/: Novo Horizonte e Promissão.
+- Dados estruturados (schema.org Service) nas páginas de serviço que não tinham; home com todas as cidades, e-mail e especialidades.
+- sitemap.xml com as 3 páginas novas.
+
+DEPOIS DO DEPLOY
+- Search Console: enviar o sitemap de novo e pedir indexação das 3 páginas novas.
+- Bing Webmaster Tools: importar o site do Search Console (o Copilot e outros assistentes de IA usam o índice do Bing).

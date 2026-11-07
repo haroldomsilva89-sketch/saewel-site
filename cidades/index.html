@@ -189,6 +189,26 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
   <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+<script>
+/* Saewel: registra de onde o visitante veio (IA, Google, redes...) para gravar junto com o lead */
+(function(){try{
+  var q=new URLSearchParams(location.search),r=document.referrer||'',h='';
+  try{h=r?new URL(r).hostname.replace(/^www\./,''):'';}catch(e){}
+  if(h===location.hostname.replace(/^www\./,''))return; /* navegação interna: mantém a origem anterior */
+  var u=(q.get('utm_source')||'').toLowerCase(),t=u||h,c='Direto';
+  var ia=/chatgpt|openai|perplexity|gemini|bard|copilot|claude|anthropic|deepseek|meta\.ai|grok/;
+  if(ia.test(t))c='IA';
+  else if(q.get('gclid')||q.get('gbraid')||q.get('wbraid')||/cpc|ads/.test((q.get('utm_medium')||'').toLowerCase()))c='Google Ads';
+  else if(/google|bing|yahoo|duckduckgo|ecosia|brave/.test(t))c='Busca';
+  else if(q.get('fbclid')||/instagram|facebook|fb\.|threads|tiktok|youtube|linkedin/.test(t))c='Redes sociais';
+  else if(/whatsapp|wa\.me|t\.me|telegram/.test(t))c='Mensageiro';
+  else if(t)c='Outro site';
+  var o={canal:c,fonte:t||'(direto)',campanha:q.get('utm_campaign')||'',entrada:location.pathname,data:new Date().toISOString()};
+  var s=JSON.stringify(o);
+  if(!localStorage.getItem('sw_origem_primeira'))localStorage.setItem('sw_origem_primeira',s);
+  if(c!=='Direto'||!localStorage.getItem('sw_origem_ultima'))localStorage.setItem('sw_origem_ultima',s);
+}catch(e){}})();
+</script>
 </head>
 <body>
 
@@ -230,6 +250,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
         <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
         <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
         <li><a href="/energia-solar-agronegocio/">🚜 Solar Agronegócio</a></li>
+        <li><a href="/distribuidora-reprovou-energia-solar/">🚫 Distribuidora reprovou?</a></li>
         <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
         <li><a href="/dados-solares-brasil/">📊 Dados Solares</a></li>
       </ul>
@@ -362,6 +383,24 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
         <a href="/cidades/jose-bonifacio/" class="btn-cidade-ghost">Ver página da cidade →</a>
       </div>
 
+      <!-- Novo Horizonte -->
+      <div class="cidade-card">
+        <div class="cidade-icon">🛣️</div>
+        <div class="cidade-nome">Novo Horizonte</div>
+        <p class="cidade-desc">Projetos solares, sistemas híbridos com baterias e Grid Zero em Novo Horizonte, com projeto em andamento na região e experiência na tratativa com a distribuidora local.</p>
+        <div class="cidade-dist">~74 km de São José do Rio Preto (em linha reta)</div>
+        <a href="/cidades/novo-horizonte/" class="btn-cidade-ghost">Ver página da cidade →</a>
+      </div>
+
+      <!-- Promissão -->
+      <div class="cidade-card">
+        <div class="cidade-icon">🌾</div>
+        <div class="cidade-nome">Promissão</div>
+        <p class="cidade-desc">Usinas em solo, manutenção e diagnóstico de inversores e projetos fotovoltaicos em Promissão, com clientes já atendidos na cidade. Projeto com TRT.</p>
+        <div class="cidade-dist">~95 km de São José do Rio Preto (em linha reta)</div>
+        <a href="/cidades/promissao/" class="btn-cidade-ghost">Ver página da cidade →</a>
+      </div>
+
     </div>
 
     <!-- CTA Não encontrou -->
@@ -437,6 +476,8 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="/cidades/votuporanga/">Votuporanga</a>
       <a href="/cidades/nova-alianca/">Nova Aliança</a>
       <a href="/cidades/jose-bonifacio/">José Bonifácio</a>
+      <a href="/cidades/novo-horizonte/">Novo Horizonte</a>
+      <a href="/cidades/promissao/">Promissão</a>
     </div>
     <div class="foot-col">
       <h3>Institucional</h3>

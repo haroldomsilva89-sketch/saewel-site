@@ -173,6 +173,26 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
 </style>
 <script>window.location.replace("https://t.me/saewelenergiasolar");</script>
+<script>
+/* Saewel: registra de onde o visitante veio (IA, Google, redes...) para gravar junto com o lead */
+(function(){try{
+  var q=new URLSearchParams(location.search),r=document.referrer||'',h='';
+  try{h=r?new URL(r).hostname.replace(/^www\./,''):'';}catch(e){}
+  if(h===location.hostname.replace(/^www\./,''))return; /* navegação interna: mantém a origem anterior */
+  var u=(q.get('utm_source')||'').toLowerCase(),t=u||h,c='Direto';
+  var ia=/chatgpt|openai|perplexity|gemini|bard|copilot|claude|anthropic|deepseek|meta\.ai|grok/;
+  if(ia.test(t))c='IA';
+  else if(q.get('gclid')||q.get('gbraid')||q.get('wbraid')||/cpc|ads/.test((q.get('utm_medium')||'').toLowerCase()))c='Google Ads';
+  else if(/google|bing|yahoo|duckduckgo|ecosia|brave/.test(t))c='Busca';
+  else if(q.get('fbclid')||/instagram|facebook|fb\.|threads|tiktok|youtube|linkedin/.test(t))c='Redes sociais';
+  else if(/whatsapp|wa\.me|t\.me|telegram/.test(t))c='Mensageiro';
+  else if(t)c='Outro site';
+  var o={canal:c,fonte:t||'(direto)',campanha:q.get('utm_campaign')||'',entrada:location.pathname,data:new Date().toISOString()};
+  var s=JSON.stringify(o);
+  if(!localStorage.getItem('sw_origem_primeira'))localStorage.setItem('sw_origem_primeira',s);
+  if(c!=='Direto'||!localStorage.getItem('sw_origem_ultima'))localStorage.setItem('sw_origem_ultima',s);
+}catch(e){}})();
+</script>
 </head>
 <body>
 
@@ -206,6 +226,7 @@ nav.scrolled{background:rgba(10,12,15,0.97);}
         <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
         <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
         <li><a href="/energia-solar-agronegocio/">🚜 Solar Agronegócio</a></li>
+        <li><a href="/distribuidora-reprovou-energia-solar/">🚫 Distribuidora reprovou?</a></li>
         <li class="nav-dropdown-divider"></li>
         <li><span class="nav-dropdown-label">Serviços</span></li>
         <li><a href="/projetos-fotovoltaicos/">📋 Projetos Fotovoltaicos</a></li>

@@ -208,6 +208,94 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
   <meta property="og:image:height" content="630">
   <meta property="og:title" content="Manutenção de Painéis Solares | Saewel — São José do Rio Preto">
   <meta property="og:description" content="Manutenção preventiva e corretiva de sistemas fotovoltaicos. Maximize a vida útil e eficiência dos seus painéis solares com a Saewel.">
+<script>
+/* Saewel: registra de onde o visitante veio (IA, Google, redes...) para gravar junto com o lead */
+(function(){try{
+  var q=new URLSearchParams(location.search),r=document.referrer||'',h='';
+  try{h=r?new URL(r).hostname.replace(/^www\./,''):'';}catch(e){}
+  if(h===location.hostname.replace(/^www\./,''))return; /* navegação interna: mantém a origem anterior */
+  var u=(q.get('utm_source')||'').toLowerCase(),t=u||h,c='Direto';
+  var ia=/chatgpt|openai|perplexity|gemini|bard|copilot|claude|anthropic|deepseek|meta\.ai|grok/;
+  if(ia.test(t))c='IA';
+  else if(q.get('gclid')||q.get('gbraid')||q.get('wbraid')||/cpc|ads/.test((q.get('utm_medium')||'').toLowerCase()))c='Google Ads';
+  else if(/google|bing|yahoo|duckduckgo|ecosia|brave/.test(t))c='Busca';
+  else if(q.get('fbclid')||/instagram|facebook|fb\.|threads|tiktok|youtube|linkedin/.test(t))c='Redes sociais';
+  else if(/whatsapp|wa\.me|t\.me|telegram/.test(t))c='Mensageiro';
+  else if(t)c='Outro site';
+  var o={canal:c,fonte:t||'(direto)',campanha:q.get('utm_campaign')||'',entrada:location.pathname,data:new Date().toISOString()};
+  var s=JSON.stringify(o);
+  if(!localStorage.getItem('sw_origem_primeira'))localStorage.setItem('sw_origem_primeira',s);
+  if(c!=='Direto'||!localStorage.getItem('sw_origem_ultima'))localStorage.setItem('sw_origem_ultima',s);
+}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Manutenção de sistemas fotovoltaicos e diagnóstico de inversores",
+  "serviceType": "Manutenção de sistemas fotovoltaicos e diagnóstico de inversores",
+  "description": "Diagnóstico no local de inversores com falha, manutenção preventiva e corretiva, limpeza técnica de módulos e reinstalação de equipamentos, seguindo o procedimento do fabricante.",
+  "url": "https://www.saewelenergiasolar.com.br/manutencao/",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Saewel Energia Solar",
+    "url": "https://www.saewelenergiasolar.com.br/",
+    "telephone": "+55-17-98125-3889",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "São José do Rio Preto",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    }
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "São José do Rio Preto"
+    },
+    {
+      "@type": "City",
+      "name": "Bady Bassit"
+    },
+    {
+      "@type": "City",
+      "name": "Mirassol"
+    },
+    {
+      "@type": "City",
+      "name": "Olímpia"
+    },
+    {
+      "@type": "City",
+      "name": "Catanduva"
+    },
+    {
+      "@type": "City",
+      "name": "Votuporanga"
+    },
+    {
+      "@type": "City",
+      "name": "Nova Aliança"
+    },
+    {
+      "@type": "City",
+      "name": "José Bonifácio"
+    },
+    {
+      "@type": "City",
+      "name": "Novo Horizonte"
+    },
+    {
+      "@type": "City",
+      "name": "Promissão"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Região Noroeste Paulista"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <nav id="mainNav">
@@ -246,6 +334,7 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
         <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
         <li><a href="/energia-solar-comercial/">🏢 Solar Comercial</a></li>
         <li><a href="/energia-solar-agronegocio/">🚜 Solar Agronegócio</a></li>
+        <li><a href="/distribuidora-reprovou-energia-solar/">🚫 Distribuidora reprovou?</a></li>
         <li class="nav-dropdown-divider"></li>
         <li><span class="nav-dropdown-label">Tecnologia</span></li>
         <li><a href="/armazenamento-de-energia/">🔋 Armazenamento BESS</a></li>
@@ -529,6 +618,8 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--ouro),var(--ouro
       <a href="/cidades/catanduva/">Catanduva</a>
       <a href="/cidades/votuporanga/">Votuporanga</a>
       <a href="/cidades/nova-alianca/">Nova Aliança</a>
+      <a href="/cidades/novo-horizonte/">Novo Horizonte</a>
+      <a href="/cidades/promissao/">Promissão</a>
     </div>
     <div class="foot-col">
       <h3>Institucional</h3>

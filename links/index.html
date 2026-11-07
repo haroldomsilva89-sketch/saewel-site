@@ -212,6 +212,26 @@ src="https://www.facebook.com/tr?id=437367307429864&ev=PageView&noscript=1"
     }
     .footer-link:hover { opacity: 1; }
   </style>
+<script>
+/* Saewel: registra de onde o visitante veio (IA, Google, redes...) para gravar junto com o lead */
+(function(){try{
+  var q=new URLSearchParams(location.search),r=document.referrer||'',h='';
+  try{h=r?new URL(r).hostname.replace(/^www\./,''):'';}catch(e){}
+  if(h===location.hostname.replace(/^www\./,''))return; /* navegação interna: mantém a origem anterior */
+  var u=(q.get('utm_source')||'').toLowerCase(),t=u||h,c='Direto';
+  var ia=/chatgpt|openai|perplexity|gemini|bard|copilot|claude|anthropic|deepseek|meta\.ai|grok/;
+  if(ia.test(t))c='IA';
+  else if(q.get('gclid')||q.get('gbraid')||q.get('wbraid')||/cpc|ads/.test((q.get('utm_medium')||'').toLowerCase()))c='Google Ads';
+  else if(/google|bing|yahoo|duckduckgo|ecosia|brave/.test(t))c='Busca';
+  else if(q.get('fbclid')||/instagram|facebook|fb\.|threads|tiktok|youtube|linkedin/.test(t))c='Redes sociais';
+  else if(/whatsapp|wa\.me|t\.me|telegram/.test(t))c='Mensageiro';
+  else if(t)c='Outro site';
+  var o={canal:c,fonte:t||'(direto)',campanha:q.get('utm_campaign')||'',entrada:location.pathname,data:new Date().toISOString()};
+  var s=JSON.stringify(o);
+  if(!localStorage.getItem('sw_origem_primeira'))localStorage.setItem('sw_origem_primeira',s);
+  if(c!=='Direto'||!localStorage.getItem('sw_origem_ultima'))localStorage.setItem('sw_origem_ultima',s);
+}catch(e){}})();
+</script>
 </head>
 <body>
 

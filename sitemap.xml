@@ -4,7 +4,7 @@
   <!-- HOME -->
   <url>
     <loc>https://www.saewelenergiasolar.com.br/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -102,7 +102,7 @@
   <!-- CIDADES -->
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -447,6 +447,12 @@
   <url>
     <loc>https://www.saewelenergiasolar.com.br/cidades/promissao/</loc>
     <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.saewelenergiasolar.com.br/projetos-para-integradores/</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

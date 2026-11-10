@@ -108,6 +108,21 @@ nav{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify-co
   if(c!=='Direto'||!localStorage.getItem('sw_origem_ultima'))localStorage.setItem('sw_origem_ultima',s);
 }catch(e){}})();
 </script>
+<script>
+/* Saewel: ao clicar no WhatsApp da empresa, acrescenta na mensagem a página de onde a pessoa veio */
+document.addEventListener('click',function(ev){try{
+  var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="wa.me/5517981253889"]'):null;
+  if(!a)return;
+  var h=a.getAttribute('href'),i=h.indexOf('?'),base=i<0?h:h.slice(0,i),q=i<0?'':h.slice(i+1),txt='',resto=[];
+  q.split('&').forEach(function(kv){if(!kv)return;var k=kv.split('=')[0];if(k==='text'){try{txt=decodeURIComponent(kv.slice(5).replace(/\+/g,' '));}catch(e){txt=kv.slice(5);}}else resto.push(kv);});
+  if(txt.indexOf('(Página:')!==-1)return;
+  if(!txt)txt='Olá! Vim pelo site da Saewel Energia Solar.';
+  var o=null;try{o=JSON.parse(localStorage.getItem('sw_origem_ultima')||localStorage.getItem('sw_origem_primeira')||'null');}catch(e){}
+  var tag='(Página: '+location.pathname+(o&&o.canal&&o.canal!=='Direto'?' · via '+o.fonte:'')+')';
+  resto.push('text='+encodeURIComponent(txt+'\n\n'+tag));
+  a.setAttribute('href',base+'?'+resto.join('&'));
+}catch(e){}},true);
+</script>
 </head>
 <body>
 

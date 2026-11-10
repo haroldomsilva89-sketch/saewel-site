@@ -1,0 +1,21 @@
+ATUALIZAÇÃO DO SITE SAEWEL — 10/11/2026 (rodada 2)
+
+COMO APLICAR (atenção ao passo 2!)
+1. Clique com o botão direito no zip > Extrair tudo (vai criar uma pasta separada).
+2. ENTRE na pasta extraída, Ctrl+A, Ctrl+C.
+3. Vá para Documentos\GitHub\saewel-site (a RAIZ, não dentro de nenhuma subpasta) e Ctrl+V.
+   Mesclar pastas: Sim para todos. Substituir arquivos: Sim.
+4. Apague este LEIA-ME da pasta saewel-site.
+5. GitHub Desktop: confira que NENHUM arquivo novo aparece dentro de outra pasta
+   (ex.: consultoria\blog\...). Commit + Push.
+
+O QUE MUDOU
+- Página nova: /projetos-para-integradores/ (engenharia para integradores; no menu Serviços e no rodapé).
+- WhatsApp: ao clicar no botão da Saewel, a mensagem já vai com "(Página: /endereço/ · via chatgpt.com)"
+  — você passa a saber de qual página e de qual canal veio cada conversa.
+- Técnico: <meta charset="UTF-8"> passou a ser a primeira tag do <head> em todas as páginas.
+- sitemap.xml com a página nova (69 URLs).
+- A calculadora NÃO está neste pacote de propósito (para não sobrescrever alterações recentes nela).
+
+DEPOIS DO DEPLOY
+- Search Console e Bing: pedir indexação de https://www.saewelenergiasolar.com.br/projetos-para-integradores/

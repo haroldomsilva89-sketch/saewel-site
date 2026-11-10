@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q017N44D5S"></script>
 <script>
@@ -27,7 +28,6 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
   <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
-<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quanto Custa Instalar Energia Solar em 2026? Tabela de Preços</title>
   <meta name="description" content="Tabela de preços de energia solar 2026 por porte, residencial e comercial: custo por Wp, o que está incluído e payback. Simule grátis com sua conta de luz.">
@@ -582,6 +582,21 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
   if(c!=='Direto'||!localStorage.getItem('sw_origem_ultima'))localStorage.setItem('sw_origem_ultima',s);
 }catch(e){}})();
 </script>
+<script>
+/* Saewel: ao clicar no WhatsApp da empresa, acrescenta na mensagem a página de onde a pessoa veio */
+document.addEventListener('click',function(ev){try{
+  var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="wa.me/5517981253889"]'):null;
+  if(!a)return;
+  var h=a.getAttribute('href'),i=h.indexOf('?'),base=i<0?h:h.slice(0,i),q=i<0?'':h.slice(i+1),txt='',resto=[];
+  q.split('&').forEach(function(kv){if(!kv)return;var k=kv.split('=')[0];if(k==='text'){try{txt=decodeURIComponent(kv.slice(5).replace(/\+/g,' '));}catch(e){txt=kv.slice(5);}}else resto.push(kv);});
+  if(txt.indexOf('(Página:')!==-1)return;
+  if(!txt)txt='Olá! Vim pelo site da Saewel Energia Solar.';
+  var o=null;try{o=JSON.parse(localStorage.getItem('sw_origem_ultima')||localStorage.getItem('sw_origem_primeira')||'null');}catch(e){}
+  var tag='(Página: '+location.pathname+(o&&o.canal&&o.canal!=='Direto'?' · via '+o.fonte:'')+')';
+  resto.push('text='+encodeURIComponent(txt+'\n\n'+tag));
+  a.setAttribute('href',base+'?'+resto.join('&'));
+}catch(e){}},true);
+</script>
 </head>
 <body>
 
@@ -618,6 +633,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
         <li><a href="/manutencao/">🔧 Manutenção</a></li>
         <li><a href="/monitoramento/">📊 Monitoramento</a></li>
         <li><a href="/consultoria/">🎓 Consultoria</a></li>
+        <li><a href="/projetos-para-integradores/">🤝 Para integradores</a></li>
         <li class="nav-dropdown-divider"></li>
         <li><span class="nav-dropdown-label">Soluções</span></li>
         <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
@@ -1091,6 +1107,7 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
       <a href="/manutencao/">Manutenção</a>
       <a href="/monitoramento/">Monitoramento</a>
       <a href="/consultoria/">Consultoria</a>
+      <a href="/projetos-para-integradores/">Para integradores</a>
     </div>
     <div class="foot-col">
       <h3>Soluções</h3>

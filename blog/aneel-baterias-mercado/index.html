@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta charset="UTF-8">
 <!-- Google tag (gtag.js) — fila de eventos criada já, script real carregado depois do primeiro paint -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -25,7 +26,6 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ANEEL regulamenta baterias: o que o marco do armazenamento sinaliza para o BESS no Brasil | Saewel</title>
 <meta name="description" content="As Resoluções 1.161 e 1.162/2026 da ANEEL destravam o 1º leilão nacional de baterias. Entenda o que isso sinaliza para o futuro do armazenamento de energia no Brasil.">
@@ -246,6 +246,21 @@ footer.footer-novo{background:var(--noite);border-top:1px solid rgba(200,146,42,
   if(c!=='Direto'||!localStorage.getItem('sw_origem_ultima'))localStorage.setItem('sw_origem_ultima',s);
 }catch(e){}})();
 </script>
+<script>
+/* Saewel: ao clicar no WhatsApp da empresa, acrescenta na mensagem a página de onde a pessoa veio */
+document.addEventListener('click',function(ev){try{
+  var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="wa.me/5517981253889"]'):null;
+  if(!a)return;
+  var h=a.getAttribute('href'),i=h.indexOf('?'),base=i<0?h:h.slice(0,i),q=i<0?'':h.slice(i+1),txt='',resto=[];
+  q.split('&').forEach(function(kv){if(!kv)return;var k=kv.split('=')[0];if(k==='text'){try{txt=decodeURIComponent(kv.slice(5).replace(/\+/g,' '));}catch(e){txt=kv.slice(5);}}else resto.push(kv);});
+  if(txt.indexOf('(Página:')!==-1)return;
+  if(!txt)txt='Olá! Vim pelo site da Saewel Energia Solar.';
+  var o=null;try{o=JSON.parse(localStorage.getItem('sw_origem_ultima')||localStorage.getItem('sw_origem_primeira')||'null');}catch(e){}
+  var tag='(Página: '+location.pathname+(o&&o.canal&&o.canal!=='Direto'?' · via '+o.fonte:'')+')';
+  resto.push('text='+encodeURIComponent(txt+'\n\n'+tag));
+  a.setAttribute('href',base+'?'+resto.join('&'));
+}catch(e){}},true);
+</script>
 </head>
 <body>
 
@@ -280,6 +295,7 @@ footer.footer-novo{background:var(--noite);border-top:1px solid rgba(200,146,42,
         <li><a href="/manutencao/">🔧 Manutenção</a></li>
         <li><a href="/monitoramento/">📊 Monitoramento</a></li>
         <li><a href="/consultoria/">🎓 Consultoria</a></li>
+        <li><a href="/projetos-para-integradores/">🤝 Para integradores</a></li>
         <li class="nav-dropdown-divider"></li>
         <li><span class="nav-dropdown-label">Soluções</span></li>
         <li><a href="/energia-solar-residencial/">🏠 Solar Residencial</a></li>
@@ -507,6 +523,7 @@ footer.footer-novo{background:var(--noite);border-top:1px solid rgba(200,146,42,
       <a href="/manutencao/">Manutenção</a>
       <a href="/monitoramento/">Monitoramento</a>
       <a href="/consultoria/">Consultoria</a>
+      <a href="/projetos-para-integradores/">Para integradores</a>
     </div>
     <div class="foot-col">
       <h3>Soluções</h3>

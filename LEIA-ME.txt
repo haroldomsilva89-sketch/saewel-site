@@ -1,0 +1,18 @@
+ATUALIZAÇÃO DO SITE SAEWEL — 12/11/2026 (rodada 3B: fontes, correção)
+
+POR QUE
+Os arquivos de fonte da pasta /fonts/ têm defeito nos acentos da Cormorant Garamond
+(ê, é, í, ã... ficam soltos acima da letra). A rodada 3 espalhou isso para 142 páginas
+(e a home já tinha). Esta rodada volta todas as páginas para o Google Fonts, que tem os
+arquivos corretos, mas com display=swap: se a fonte demorar, o navegador mostra a fonte
+padrão por um instante e TROCA para a certa quando ela chega (antes desistia).
+
+INCLUI: 142 páginas + home + calculadora (a calculadora é a versão que você mandou,
+com o script do WhatsApp da rodada 2 e a troca das fontes).
+
+COMO APLICAR
+1. Extrair tudo > entrar na pasta extraída > Ctrl+A, Ctrl+C.
+2. Colar na RAIZ de Documentos\GitHub\saewel-site > Mesclar: Sim para todos > Substituir: Sim.
+3. Apagar este LEIA-ME da pasta saewel-site.
+4. GitHub Desktop: só arquivos ALTERADOS (amarelo), nenhum novo. Commit + Push.
+5. Testar em janela anônima: home e /calculadora/ — olhar o "você" do título.

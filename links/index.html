@@ -295,6 +295,41 @@ document.addEventListener('click',function(ev){try{
     <div class="btn-arrow">›</div>
   </a>
 
+  <!-- Blog: o último artigo vem sozinho do feed.xml (o mesmo que o Instagram anuncia com "link na bio") -->
+  <div class="sec-label">Blog</div>
+
+  <a href="/blog/?utm_source=instagram&amp;utm_medium=bio" id="ultimoArtigo" class="link-btn" style="border-color:rgba(232,184,75,0.45);">
+    <div class="btn-icon">📰</div>
+    <div class="btn-content">
+      <div class="btn-title" id="ultimoArtigoTit">Último artigo do blog</div>
+      <div class="btn-sub">Novo no blog · toque para ler</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <a href="/blog/?utm_source=instagram&amp;utm_medium=bio" class="link-btn">
+    <div class="btn-icon">📚</div>
+    <div class="btn-content">
+      <div class="btn-title">Todos os artigos</div>
+      <div class="btn-sub">Tarifas, baterias, legislação e economia</div>
+    </div>
+    <div class="btn-arrow">›</div>
+  </a>
+
+  <script>
+  (function(){
+    fetch('/feed.xml',{cache:'no-cache'}).then(function(r){return r.text();}).then(function(t){
+      var d=new DOMParser().parseFromString(t,'application/xml');
+      var it=d.querySelector('item'); if(!it) return;
+      var tit=(it.querySelector('title')||{}).textContent, link=(it.querySelector('link')||{}).textContent;
+      if(!tit||!link) return;
+      var a=document.getElementById('ultimoArtigo');
+      a.href=link.replace(/^https?:\/\/[^\/]+/,'')+'?utm_source=instagram&utm_medium=bio&utm_campaign=ultimo_artigo';
+      document.getElementById('ultimoArtigoTit').textContent=tit;
+    }).catch(function(){});
+  })();
+  </script>
+
   <!-- Avaliações -->
   <div class="sec-label">Avaliações</div>
 

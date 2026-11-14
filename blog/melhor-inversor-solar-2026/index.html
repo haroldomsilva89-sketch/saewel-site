@@ -29,14 +29,14 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
   <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Melhores Inversores Solares 2026: Comparativo por Técnico</title>
-  <meta name="description" content="Fronius, FoxESS, Growatt e Solis comparados: inversor string, híbrido e microinversor. O que avaliar, o que evitar e qual escolher em 2026.">
+  <title>Melhor Inversor Solar 2026: Comparativo de Engenheiro Instalador</title>
+  <meta name="description" content="Fronius, FoxESS, Growatt, Solis e Deye comparados por quem instala e faz manutenção: string, híbrido ou micro, garantia, assistência no Brasil e qual escolher.">
   <meta name="author" content="Haroldo M. Silva — Técnico em Eletrotécnica, Saewel Energia Solar">
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="melhor inversor solar 2026, inversor solar, inversor híbrido, microinversor, Growatt, Fronius, Solis, FoxESS, inversor fotovoltaico, São José do Rio Preto">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/melhor-inversor-solar-2026/">
-  <meta property="og:title" content="Melhores Inversores Solares 2026: Comparativo por Técnico">
-  <meta property="og:description" content="Fronius, FoxESS, Growatt e Solis comparados: inversor string, híbrido e microinversor. O que avaliar, o que evitar e qual escolher em 2026.">
+  <meta property="og:title" content="Melhor Inversor Solar 2026: Comparativo de Engenheiro Instalador">
+  <meta property="og:description" content="Fronius, FoxESS, Growatt, Solis e Deye comparados por quem instala e faz manutenção: string, híbrido ou micro, garantia, assistência no Brasil e qual escolher.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/melhor-inversor-solar-2026/">
   <meta property="og:site_name" content="Saewel Energia Solar">
@@ -1138,6 +1138,22 @@ const mobileMenu=document.getElementById('mobileMenu');
 function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
 hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
 mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
+</script>
+<script>
+/* (v6) Rastreio de contato em todas as páginas — GA4: whatsapp_click, phone_click, cta_calculadora, cta_contato */
+document.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!a)return;
+  var h=a.getAttribute('href')||'', ev=null;
+  if(/wa\.me|api\.whatsapp\.com/.test(h)) ev='whatsapp_click';
+  else if(/^tel:/.test(h)) ev='phone_click';
+  else if(/^\/calculadora\/?(\?|$)/.test(h)) ev='cta_calculadora';
+  else if(/^\/contato\/?(\?|$)/.test(h)) ev='cta_contato';
+  if(!ev)return;
+  try{
+    if(typeof gtag==='function'){gtag('event',ev,{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(ev==='whatsapp_click'&&typeof fbq==='function'){fbq('track','Contact');}
+  }catch(_){}
+},true);
 </script>
 </body>
 </html>

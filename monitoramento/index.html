@@ -404,6 +404,22 @@ details[open] summary::after{transform:rotate(45deg);}
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
   .live-dot{animation:none;opacity:1;}
 }
+
+/* (v6) Resumo mensal por e-mail */
+.resumo-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:start;margin-top:40px;}
+.resumo-texto{position:sticky;top:110px;}
+.resumo-lista{list-style:none;padding:0;margin:22px 0 28px;}
+.resumo-lista li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(200,146,42,0.15);color:var(--cinza-claro,#c9ced6);font-size:15px;line-height:1.55;}
+.resumo-lista li b{color:var(--branco,#F8F5F0);}
+.resumo-ico{flex:0 0 34px;height:34px;border-radius:9px;background:rgba(200,146,42,0.12);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.resumo-bess{margin:6px 0 26px;padding:18px 20px;border:1px solid rgba(74,222,128,0.35);border-left:4px solid #4ADE80;border-radius:10px;background:rgba(74,222,128,0.06);}
+.resumo-bess-tit{font-weight:700;color:#4ADE80;font-size:15px;margin-bottom:6px;}
+.resumo-bess p{margin:0;font-size:14.5px;line-height:1.6;color:var(--cinza-claro,#c9ced6);}
+.resumo-mock{position:relative;max-width:430px;margin:0 auto;}
+.resumo-mock img{width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,0.55),0 0 0 1px rgba(200,146,42,0.25);}
+.resumo-selo{position:absolute;top:-14px;right:-10px;background:linear-gradient(135deg,var(--ouro),var(--ouro-claro));color:var(--noite);font-weight:800;font-size:12px;letter-spacing:.04em;padding:8px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(200,146,42,0.45);}
+.resumo-legenda{text-align:center;font-size:12px;color:var(--cinza,#9BA3AD);margin-top:12px;}
+@media(max-width:900px){.resumo-grid{grid-template-columns:1fr;gap:36px;}.resumo-texto{position:static;}.resumo-mock{max-width:360px;}}
 </style>
   <meta property="og:image" content="https://www.saewelenergiasolar.com.br/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -758,10 +774,43 @@ document.addEventListener('click',function(ev){try{
   </div>
 </section>
 
+
+<!-- ════════════════════════════════════════════
+     (v6) RESUMO MENSAL POR E-MAIL
+════════════════════════════════════════════ -->
+<section class="secao secao-alt" id="resumo-mensal">
+  <div class="secao-inner">
+    <div class="section-eyebrow">Exclusivo para clientes Saewel</div>
+    <h2 class="section-h2">Sua conta de luz <em>agora vem assim</em></h2>
+    <p class="section-desc">Todo mês, quando a fatura da distribuidora chega, você recebe por e-mail um resumo claro do que a sua usina fez por você — sem precisar decifrar a conta da CPFL.</p>
+
+    <div class="resumo-grid">
+      <div class="resumo-texto">
+        <ul class="resumo-lista">
+          <li><span class="resumo-ico">💰</span><span><b>Quanto você economizou no mês</b> e quanto pagaria sem energia solar, lado a lado.</span></li>
+          <li><span class="resumo-ico">📈</span><span><b>Economia acumulada</b> desde a instalação e gráfico dos últimos meses.</span></li>
+          <li><span class="resumo-ico">⚡</span><span><b>Geração, energia compensada e créditos guardados</b> para os próximos meses.</span></li>
+          <li><span class="resumo-ico">🔎</span><span><b>Conferência técnica</b>: se a usina gerar menos do que deveria, a nossa equipe percebe antes de você.</span></li>
+        </ul>
+        <div class="resumo-bess">
+          <div class="resumo-bess-tit">🔋 Tem bateria (BESS)? Você recebe tudo sobre ela</div>
+          <p>Quantas vezes a rede caiu e a sua casa continuou ligada, quanta energia a bateria entregou, quanto do sol foi guardado e a carga mínima no mês.</p>
+        </div>
+        <a href="https://wa.me/5517981253889?text=Ol%C3%A1!%20Quero%20o%20monitoramento%20com%20resumo%20mensal%20da%20minha%20usina%20solar." class="btn-gold">Quero receber o meu resumo →</a>
+      </div>
+      <div class="resumo-mock">
+        <span class="resumo-selo">Todo mês no seu e-mail</span>
+        <img src="/monitoramento/img/resumo-fatura-saewel-exemplo.webp" width="900" height="2088" loading="lazy" decoding="async" alt="Exemplo do resumo mensal por e-mail da Saewel Energia: economia do mês, comparativo com e sem energia solar, gráfico dos últimos meses, geração e dados da bateria">
+        <div class="resumo-legenda">Exemplo ilustrativo com valores fictícios.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════════════════════════════════════
      5. QUEM PODE CONTRATAR
 ════════════════════════════════════════════ -->
-<section class="secao secao-alt" id="clientes">
+<section class="secao" id="clientes">
   <div class="secao-inner">
     <div class="section-eyebrow">Quem atendemos</div>
     <h2 class="section-h2">Atendemos <em>diferentes perfis de clientes</em></h2>
@@ -799,7 +848,7 @@ document.addEventListener('click',function(ev){try{
 <!-- ════════════════════════════════════════════
      6. DIFERENCIAIS DA SAEWEL
 ════════════════════════════════════════════ -->
-<section class="secao" id="diferenciais">
+<section class="secao secao-alt" id="diferenciais">
   <div class="secao-inner">
     <div class="section-eyebrow">Por que a Saewel</div>
     <h2 class="section-h2">Por que escolher a <em>Saewel?</em></h2>
@@ -855,7 +904,7 @@ document.addEventListener('click',function(ev){try{
 <!-- ════════════════════════════════════════════
      7. FAQ
 ════════════════════════════════════════════ -->
-<section class="secao secao-alt" id="faq">
+<section class="secao" id="faq">
   <div class="secao-inner" style="text-align:center;">
     <div class="section-eyebrow" style="justify-content:center;">Dúvidas frequentes</div>
     <h2 class="section-h2">Perguntas <em>Frequentes</em></h2>
@@ -1053,6 +1102,22 @@ if (!('scrollBehavior' in document.documentElement.style)) {
     });
   });
 }
+</script>
+<script>
+/* (v6) Rastreio de contato em todas as páginas — GA4: whatsapp_click, phone_click, cta_calculadora, cta_contato */
+document.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!a)return;
+  var h=a.getAttribute('href')||'', ev=null;
+  if(/wa\.me|api\.whatsapp\.com/.test(h)) ev='whatsapp_click';
+  else if(/^tel:/.test(h)) ev='phone_click';
+  else if(/^\/calculadora\/?(\?|$)/.test(h)) ev='cta_calculadora';
+  else if(/^\/contato\/?(\?|$)/.test(h)) ev='cta_contato';
+  if(!ev)return;
+  try{
+    if(typeof gtag==='function'){gtag('event',ev,{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(ev==='whatsapp_click'&&typeof fbq==='function'){fbq('track','Contact');}
+  }catch(_){}
+},true);
 </script>
 </body>
 </html>

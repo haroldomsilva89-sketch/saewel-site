@@ -29,14 +29,14 @@ src="https://www.facebook.com/tr?id=552988121990638&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
   <meta name="facebook-domain-verification" content="e9jqovakze0qh7umiez1x2l3jsfhmc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fatura Zerada com Energia Solar: Quanto Você Ainda Paga?</title>
-  <meta name="description" content="A conta de luz zera com energia solar? Quase: veja o que fica na fatura (taxa mínima, ICMS, Fio B), quanto sobra pagar e como chegar mais perto de zero.">
+  <title>Conta de Luz Zerada com Energia Solar? O que Ainda Fica (2026)</title>
+  <meta name="description" content="Mesmo com energia solar a conta não zera 100%. Veja o valor mínimo que sobra (taxa, ICMS, Fio B), um exemplo em reais e como pagar o menor valor possível.">
   <meta name="author" content="Haroldo M. Silva — Técnico em Eletrotécnica, Saewel Energia Solar">
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="fatura zerada energia solar, conta de luz zerada, economia energia solar, dimensionamento sistema solar, taxa mínima CPFL">
   <link rel="canonical" href="https://www.saewelenergiasolar.com.br/blog/fatura-zerada-energia-solar/">
-  <meta property="og:title" content="Fatura Zerada com Energia Solar: Quanto Você Ainda Paga?">
-  <meta property="og:description" content="A conta de luz zera com energia solar? Quase: veja o que fica na fatura (taxa mínima, ICMS, Fio B), quanto sobra pagar e como chegar mais perto de zero.">
+  <meta property="og:title" content="Conta de Luz Zerada com Energia Solar? O que Ainda Fica (2026)">
+  <meta property="og:description" content="Mesmo com energia solar a conta não zera 100%. Veja o valor mínimo que sobra (taxa, ICMS, Fio B), um exemplo em reais e como pagar o menor valor possível.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.saewelenergiasolar.com.br/blog/fatura-zerada-energia-solar/">
   <meta property="og:site_name" content="Saewel Energia Solar">
@@ -911,13 +911,18 @@ hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('o
 mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
 </script>
 <script>
-/* Rastreia cliques nos botões de WhatsApp (GA4: whatsapp_click | Meta Pixel: Contact) */
+/* (v6) Rastreio de contato em todas as páginas — GA4: whatsapp_click, phone_click, cta_calculadora, cta_contato */
 document.addEventListener('click',function(e){
-  var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
-  if(!a)return;
+  var a=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!a)return;
+  var h=a.getAttribute('href')||'', ev=null;
+  if(/wa\.me|api\.whatsapp\.com/.test(h)) ev='whatsapp_click';
+  else if(/^tel:/.test(h)) ev='phone_click';
+  else if(/^\/calculadora\/?(\?|$)/.test(h)) ev='cta_calculadora';
+  else if(/^\/contato\/?(\?|$)/.test(h)) ev='cta_contato';
+  if(!ev)return;
   try{
-    if(typeof gtag==='function'){gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
-    if(typeof fbq==='function'){fbq('track','Contact');}
+    if(typeof gtag==='function'){gtag('event',ev,{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(ev==='whatsapp_click'&&typeof fbq==='function'){fbq('track','Contact');}
   }catch(_){}
 },true);
 </script>

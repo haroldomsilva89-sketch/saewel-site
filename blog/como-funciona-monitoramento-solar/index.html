@@ -498,5 +498,21 @@ function toggleMenu(o){hamburger.classList.toggle('open',o);mobileMenu.classList
 hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.contains('open');toggleMenu(!o);});
 mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleMenu(false)));
 </script>
+<script>
+/* (v6) Rastreio de contato em todas as páginas — GA4: whatsapp_click, phone_click, cta_calculadora, cta_contato */
+document.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!a)return;
+  var h=a.getAttribute('href')||'', ev=null;
+  if(/wa\.me|api\.whatsapp\.com/.test(h)) ev='whatsapp_click';
+  else if(/^tel:/.test(h)) ev='phone_click';
+  else if(/^\/calculadora\/?(\?|$)/.test(h)) ev='cta_calculadora';
+  else if(/^\/contato\/?(\?|$)/.test(h)) ev='cta_contato';
+  if(!ev)return;
+  try{
+    if(typeof gtag==='function'){gtag('event',ev,{link_url:a.href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,40)});}
+    if(ev==='whatsapp_click'&&typeof fbq==='function'){fbq('track','Contact');}
+  }catch(_){}
+},true);
+</script>
 </body>
 </html>

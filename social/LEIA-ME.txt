@@ -1,0 +1,19 @@
+ARTES DO INSTAGRAM (social/)
+============================
+Ao publicar um artigo novo, antes do commit:
+  1. python update_blog_cards.py        (cards da home)
+  2. python social/gerar_social.py      (artes do post e do story + imagem no feed.xml)
+
+Primeira vez no computador:
+  pip install playwright
+  python -m playwright install chromium
+
+Para ter 3 pontos na arte, coloque no <head> do artigo:
+  <meta name="social:pontos" content="Primeiro ponto|Segundo ponto|Terceiro ponto">
+
+O Make lê o feed.xml e posta a arte do feed no Instagram sozinho.
+O story (social/<artigo>-story.jpg) é postado à mão, com o adesivo de link, e salvo no destaque "Blog".
+
+CORES POR TEMA (automático)
+  dourado = legislação/ANEEL/tarifas · verde = bateria/BESS · azul = cidades/raio-x · laranja = economia/preço/payback
+  Para forçar uma cor, no <head> do artigo: <meta name="social:tema" content="verde">

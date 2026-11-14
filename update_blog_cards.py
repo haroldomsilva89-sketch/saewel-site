@@ -42,7 +42,9 @@ def extract_article_data(html_path):
 
     # Descrição via meta description
     desc_match = re.search(r'meta name="description" content="([^"]+)"', content)
-    desc = desc_match.group(1)[:120] if desc_match else ""
+    desc = desc_match.group(1) if desc_match else ""
+    if len(desc) > 120:  # corta na última palavra inteira, sem quebrar no meio
+        desc = desc[:120].rsplit(" ", 1)[0].rstrip(",.;:—-") + "…"
 
     # Tag via article-eyebrow (primeira parte antes do ·)
     eyebrow_match = re.search(r'class="article-eyebrow"[^>]*>([^<]+)<', content)
@@ -50,6 +52,8 @@ def extract_article_data(html_path):
         tag = eyebrow_match.group(1).strip().split('·')[0].strip()
     else:
         tag = "Blog"
+    # etiquetas internas não aparecem para o visitante
+    tag = {"SEO Local": "Cidades", "SEO": "Blog"}.get(tag, tag)
 
     # URL — derivada do caminho da pasta
     folder = html_path.parent
@@ -98,32 +102,50 @@ def build_cards_html(articles):
         </a>''')
 
     return (
-        '      <div class="blog-cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px;">\n'
+        '<div class="blog-cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;margin-bottom:40px;">\n'
         + "\n".join(cards_html)
         + '\n      </div>'
     )
 
 
+def fim_do_bloco(content, inicio):
+    """Acha o </div> que fecha a <div> aberta em `inicio`, contando os níveis.
+    (Correção nov/2026: a busca antiga por '</div></div>' passava do bloco
+    de cards e apagava a seção de Perguntas Frequentes da home.)"""
+    nivel = 0
+    for m in re.finditer(r'<div\b|</div>', content[inicio:]):
+        if m.group(0) == '</div>':
+            nivel -= 1
+            if nivel == 0:
+                return inicio + m.end()
+        else:
+            nivel += 1
+    return -1
+
+
 def update_index(new_cards_html):
-    """Substitui o bloco de cards no index.html."""
+    """Substitui só o bloco de cards no index.html."""
     if not INDEX_FILE.exists():
         print(f"⚠️  '{INDEX_FILE}' não encontrado. Execute na raiz do repositório.")
         return False
 
     content = INDEX_FILE.read_text(encoding="utf-8")
 
-    # Encontrar o bloco atual de cards
-    pattern = re.compile(
-        r'<div class="blog-cards-grid".*?</div>\s*</div>',
-        re.DOTALL
-    )
-
-    match = pattern.search(content)
-    if not match:
+    inicio = content.find('<div class="blog-cards-grid"')
+    if inicio == -1:
         print("⚠️  Bloco de cards não encontrado no index.html.")
         return False
+    fim = fim_do_bloco(content, inicio)
+    if fim == -1:
+        print("⚠️  Não achei o fim do bloco de cards; nada foi alterado.")
+        return False
 
-    new_content = content[:match.start()] + new_cards_html + content[match.end():]
+    bloco_antigo = content[inicio:fim]
+    if bloco_antigo.count('class="blog-card"') > 6 or len(bloco_antigo) > 8000:
+        print("⚠️  O bloco encontrado parece grande demais; nada foi alterado por segurança.")
+        return False
+
+    new_content = content[:inicio] + new_cards_html + content[fim:]
     INDEX_FILE.write_text(new_content, encoding="utf-8")
     return True
 

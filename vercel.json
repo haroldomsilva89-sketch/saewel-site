@@ -49,6 +49,41 @@
       "source": "/cidades/sao-jose-do-rio-preto/",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/quiz",
+      "destination": "/qualificacao/",
+      "permanent": false
+    },
+    {
+      "source": "/analise",
+      "destination": "/analise-gratuita/",
+      "permanent": false
+    },
+    {
+      "source": "/analise/",
+      "destination": "/analise-gratuita/",
+      "permanent": false
+    },
+    {
+      "source": "/grupo",
+      "destination": "/analise-gratuita/?utm_source=whatsapp&utm_medium=grupo&utm_campaign=grupos",
+      "permanent": false
+    },
+    {
+      "source": "/grupo/",
+      "destination": "/analise-gratuita/?utm_source=whatsapp&utm_medium=grupo&utm_campaign=grupos",
+      "permanent": false
+    },
+    {
+      "source": "/indique",
+      "destination": "/indique-e-ganhe/",
+      "permanent": false
+    },
+    {
+      "source": "/indique/",
+      "destination": "/indique-e-ganhe/",
+      "permanent": false
     }
   ],
   "trailingSlash": true

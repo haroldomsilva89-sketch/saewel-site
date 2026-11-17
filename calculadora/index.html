@@ -3049,6 +3049,8 @@ async function salvarPropostaNoDrive(propNum, nome, cidade, tel){
     const clone=prop.cloneNode(true);
     clone.querySelectorAll('script,.btn-wpp-p,.btn-pdf-p,.btn-nova,.financiamento-wrap,.endereco-prompt-wrap').forEach(function(el){el.remove();});
     clone.querySelectorAll('[onclick]').forEach(function(el){el.removeAttribute('onclick');});
+    // (16/11) sem loading="lazy" na cópia: senão as fotos de módulo/inversor saem em branco ao imprimir direto
+    clone.querySelectorAll('img[loading]').forEach(function(el){el.removeAttribute('loading');});
     const estilos=Array.from(document.querySelectorAll('style')).map(function(st){return st.textContent;}).join('\n');
     const titulo=[propNum,nome,cidade].filter(Boolean).join(' - ');
     const html='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">'+
@@ -3077,6 +3079,24 @@ window.addEventListener('beforeprint',()=>{
 });
 
 function imprimirProposta(){
+  // (16/11) Antes de imprimir, carrega as imagens "preguiçosas" (fotos de módulo/inversor)
+  // e espera até 3 s por elas; sem isso, elas saem em branco no PDF.
+  if(!window.__pcImgsProntas){
+    const pend=[].slice.call(document.querySelectorAll('#proposta img[loading="lazy"]'));
+    if(pend.length){
+      pend.forEach(function(im){ im.loading='eager'; });
+      const faltam=pend.filter(function(im){ return !im.complete; });
+      window.__pcImgsProntas=true;
+      if(faltam.length){
+        let n=faltam.length, feito=false;
+        const seguir=function(){ if(feito) return; feito=true; imprimirProposta(); };
+        faltam.forEach(function(im){ const f=function(){ if(--n<=0) seguir(); };
+          im.addEventListener('load',f,{once:true}); im.addEventListener('error',f,{once:true}); });
+        setTimeout(seguir,3000);
+        return;
+      }
+    }
+  }
   const tbody = document.getElementById('tabelaMensal');
   if(!tbody || tbody.children.length === 0){
     alert('Gere a proposta primeiro antes de imprimir.');
